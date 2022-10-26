@@ -95,3 +95,21 @@ struct Book : Decodable {
 // TODO: API for Search
 
 
+// ### STRUCTS FOR BOOK/COPY INFORMATION PAGE ###
+struct CommentsBookDetails : Decodable {
+  
+  // TODO: Complete this: Name, Comment, Date
+  
+}
+
+struct AvailableCopies : Decodable {
+  
+  // TODO: Complete this: CopyID, UserName, UserProfilePic, Distance, City
+  
+}
+
+struct BookDetails : Decodable {
+  
+  // TODO: Implement this: BookID, Title, Author, Rating, Description?, CoverURL, [CommentsBookDetails], [AvailableCopies]
+  
+}
