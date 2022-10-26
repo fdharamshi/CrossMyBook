@@ -4,9 +4,9 @@ import UIKit
  Using Django Framwork. **/
 
 /* NOTE: Every response will contain a success boolean which will denote if the process was successful or not.
-   It will also contain a message String, which can be used to send a message back to the mobile app:
-   incase there was an error, we can give more details of the error
-   Or else it will just contain "Success!" */
+ It will also contain a message String, which can be used to send a message back to the mobile app:
+ incase there was an error, we can give more details of the error
+ Or else it will just contain "Success!" */
 
 // #################################
 // ### STRUCT FOR SIGNUP REQUEST ###
@@ -142,11 +142,55 @@ struct CopyDetails : Decodable {
   
   // TODO: Complete this: copyID, status, [TravelPoint], title, author, coverURL, rating, shippingExpense, Willingness To Ship, Book Condition, Notes
   
+  let success: Bool
+  let msg: String
+  
+  let copyID: Int
+  let bookID: Int
+  let status: Int
+  let travelHistory: [TravelPoint]
+  let title: String
+  let author: String
+  let coverURL: String
+  let rating: Int
+  let shippingExpense: String
+  let willingnessToShip: String
+  let bookCondition: String
+  let note: String
+  
+  enum CodingKeys : String, CodingKey {
+    case success
+    case msg
+    
+    case copyID = "copy_id"
+    case bookID = "boook_id"
+    case status
+    case travelHistory = "travel_history"
+    case title
+    case author
+    case coverURL = "cover_url"
+    case rating
+    case shippingExpense = "shipping_expense"
+    case willingnessToShip = "willingness"
+    case bookCondition = "book_condition"
+    case note
+  }
+  
 }
 
 struct RequestResult : Decodable {
   
   // TODO: Complete this: success, msg, requestID
+  
+  let success: Bool
+  let msg: String
+  let requestID: Int
+  
+  enum CodingKeys : String, CodingKey {
+    case success
+    case msg
+    case requestID = "request_id"
+  }
   
 }
 
@@ -155,6 +199,65 @@ struct RequestActionResult : Decodable {
   // This will be used when the owner clicks on accept/decline
   // TODO: Complete this: success, msg, requestID
   
+  let success: Bool
+  let msg: String
+  let requestID: Int
+  
+  enum CodingKeys : String, CodingKey {
+    case success
+    case msg
+    case requestID = "request_id"
+  }
+  
 }
 
+// #####################################
+// ### STRUCTS FOR RELEASE BOOK PAGE ###
+// #####################################
+
+// Third party ISBN API will either be called on our backend
+// or on our frontend. We haven't decided yet, but the structs
+// will remain similar.
+
+struct Authors: Decodable {
+  let key: String
+  
+  enum CodingKeys: String, CodingKey {
+    case key
+  }
+}
+
+struct Author: Decodable {
+  let name: String
+  
+  enum CodingKeys: String, CodingKey {
+    case name
+  }
+}
+
+struct BookDetailsFromISBN: Decodable {
+  let authors: [Authors]
+  let title: String
+  let covers: [Int]
+  
+  enum CodingKeys : String, CodingKey {
+    case authors
+    case title
+    case covers
+  }
+}
+
+// TODO: Complete structs for this page
+
+// ##########################################
+// ### STRUCTS FOR PROFILE/DASHBOARD PAGE ###
+// ##########################################
+
+// TODO: Complete structs for this page
+
+// ##################################
+// ### STRUCTS FOR COMMUNITY PAGE ###
+// ##################################
+
+// TODO: Complete structs for this page
 
