@@ -8,7 +8,10 @@ import UIKit
    incase there was an error, we can give more details of the error
    Or else it will just contain "Success!" */
 
+// #################################
 // ### STRUCT FOR SIGNUP REQUEST ###
+// #################################
+
 struct SignUp: Decodable {
   let success: Bool
   let msg: String
@@ -22,7 +25,10 @@ struct SignUp: Decodable {
   }
 }
 
+// ################################
 // ### STRUCT FOR LOGIN REQUEST ###
+// ################################
+
 struct LogIn: Decodable {
   let success: Bool
   let msg: String
@@ -36,7 +42,10 @@ struct LogIn: Decodable {
   }
 }
 
+// #############################
 // ### STRUCTS FOR MAIN PAGE ###
+// #############################
+
 struct TravelPoint : Decodable {
   let lat: Float
   let lon: Float
@@ -103,8 +112,10 @@ struct Book : Decodable {
 
 // TODO: API for Search
 
-
+// #########################################
 // ### STRUCTS FOR BOOK INFORMATION PAGE ###
+// #########################################
+
 struct CommentsBookDetails : Decodable {
   
   // TODO: Complete this: Name, Comment, Date
@@ -123,7 +134,9 @@ struct BookDetails : Decodable {
   
 }
 
+// #########################################
 // ### STRUCTS FOR COPY INFORMATION PAGE ###
+// #########################################
 
 struct CopyDetails : Decodable {
   
@@ -136,4 +149,12 @@ struct RequestResult : Decodable {
   // TODO: Complete this: success, msg, requestID
   
 }
+
+struct RequestActionResult : Decodable {
+  
+  // This will be used when the owner clicks on accept/decline
+  // TODO: Complete this: success, msg, requestID
+  
+}
+
 
