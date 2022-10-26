@@ -261,9 +261,43 @@ struct BookDetailsFromISBN: Decodable {
 
 // TODO: Complete structs for this page
 
-// ##################################
+// ######################################
 // ### STRUCTS FOR NOTIFICATIONS PAGE ###
-// ##################################
+// ######################################
 
 // TODO: Complete structs for this page
+
+struct BookRequest : Decodable {
+  
+  // This struct does not have success,msg because it is used by another struct that fetches from the API
+  
+  let requestID: Int
+  let copyID: Int
+  let bookID: Int
+  let coverURL: String
+  let bookCondition: String
+  let shippingExpense: String
+  
+  let requestorID: Int
+  let requestorProfilePicture: String
+  let requestorName: String
+  let lat: Float
+  let lon: Float
+  let distance: Float
+  let note: String
+  
+  // TODO: Complete the Coding Keys
+  
+}
+
+struct Notifications : Decodable {
+  
+  let success: Bool
+  let msg: String
+  let incomingRequests: [BookRequest]
+  let acceptedRequests: [BookRequest]
+  
+  // TODO: Complete the Coding Keys
+  
+}
 
