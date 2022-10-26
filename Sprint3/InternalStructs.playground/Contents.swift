@@ -261,3 +261,9 @@ struct BookDetailsFromISBN: Decodable {
 
 // TODO: Complete structs for this page
 
+// ##################################
+// ### STRUCTS FOR NOTIFICATIONS PAGE ###
+// ##################################
+
+// TODO: Complete structs for this page
+
