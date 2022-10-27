@@ -36,6 +36,6 @@ def signup_request(request):
     newUser.save()
     return JsonResponse({'msg': 'Login Success', 'user': {'user_id': newUser.id, "profile_picture": newUser.profile_url,
                                                           "first_name": newUser.first_name,
-                                                          "last_name": newUser.last_name}
+                                                          "last_name": newUser.last_name},
                          'success': True}, safe=False)
 

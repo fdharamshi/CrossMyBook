@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c03aa8d-0873-4dd1-a990-bd0a491bb7e3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/endpoints/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/endpoints/login.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Sprint3/InternalStructs.playground/playground.xcworkspace/xcuserdata/femindharamshi.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../Sprint3/InternalStructs.playground/playground.xcworkspace/xcuserdata/femindharamshi.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
     </list>
@@ -41,7 +40,7 @@
       <option name="presentableId" value="Default" />
       <updated>1666911768029</updated>
       <workItem from="1666911769330" duration="1074000" />
-      <workItem from="1666912847964" duration="58000" />
+      <workItem from="1666912847964" duration="493000" />
     </task>
     <servers />
   </component>
