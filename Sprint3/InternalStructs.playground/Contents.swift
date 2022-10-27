@@ -315,11 +315,72 @@ struct BookDetailsFromISBN: Decodable {
 // ### STRUCTS FOR PROFILE/DASHBOARD PAGE ###
 // ##########################################
 
+struct UserInformation: Decodable{
+    let userId: Int
+    let userName: String
+    // list of Ids
+    let ownReviews: [Int]
+    let favorReviews: [Int]
+    let currentCopy: [Int]
+    let historyCopy: [Int]
+    
+    enum CodingKeys: String, CodingKey{
+        case userId
+        case userName
+        case ownReviews
+        case favorReviews
+        case currentCopy
+        case historyCopy
+    }
+
+}
+
+struct DeleteReview: Decodable{
+    let success: Bool
+    let msg: String
+    let reviewId: Int
+    
+    enum CodingKeys: String, CodingKey{
+        case success
+        case msg
+        case reviewId
+    }
+
+}
+
+
 // TODO: Complete structs for this page
 
 // ##################################
 // ### STRUCTS FOR COMMUNITY PAGE ###
 // ##################################
+
+
+struct ReviewDetails: Decodable{
+    let reviewId: Int
+    let bookId: Int
+    let rating: Int
+    let content: String
+    
+    enum CodingKeys: String, CodingKey{
+        case reviewId
+        case bookId
+        case rating
+        case content
+    }
+
+}
+
+struct GetReviews: Decodable{
+    // list of reviewIds
+    let reviews: [Int]
+    
+    enum CodingKeys: String, CodingKey{
+        case reviews
+    }
+
+}
+
 
 // TODO: Complete structs for this page
 
