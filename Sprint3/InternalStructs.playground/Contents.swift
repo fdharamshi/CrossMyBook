@@ -318,11 +318,10 @@ struct BookDetailsFromISBN: Decodable {
 struct UserInformation: Decodable{
     let userId: Int
     let userName: String
-    // list of Ids
-    let ownReviews: [Int]
-    let favorReviews: [Int]
-    let currentCopy: [Int]
-    let historyCopy: [Int]
+    let ownReviews: [Review]
+    let favorReviews: [Review]
+    let currentCopy: [CopyDetails]
+    let historyCopy: [CopyDetails]
     
     enum CodingKeys: String, CodingKey{
         case userId
@@ -356,7 +355,7 @@ struct DeleteReview: Decodable{
 // ##################################
 
 
-struct ReviewDetails: Decodable{
+struct Review: Decodable{
     let reviewId: Int
     let bookId: Int
     let rating: Int
@@ -372,8 +371,7 @@ struct ReviewDetails: Decodable{
 }
 
 struct GetReviews: Decodable{
-    // list of reviewIds
-    let reviews: [Int]
+    let reviews: [Review]
     
     enum CodingKeys: String, CodingKey{
         case reviews
