@@ -102,7 +102,7 @@ struct Book : Decodable {
     case success
     case msg
     
-    case bookID = "boook_id"
+    case bookID = "book_id"
     case coverURL = "cover_url"
     case title
     case author
@@ -120,17 +120,79 @@ struct CommentsBookDetails : Decodable {
   
   // TODO: Complete this: Name, Comment, Date
   
+  let success: Bool
+  let msg: String
+  
+  let userID: Int
+  let comment: String
+  let date: String
+  
+  enum CodingKeys : String, CodingKey {
+    case success
+    case msg
+    
+    case userID = "user_id"
+    case comment
+    case date
+  }
+  
 }
 
 struct AvailableCopies : Decodable {
   
   // TODO: Complete this: CopyID, UserName, UserProfilePic, Distance, City
   
+  let success: Bool
+  let msg: String
+  
+  let copyID: Int
+  let userID: Int
+  let UserProfilePic: String
+  let distance: Int
+  let city: String
+  
+  enum CodingKeys : String, CodingKey {
+    case success
+    case msg
+    
+    case copyID = "copy_id"
+    case userID = "user_id"
+    case UserProfilePic = "profile_url"
+    case distance
+    case city
+  }
+  
 }
 
 struct BookDetails : Decodable {
   
   // TODO: Complete this: BookID, Title, Author, Rating, Description?, CoverURL, [CommentsBookDetails], [AvailableCopies]
+  
+  let success: Bool
+  let msg: String
+  
+  let bookID: Int
+  let title: String
+  let author: String
+  let rating: Int
+  let description: String?
+  let coverURL: String
+  let commentsBookDetails: [CommentsBookDetails]
+  let availableCopies: [AvailableCopies]
+  
+  enum CodingKeys : String, CodingKey {
+    case success
+    case msg
+    
+    case bookID = "book_id"
+    case title
+    case author
+    case rating
+    case description
+    case coverURL = "cover_url"
+    case commentsBookDetails = "comments_book_details"
+    case availableCopies = "available_copies"
+  }
   
 }
 
@@ -163,7 +225,7 @@ struct CopyDetails : Decodable {
     case msg
     
     case copyID = "copy_id"
-    case bookID = "boook_id"
+    case bookID = "book_id"
     case status
     case travelHistory = "travel_history"
     case title
@@ -288,6 +350,22 @@ struct BookRequest : Decodable {
   
   // TODO: Complete the Coding Keys
   
+  enum CodingKeys : String, CodingKey {
+    case requestID = "request_id"
+    case copyID = "copy_id"
+    case bookID = "book_id"
+    case coverURL = "cover_url"
+    case bookCondition = "book_condition"
+    case shippingExpense = "shipping_expense"
+    case requestorID = "requestor_id"
+    case requestorProfilePicture = "requestor_profile_url"
+    case requestorName = "requestor_name"
+    case lat
+    case lon
+    case distance
+    case note
+  }
+  
 }
 
 struct Notifications : Decodable {
@@ -298,6 +376,11 @@ struct Notifications : Decodable {
   let acceptedRequests: [BookRequest]
   
   // TODO: Complete the Coding Keys
-  
+  enum CodingKeys : String, CodingKey {
+    case success
+    case msg
+    case incomingRequests = "incoming_requests"
+    case acceptedRequests = "accepted_requests"
+  }
 }
 
