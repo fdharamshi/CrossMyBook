@@ -10,6 +10,7 @@ class Users(models.Model):
     last_name = models.CharField(max_length=50, blank=False)
     email = models.CharField(max_length=1000, blank=False, unique=True)
     password = models.CharField(max_length=1000, blank=False)
+    profile_url = models.TextField()
 
     class Meta:
         db_table = 'Users'
