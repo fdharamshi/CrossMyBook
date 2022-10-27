@@ -13,16 +13,22 @@ import UIKit
 // #################################
 
 struct SignUp: Decodable {
-    let success: Bool
-    let msg: String
-    
-    let userId: Int
-    
-    enum CodingKeys : String, CodingKey {
-        case success
-        case msg
-        case userId = "user_id"
-    }
+  let success: Bool
+  let msg: String
+  
+  let userId: Int
+  let firstName: String
+  let lastName: String
+  let profilePicture: String
+  
+  enum CodingKeys : String, CodingKey {
+    case success
+    case msg
+    case userId = "user_id"
+    case firstName = "first_name"
+    case lastName = "last_name"
+    case profilePicture = "profile_picture"
+  }
 }
 
 // ################################
@@ -30,16 +36,22 @@ struct SignUp: Decodable {
 // ################################
 
 struct LogIn: Decodable {
-    let success: Bool
-    let msg: String
-    
-    let userId: Int
-    
-    enum CodingKeys : String, CodingKey {
-        case success
-        case msg
-        case userId = "user_id"
-    }
+  let success: Bool
+  let msg: String
+  
+  let userId: Int
+  let firstName: String
+  let lastName: String
+  let profilePicture: String
+  
+  enum CodingKeys : String, CodingKey {
+    case success
+    case msg
+    case userId = "user_id"
+    case firstName = "first_name"
+    case lastName = "last_name"
+    case profilePicture = "profile_picture"
+  }
 }
 
 // #############################
@@ -47,72 +59,72 @@ struct LogIn: Decodable {
 // #############################
 
 struct TravelPoint : Decodable {
-    let lat: Float
-    let lon: Float
-    let zip: String
-    let city: String
-    let date: String
-    let userId: Int
-    let UserProfilePic: String
-    
-    enum CodingKeys : String, CodingKey {
-        case lat
-        case lon
-        case zip
-        case city
-        case date
-        case userId = "user_id"
-        case UserProfilePic = "profile_url"
-    }
+  let lat: Float
+  let lon: Float
+  let zip: String
+  let city: String
+  let date: String
+  let userId: Int
+  let UserProfilePic: String
+  
+  enum CodingKeys : String, CodingKey {
+    case lat
+    case lon
+    case zip
+    case city
+    case date
+    case userId = "user_id"
+    case UserProfilePic = "profile_url"
+  }
 }
 
 
 struct OurPick: Decodable {
-    let success: Bool
-    let msg: String
+  let success: Bool
+  let msg: String
+  
+  let copyId: Int
+  let bookId: Int
+  let userId: Int
+  let travelHistory: [TravelPoint]
+  
+  enum CodingKeys : String, CodingKey {
+    case success
+    case msg
     
-    let copyId: Int
-    let bookId: Int
-    let userId: Int
-    let travelHistory: [TravelPoint]
-    
-    enum CodingKeys : String, CodingKey {
-        case success
-        case msg
-        
-        case copyId = "copy_id"
-        case bookId = "boook_id"
-        case userId = "user_id"
-        case travelHistory = "travel_history"
-    }
+    case copyId = "copy_id"
+    case bookId = "boook_id"
+    case userId = "user_id"
+    case travelHistory = "travel_history"
+  }
 }
 
 struct GetBook: Decodable{
-    let success: Bool
-    let msg: String
-    let book: Book
-    enum CodingKeys : String, CodingKey {
-        case success
-        case msg
-        case book
-    }
+  let success: Bool
+  let msg: String
+  let book: Book
+  enum CodingKeys : String, CodingKey {
+    case success
+    case msg
+    case book
+  }
 }
 
 
 struct Book : Decodable {
-    let bookId: Int
-    let coverURL: String
-    let title: String
-    let author: String
-    let rating: Int
-    
-    enum CodingKeys : String, CodingKey {
-        case bookId = "book_id"
-        case coverURL = "cover_url"
-        case title
-        case author
-        case rating
-    }
+  let bookId: Int
+  let coverURL: String
+  let title: String
+  let author: String
+  let rating: Int
+  
+  enum CodingKeys : String, CodingKey {
+    case bookId = "book_id"
+    case coverURL = "cover_url"
+    case title
+    case author
+    case rating
+  }
 }
 
 // TODO: API for Search
@@ -122,83 +134,83 @@ struct Book : Decodable {
 // #########################################
 
 struct CommentsBookDetails : Decodable {
+  
+  // TODO: Complete this: Name, Comment, Date
+  
+  let success: Bool
+  let msg: String
+  
+  let userId: Int
+  let comment: String
+  let date: String
+  
+  enum CodingKeys : String, CodingKey {
+    case success
+    case msg
     
-    // TODO: Complete this: Name, Comment, Date
-    
-    let success: Bool
-    let msg: String
-    
-    let userId: Int
-    let comment: String
-    let date: String
-    
-    enum CodingKeys : String, CodingKey {
-        case success
-        case msg
-        
-        case userId = "user_id"
-        case comment
-        case date
-    }
-    
+    case userId = "user_id"
+    case comment
+    case date
+  }
+  
 }
 
 struct AvailableCopies : Decodable {
+  
+  // TODO: Complete this: CopyID, UserName, UserProfilePic, Distance, City
+  
+  let success: Bool
+  let msg: String
+  
+  let copyId: Int
+  let userId: Int
+  let UserProfilePic: String
+  let distance: Int
+  let city: String
+  
+  enum CodingKeys : String, CodingKey {
+    case success
+    case msg
     
-    // TODO: Complete this: CopyID, UserName, UserProfilePic, Distance, City
-    
-    let success: Bool
-    let msg: String
-    
-    let copyId: Int
-    let userId: Int
-    let UserProfilePic: String
-    let distance: Int
-    let city: String
-    
-    enum CodingKeys : String, CodingKey {
-        case success
-        case msg
-        
-        case copyId = "copy_id"
-        case userId = "user_id"
-        case UserProfilePic = "profile_url"
-        case distance
-        case city
-    }
-    
+    case copyId = "copy_id"
+    case userId = "user_id"
+    case UserProfilePic = "profile_url"
+    case distance
+    case city
+  }
+  
 }
 
 struct BookDetails : Decodable {
+  
+  // TODO: Complete this: BookID, Title, Author, Rating, Description?, CoverURL, [CommentsBookDetails], [AvailableCopies]
+  
+  let success: Bool
+  let msg: String
+  
+  let bookId: Int
+  let title: String
+  let author: String
+  let rating: Int
+  let description: String?
+  let coverURL: String
+  let commentsBookDetails: [CommentsBookDetails]
+  let availableCopies: [AvailableCopies]
+  
+  enum CodingKeys : String, CodingKey {
+    case success
+    case msg
     
-    // TODO: Complete this: BookID, Title, Author, Rating, Description?, CoverURL, [CommentsBookDetails], [AvailableCopies]
-    
-    let success: Bool
-    let msg: String
-    
-    let bookId: Int
-    let title: String
-    let author: String
-    let rating: Int
-    let description: String?
-    let coverURL: String
-    let commentsBookDetails: [CommentsBookDetails]
-    let availableCopies: [AvailableCopies]
-    
-    enum CodingKeys : String, CodingKey {
-        case success
-        case msg
-        
-        case bookId = "book_id"
-        case title
-        case author
-        case rating
-        case description
-        case coverURL = "cover_url"
-        case commentsBookDetails = "comments_book_details"
-        case availableCopies = "available_copies"
-    }
-    
+    case bookId = "book_id"
+    case title
+    case author
+    case rating
+    case description
+    case coverURL = "cover_url"
+    case commentsBookDetails = "comments_book_details"
+    case availableCopies = "available_copies"
+  }
+  
 }
 
 // #########################################
@@ -206,76 +218,76 @@ struct BookDetails : Decodable {
 // #########################################
 
 struct CopyDetails : Decodable {
+  
+  // TODO: Complete this: copyID, status, [TravelPoint], title, author, coverURL, rating, shippingExpense, Willingness To Ship, Book Condition, Notes
+  
+  let success: Bool
+  let msg: String
+  
+  let copyId: Int
+  let bookId: Int
+  let status: Int
+  let travelHistory: [TravelPoint]
+  let title: String
+  let author: String
+  let coverURL: String
+  let rating: Int
+  let shippingExpense: String
+  let willingnessToShip: String
+  let bookCondition: String
+  let note: String
+  
+  enum CodingKeys : String, CodingKey {
+    case success
+    case msg
     
-    // TODO: Complete this: copyID, status, [TravelPoint], title, author, coverURL, rating, shippingExpense, Willingness To Ship, Book Condition, Notes
-    
-    let success: Bool
-    let msg: String
-    
-    let copyId: Int
-    let bookId: Int
-    let status: Int
-    let travelHistory: [TravelPoint]
-    let title: String
-    let author: String
-    let coverURL: String
-    let rating: Int
-    let shippingExpense: String
-    let willingnessToShip: String
-    let bookCondition: String
-    let note: String
-    
-    enum CodingKeys : String, CodingKey {
-        case success
-        case msg
-        
-        case copyId = "copy_id"
-        case bookId = "book_id"
-        case status
-        case travelHistory = "travel_history"
-        case title
-        case author
-        case coverURL = "cover_url"
-        case rating
-        case shippingExpense = "shipping_expense"
-        case willingnessToShip = "willingness"
-        case bookCondition = "book_condition"
-        case note
-    }
-    
+    case copyId = "copy_id"
+    case bookId = "book_id"
+    case status
+    case travelHistory = "travel_history"
+    case title
+    case author
+    case coverURL = "cover_url"
+    case rating
+    case shippingExpense = "shipping_expense"
+    case willingnessToShip = "willingness"
+    case bookCondition = "book_condition"
+    case note
+  }
+  
 }
 
 struct RequestResult : Decodable {
-    
-    // TODO: Complete this: success, msg, requestID
-    
-    let success: Bool
-    let msg: String
-    let requestId: Int
-    
-    enum CodingKeys : String, CodingKey {
-        case success
-        case msg
-        case requestId = "request_id"
-    }
-    
+  
+  // TODO: Complete this: success, msg, requestID
+  
+  let success: Bool
+  let msg: String
+  let requestId: Int
+  
+  enum CodingKeys : String, CodingKey {
+    case success
+    case msg
+    case requestId = "request_id"
+  }
+  
 }
 
 struct RequestActionResult : Decodable {
-    
-    // This will be used when the owner clicks on accept/decline
-    // TODO: Complete this: success, msg, requestID
-    
-    let success: Bool
-    let msg: String
-    let requestId: Int
-    
-    enum CodingKeys : String, CodingKey {
-        case success
-        case msg
-        case requestId = "request_id"
-    }
-    
+  
+  // This will be used when the owner clicks on accept/decline
+  // TODO: Complete this: success, msg, requestID
+  
+  let success: Bool
+  let msg: String
+  let requestId: Int
+  
+  enum CodingKeys : String, CodingKey {
+    case success
+    case msg
+    case requestId = "request_id"
+  }
+  
 }
 
 // #####################################
@@ -287,31 +299,31 @@ struct RequestActionResult : Decodable {
 // will remain similar.
 
 struct Authors: Decodable {
-    let key: String
-    
-    enum CodingKeys: String, CodingKey {
-        case key
-    }
+  let key: String
+  
+  enum CodingKeys: String, CodingKey {
+    case key
+  }
 }
 
 struct Author: Decodable {
-    let name: String
-    
-    enum CodingKeys: String, CodingKey {
-        case name
-    }
+  let name: String
+  
+  enum CodingKeys: String, CodingKey {
+    case name
+  }
 }
 
 struct BookDetailsFromISBN: Decodable {
-    let authors: [Authors]
-    let title: String
-    let covers: [Int]
-    
-    enum CodingKeys : String, CodingKey {
-        case authors
-        case title
-        case covers
-    }
+  let authors: [Authors]
+  let title: String
+  let covers: [Int]
+  
+  enum CodingKeys : String, CodingKey {
+    case authors
+    case title
+    case covers
+  }
 }
 
 // ##########################################
@@ -320,99 +332,99 @@ struct BookDetailsFromISBN: Decodable {
 
 
 struct ProfileCopy: Decodable {
-    let book: Book
-    let copyId: Int
-    
-    enum CodingKeys: String, CodingKey{
-        case book
-        case copyId = "copy_id"
-    }
-    
+  let book: Book
+  let copyId: Int
+  
+  enum CodingKeys: String, CodingKey{
+    case book
+    case copyId = "copy_id"
+  }
+  
 }
 
 struct Profile: Decodable {
-    let userId: Int
-    let username: String
-    let userprofilepicture: String
-    let reviewNum: Int
-    let favorNum: Int
-    let current: [ProfileCopy]
-    let history: [ProfileCopy]
-    
-    enum CodingKeys: String, CodingKey{
-        case userId = "user_id"
-        case username
-        case userprofilepicture = "profile_url"
-        case reviewNum = "review_number"
-        case favorNum = "favor_number"
-        case current
-        case history
-    }
+  let userId: Int
+  let username: String
+  let userprofilepicture: String
+  let reviewNum: Int
+  let favorNum: Int
+  let current: [ProfileCopy]
+  let history: [ProfileCopy]
+  
+  enum CodingKeys: String, CodingKey{
+    case userId = "user_id"
+    case username
+    case userprofilepicture = "profile_url"
+    case reviewNum = "review_number"
+    case favorNum = "favor_number"
+    case current
+    case history
+  }
 }
 
 struct GetProfile: Decodable{
-    let success: Bool
-    let msg: String
-    let profile: Profile
-    
-    enum CodingKeys: String, CodingKey{
-        case success
-        case msg
-        case profile
-    }
-    
+  let success: Bool
+  let msg: String
+  let profile: Profile
+  
+  enum CodingKeys: String, CodingKey{
+    case success
+    case msg
+    case profile
+  }
+  
 }
 
 struct ProfileReview: Decodable {
-    let book: Book
-    let userId: Int
-    let reviewId: Int
-    let rating: Int
-    let review: String
-    enum CodingKeys: String, CodingKey{
-        case book
-        case userId = "user_id"
-        case reviewId = "review_id"
-        case rating
-        case review
-    }
+  let book: Book
+  let userId: Int
+  let reviewId: Int
+  let rating: Int
+  let review: String
+  enum CodingKeys: String, CodingKey{
+    case book
+    case userId = "user_id"
+    case reviewId = "review_id"
+    case rating
+    case review
+  }
 }
 
 struct MyReviews: Decodable {
-    let success: Bool
-    let msg: String
-    let reviews: [ProfileReview]
-    
-    enum CodingKeys: String, CodingKey{
-        case success
-        case msg
-        case reviews
-    }
+  let success: Bool
+  let msg: String
+  let reviews: [ProfileReview]
+  
+  enum CodingKeys: String, CodingKey{
+    case success
+    case msg
+    case reviews
+  }
 }
 
 struct FavoriteReviews: Decodable {
-    let success: Bool
-    let msg: String
-    let reviews: [ProfileReview]
-    
-    enum CodingKeys: String, CodingKey{
-        case success
-        case msg
-        case reviews
-    }
+  let success: Bool
+  let msg: String
+  let reviews: [ProfileReview]
+  
+  enum CodingKeys: String, CodingKey{
+    case success
+    case msg
+    case reviews
+  }
 }
 
 struct DeleteReview: Decodable{
-    let success: Bool
-    let msg: String
-    let reviewId: Int
-    
-    enum CodingKeys: String, CodingKey{
-        case success
-        case msg
-        case reviewId = "review_id"
-    }
-    
+  let success: Bool
+  let msg: String
+  let reviewId: Int
+  
+  enum CodingKeys: String, CodingKey{
+    case success
+    case msg
+    case reviewId = "review_id"
+  }
+  
 }
 
 
@@ -423,67 +435,67 @@ struct DeleteReview: Decodable{
 
 
 struct ReviewDetails: Decodable{
-    let reviewId: Int
-    let userId: Int
-    let userName: String
-    let userProfilePic: String
-    let bookId: Int
-    
-    let coverURL: String
-    let title: String
-    let author: String
-    let date: String
-    
-    let rating: Int
-    let review: String
-    
-    enum CodingKeys: String, CodingKey{
-        case reviewId = "review_id"
-        case userId = "user_id"
-        case userName = "user_name"
-        case userProfilePic = "profile_url"
-        case bookId = "book_id"
-        case coverURL = "cover_url"
-        case title
-        case author
-        case date
-        case rating
-        case review
-    }
-    
+  let reviewId: Int
+  let userId: Int
+  let userName: String
+  let userProfilePic: String
+  let bookId: Int
+  
+  let coverURL: String
+  let title: String
+  let author: String
+  let date: String
+  
+  let rating: Int
+  let review: String
+  
+  enum CodingKeys: String, CodingKey{
+    case reviewId = "review_id"
+    case userId = "user_id"
+    case userName = "user_name"
+    case userProfilePic = "profile_url"
+    case bookId = "book_id"
+    case coverURL = "cover_url"
+    case title
+    case author
+    case date
+    case rating
+    case review
+  }
+  
 }
 
 struct GetReviews: Decodable{
-    // list of reviewIds
+  // list of reviewIds
+  
+  let success: Bool
+  let msg: String
+  
+  let allReviews: [ReviewDetails]
+  let relatedReviews: [ReviewDetails]
+  
+  enum CodingKeys: String, CodingKey{
     
-    let success: Bool
-    let msg: String
+    case success
+    case msg
     
-    let allReviews: [ReviewDetails]
-    let relatedReviews: [ReviewDetails]
-    
-    enum CodingKeys: String, CodingKey{
-        
-        case success
-        case msg
-        
-        case allReviews = "all_reviews"
-        case relatedReviews = "related_reviews"
-    }
-    
+    case allReviews = "all_reviews"
+    case relatedReviews = "related_reviews"
+  }
+  
 }
 
 struct AddReview: Decodable {
-    let success: Bool
-    let msg: String
-    let reviewId: Int
-    enum CodingKeys: String, CodingKey{
-        
-        case success
-        case msg
-        case reviewId = "review_id"
-        
-    }
+  let success: Bool
+  let msg: String
+  let reviewId: Int
+  enum CodingKeys: String, CodingKey{
+    
+    case success
+    case msg
+    case reviewId = "review_id"
+    
+  }
 }
 
 
@@ -497,57 +509,57 @@ struct AddReview: Decodable {
 // TODO: Complete structs for this page
 
 struct BookRequest : Decodable {
-    
-    // This struct does not have success,msg because it is used by another struct that fetches from the API
-    
-    let requestId: Int
-    let copyId: Int
-    let bookId: Int
-    let coverURL: String
-    let bookCondition: String
-    let shippingExpense: String
-    
-    let requestorId: Int
-    let requestorProfilePicture: String
-    let requestorName: String
-    let lat: Float
-    let lon: Float
-    let distance: Float
-    let note: String
-    
-    // TODO: Complete the Coding Keys
-    
-    enum CodingKeys : String, CodingKey {
-        case requestId = "request_id"
-        case copyId = "copy_id"
-        case bookId = "book_id"
-        case coverURL = "cover_url"
-        case bookCondition = "book_condition"
-        case shippingExpense = "shipping_expense"
-        case requestorId = "requestor_id"
-        case requestorProfilePicture = "requestor_profile_url"
-        case requestorName = "requestor_name"
-        case lat
-        case lon
-        case distance
-        case note
-    }
-    
+  
+  // This struct does not have success,msg because it is used by another struct that fetches from the API
+  
+  let requestId: Int
+  let copyId: Int
+  let bookId: Int
+  let coverURL: String
+  let bookCondition: String
+  let shippingExpense: String
+  
+  let requestorId: Int
+  let requestorProfilePicture: String
+  let requestorName: String
+  let lat: Float
+  let lon: Float
+  let distance: Float
+  let note: String
+  
+  // TODO: Complete the Coding Keys
+  
+  enum CodingKeys : String, CodingKey {
+    case requestId = "request_id"
+    case copyId = "copy_id"
+    case bookId = "book_id"
+    case coverURL = "cover_url"
+    case bookCondition = "book_condition"
+    case shippingExpense = "shipping_expense"
+    case requestorId = "requestor_id"
+    case requestorProfilePicture = "requestor_profile_url"
+    case requestorName = "requestor_name"
+    case lat
+    case lon
+    case distance
+    case note
+  }
+  
 }
 
 struct Notifications : Decodable {
-    
-    let success: Bool
-    let msg: String
-    let incomingRequests: [BookRequest]
-    let acceptedRequests: [BookRequest]
-    
-    // TODO: Complete the Coding Keys
-    enum CodingKeys : String, CodingKey {
-        case success
-        case msg
-        case incomingRequests = "incoming_requests"
-        case acceptedRequests = "accepted_requests"
-    }
+  
+  let success: Bool
+  let msg: String
+  let incomingRequests: [BookRequest]
+  let acceptedRequests: [BookRequest]
+  
+  // TODO: Complete the Coding Keys
+  enum CodingKeys : String, CodingKey {
+    case success
+    case msg
+    case incomingRequests = "incoming_requests"
+    case acceptedRequests = "accepted_requests"
+  }
 }
 
