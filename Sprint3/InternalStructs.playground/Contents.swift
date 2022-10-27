@@ -315,23 +315,43 @@ struct BookDetailsFromISBN: Decodable {
 // ### STRUCTS FOR PROFILE/DASHBOARD PAGE ###
 // ##########################################
 
-struct UserInformation: Decodable{
-    let userId: Int
-    let userName: String
-    let ownReviews: [Review]
-    let favorReviews: [Review]
-    let currentCopy: [CopyDetails]
-    let historyCopy: [CopyDetails]
-    
-    enum CodingKeys: String, CodingKey{
-        case userId
-        case userName
-        case ownReviews
-        case favorReviews
-        case currentCopy
-        case historyCopy
-    }
+//struct UserInformation: Decodable{
+//    let userId: Int
+//    let userName: String
+//    let ownReviews: [Review]
+//    let favorReviews: [Review]
+//    let currentCopy: [CopyDetails]
+//    let historyCopy: [CopyDetails]
+//
+//    enum CodingKeys: String, CodingKey{
+//        case userId
+//        case userName
+//        case ownReviews
+//        case favorReviews
+//        case currentCopy
+//        case historyCopy
+//    }
+//
+//}
 
+struct ProfileCopy: Decodable {
+  //TODO: title, author, rating, coverURL, copyID, bookID
+}
+
+struct Profile: Decodable {
+  // TODO: success, msg, userName, userID, userprofilepicture, numberofreviews, numberoffavouries, listOfCurrentCopies => [ProfileCopy], listOfHistory => [ProfileCopy]
+}
+
+struct ProfileReview: Decodable {
+  // TODO: bookID, coverURL, title, author, rating, review, date, userID, reviewID
+}
+
+struct MyReviews: Decodable {
+    // TODO: success, msg, listOfReviews => [ProfileReview]
+}
+
+struct FavoriteReviews: Decodable {
+  // TODO: success, msg, listOfReviews => [ProfileReview]
 }
 
 struct DeleteReview: Decodable{
@@ -406,6 +426,9 @@ struct GetReviews: Decodable{
   
 }
 
+struct AddReview: Decodable {
+  // TODO: Response when user adds a review: success, msg, reviewID
+}
 
 // TODO: Complete structs for this page
 
