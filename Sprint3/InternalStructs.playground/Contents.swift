@@ -316,36 +316,36 @@ struct BookDetailsFromISBN: Decodable {
 // ##########################################
 
 struct UserInformation: Decodable{
-    let userId: Int
-    let userName: String
-    // list of Ids
-    let ownReviews: [Int]
-    let favorReviews: [Int]
-    let currentCopy: [Int]
-    let historyCopy: [Int]
-    
-    enum CodingKeys: String, CodingKey{
-        case userId
-        case userName
-        case ownReviews
-        case favorReviews
-        case currentCopy
-        case historyCopy
-    }
-
+  let userId: Int
+  let userName: String
+  // list of Ids
+  let ownReviews: [Int]
+  let favorReviews: [Int]
+  let currentCopy: [Int]
+  let historyCopy: [Int]
+  
+  enum CodingKeys: String, CodingKey{
+    case userId
+    case userName
+    case ownReviews
+    case favorReviews
+    case currentCopy
+    case historyCopy
+  }
+  
 }
 
 struct DeleteReview: Decodable{
-    let success: Bool
-    let msg: String
-    let reviewId: Int
-    
-    enum CodingKeys: String, CodingKey{
-        case success
-        case msg
-        case reviewId
-    }
-
+  let success: Bool
+  let msg: String
+  let reviewId: Int
+  
+  enum CodingKeys: String, CodingKey{
+    case success
+    case msg
+    case reviewId
+  }
+  
 }
 
 
@@ -357,28 +357,52 @@ struct DeleteReview: Decodable{
 
 
 struct ReviewDetails: Decodable{
-    let reviewId: Int
-    let bookId: Int
-    let rating: Int
-    let content: String
-    
-    enum CodingKeys: String, CodingKey{
-        case reviewId
-        case bookId
-        case rating
-        case content
-    }
-
+  let reviewId: Int
+  let userId: Int
+  let userName: String
+  let bookId: Int
+  
+  let coverURL: String
+  let title: String
+  let author: String
+  let date: String
+  
+  let rating: Int
+  let review: String
+  
+  enum CodingKeys: String, CodingKey{
+    case reviewId = "review_id"
+    case userId = "user_id"
+    case userName = "user_name"
+    case bookId = "book_id"
+    case coverURL = "cover_url"
+    case title
+    case author
+    case date
+    case rating
+    case review
+  }
+  
 }
 
 struct GetReviews: Decodable{
-    // list of reviewIds
-    let reviews: [Int]
+  // list of reviewIds
+  
+  let success: Bool
+  let msg: String
+  
+  let allReviews: [ReviewDetails]
+  let relatedReviews: [ReviewDetails]
+  
+  enum CodingKeys: String, CodingKey{
     
-    enum CodingKeys: String, CodingKey{
-        case reviews
-    }
-
+    case success
+    case msg
+    
+    case allReviews = "all_reviews"
+    case relatedReviews = "related_reviews"
+  }
+  
 }
 
 
