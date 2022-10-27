@@ -359,6 +359,7 @@ struct ReviewDetails: Decodable{
   let reviewId: Int
   let userId: Int
   let userName: String
+  let userProfilePic: String
   let bookId: Int
   
   let coverURL: String
@@ -373,6 +374,7 @@ struct ReviewDetails: Decodable{
     case reviewId = "review_id"
     case userId = "user_id"
     case userName = "user_name"
+    case userProfilePic = "profile_url"
     case bookId = "book_id"
     case coverURL = "cover_url"
     case title
