@@ -10,9 +10,11 @@ def login_request(request):
 
     try:
         user = Users.objects.get(email=email, password=password)
-        return JsonResponse({'msg': 'Login Success', 'user': {'user_id': user.id, "profile_picture": user.profile_url,
-                                                              "first_name": user.first_name,
-                                                              "last_name": user.last_name}}, safe=False)
+        return JsonResponse({'msg': 'Login Success', 'success': True, 'user': {'user_id': user.id,
+                                                                               "profile_picture": user.profile_url,
+                                                                                "first_name": user.first_name,
+                                                                                "last_name": user.last_name}},
+                            safe=False)
     except Users.DoesNotExist:
         return JsonResponse({'msg': 'Email or password incorrect', 'success': False}, safe=False)
 
@@ -34,5 +36,6 @@ def signup_request(request):
     newUser.save()
     return JsonResponse({'msg': 'Login Success', 'user': {'user_id': newUser.id, "profile_picture": newUser.profile_url,
                                                           "first_name": newUser.first_name,
-                                                          "last_name": newUser.last_name}}, safe=False)
+                                                          "last_name": newUser.last_name}
+                         'success': True}, safe=False)
 
