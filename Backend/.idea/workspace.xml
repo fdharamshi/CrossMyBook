@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1c03aa8d-0873-4dd1-a990-bd0a491bb7e3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/endpoints/requests.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/endpoints/requests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/endpoints/releases.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/endpoints/releases.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crossmybookbackend/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/crossmybookbackend/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Sprint3/InternalStructs.playground/playground.xcworkspace/xcuserdata/femindharamshi.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../Sprint3/InternalStructs.playground/playground.xcworkspace/xcuserdata/femindharamshi.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +44,8 @@
       <workItem from="1666911769330" duration="1074000" />
       <workItem from="1666912847964" duration="656000" />
       <workItem from="1666921080750" duration="1589000" />
-      <workItem from="1666923303027" duration="39000" />
+      <workItem from="1666923303027" duration="232000" />
+      <workItem from="1666986249149" duration="973000" />
     </task>
     <servers />
   </component>
