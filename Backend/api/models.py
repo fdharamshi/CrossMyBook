@@ -40,6 +40,7 @@ class Listing(models.Model):
     charges = models.CharField(max_length=50)
     max_distance = models.CharField(max_length=50)
     note = models.TextField(blank=True)
+    status = models.IntegerField(default=0)
 
     class Meta:
         db_table = 'Listing'

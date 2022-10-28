@@ -54,3 +54,14 @@ def get_copy_details(request):
     }
 
     return JsonResponse(response, safe=False)
+
+
+def create_request(request):
+    # This is a POST endpoint
+    # Fetch listing id, and user id from request body
+
+    # Check if listing exists and it's still available to be requested.
+    # Check if requestor exists.
+    # Create new listing in DB.
+    
+    return JsonResponse({'msg': 'Not implemented yet.', 'success': False}, safe=False)
