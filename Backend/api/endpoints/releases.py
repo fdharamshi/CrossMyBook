@@ -14,11 +14,13 @@ def getDetailsFromISBN(request):
         book = Book.objects.get(isbn=isbn)
     except Book.DoesNotExist:
         # FETCH from OpenLibrary
+
+        # TODO: Needs error handling, if no book is found on openlibary for an isbn
         response = requests.get("https://openlibrary.org/isbn/"+isbn+".json")
         response = response.json()
 
         authors = ""
-        # Iteratively fetch authors
+        # Iteratively fetch authors from openlibrary
         for author in response["authors"]:
             authorResponse = requests.get("https://openlibrary.org"+author["key"]+".json")
             authors = authors + authorResponse.json()["name"] + ", "
@@ -28,3 +30,4 @@ def getDetailsFromISBN(request):
         book.save()
 
     return JsonResponse({"isbn": book.isbn, "title": book.title, "cover_url": book.cover_url, "author": book.authors, "book_id": book.id, "rating": 5}, safe=False)
+
