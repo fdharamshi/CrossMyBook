@@ -60,9 +60,45 @@ def create_request(request):
     # This is a POST endpoint
     # Fetch listing id, and user id from request body
 
-    # Check if listing exists and it's still available to be requested.
-    # Check if requestor exists.
-    # Create new listing in DB.
+    user_id = request.POST.get("user_id", None)
+    copy_id = request.POST.get("book_id", None)
+    listing_id = request.POST.get("listing_id", None)
 
+    lat = request.POST.get("lat", None)
+    lon = request.POST.get("lon", None)
+
+    note = request.POST.get("note", None)
+    status = 0
+
+    # TODO: Check if listing exists and it's still available to be requested.
+    # TODO: Check if requestor exists.
+    # TODO: Check if this user has already made a request for this listing.
+    # TODO: Check: Owner of the book cannot make a request to his own listing :P
+    # TODO: Add error handling
+
+    # Create new request in DB.
+    request = Request(requester_id=user_id, copy_id=copy_id, listing_id=listing_id, lat=lat, lon=lon, note=note, status=status)
+    request.save()
     
-    return JsonResponse({'msg': 'Not implemented yet.', 'success': False}, safe=False)
+    return JsonResponse({'msg': 'Success!.', 'success': True, "request_id": request.id}, safe=False)
+
+
+def takeActionOnRequest(request):
+
+    user_id = request.POST.get("user_id", None)
+    copy_id = request.POST.get("book_id", None)
+    listing_id = request.POST.get("listing_id", None)
+
+    # TODO: Read about status codes: https://docs.google.com/document/d/17V0KUq2AUdlq7JpJU4ABkw4SStUGPyKXFUmi9HRgz30/edit
+
+    """
+    TODO: If request is rejected, change status of request to 2 and do nothing else
+    
+    TODO: If request is accepted, change status of request to 1
+          Change status of Listing to 1
+          Change status of all other requests for this listing to 2 (Since they're declined)
+          
+          Add the new location to Travel History
+    """
+
+    return JsonResponse({'msg': 'Not implemented yet!.', 'success': False}, safe=False)

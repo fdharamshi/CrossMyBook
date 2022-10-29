@@ -58,6 +58,8 @@ def releaseANewCopy(request):
     new_listing = Listing(copy=copy, user_id=user_id, lat=lat, long=lon, book_condition=book_condition, charges=charges, max_distance=max_distance, note=note, status=status)
     new_listing.save()
 
+    # TODO: Add this location to travel history since this is the first time this copy came to the app.
+
     return JsonResponse({'msg': 'Success!', 'success': True, "listing_id": new_listing.id, "copy_id": copy.id}, safe=False)
 
 
