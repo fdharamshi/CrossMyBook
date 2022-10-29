@@ -63,5 +63,6 @@ def create_request(request):
     # Check if listing exists and it's still available to be requested.
     # Check if requestor exists.
     # Create new listing in DB.
+
     
     return JsonResponse({'msg': 'Not implemented yet.', 'success': False}, safe=False)

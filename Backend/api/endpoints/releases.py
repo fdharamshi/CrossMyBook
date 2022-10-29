@@ -31,3 +31,60 @@ def getDetailsFromISBN(request):
 
     return JsonResponse({"isbn": book.isbn, "title": book.title, "cover_url": book.cover_url, "author": book.authors, "book_id": book.id, "rating": 5}, safe=False)
 
+
+def releaseANewCopy(request):
+
+    # THIS IS A POST REQUEST SINCE A NEW RECORD WILL BE CREATED.
+
+    user_id = request.POST.get("user_id", None)
+    book_id = request.POST.get("book_id", None)
+
+    lat = request.POST.get("lat", None)
+    lon = request.POST.get("lon", None)
+    book_condition = request.POST.get("book_condition", None)
+    charges = request.POST.get("charges", None)
+    max_distance = request.POST.get("max_distance", None)
+    note = request.POST.get("note", None)
+    status = 0
+
+    # TODO: Validations for the above field
+    # TODO: Add error handling
+
+    # CREATE A NEW COPY
+    copy = BookCopy(book_id=book_id, status=0)
+    copy.save()
+
+    # CREATE A NEW LISTING
+    new_listing = Listing(copy=copy, user_id=user_id, lat=lat, long=lon, book_condition=book_condition, charges=charges, max_distance=max_distance, note=note, status=status)
+    new_listing.save()
+
+    return JsonResponse({'msg': 'Success!', 'success': True, "listing_id": new_listing.id, "copy_id": copy.id}, safe=False)
+
+
+def releaseACopyAlreadyCreated(request):
+
+    user_id = request.POST.get("user_id", None)
+    copy_id = request.POST.get("book_id", None)
+
+    lat = request.POST.get("lat", None)
+    lon = request.POST.get("lon", None)
+    book_condition = request.POST.get("book_condition", None)
+    charges = request.POST.get("charges", None)
+    max_distance = request.POST.get("max_distance", None)
+    note = request.POST.get("note", None)
+    status = 0
+
+    # TODO: Validations for the above field
+    # TODO: Add error handling
+
+    # FETCH THE COPY
+    copy = BookCopy.objects.get(id=copy_id)
+    # TODO: Change copy status
+
+    # CREATE A NEW LISTING
+    new_listing = Listing(copy=copy, user_id=user_id, lat=lat, long=lon, book_condition=book_condition, charges=charges,
+                          max_distance=max_distance, note=note, status=status)
+    new_listing.save()
+
+    return JsonResponse({'msg': 'Success!', 'success': True, "listing_id": new_listing.id, "copy_id": copy.id},
+                        safe=False)
