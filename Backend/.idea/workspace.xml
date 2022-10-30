@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c03aa8d-0873-4dd1-a990-bd0a491bb7e3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/api/endpoints/alertpage.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/endpoints/profile.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/endpoints/profile.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Sprint3/BookApi.playground/playground.xcworkspace/xcuserdata/femindharamshi.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../Sprint3/BookApi.playground/playground.xcworkspace/xcuserdata/femindharamshi.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Sprint3/InternalStructs.playground/playground.xcworkspace/xcuserdata/femindharamshi.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../Sprint3/InternalStructs.playground/playground.xcworkspace/xcuserdata/femindharamshi.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
     </list>
@@ -47,7 +47,7 @@
       <workItem from="1666923303027" duration="232000" />
       <workItem from="1666986249149" duration="3638000" />
       <workItem from="1667071423183" duration="819000" />
-      <workItem from="1667169113289" duration="387000" />
+      <workItem from="1667169113289" duration="609000" />
     </task>
     <servers />
   </component>
