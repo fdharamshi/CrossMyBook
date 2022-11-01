@@ -30,6 +30,7 @@ def get_copy_details(request):
         travelHistory.append({
             "date": travelPoint.date,
             "user": travelPoint.user.first_name + " " + travelPoint.user.last_name,
+            "user_id": travelPoint.user.id,
             "lat": travelPoint.lat,
             "lon": travelPoint.lon
         })
@@ -61,7 +62,11 @@ def create_request(request):
     # Fetch listing id, and user id from request body
 
     user_id = request.POST.get("user_id", None)
-    copy_id = request.POST.get("book_id", None)
+
+    # TODO: We may not need copy, as Listing model contains a reference to the copy.
+    # If we have listing id, we can know which copy it is referring to.
+
+    copy_id = request.POST.get("copy_id", None)
     listing_id = request.POST.get("listing_id", None)
 
     lat = request.POST.get("lat", None)

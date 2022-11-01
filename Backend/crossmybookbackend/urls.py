@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from api.endpoints import login, releases, requests
+from api.endpoints import login, releases, requests, alertpage
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +25,7 @@ urlpatterns = [
     path('getBookFromISBN', releases.getDetailsFromISBN),
     path('releaseNew', releases.releaseANewCopy),
     path('release', releases.releaseACopyAlreadyCreated),
-    path('getCopyDetails', requests.get_copy_details)
+    path('getCopyDetails', requests.get_copy_details),
+    path('createRequest', requests.create_request),
+    path('getRequests', alertpage.getRequests),
 ]
