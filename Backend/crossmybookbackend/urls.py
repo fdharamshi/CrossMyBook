@@ -16,11 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from api.endpoints import login, releases
+from api.endpoints import login, releases, requests
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login', login.login_request),
     path('signup', login.signup_request),
-    path('getBookFromISBN', releases.getDetailsFromISBN)
+    path('getBookFromISBN', releases.getDetailsFromISBN),
+    path('releaseNew', releases.releaseANewCopy),
+    path('release', releases.releaseACopyAlreadyCreated),
+    path('getCopyDetails', requests.get_copy_details)
 ]

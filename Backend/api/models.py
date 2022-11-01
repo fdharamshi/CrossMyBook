@@ -15,6 +15,9 @@ class Users(models.Model):
     class Meta:
         db_table = 'Users'
 
+    def __str__(self):
+        return f'#{self.id} - {self.first_name}'
+
 class Book(models.Model):
     isbn = models.CharField(max_length=50)
     title = models.CharField(max_length=50)
@@ -24,12 +27,18 @@ class Book(models.Model):
     class Meta:
         db_table = 'Book'
 
+    def __str__(self):
+        return f'#{self.id} - {self.title}'
+
 class BookCopy(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     status = models.IntegerField()
 
     class Meta:
         db_table = 'BookCopy'
+
+    def __str__(self):
+        return f'#{self.id} - {self.book.title} (Book ID: {self.book.id})'
 
 class Listing(models.Model):
     copy = models.ForeignKey(BookCopy, on_delete=models.CASCADE)
