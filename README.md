@@ -4,9 +4,9 @@ Repo for final project for Team 23  (67-643)
 # CrossMyBook Backend - Django
 
 ## Django Admin:
-Username: femindharamshi
-Password: test
-URL: /admin
+- Username: femindharamshi
+- Password: test
+- URL: `/admin`
 
 ## Some basic information:
 
