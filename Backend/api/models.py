@@ -68,7 +68,7 @@ class Request(models.Model):
     note = models.TextField(blank=True)
 
     def __str__(self):
-        return f'#{self.id} - {self.copy.book.title} (Book ID: {self.copy.book.id}, Copy ID: {self.copy.id}) | Status: {self.status} | Listing By: {self.requester.first_name}'
+        return f'#{self.id} - {self.copy.book.title} (Book ID: {self.copy.book.id}, Copy ID: {self.copy.id}) | Status: {self.status} | Request By: {self.requester.first_name}'
 
     class Meta:
         db_table = 'Request'

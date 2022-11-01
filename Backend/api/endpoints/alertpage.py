@@ -38,6 +38,7 @@ def getRequests(request):
             "lat": r.lat,
             "lon": r.lon,
             "note": r.note,
+            "request_id": r.id,
 
             "title": r.copy.book.title
         })
@@ -52,6 +53,7 @@ def getRequests(request):
             "lat": r.lat,
             "lon": r.lon,
             "note": r.note,
+            "request_id": r.id,
 
             "title": r.copy.book.title
         })

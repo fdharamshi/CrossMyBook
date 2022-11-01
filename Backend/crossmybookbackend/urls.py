@@ -28,4 +28,5 @@ urlpatterns = [
     path('getCopyDetails', requests.get_copy_details),
     path('createRequest', requests.create_request),
     path('getRequests', alertpage.getRequests),
+    path('takeActionOnRequest', requests.takeActionOnRequest)
 ]

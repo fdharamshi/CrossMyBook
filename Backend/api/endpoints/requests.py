@@ -40,7 +40,7 @@ def get_copy_details(request):
         "msg": "Success!",
         "copy_id": copy_id,
         "book_id": copy.book.id,
-        "status": copy.status,
+        "status": copy.status, # TODO: We need to make this status in response user specific.
         "travel_history": travelHistory,
         "cover_url": copy.book.cover_url,
         "title": copy.book.title,
@@ -89,21 +89,39 @@ def create_request(request):
 
 
 def takeActionOnRequest(request):
-
     user_id = request.POST.get("user_id", None)
-    copy_id = request.POST.get("book_id", None)
-    listing_id = request.POST.get("listing_id", None)
+    accepted = int(request.POST.get("accepted", 0))
+    request_id = request.POST.get("request_id", None)
 
     # TODO: Read about status codes: https://docs.google.com/document/d/17V0KUq2AUdlq7JpJU4ABkw4SStUGPyKXFUmi9HRgz30/edit
 
-    """
-    TODO: If request is rejected, change status of request to 2 and do nothing else
-    
-    TODO: If request is accepted, change status of request to 1
-          Change status of Listing to 1
-          Change status of all other requests for this listing to 2 (Since they're declined)
-          
-          Add the new location to Travel History
-    """
+    # TODO: Check is user_id owns the listing
+    if accepted == 1:
+        """
+            If request is accepted, change status of request to 1
+            Change status of Listing to 1
+            Change status of all other requests for this listing to 2 (Since they're declined)
 
-    return JsonResponse({'msg': 'Not implemented yet!.', 'success': False}, safe=False)
+            Add the new location to Travel History
+        """
+        request = Request.objects.get(id=request_id)
+        open_requests = Request.objects.filter(listing=request.listing)
+        open_requests.update(status=2)
+        request.status = 1
+        request.save()
+
+        travelPoint = TravelHistory(copy_id=request.listing.copy.id, lat=request.lat, lon=request.lon, user=request.requester)
+        travelPoint.save()
+
+        listing = request.listing
+        listing.status = 1
+        listing.save()
+
+        return JsonResponse({'msg': 'Success!', 'success': True}, safe=False)
+
+    else:
+        # If request is rejected, change status of request to 2 and do nothing else
+        request = Request.objects.get(id=request_id)
+        request.status = 2
+        request.save()
+        return JsonResponse({'msg': 'Success!', 'success': True}, safe=False)
