@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1c03aa8d-0873-4dd1-a990-bd0a491bb7e3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/endpoints/alertpage.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/endpoints/alertpage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/endpoints/requests.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/endpoints/requests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crossmybookbackend/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/crossmybookbackend/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Sprint3/BookApi.playground/playground.xcworkspace/xcuserdata/femindharamshi.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../Sprint3/BookApi.playground/playground.xcworkspace/xcuserdata/femindharamshi.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Sprint3/InternalStructs.playground/playground.xcworkspace/xcuserdata/femindharamshi.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../Sprint3/InternalStructs.playground/playground.xcworkspace/xcuserdata/femindharamshi.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
-    </list>
+    <list default="true" id="1c03aa8d-0873-4dd1-a990-bd0a491bb7e3" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
