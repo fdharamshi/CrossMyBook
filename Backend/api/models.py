@@ -51,6 +51,9 @@ class Listing(models.Model):
     note = models.TextField(blank=True)
     status = models.IntegerField(default=0)
 
+    def __str__(self):
+        return f'#{self.id} - {self.copy.book.title} (Book ID: {self.copy.book.id}, Copy ID: {self.copy.id}) | Status: {self.status} | Listing By: {self.user.first_name}'
+
     class Meta:
         db_table = 'Listing'
 
@@ -64,6 +67,9 @@ class Request(models.Model):
     lon = models.FloatField()
     note = models.TextField(blank=True)
 
+    def __str__(self):
+        return f'#{self.id} - {self.copy.book.title} (Book ID: {self.copy.book.id}, Copy ID: {self.copy.id}) | Status: {self.status} | Listing By: {self.requester.first_name}'
+
     class Meta:
         db_table = 'Request'
 
@@ -76,6 +82,9 @@ class TravelHistory(models.Model):
 
     class Meta:
         db_table = 'TravelHistory'
+
+    def __str__(self):
+        return f'#{self.id} - ({self.lat}, {self.lon}) {self.copy.book.title} (Copy ID: {self.copy.id}) - {self.user.first_name}'
 
 class Review(models.Model):
     user = models.ForeignKey(Users, on_delete=models.CASCADE)
