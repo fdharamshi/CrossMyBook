@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		EE220BBE2913840200CEC13A /* NotoSerif-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE220BBD2913840100CEC13A /* NotoSerif-Bold.ttf */; };
 		EE220BC32913849500CEC13A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE220BC22913849500CEC13A /* LoginView.swift */; };
+		EE220BC52913978B00CEC13A /* CopyDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE220BC42913978B00CEC13A /* CopyDetailsView.swift */; };
+		EE220BC829139B9800CEC13A /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = EE220BC729139B9800CEC13A /* SDWebImageSwiftUI */; };
 		EE3609F52911B594006DB257 /* CrossMyBookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3609F42911B594006DB257 /* CrossMyBookApp.swift */; };
 		EE3609F72911B594006DB257 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3609F62911B594006DB257 /* ContentView.swift */; };
 		EE3609F92911B595006DB257 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE3609F82911B595006DB257 /* Assets.xcassets */; };
@@ -21,6 +23,7 @@
 /* Begin PBXFileReference section */
 		EE220BBD2913840100CEC13A /* NotoSerif-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerif-Bold.ttf"; sourceTree = "<group>"; };
 		EE220BC22913849500CEC13A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		EE220BC42913978B00CEC13A /* CopyDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyDetailsView.swift; sourceTree = "<group>"; };
 		EE3609F12911B594006DB257 /* CrossMyBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrossMyBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE3609F42911B594006DB257 /* CrossMyBookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossMyBookApp.swift; sourceTree = "<group>"; };
 		EE3609F62911B594006DB257 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -37,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE220BC829139B9800CEC13A /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,6 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				EE220BC22913849500CEC13A /* LoginView.swift */,
+				EE220BC42913978B00CEC13A /* CopyDetailsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -132,6 +137,9 @@
 			dependencies = (
 			);
 			name = CrossMyBook;
+			packageProductDependencies = (
+				EE220BC729139B9800CEC13A /* SDWebImageSwiftUI */,
+			);
 			productName = CrossMyBook;
 			productReference = EE3609F12911B594006DB257 /* CrossMyBook.app */;
 			productType = "com.apple.product-type.application";
@@ -160,6 +168,9 @@
 				Base,
 			);
 			mainGroup = EE3609E82911B594006DB257;
+			packageReferences = (
+				EE220BC629139B9800CEC13A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = EE3609F22911B594006DB257 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -188,6 +199,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE220BC52913978B00CEC13A /* CopyDetailsView.swift in Sources */,
 				EE3609FE2911B595006DB257 /* Persistence.swift in Sources */,
 				EE3609F72911B594006DB257 /* ContentView.swift in Sources */,
 				EE3609F52911B594006DB257 /* CrossMyBookApp.swift in Sources */,
@@ -395,6 +407,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EE220BC629139B9800CEC13A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EE220BC729139B9800CEC13A /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EE220BC629139B9800CEC13A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		EE3609FF2911B595006DB257 /* CrossMyBook.xcdatamodeld */ = {
