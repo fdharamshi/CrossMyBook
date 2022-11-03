@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE220BBE2913840200CEC13A /* NotoSerif-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE220BBD2913840100CEC13A /* NotoSerif-Bold.ttf */; };
+		EE220BC32913849500CEC13A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE220BC22913849500CEC13A /* LoginView.swift */; };
 		EE3609F52911B594006DB257 /* CrossMyBookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3609F42911B594006DB257 /* CrossMyBookApp.swift */; };
 		EE3609F72911B594006DB257 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3609F62911B594006DB257 /* ContentView.swift */; };
 		EE3609F92911B595006DB257 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE3609F82911B595006DB257 /* Assets.xcassets */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EE220BBD2913840100CEC13A /* NotoSerif-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerif-Bold.ttf"; sourceTree = "<group>"; };
+		EE220BC22913849500CEC13A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		EE3609F12911B594006DB257 /* CrossMyBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrossMyBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE3609F42911B594006DB257 /* CrossMyBookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossMyBookApp.swift; sourceTree = "<group>"; };
 		EE3609F62911B594006DB257 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -39,6 +43,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EE220BBF2913847500CEC13A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EE220BC22913849500CEC13A /* LoginView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EE220BC02913847F00CEC13A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EE220BC12913848600CEC13A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		EE3609E82911B594006DB257 = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +84,9 @@
 		EE3609F32911B594006DB257 /* CrossMyBook */ = {
 			isa = PBXGroup;
 			children = (
+				EE220BC12913848600CEC13A /* Controllers */,
+				EE220BC02913847F00CEC13A /* Models */,
+				EE220BBF2913847500CEC13A /* Views */,
 				EE360A0A2911B8F3006DB257 /* Info.plist */,
 				EE360A072911B7B3006DB257 /* Fonts */,
 				EE3609F42911B594006DB257 /* CrossMyBookApp.swift */,
@@ -81,6 +110,7 @@
 		EE360A072911B7B3006DB257 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				EE220BBD2913840100CEC13A /* NotoSerif-Bold.ttf */,
 				EE360A082911B7C5006DB257 /* NotoSerif-Regular.ttf */,
 			);
 			path = Fonts;
@@ -145,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE3609FC2911B595006DB257 /* Preview Assets.xcassets in Resources */,
+				EE220BBE2913840200CEC13A /* NotoSerif-Bold.ttf in Resources */,
 				EE360A092911B7C5006DB257 /* NotoSerif-Regular.ttf in Resources */,
 				EE3609F92911B595006DB257 /* Assets.xcassets in Resources */,
 			);
@@ -160,6 +191,7 @@
 				EE3609FE2911B595006DB257 /* Persistence.swift in Sources */,
 				EE3609F72911B594006DB257 /* ContentView.swift in Sources */,
 				EE3609F52911B594006DB257 /* CrossMyBookApp.swift in Sources */,
+				EE220BC32913849500CEC13A /* LoginView.swift in Sources */,
 				EE360A012911B595006DB257 /* CrossMyBook.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
