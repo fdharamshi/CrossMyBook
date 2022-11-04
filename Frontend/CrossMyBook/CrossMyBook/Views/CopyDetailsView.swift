@@ -16,21 +16,73 @@ struct CopyDetailsView: View {
     var body: some View {
         
       ScrollView {
+        
+        HStack {
+          Text("Cross My Book")
+            .font(.custom("NotoSerif", size: 25)).bold()
+        }
+        
         ZStack (alignment: .bottomLeading) {
           Map(coordinateRegion: $mapRegion)
-            .frame(height: 250)
+            .frame(height: 450)
           
-          WebImage(url: URL(string: "https://covers.openlibrary.org/b/id/10618651-L.jpg"))
+          WebImage(url: URL(string: "https://covers.openlibrary.org/b/id/10447670-L.jpg"))
             .resizable()
             .scaledToFit()
-            .frame(width: 100, height: 100, alignment: .center)
-            .offset(x: 30, y: 50)
+            .frame(width: 100, height: 150, alignment: .center)
+            .offset(x: 30, y: 75)
         }
-        VStack (alignment: .leading) {
-          Text("Atomic Habits")
-            .font(.custom("NotoSerif", size: 25))
+        
+        VStack {
+          VStack (alignment: .leading) {
+            Text("Cracking the Coding Interview")
+              .multilineTextAlignment(.leading)
+              .fixedSize(horizontal: false, vertical: true)
+              .font(.custom("NotoSerif", size: 20))
+              .bold()
+              
+            Text("James Clear")
+              .font(.custom("NotoSerif", size: 15))
+              .multilineTextAlignment(.leading)
+              .fixedSize(horizontal: false, vertical: true)
+            
+            HStack (spacing: 1){
+              ForEach (0..<5) {_ in
+                Image(systemName: "star.fill")
+                  .font(.system(size: 12))
+                  .foregroundColor(Color.yellow)
+              }
+            }
+            
+            }.frame(maxWidth: UIScreen.main.bounds.size.width - 160, alignment: .leading)
             .offset(x: 150, y:0)
-          }.frame(maxWidth: .infinity, alignment: .leading)
+        }.frame(maxWidth: .infinity, alignment: .leading)
+        
+        VStack {
+          Text("Travel History")
+            .font(.custom("NotoSerif", size: 18))
+            .bold()
+            .multilineTextAlignment(.leading)
+        }.frame(maxWidth: .infinity, alignment: .leading)
+          .padding()
+        
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 10) {
+              ForEach(0..<10) {_ in
+                  WebImage(url: URL(string: "https://randomuser.me/api/portraits/women/61.jpg"))
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 70, height: 70, alignment: .center)
+                    .cornerRadius(35)
+                
+                  WebImage(url: URL(string: "https://cdn-icons-png.flaticon.com/512/3183/3183354.png"))
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 30, height: 30, alignment: .center)
+                }
+            }
+        }.padding(.leading)
+        
       }
       
     }
