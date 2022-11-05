@@ -23,6 +23,7 @@ class Book(models.Model):
     title = models.CharField(max_length=50)
     cover_url = models.TextField()
     authors = models.TextField()
+    description = models.TextField()
 
     class Meta:
         db_table = 'Book'
@@ -33,6 +34,7 @@ class Book(models.Model):
 class BookCopy(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     status = models.IntegerField()
+    owner = models.ForeignKey(Users, on_delete=models.SET_NULL, null=True)
 
     class Meta:
         db_table = 'BookCopy'
