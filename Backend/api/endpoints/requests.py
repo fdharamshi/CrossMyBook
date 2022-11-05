@@ -36,11 +36,14 @@ def get_copy_details(request):
     # 0: available  1: unavailable
     # 2: owner, released  3: owner, not released
     cur_status = copy.status
+    # get release information
+    try:
+        release = Listing.objects.get(copy_id=copy_id,status=0)
+    except Listing.DoesNotExist:
+        cur_status = 1;
+
     if int(current_tp.user_id) == int(user_id):
         cur_status += 2
-
-    # get release information
-    release = Listing.objects.get(copy_id=copy_id)
 
     for travelPoint in travelPoints:
         travelHistory.append({
@@ -51,24 +54,38 @@ def get_copy_details(request):
             "lon": travelPoint.lon
         })
 
-    response = {
-        "success": True,
-        "msg": "Success!",
-        "copy_id": copy_id,
-        "book_id": copy.book.id,
-        "status": cur_status,
-        "travel_history": travelHistory,
-        "cover_url": copy.book.cover_url,
-        "title": copy.book.title,
-        "author": copy.book.authors,
-        "rating": rating,
+    if cur_status == 0 or cur_status == 2:
+        response = {
+            "success": True,
+            "msg": "Success!",
+            "copy_id": copy_id,
+            "book_id": copy.book.id,
+            "status": cur_status,
+            "travel_history": travelHistory,
+            "cover_url": copy.book.cover_url,
+            "title": copy.book.title,
+            "author": copy.book.authors,
+            "rating": rating,
 
-        # information related with release
-        "shipping_expense": release.charges,
-        "willingness": release.max_distance,
-        "book_condition": release.book_condition,
-        "note": release.note
-    }
+            # information related with release
+            "shipping_expense": release.charges,
+            "willingness": release.max_distance,
+            "book_condition": release.book_condition,
+            "note": release.note
+        }
+    else:
+        response = {
+            "success": True,
+            "msg": "Success!",
+            "copy_id": copy_id,
+            "book_id": copy.book.id,
+            "status": cur_status,
+            "travel_history": travelHistory,
+            "cover_url": copy.book.cover_url,
+            "title": copy.book.title,
+            "author": copy.book.authors,
+            "rating": rating,
+        }
 
     return JsonResponse(response, safe=False)
 
@@ -99,11 +116,9 @@ def create_request(request):
     status = 0
     # Check if listing exists and it's still available to be requested.
     try:
-        listing = Listing.objects.get(id=listing_id)
+        listing = Listing.objects.get(id=listing_id,status=0)
     except Listing.DoesNotExist:
-        return JsonResponse({'msg': 'Release Information Not Found.', 'success': False}, safe=False)
-    if int(listing.status) == 0:
-        return JsonResponse({'msg': 'Current copy is not available for requests.', 'success': False}, safe=False)
+        return JsonResponse({'msg': 'Available Release Information Not Found.', 'success': False}, safe=False)
 
     # Check if requestor exists.
     try:
