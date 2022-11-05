@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from api.endpoints import login, releases, requests, alertpage
+from api.endpoints import login, releases, requests, alertpage, community
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,5 +28,6 @@ urlpatterns = [
     path('getCopyDetails', requests.get_copy_details),
     path('createRequest', requests.create_request),
     path('getRequests', alertpage.getRequests),
-    path('takeActionOnRequest', requests.takeActionOnRequest)
+    path('takeActionOnRequest', requests.takeActionOnRequest),
+    path('createReview', community.create_review),
 ]

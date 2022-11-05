@@ -1,13 +1,12 @@
 from django.http import JsonResponse
 from api.models import *
+from django.db.models import Avg
 
 
 def get_copy_details(request):
     # THIS IS A GET METHOD. PARAMS WILL BE IN QUERY.
-
     user_id = request.GET.get("user_id", None)
     copy_id = request.GET.get("copy_id", None)
-
     if user_id is None:
         return JsonResponse({'msg': 'User is not logged in.', 'success': False}, safe=False)
 
@@ -20,12 +19,29 @@ def get_copy_details(request):
     except BookCopy.DoesNotExist:
         return JsonResponse({'msg': 'Book Copy Not Found.', 'success': False}, safe=False)
 
-    # TODO: Fetch Copy Rating -> Need to get average of all reviews
+    # get average of all reviews
     rating = 5
+    reviews = Review.objects.filter(book=copy.book)
+    if reviews.count() > 0:
+        rating = reviews.aggregate(Avg('stars'))
+
+
 
     # Fetch Travel History
     travelHistory = []
-    travelPoints = TravelHistory.objects.filter(copy=copy)
+    travelPoints = TravelHistory.objects.filter(copy=copy).order_by('date')
+    current_tp = travelPoints.last()
+
+    # get status
+    # 0: available  1: unavailable
+    # 2: owner, released  3: owner, not released
+    cur_status = copy.status
+    if int(current_tp.user_id) == int(user_id):
+        cur_status += 2
+
+    # get release information
+    release = Listing.objects.get(copy_id=copy_id)
+
     for travelPoint in travelPoints:
         travelHistory.append({
             "date": travelPoint.date,
@@ -40,18 +56,18 @@ def get_copy_details(request):
         "msg": "Success!",
         "copy_id": copy_id,
         "book_id": copy.book.id,
-        "status": copy.status, # TODO: We need to make this status in response user specific.
+        "status": cur_status,
         "travel_history": travelHistory,
         "cover_url": copy.book.cover_url,
         "title": copy.book.title,
         "author": copy.book.authors,
         "rating": rating,
 
-        # TODO: Fetch these from DB:
-        "shipping_expense": "requester",
-        "willingness": "Same City",
-        "book_condition": "Excellent",
-        "note": "Fetch note from DB"
+        # information related with release
+        "shipping_expense": release.charges,
+        "willingness": release.max_distance,
+        "book_condition": release.book_condition,
+        "note": release.note
     }
 
     return JsonResponse(response, safe=False)
@@ -63,23 +79,48 @@ def create_request(request):
 
     user_id = request.POST.get("user_id", None)
 
-    # TODO: We may not need copy, as Listing model contains a reference to the copy.
+    # We may not need copy, as Listing model contains a reference to the copy.
     # If we have listing id, we can know which copy it is referring to.
+    # copy_id = request.POST.get("copy_id", None)
 
-    copy_id = request.POST.get("copy_id", None)
     listing_id = request.POST.get("listing_id", None)
 
     lat = request.POST.get("lat", None)
     lon = request.POST.get("lon", None)
 
     note = request.POST.get("note", None)
-    status = 0
+    if user_id is None:
+        return JsonResponse({'msg': 'User is not logged in.', 'success': False}, safe=False)
+    if listing_id is None:
+        return JsonResponse({'msg': 'Parameter missing error.', 'success': False}, safe=False)
+    if lat is None or lon is None:
+        return JsonResponse({'msg': 'Location of user is not given.', 'success': False}, safe=False)
 
-    # TODO: Check if listing exists and it's still available to be requested.
-    # TODO: Check if requestor exists.
-    # TODO: Check if this user has already made a request for this listing.
-    # TODO: Check: Owner of the book cannot make a request to his own listing :P
-    # TODO: Add error handling
+    status = 0
+    # Check if listing exists and it's still available to be requested.
+    try:
+        listing = Listing.objects.get(id=listing_id)
+    except Listing.DoesNotExist:
+        return JsonResponse({'msg': 'Release Information Not Found.', 'success': False}, safe=False)
+    if int(listing.status) == 0:
+        return JsonResponse({'msg': 'Current copy is not available for requests.', 'success': False}, safe=False)
+
+    # Check if requestor exists.
+    try:
+        user = Users.objects.get(id=user_id)
+    except Users.DoesNotExist:
+        return JsonResponse({'msg': 'Requestor not exists.', 'success': False}, safe=False)
+
+    # Check if this user has already made a request for this listing.
+    requests = Request.objects.filter(listing_id=listing_id,requester_id=user_id)
+    if requests.exists():
+        return JsonResponse({'msg': 'User has made a request for this listing.', 'success': False}, safe=False)
+
+
+    # Check: Owner of the book cannot make a request to his own listing :P
+    if int(user_id) == int(listing.user_id):
+        return JsonResponse({'msg': 'Owner of the book cannot make a request to his own listing.', 'success': False}, safe=False)
+
 
     # Create new request in DB.
     request = Request(requester_id=user_id, copy_id=copy_id, listing_id=listing_id, lat=lat, lon=lon, note=note, status=status)
@@ -92,10 +133,14 @@ def takeActionOnRequest(request):
     user_id = request.POST.get("user_id", None)
     accepted = int(request.POST.get("accepted", 0))
     request_id = request.POST.get("request_id", None)
+    # Read about status codes: https://docs.google.com/document/d/17V0KUq2AUdlq7JpJU4ABkw4SStUGPyKXFUmi9HRgz30/edit
+    request = Request.objects.get(id=request_id)
+    owner_id = request.listing.user.id
 
-    # TODO: Read about status codes: https://docs.google.com/document/d/17V0KUq2AUdlq7JpJU4ABkw4SStUGPyKXFUmi9HRgz30/edit
+    # Check is user_id owns the listing
+    if user_id != owner_id:
+        return JsonResponse({'msg': 'User is not the owner of copy.', 'success': False}, safe=False)
 
-    # TODO: Check is user_id owns the listing
     if accepted == 1:
         """
             If request is accepted, change status of request to 1
@@ -104,7 +149,7 @@ def takeActionOnRequest(request):
 
             Add the new location to Travel History
         """
-        request = Request.objects.get(id=request_id)
+
         open_requests = Request.objects.filter(listing=request.listing)
         open_requests.update(status=2)
         request.status = 1
@@ -121,7 +166,6 @@ def takeActionOnRequest(request):
 
     else:
         # If request is rejected, change status of request to 2 and do nothing else
-        request = Request.objects.get(id=request_id)
         request.status = 2
         request.save()
         return JsonResponse({'msg': 'Success!', 'success': True}, safe=False)

@@ -1,4 +1,4 @@
-from symbol import except_clause
+#from symbol import except_clause
 from django.http import JsonResponse
 import requests
 from api.models import *
