@@ -39,6 +39,7 @@ def get_book_details(request):
             "user_name": user_detail.first_name + " " + user_detail.last_name,
             "date": review.date,
             "content": review.review,
+            "review_id": review.id,
         })
 
 
