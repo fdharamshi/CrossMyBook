@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c03aa8d-0873-4dd1-a990-bd0a491bb7e3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/endpoints/community.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/endpoints/profile.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/endpoints/profile.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/endpoints/releases.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/endpoints/releases.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/endpoints/requests.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/endpoints/requests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crossmybookbackend/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/crossmybookbackend/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Sprint3/InternalStructs.playground/playground.xcworkspace/xcuserdata/azathoth.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../Sprint3/InternalStructs.playground/playground.xcworkspace/xcuserdata/azathoth.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,15 +31,6 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/azathoth/Documents/67643 ios/Team-23/Backend"
-  }
-}]]></component>
   <component name="RunManager">
     <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Backend" />
