@@ -9,6 +9,10 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct BookDetailView: View {
+    @ObservedObject var bookViewModel: BookViewModel = BookViewModel()
+    @State var displayCopy: BDCopy? = nil
+    
+    
     var body: some View {
         ScrollView {
         // MARK: top bar
@@ -21,28 +25,29 @@ struct BookDetailView: View {
                 Text("CrossMyBook").font(.custom("NotoSerif", size: 24)).bold().frame(maxWidth: .infinity).foregroundColor(.fontBlack)
             }.padding(10)
         // MARK: book info
-            BookCardView(bookData: Book(bookId: 1, coverURL: "https://covers.openlibrary.org/b/id/10447672-L.jpg", title: "Remarkably Bright Creatures", author: "Caifei Hong", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas placerat non elit ac vulputate. Nullam a libero lectus. Quisque eu fringilla lectus. ", rating: 4))
+            BookCardView(bookData: self.bookViewModel.bookData)
         // MARK: copy list
             VStack(alignment: .leading) {
-                CustomText(s: "3 copies available now", size: 14).bold()
+                CustomText(s: "\(self.bookViewModel.availableCount()) copies available now", size: 14).bold()
                 HStack {
-                    ForEach(1..<5) { index in
-                        WebImage(url: URL(string: "https://xsgames.co/randomusers/assets/avatars/male/44.jpg")).resizable().scaledToFit().frame(width: 60, height: 60).cornerRadius(50)
-                        Spacer()
+                    ForEach((self.bookViewModel.getCopies()), id: \.self.copyId) { copy in
+                        WebImage(url: URL(string: copy.ownerProfileUrl!.count > 0 ? copy.ownerProfileUrl! : BookParser.DefaultProfileURL)).resizable().scaledToFit().frame(width: 60, height: 60).cornerRadius(50)
                     }
                 }
-
-                CopyCardView()
+                CopyCardView(copy: self.displayCopy)
             }.padding(.leading, 18).padding(.trailing, 18)
             
-         // MARK reviews
+         // MARK: reviews
             VStack(alignment: .leading)  {
                 CustomText(s: "Reviews", size: 14).bold()
                 ScrollView(.horizontal) {
                     HStack {
                         ForEach(0..<5) { index in
-                            ReviewCardView()
-                        }
+                                        ReviewCardView()
+                                    }
+//                        ForEach(self.bookViewModel.getReviews(), id: \.self.reviewId) { review in
+//                            ReviewCardView()
+//                        }
                     }
                 }
             }.padding(18)
@@ -50,6 +55,16 @@ struct BookDetailView: View {
             NavBar()
         }
         .background(Color.backgroundGrey)
+        .onAppear(perform: loadBookData)
+    }
+    
+    func loadBookData() {
+        let anonymous = { (fetchedBook: Book) in
+            self.bookViewModel.bookData = fetchedBook
+            self.displayCopy = fetchedBook.copies[0]
+        }
+        BookParser().fetchBookDetails(completionHandler: anonymous)
+        print(self.bookViewModel.bookData == nil)
     }
 }
 
