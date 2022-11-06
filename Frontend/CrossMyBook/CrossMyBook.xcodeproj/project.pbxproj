@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31954DCA2916FB0300C6AD1F /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31954DC92916FB0300C6AD1F /* NavBar.swift */; };
+		31954DCE2916FD4F00C6AD1F /* Font Awesome 5 Free-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = 31954DCB2916FD4F00C6AD1F /* Font Awesome 5 Free-Regular-400.otf */; };
+		31954DCF2916FD4F00C6AD1F /* Font Awesome 5 Free-Solid-900.otf in Resources */ = {isa = PBXBuildFile; fileRef = 31954DCC2916FD4F00C6AD1F /* Font Awesome 5 Free-Solid-900.otf */; };
+		31954DD02916FD4F00C6AD1F /* Font Awesome 5 Brands-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = 31954DCD2916FD4F00C6AD1F /* Font Awesome 5 Brands-Regular-400.otf */; };
+		31954DD22917042E00C6AD1F /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31954DD12917042E00C6AD1F /* BookDetailView.swift */; };
+		31954DD4291707EC00C6AD1F /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31954DD3291707EC00C6AD1F /* ColorExtension.swift */; };
+		31954DD6291710FF00C6AD1F /* FAIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31954DD5291710FF00C6AD1F /* FAIcon.swift */; };
+		31954DD8291713D500C6AD1F /* BookCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31954DD7291713D500C6AD1F /* BookCardView.swift */; };
+		31954DDA291714B500C6AD1F /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31954DD9291714B500C6AD1F /* Book.swift */; };
+		31954DDD2917190A00C6AD1F /* CustomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31954DDC2917190A00C6AD1F /* CustomText.swift */; };
+		31954DE129171EC200C6AD1F /* CopyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31954DE029171EC200C6AD1F /* CopyCardView.swift */; };
+		31954DE329172B5600C6AD1F /* ReviewCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31954DE229172B5600C6AD1F /* ReviewCardView.swift */; };
 		EE220BBE2913840200CEC13A /* NotoSerif-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE220BBD2913840100CEC13A /* NotoSerif-Bold.ttf */; };
 		EE220BC32913849500CEC13A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE220BC22913849500CEC13A /* LoginView.swift */; };
 		EE220BC52913978B00CEC13A /* CopyDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE220BC42913978B00CEC13A /* CopyDetailsView.swift */; };
@@ -21,6 +33,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		31954DC92916FB0300C6AD1F /* NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBar.swift; sourceTree = "<group>"; };
+		31954DCB2916FD4F00C6AD1F /* Font Awesome 5 Free-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Free-Regular-400.otf"; sourceTree = "<group>"; };
+		31954DCC2916FD4F00C6AD1F /* Font Awesome 5 Free-Solid-900.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Free-Solid-900.otf"; sourceTree = "<group>"; };
+		31954DCD2916FD4F00C6AD1F /* Font Awesome 5 Brands-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Brands-Regular-400.otf"; sourceTree = "<group>"; };
+		31954DD12917042E00C6AD1F /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
+		31954DD3291707EC00C6AD1F /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorExtension.swift; path = CrossMyBook/Views/ColorExtension.swift; sourceTree = SOURCE_ROOT; };
+		31954DD5291710FF00C6AD1F /* FAIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAIcon.swift; sourceTree = "<group>"; };
+		31954DD7291713D500C6AD1F /* BookCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCardView.swift; sourceTree = "<group>"; };
+		31954DD9291714B500C6AD1F /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Book.swift; path = CrossMyBook/Views/Book.swift; sourceTree = SOURCE_ROOT; };
+		31954DDC2917190A00C6AD1F /* CustomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomText.swift; sourceTree = "<group>"; };
+		31954DE029171EC200C6AD1F /* CopyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyCardView.swift; sourceTree = "<group>"; };
+		31954DE229172B5600C6AD1F /* ReviewCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCardView.swift; sourceTree = "<group>"; };
 		EE220BBD2913840100CEC13A /* NotoSerif-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerif-Bold.ttf"; sourceTree = "<group>"; };
 		EE220BC22913849500CEC13A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		EE220BC42913978B00CEC13A /* CopyDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyDetailsView.swift; sourceTree = "<group>"; };
@@ -47,11 +71,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31954DDB291718DD00C6AD1F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				31954DD3291707EC00C6AD1F /* ColorExtension.swift */,
+				31954DD5291710FF00C6AD1F /* FAIcon.swift */,
+				31954DDC2917190A00C6AD1F /* CustomText.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		31954DE429172C2100C6AD1F /* BookDetail */ = {
+			isa = PBXGroup;
+			children = (
+				31954DD12917042E00C6AD1F /* BookDetailView.swift */,
+				31954DD7291713D500C6AD1F /* BookCardView.swift */,
+				31954DE029171EC200C6AD1F /* CopyCardView.swift */,
+				31954DE229172B5600C6AD1F /* ReviewCardView.swift */,
+			);
+			name = BookDetail;
+			sourceTree = "<group>";
+		};
 		EE220BBF2913847500CEC13A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				31954DE429172C2100C6AD1F /* BookDetail */,
+				31954DDB291718DD00C6AD1F /* Utils */,
 				EE220BC22913849500CEC13A /* LoginView.swift */,
 				EE220BC42913978B00CEC13A /* CopyDetailsView.swift */,
+				31954DC92916FB0300C6AD1F /* NavBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -59,6 +107,7 @@
 		EE220BC02913847F00CEC13A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				31954DD9291714B500C6AD1F /* Book.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -115,6 +164,9 @@
 		EE360A072911B7B3006DB257 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				31954DCD2916FD4F00C6AD1F /* Font Awesome 5 Brands-Regular-400.otf */,
+				31954DCB2916FD4F00C6AD1F /* Font Awesome 5 Free-Regular-400.otf */,
+				31954DCC2916FD4F00C6AD1F /* Font Awesome 5 Free-Solid-900.otf */,
 				EE220BBD2913840100CEC13A /* NotoSerif-Bold.ttf */,
 				EE360A082911B7C5006DB257 /* NotoSerif-Regular.ttf */,
 			);
@@ -188,7 +240,10 @@
 				EE3609FC2911B595006DB257 /* Preview Assets.xcassets in Resources */,
 				EE220BBE2913840200CEC13A /* NotoSerif-Bold.ttf in Resources */,
 				EE360A092911B7C5006DB257 /* NotoSerif-Regular.ttf in Resources */,
+				31954DCF2916FD4F00C6AD1F /* Font Awesome 5 Free-Solid-900.otf in Resources */,
 				EE3609F92911B595006DB257 /* Assets.xcassets in Resources */,
+				31954DD02916FD4F00C6AD1F /* Font Awesome 5 Brands-Regular-400.otf in Resources */,
+				31954DCE2916FD4F00C6AD1F /* Font Awesome 5 Free-Regular-400.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,12 +254,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31954DDD2917190A00C6AD1F /* CustomText.swift in Sources */,
+				31954DE129171EC200C6AD1F /* CopyCardView.swift in Sources */,
+				31954DE329172B5600C6AD1F /* ReviewCardView.swift in Sources */,
+				31954DD22917042E00C6AD1F /* BookDetailView.swift in Sources */,
 				EE220BC52913978B00CEC13A /* CopyDetailsView.swift in Sources */,
 				EE3609FE2911B595006DB257 /* Persistence.swift in Sources */,
+				31954DD8291713D500C6AD1F /* BookCardView.swift in Sources */,
+				31954DD4291707EC00C6AD1F /* ColorExtension.swift in Sources */,
 				EE3609F72911B594006DB257 /* ContentView.swift in Sources */,
 				EE3609F52911B594006DB257 /* CrossMyBookApp.swift in Sources */,
+				31954DCA2916FB0300C6AD1F /* NavBar.swift in Sources */,
+				31954DDA291714B500C6AD1F /* Book.swift in Sources */,
 				EE220BC32913849500CEC13A /* LoginView.swift in Sources */,
 				EE360A012911B595006DB257 /* CrossMyBook.xcdatamodeld in Sources */,
+				31954DD6291710FF00C6AD1F /* FAIcon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
