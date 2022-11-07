@@ -13,7 +13,7 @@ struct CopyDetailsModel: Codable {
   let msg: String
   let copyID: String?
   let bookID, status: Int
-  let travelHistory: [TravelHistory]?
+  let travelHistory: [TravelHistory]
   let coverURL: String?
   let title, author: String?
   let rating: Rating?
@@ -55,10 +55,16 @@ struct Rating: Codable {
 }
 
 // MARK: - TravelHistory
-struct TravelHistory: Codable {
+struct TravelHistory: Codable, Identifiable, Equatable {
+  var id = UUID()
   let date, user: String
   let userID: Int
   let lat, lon: Double
+  
+  static func == (lhs: TravelHistory, rhs: TravelHistory) -> Bool {
+          return
+              lhs.id == rhs.id
+}
   
   enum CodingKeys: String, CodingKey {
     case date, user
