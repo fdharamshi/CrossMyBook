@@ -30,6 +30,7 @@
 		EE3609FE2911B595006DB257 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3609FD2911B595006DB257 /* Persistence.swift */; };
 		EE360A012911B595006DB257 /* CrossMyBook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EE3609FF2911B595006DB257 /* CrossMyBook.xcdatamodeld */; };
 		EE360A092911B7C5006DB257 /* NotoSerif-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE360A082911B7C5006DB257 /* NotoSerif-Regular.ttf */; };
+		EE9181FF2918D91A003CD0B0 /* RequestBookForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9181FE2918D91A003CD0B0 /* RequestBookForm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		EE360A002911B595006DB257 /* CrossMyBook.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CrossMyBook.xcdatamodel; sourceTree = "<group>"; };
 		EE360A082911B7C5006DB257 /* NotoSerif-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSerif-Regular.ttf"; path = "CrossMyBook/Fonts/NotoSerif-Regular.ttf"; sourceTree = SOURCE_ROOT; };
 		EE360A0A2911B8F3006DB257 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		EE9181FE2918D91A003CD0B0 /* RequestBookForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBookForm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,10 +97,10 @@
 		EE220BBF2913847500CEC13A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EE9181FC2918D2BF003CD0B0 /* CopyDetails */,
 				31954DE429172C2100C6AD1F /* BookDetail */,
 				31954DDB291718DD00C6AD1F /* Utils */,
 				EE220BC22913849500CEC13A /* LoginView.swift */,
-				EE220BC42913978B00CEC13A /* CopyDetailsView.swift */,
 				31954DC92916FB0300C6AD1F /* NavBar.swift */,
 			);
 			path = Views;
@@ -171,6 +173,15 @@
 				EE360A082911B7C5006DB257 /* NotoSerif-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		EE9181FC2918D2BF003CD0B0 /* CopyDetails */ = {
+			isa = PBXGroup;
+			children = (
+				EE220BC42913978B00CEC13A /* CopyDetailsView.swift */,
+				EE9181FE2918D91A003CD0B0 /* RequestBookForm.swift */,
+			);
+			name = CopyDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +273,7 @@
 				EE3609FE2911B595006DB257 /* Persistence.swift in Sources */,
 				31954DD8291713D500C6AD1F /* BookCardView.swift in Sources */,
 				31954DD4291707EC00C6AD1F /* ColorExtension.swift in Sources */,
+				EE9181FF2918D91A003CD0B0 /* RequestBookForm.swift in Sources */,
 				EE3609F72911B594006DB257 /* ContentView.swift in Sources */,
 				EE3609F52911B594006DB257 /* CrossMyBookApp.swift in Sources */,
 				31954DCA2916FB0300C6AD1F /* NavBar.swift in Sources */,

@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1c03aa8d-0873-4dd1-a990-bd0a491bb7e3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/endpoints/profile.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/endpoints/profile.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/endpoints/releases.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/endpoints/releases.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/endpoints/requests.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/endpoints/requests.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +27,9 @@
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RunManager">
     <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">

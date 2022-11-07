@@ -13,14 +13,14 @@ struct CopyDetailsView: View {
   
   @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.5, longitude: -0.12), span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
   
-    var body: some View {
-        
+  var body: some View {
+    
+    VStack {
+      HStack {
+        Text("Cross My Book")
+          .font(.custom("NotoSerif", size: 25)).bold()
+      }
       ScrollView {
-        
-        HStack {
-          Text("Cross My Book")
-            .font(.custom("NotoSerif", size: 25)).bold()
-        }
         
         ZStack (alignment: .bottomLeading) {
           Map(coordinateRegion: $mapRegion)
@@ -30,7 +30,9 @@ struct CopyDetailsView: View {
             .resizable()
             .scaledToFit()
             .frame(width: 100, height: 150, alignment: .center)
+            .border(Color.black, width: 1)
             .offset(x: 30, y: 75)
+          
         }
         
         VStack {
@@ -40,7 +42,7 @@ struct CopyDetailsView: View {
               .fixedSize(horizontal: false, vertical: true)
               .font(.custom("NotoSerif", size: 20))
               .bold()
-              
+            
             Text("James Clear")
               .font(.custom("NotoSerif", size: 15))
               .multilineTextAlignment(.leading)
@@ -54,7 +56,7 @@ struct CopyDetailsView: View {
               }
             }
             
-            }.frame(maxWidth: UIScreen.main.bounds.size.width - 160, alignment: .leading)
+          }.frame(maxWidth: UIScreen.main.bounds.size.width - 160, alignment: .leading)
             .offset(x: 150, y:0)
         }.frame(maxWidth: .infinity, alignment: .leading)
         
@@ -67,29 +69,119 @@ struct CopyDetailsView: View {
           .padding()
         
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 10) {
-              ForEach(0..<10) {_ in
-                  WebImage(url: URL(string: "https://randomuser.me/api/portraits/women/61.jpg"))
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 70, height: 70, alignment: .center)
-                    .cornerRadius(35)
-                
-                  WebImage(url: URL(string: "https://cdn-icons-png.flaticon.com/512/3183/3183354.png"))
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 30, height: 30, alignment: .center)
-                }
+          HStack(spacing: 10) {
+            ForEach(0..<10) {_ in
+              WebImage(url: URL(string: "https://randomuser.me/api/portraits/women/61.jpg"))
+                .resizable()
+                .scaledToFit()
+                .frame(width: 70, height: 70, alignment: .center)
+                .cornerRadius(35)
+              
+              WebImage(url: URL(string: "https://cdn-icons-png.flaticon.com/512/3183/3183354.png"))
+                .resizable()
+                .scaledToFit()
+                .frame(width: 30, height: 30, alignment: .center)
             }
+          }
         }.padding(.leading)
         
+        VStack (alignment: .leading) {
+          Text("Shipping Expense")
+            .font(.custom("NotoSerif", size: 15))
+            .bold()
+            .padding([.top, .leading, .trailing])
+            .frame(width: .infinity)
+            .multilineTextAlignment(.leading)
+            .foregroundColor(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255))
+          Text("Incurred by the Requester")
+            .font(.custom("NotoSerif", size: 15))
+            .padding([.leading, .bottom, .trailing])
+            .frame(width: .infinity)
+            .multilineTextAlignment(.leading)
+          
+        }.frame(
+          maxWidth: .infinity,
+          maxHeight: .infinity,
+          alignment: .topLeading
+        ).background(Color.white).padding([.leading, .top, .trailing])
+        
+        VStack (alignment: .leading) {
+          Text("Willingness to Ship")
+            .font(.custom("NotoSerif", size: 15))
+            .bold()
+            .padding([.top, .leading, .trailing])
+            .frame(width: .infinity)
+            .multilineTextAlignment(.leading)
+            .foregroundColor(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255))
+          Text("Same City")
+            .font(.custom("NotoSerif", size: 15))
+            .padding([.leading, .bottom, .trailing])
+            .frame(width: .infinity)
+            .multilineTextAlignment(.leading)
+          
+        }.frame(
+          maxWidth: .infinity,
+          maxHeight: .infinity,
+          alignment: .topLeading
+        ).background(Color.white).padding([.leading, .top, .trailing])
+        
+        VStack (alignment: .leading) {
+          Text("Book Condition")
+            .font(.custom("NotoSerif", size: 15))
+            .bold()
+            .padding([.top, .leading, .trailing])
+            .frame(width: .infinity)
+            .multilineTextAlignment(.leading)
+            .foregroundColor(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255))
+          Text("Fairly Used")
+            .font(.custom("NotoSerif", size: 15))
+            .padding([.leading, .bottom, .trailing])
+            .frame(width: .infinity)
+            .multilineTextAlignment(.leading)
+          
+        }.frame(
+          maxWidth: .infinity,
+          maxHeight: .infinity,
+          alignment: .topLeading
+        ).background(Color.white).padding([.leading, .top, .trailing])
+        
+        VStack (alignment: .leading) {
+          Text("Note from Current Owner")
+            .font(.custom("NotoSerif", size: 15))
+            .bold()
+            .padding([.top, .leading, .trailing])
+            .frame(width: .infinity)
+            .multilineTextAlignment(.leading)
+            .foregroundColor(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255))
+          Text("Amazing Book!!! I would be happy to send it to you.")
+            .font(.custom("NotoSerif", size: 15))
+            .padding([.leading, .bottom, .trailing])
+            .frame(width: .infinity)
+            .multilineTextAlignment(.leading)
+          
+        }.frame(
+          maxWidth: .infinity,
+          maxHeight: .infinity,
+          alignment: .topLeading
+        ).background(Color.white).padding([.leading, .top, .trailing])
       }
-      
-    }
+      Button(action: {
+        print("Request Book")
+      }) {
+        Text("Request Book").font(.custom("NotoSerif", size: 15))
+          .padding()
+          .frame(maxWidth: .infinity)
+          .background(RoundedRectangle(cornerRadius: 8).fill(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255)))
+          .foregroundColor(Color.white)
+      }
+      .padding(.horizontal)
+    }.background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
+    
+  }
 }
 
 struct CopyDetailsView_Previews: PreviewProvider {
-    static var previews: some View {
-        CopyDetailsView()
-    }
+  static var previews: some View {
+    CopyDetailsView()
+  }
 }
