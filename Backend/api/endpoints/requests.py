@@ -30,6 +30,9 @@ def get_copy_details(request):
     travelPoints = TravelHistory.objects.filter(copy=copy).order_by('date')
     current_tp = travelPoints.last()
 
+    if travelPoints.count() == 0:
+        return JsonResponse({'msg': 'There is no travel history of the book', 'success': False}, safe=False)
+
     # get status
     # 0: available  1: unavailable
     # 2: owner, listed  3: owner, not listed
