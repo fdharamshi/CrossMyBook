@@ -85,7 +85,7 @@ def get_copy_details(request):
             "cover_url": copy.book.cover_url,
             "title": copy.book.title,
             "author": copy.book.authors,
-            "rating": rating,
+            "rating": rating.stars__avg,
         }
 
     return JsonResponse(response, safe=False)
