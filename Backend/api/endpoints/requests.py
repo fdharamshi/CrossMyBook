@@ -25,8 +25,6 @@ def get_copy_details(request):
     if reviews.count() > 0:
         rating = reviews.aggregate(Avg('stars'))
 
-
-
     # Fetch Travel History
     travelHistory = []
     travelPoints = TravelHistory.objects.filter(copy=copy).order_by('date')
