@@ -32,24 +32,26 @@ struct CopyDetailsView: View {
           Map(coordinateRegion: $mapRegion)
             .frame(height: 450)
           
-          WebImage(url: URL(string: "https://covers.openlibrary.org/b/id/10447670-L.jpg"))
+          WebImage(url: URL(string: copyDetailsController.observedCopy?.coverURL ?? ""))
             .resizable()
+            .placeholder(Image(uiImage: UIImage(named: "bookplaceholder")!)) // Placeholder Image
+                // Supports ViewBuilder as well
             .scaledToFit()
             .frame(width: 100, height: 150, alignment: .center)
             .border(Color.black, width: 1)
+            .background(Color.brown)
             .offset(x: 30, y: 75)
-          
         }
         
         VStack {
           VStack (alignment: .leading) {
-            Text(copyDetailsController.observedCopy?.title ?? "Fetching")
+            Text(copyDetailsController.observedCopy?.title ?? "Loading...")
               .multilineTextAlignment(.leading)
               .fixedSize(horizontal: false, vertical: true)
               .font(.custom("NotoSerif", size: 20))
               .bold()
             
-            Text("James Clear")
+            Text(copyDetailsController.observedCopy?.author ?? "Loading...")
               .font(.custom("NotoSerif", size: 15))
               .multilineTextAlignment(.leading)
               .fixedSize(horizontal: false, vertical: true)
@@ -99,7 +101,7 @@ struct CopyDetailsView: View {
             .frame(width: .infinity)
             .multilineTextAlignment(.leading)
             .foregroundColor(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255))
-          Text(copyDetailsController.observedCopy?.listing?.shippingExpense ?? "Fetching")
+          Text(copyDetailsController.observedCopy?.listing?.shippingExpense ?? "Loading...")
             .font(.custom("NotoSerif", size: 15))
             .padding([.leading, .bottom, .trailing])
             .frame(width: .infinity)
@@ -119,7 +121,7 @@ struct CopyDetailsView: View {
             .frame(width: .infinity)
             .multilineTextAlignment(.leading)
             .foregroundColor(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255))
-          Text("Same City")
+          Text(copyDetailsController.observedCopy?.listing?.willingness ?? "Loading...")
             .font(.custom("NotoSerif", size: 15))
             .padding([.leading, .bottom, .trailing])
             .frame(width: .infinity)
@@ -139,7 +141,7 @@ struct CopyDetailsView: View {
             .frame(width: .infinity)
             .multilineTextAlignment(.leading)
             .foregroundColor(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255))
-          Text("Fairly Used")
+          Text(copyDetailsController.observedCopy?.listing?.bookCondition ?? "Loading...")
             .font(.custom("NotoSerif", size: 15))
             .padding([.leading, .bottom, .trailing])
             .frame(width: .infinity)
@@ -159,7 +161,7 @@ struct CopyDetailsView: View {
             .frame(width: .infinity)
             .multilineTextAlignment(.leading)
             .foregroundColor(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255))
-          Text("Amazing Book!!! I would be happy to send it to you.")
+          Text(copyDetailsController.observedCopy?.listing?.note ?? "Note")
             .font(.custom("NotoSerif", size: 15))
             .padding([.leading, .bottom, .trailing])
             .frame(width: .infinity)
