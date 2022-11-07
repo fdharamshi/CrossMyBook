@@ -59,6 +59,7 @@ struct TravelHistory: Codable, Identifiable, Equatable {
   var id = UUID()
   let date, user: String
   let userID: Int
+  let userPicture: String
   let lat, lon: Double
   
   static func == (lhs: TravelHistory, rhs: TravelHistory) -> Bool {
@@ -69,6 +70,7 @@ struct TravelHistory: Codable, Identifiable, Equatable {
   enum CodingKeys: String, CodingKey {
     case date, user
     case userID = "user_id"
+    case userPicture = "user_picture"
     case lat, lon
   }
 }

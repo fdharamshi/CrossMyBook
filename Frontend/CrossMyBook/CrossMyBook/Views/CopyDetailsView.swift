@@ -90,7 +90,7 @@ struct CopyDetailsView: View {
             HStack(spacing: 10) {
               
               ForEach(copyDetailsController.observedCopy?.travelHistory ?? []) { travelPoint in
-                WebImage(url: URL(string: "https://randomuser.me/api/portraits/women/61.jpg"))
+                WebImage(url: URL(string: travelPoint.userPicture))
                                   .resizable()
                                   .scaledToFit()
                                   .frame(width: 70, height: 70, alignment: .center)
