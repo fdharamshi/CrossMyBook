@@ -26,14 +26,13 @@ struct RequestBookForm: View {
         
         HStack (alignment: .top) {
           Spacer()
-          WebImage(url: URL(string: "https://covers.openlibrary.org/b/id/10447670-L.jpg"))
-            .resizable()
-            .scaledToFit()
-            .frame(width: 100, height: 150, alignment: .center)
-            .border(Color.black, width: 1)
+          
+          WebImage(url: URL(string: "https://covers.openlibrary.org/b/id/10447670-L.jpg")).resizable().scaledToFit().frame(height: 180).cornerRadius(5)
+          
+          Spacer()
           
           VStack {
-            VStack (alignment: .leading) {
+            VStack (alignment: .leading, spacing: 5) {
               Text("Cracking the Coding Interview")
                 .multilineTextAlignment(.leading)
                 .fixedSize(horizontal: false, vertical: true)
@@ -58,54 +57,49 @@ struct RequestBookForm: View {
           Spacer()
         }
         VStack {
-          TextField("Name", text: .constant("Femin Dharamshi"))
+          RoundedRectangle(cornerRadius: 10)
+            .fill(.white)
+            .overlay(
+              TextField("name", text: .constant("Femin Dharamshi"))
+                .padding(.leading)
+                .font(Font.custom("NotoSerif", size: 14))
+            )
             .frame(height: 48)
-            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-            .cornerRadius(5)
-            .overlay(
-              RoundedRectangle(cornerRadius: 20)
-                .stroke(Color.white, lineWidth: 1.0)
-            )
-            .background(Color.white)
-            
           
-          TextField("Street Address", text: $streetAddress)
+          RoundedRectangle(cornerRadius: 10)
+            .fill(.white)
+            .overlay(
+              TextField("Street Address", text: $streetAddress)
+                .padding(.leading)
+                .font(Font.custom("NotoSerif", size: 14))
+            )
             .frame(height: 48)
-            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-            .cornerRadius(5)
-            .overlay(
-              RoundedRectangle(cornerRadius: 5)
-                .stroke(lineWidth: 0.0)
-            )
-            .background(Color.white)
           
-          TextField("Zip Code", text: $zipCode)
+          RoundedRectangle(cornerRadius: 10)
+            .fill(.white)
+            .overlay(
+              TextField("Zip Code", text: $zipCode)
+                .padding(.leading)
+                .font(Font.custom("NotoSerif", size: 14))
+            )
             .frame(height: 48)
-            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-            .cornerRadius(5)
-            .overlay(
-              RoundedRectangle(cornerRadius: 5)
-                .stroke(lineWidth: 0.0)
-            )
-            .background(Color.white)
           
-          TextField("Leave a note", text: $note, axis: .vertical)
-            .lineLimit(10...)
-            .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
-            .cornerRadius(5)
-            .multilineTextAlignment(.leading)
+          RoundedRectangle(cornerRadius: 10)
+            .fill(.white)
             .overlay(
-              RoundedRectangle(cornerRadius: 5)
-                .stroke(lineWidth: 0.0)
+              TextField("Leave a note", text: $note, axis: .vertical)
+                .padding(.leading)
+                .multilineTextAlignment(.leading)
+                .font(Font.custom("NotoSerif", size: 14))
             )
-            .background(Color.white)
+            .frame(height: 250)
           
         }.padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
       }
       Button(action: {
-        print("Request Book")
+        print("Request submitted")
       }) {
-        Text("Request Book").font(.custom("NotoSerif", size: 15))
+        Text("Submit Request").font(.custom("NotoSerif", size: 15).bold())
           .padding()
           .frame(maxWidth: .infinity)
           .background(RoundedRectangle(cornerRadius: 8).fill(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255)))
