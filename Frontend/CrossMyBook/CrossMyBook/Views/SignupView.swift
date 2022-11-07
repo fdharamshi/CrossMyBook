@@ -1,19 +1,21 @@
 //
-//  LoginView.swift
+//  Signup.swift
 //  CrossMyBook
 //
-//  Created by Femin Dharamshi on 11/3/22.
+//  Created by 魏妤庭 on 2022/11/7.
 //
 
 import SwiftUI
 
-struct LoginView: View {
-  
-  @State var email: String = ""
-  @State var password: String = ""
+struct SignupView: View {
+    
+    @State var firstname: String = ""
+    @State var lastname: String = ""
+    @State var email: String = ""
+    @State var password: String = ""
   
     var body: some View {
-      VStack {
+        VStack {
         
         Spacer()
         
@@ -27,6 +29,24 @@ struct LoginView: View {
           .foregroundColor(Color(red: 35 / 255, green: 23 / 255, blue: 9 / 255))
         
         VStack {
+          RoundedRectangle(cornerRadius: 10)
+            .fill(.white)
+            .overlay(
+              TextField("first name", text: $firstname)
+                .padding(.leading)
+                .font(Font.custom("NotoSerif", size: 14))
+            )
+            .frame(height: 48)
+            
+          RoundedRectangle(cornerRadius: 10)
+            .fill(.white)
+            .overlay(
+              TextField("last name", text: $lastname)
+                .padding(.leading)
+                .font(Font.custom("NotoSerif", size: 14))
+            )
+            .frame(height: 48)
+          
           RoundedRectangle(cornerRadius: 10)
             .fill(.white)
             .overlay(
@@ -48,9 +68,9 @@ struct LoginView: View {
         }.padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
         
         Button(action: {
-            print("Login")
+            print("Signup")
         }) {
-          Text("Login").font(.custom("NotoSerif", size: 15).bold())
+          Text("Sign up").font(.custom("NotoSerif", size: 15).bold())
                 .padding()
                 .frame(maxWidth: .infinity)
                 .background(RoundedRectangle(cornerRadius: 8).fill(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255)))
@@ -62,8 +82,8 @@ struct LoginView: View {
         Divider().padding(EdgeInsets(top: 0, leading:20, bottom: 0, trailing:20))
         
         HStack{
-          Text("Not a member?")
-          Button("Sign Up Now", action: {})
+          Text("Already has an account?")
+          Button("Log in", action: {})
             .foregroundColor(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255))
         }
         .font(Font.custom("NotoSerif", size: 15))
@@ -74,11 +94,10 @@ struct LoginView: View {
         
       }.background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
     }
-    }
+}
 
-
-struct LoginView_Previews: PreviewProvider {
+struct SignupView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+      SignupView()
     }
 }
