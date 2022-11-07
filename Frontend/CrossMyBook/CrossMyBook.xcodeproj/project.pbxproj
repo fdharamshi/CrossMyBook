@@ -161,6 +161,8 @@
 				EEA0B41B29199E9A0077165C /* CopyDetailsModels */,
 				31954DD9291714B500C6AD1F /* Book.swift */,
 				31A8795229185E3D00286ABF /* BookDetailUse */,
+				EEA0B41B29199E9A0077165C /* CopyDetailsModels */,
+				31954DD9291714B500C6AD1F /* Book.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -170,6 +172,7 @@
 			children = (
 				EEA0B41E29199F580077165C /* CopyDetailsController */,
 				31A8794D291846B000286ABF /* BookViewModel.swift */,
+				EEA0B41E29199F580077165C /* CopyDetailsController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
