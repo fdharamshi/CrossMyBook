@@ -50,6 +50,7 @@ def get_copy_details(request):
         travelHistory.append({
             "date": travelPoint.date,
             "user": travelPoint.user.first_name + " " + travelPoint.user.last_name,
+            "user_picture": travelPoint.user.profile_url,
             "user_id": travelPoint.user.id,
             "lat": travelPoint.lat,
             "lon": travelPoint.lon
