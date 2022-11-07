@@ -13,7 +13,7 @@ struct CopyDetailsView: View {
   
   @ObservedObject var copyDetailsController: CopyDetailsController = CopyDetailsController()
   
-  @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.5, longitude: -0.12), span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
+  @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 40.43, longitude: -79.9), span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
   
   init() {
     copyDetailsController.fetchCopyDetails()
