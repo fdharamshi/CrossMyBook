@@ -32,11 +32,11 @@ def get_copy_details(request):
 
     # get status
     # 0: available  1: unavailable
-    # 2: owner, released  3: owner, not released
+    # 2: owner, listed  3: owner, not listed
     cur_status = copy.status
-    # get release information
+    # get listing information
     try:
-        release = Listing.objects.get(copy_id=copy_id,status=0)
+        listing = Listing.objects.get(copy_id=copy_id, status=0)
     except Listing.DoesNotExist:
         cur_status = 1;
 
@@ -66,10 +66,13 @@ def get_copy_details(request):
             "rating": rating,
 
             # information related with release
-            "shipping_expense": release.charges,
-            "willingness": release.max_distance,
-            "book_condition": release.book_condition,
-            "note": release.note
+            "Listing": {
+                "listing_id": listing.id,
+                "shipping_expense": listing.charges,
+                "willingness": listing.max_distance,
+                "book_condition": listing.book_condition,
+                "note": listing.note
+            }
         }
     else:
         response = {
