@@ -23,7 +23,7 @@ def get_copy_details(request):
     rating = 5
     reviews = Review.objects.filter(book=copy.book)
     if reviews.count() > 0:
-        rating = reviews.aggregate(Avg('stars'))
+        rating = reviews.aggregate(Avg('stars'))['stars__avg'] or 0.0
 
     # Fetch Travel History
     travelHistory = []
@@ -85,7 +85,7 @@ def get_copy_details(request):
             "cover_url": copy.book.cover_url,
             "title": copy.book.title,
             "author": copy.book.authors,
-            "rating": rating.stars__avg,
+            "rating": rating,
         }
 
     return JsonResponse(response, safe=False)
