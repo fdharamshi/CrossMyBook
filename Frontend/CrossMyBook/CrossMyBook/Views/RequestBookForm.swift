@@ -66,23 +66,8 @@ struct RequestBookForm: View {
             )
             .frame(height: 48)
           
-          RoundedRectangle(cornerRadius: 10)
-            .fill(.white)
-            .overlay(
-              TextField("Street Address", text: $streetAddress)
-                .padding(.leading)
-                .font(Font.custom("NotoSerif", size: 14))
-            )
-            .frame(height: 48)
-          
-          RoundedRectangle(cornerRadius: 10)
-            .fill(.white)
-            .overlay(
-              TextField("Zip Code", text: $zipCode)
-                .padding(.leading)
-                .font(Font.custom("NotoSerif", size: 14))
-            )
-            .frame(height: 48)
+          Button("Fetch Current Location", action: {})
+          Text("Lat: 123.123 Lon: -79.123")
           
           RoundedRectangle(cornerRadius: 10)
             .fill(.white)

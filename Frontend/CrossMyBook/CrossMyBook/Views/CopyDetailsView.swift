@@ -13,6 +13,12 @@ struct CopyDetailsView: View {
   
   @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.5, longitude: -0.12), span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
   
+  @ObservedObject var copyDetailsController: CopyDetailsController = CopyDetailsController()
+  
+  init() {
+    copyDetailsController.fetchCopyDetails()
+  }
+  
   var body: some View {
     
     VStack {
@@ -37,7 +43,7 @@ struct CopyDetailsView: View {
         
         VStack {
           VStack (alignment: .leading) {
-            Text("Cracking the Coding Interview")
+            Text(copyDetailsController.observedCopy?.title ?? "Fetching")
               .multilineTextAlignment(.leading)
               .fixedSize(horizontal: false, vertical: true)
               .font(.custom("NotoSerif", size: 20))
@@ -93,7 +99,7 @@ struct CopyDetailsView: View {
             .frame(width: .infinity)
             .multilineTextAlignment(.leading)
             .foregroundColor(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255))
-          Text("Incurred by the Requester")
+          Text(copyDetailsController.observedCopy?.listing?.shippingExpense ?? "Fetching")
             .font(.custom("NotoSerif", size: 15))
             .padding([.leading, .bottom, .trailing])
             .frame(width: .infinity)
