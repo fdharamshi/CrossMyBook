@@ -8,6 +8,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct ReleaseFormView: View {
+    @ObservedObject var vc: ReleaseController
     @ObservedObject var bookViewModel: BookViewModel = BookViewModel()
     @State var note: String = ""
     @State var streetAddress: String = ""
@@ -28,7 +29,7 @@ struct ReleaseFormView: View {
             }.padding(10)
             
             ScrollView {
-                BookCardView(bookData: self.bookViewModel.bookData)
+                ReleaseCardView(book: vc.book)
                 VStack {
                     TextField("Leave a note", text: $note, axis: .vertical)
                         .lineLimit(10...)
@@ -96,8 +97,8 @@ struct ReleaseFormView: View {
     
 }
 
-struct ReleaseFormView_Previews: PreviewProvider {
-    static var previews: some View {
-        ReleaseFormView()
-    }
-}
+//struct ReleaseFormView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ReleaseFormView()
+//    }
+//}

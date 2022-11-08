@@ -28,6 +28,8 @@
 		3A6B7C1C2919E603000744EB /* ReleaseSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6B7C1B2919E603000744EB /* ReleaseSelectionView.swift */; };
 		3A9F99CE291A230300E3909E /* ReleaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F99CD291A230300E3909E /* ReleaseController.swift */; };
 		3A9F99D0291A239200E3909E /* Release.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F99CF291A239200E3909E /* Release.swift */; };
+		3A9F9A20291ABBA700E3909E /* ISBNBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F9A1F291ABBA700E3909E /* ISBNBook.swift */; };
+		3A9F9A22291AD5F400E3909E /* ReleaseCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F9A21291AD5F400E3909E /* ReleaseCardView.swift */; };
 		B374B131291A274E0093755D /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B374B130291A274E0093755D /* RoundedTextField.swift */; };
 		B3B8824A291956F100B80B7E /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B88249291956F100B80B7E /* SignupView.swift */; };
 		EE220BBE2913840200CEC13A /* NotoSerif-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE220BBD2913840100CEC13A /* NotoSerif-Bold.ttf */; };
@@ -68,6 +70,8 @@
 		3A6B7C1B2919E603000744EB /* ReleaseSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseSelectionView.swift; sourceTree = "<group>"; };
 		3A9F99CD291A230300E3909E /* ReleaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseController.swift; sourceTree = "<group>"; };
 		3A9F99CF291A239200E3909E /* Release.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Release.swift; sourceTree = "<group>"; };
+		3A9F9A1F291ABBA700E3909E /* ISBNBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISBNBook.swift; sourceTree = "<group>"; };
+		3A9F9A21291AD5F400E3909E /* ReleaseCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseCardView.swift; sourceTree = "<group>"; };
 		B374B130291A274E0093755D /* RoundedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
 		B3B88249291956F100B80B7E /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		EE220BBD2913840100CEC13A /* NotoSerif-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerif-Bold.ttf"; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 			children = (
 				3A6B7C192919E5D2000744EB /* ReleaseFormView.swift */,
 				3A6B7C1B2919E603000744EB /* ReleaseSelectionView.swift */,
+				3A9F9A21291AD5F400E3909E /* ReleaseCardView.swift */,
 			);
 			name = Release;
 			sourceTree = "<group>";
@@ -152,6 +157,7 @@
 		3A9F99CC291A22F000E3909E /* ReleaseModels */ = {
 			isa = PBXGroup;
 			children = (
+				3A9F9A1F291ABBA700E3909E /* ISBNBook.swift */,
 			);
 			path = ReleaseModels;
 			sourceTree = "<group>";
@@ -363,6 +369,7 @@
 				31954DD22917042E00C6AD1F /* BookDetailView.swift in Sources */,
 				3A9F99D0291A239200E3909E /* Release.swift in Sources */,
 				B374B131291A274E0093755D /* RoundedTextField.swift in Sources */,
+				3A9F9A22291AD5F400E3909E /* ReleaseCardView.swift in Sources */,
 				31A8794C29181C8300286ABF /* BookParser.swift in Sources */,
 				31A879582919E8A300286ABF /* RatingsView.swift in Sources */,
 				EE220BC52913978B00CEC13A /* CopyDetailsView.swift in Sources */,
@@ -372,6 +379,7 @@
 				31954DD4291707EC00C6AD1F /* ColorExtension.swift in Sources */,
 				B3B8824A291956F100B80B7E /* SignupView.swift in Sources */,
 				EE9181FF2918D91A003CD0B0 /* RequestBookForm.swift in Sources */,
+				3A9F9A20291ABBA700E3909E /* ISBNBook.swift in Sources */,
 				EEA0B42029199F6B0077165C /* CopyDetailsController.swift in Sources */,
 				EE3609F72911B594006DB257 /* ContentView.swift in Sources */,
 				3A6B7C1C2919E603000744EB /* ReleaseSelectionView.swift in Sources */,
