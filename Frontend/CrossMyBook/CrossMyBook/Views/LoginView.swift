@@ -11,9 +11,15 @@ struct LoginView: View {
   
   @State var email: String = ""
   @State var password: String = ""
+  @State var jump = false
   
-    var body: some View {
+  var body: some View {
+    NavigationView {
       VStack {
+        
+        NavigationLink(destination: LandingView(), isActive: $jump) {
+          EmptyView()
+        }
         
         Spacer()
         
@@ -28,20 +34,20 @@ struct LoginView: View {
         
         VStack {
           
-          // RoundedTextField(text: $email, placeholder: "email", height: 48)
+          RoundedTextField(text: $email, placeholder: "email", height: 48)
           
-          // RoundedTextField(text: $password, placeholder: "password", height: 48)
+          RoundedTextField(text: $password, placeholder: "password", height: 48)
           
         }.padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
         
         Button(action: {
-            print("Login")
+          jump = true
         }) {
           Text("Login").font(.custom("NotoSerif", size: 15).bold())
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(RoundedRectangle(cornerRadius: 8).fill(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255)))
-                .foregroundColor(Color.white)
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(RoundedRectangle(cornerRadius: 8).fill(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255)))
+            .foregroundColor(Color.white)
         }
         .buttonStyle(PlainButtonStyle())
         .padding()
@@ -50,22 +56,24 @@ struct LoginView: View {
         
         HStack{
           Text("Not a member?")
-          Button("Sign Up Now", action: {})
-            .foregroundColor(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255))
+          NavigationLink(destination: SignupView()) {
+            Text("Sign Up Now")
+              .foregroundColor(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255))
+          }
         }
         .font(Font.custom("NotoSerif", size: 15))
         .padding()
         
         Spacer()
         
-        
       }.background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
-    }
-    }
+    }.navigationBarHidden(true)
+  }
+}
 
 
 struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
-    }
+  static var previews: some View {
+    LoginView()
+  }
 }
