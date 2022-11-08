@@ -56,7 +56,7 @@ struct BookDetailView: View {
                 }
             }.padding(18)
             Spacer()
-            NavBar()
+//            NavBar()
         }
         .background(Color.backgroundGrey)
         .onAppear(perform: loadBookData)

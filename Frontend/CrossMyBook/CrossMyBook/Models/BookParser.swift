@@ -10,7 +10,7 @@ import Foundation
 class BookParser {
     var bookId: Int = 1
     static var DefaultProfileURL: String = "https://xsgames.co/randomusers/assets/avatars/male/44.jpg"
-    let urlString = "http://127.0.0.1:8000/getBookDetails?book_id=1"
+    let urlString = "http://ec2-3-87-92-147.compute-1.amazonaws.com:8000/getBookDetails?book_id=1"
     
     func fetchBookDetails(completionHandler: @escaping ((Book) -> ())) {
         let task = URLSession.shared.dataTask(with: URL(string: urlString)!) {
