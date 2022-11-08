@@ -97,7 +97,7 @@ struct ReleaseFormView: View {
                 Alert(title: Text("Location"), message: Text(vc.generateTitle()))
             }
             Button(action: {
-                vc.releaseNewBook()
+                vc.createRelease()
             }) {
                 Text("Release Book").font(.custom("NotoSerif", size: 15))
                     .padding()
