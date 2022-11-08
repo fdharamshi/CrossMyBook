@@ -28,7 +28,6 @@ class Location: NSObject {
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
         }
-        
         if let currLocation = locationManager.location {
             self.latitude = currLocation.coordinate.latitude
             self.longitude = currLocation.coordinate.longitude

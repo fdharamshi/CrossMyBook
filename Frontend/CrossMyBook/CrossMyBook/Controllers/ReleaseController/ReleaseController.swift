@@ -50,12 +50,8 @@ class ReleaseController: ObservableObject {
     }
     
     func generateTitle() -> String {
-      let message = "Your car is currently at:\n(\(self.loc.latitude), \(self.loc.longitude))"
+      let message = "Your location is at:\n(\(self.loc.latitude), \(self.loc.longitude))"
       return message
     }
 
-    func generateMessage() -> String {
-      let message = "\nWhen you want to map to this location, simply press the \"Where is my car?\" button."
-      return message
-    }
 }

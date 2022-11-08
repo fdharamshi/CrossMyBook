@@ -38,7 +38,7 @@ struct ReleaseFormView: View {
                         self.vc.loc.getCurrentLocation()
                         self.showingAlert = true
                     }) {
-                        Text("here's my car")
+                        Text("Get my location")
                     }
                     TextField("Street Address", text: $vc.release.distance)
                         .frame(height: 48)
@@ -94,7 +94,7 @@ struct ReleaseFormView: View {
                         .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
                 }.padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
             }.alert(isPresented: $showingAlert) {
-                Alert(title: Text(vc.generateTitle()), message: Text(vc.generateMessage()))
+                Alert(title: Text("Location"), message: Text(vc.generateTitle()))
             }
             Button(action: {
                 vc.releaseNewBook()
