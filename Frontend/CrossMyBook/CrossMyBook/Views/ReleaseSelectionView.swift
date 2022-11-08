@@ -56,7 +56,7 @@ struct ReleaseSelectionView: View {
             }
             .background(Color.backgroundGrey)
             
-        }
+        }.navigationBarHidden(true)
     }
 }
 
