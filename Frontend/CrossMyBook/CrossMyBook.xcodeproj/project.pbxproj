@@ -134,6 +134,8 @@
 				3A6B7C192919E5D2000744EB /* ReleaseFormView.swift */,
 			);
 			name = Release;
+			sourceTree = "<group>";
+		};
 		31A8795229185E3D00286ABF /* BookDetailUse */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +145,8 @@
 				31A8795329186AF600286ABF /* BDReview.swift */,
 			);
 			name = BookDetailUse;
+			sourceTree = "<group>";
+		};
 		3A6B7C182919E5B6000744EB /* Release */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +154,8 @@
 				3A6B7C1B2919E603000744EB /* ReleaseSelectionView.swift */,
 			);
 			name = Release;
+			sourceTree = "<group>";
+		};
 		31A8795229185E3D00286ABF /* BookDetailUse */ = {
 			isa = PBXGroup;
 			children = (
