@@ -9,6 +9,7 @@ import SDWebImageSwiftUI
 import Combine
 
 struct ReleaseFormView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var vc: ReleaseController
     @ObservedObject var bookViewModel: BookViewModel = BookViewModel()
     @State var zip: String = ""
@@ -18,7 +19,7 @@ struct ReleaseFormView: View {
         VStack {
             HStack {
                 Button (action: {
-                    print("Back") // TODO: back action
+                    self.presentationMode.wrappedValue.dismiss() //
                 }) {
                     FAIcon(name: "chevron-left")
                 }
@@ -39,32 +40,34 @@ struct ReleaseFormView: View {
                         self.showingAlert = true
                     }) {
                         Text("Get my location")
-                    }
-                    TextField("Street Address", text: $vc.release.distance)
-                        .frame(height: 48)
+                    }.frame(height: 48)
                         .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
                         .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
+                    //                    TextField("Street Address", text: $vc.release.distance)
+                    //                        .frame(height: 48)
+                    //                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                    //                        .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
                     
-                    TextField("Zip Code", text: $zip)
-                        .frame(height: 48)
-                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-                        .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
-                        .keyboardType(.numberPad)
-                        .onReceive(Just(zip)) { newValue in
-                            let filtered = newValue.filter { "0123456789".contains($0) }
-                            if filtered != newValue {
-                                zip = ""
-                            }else{
-                                vc.inputZipCode(zip:zip)
-                            }
-                        }
+                    //                    TextField("Zip Code", text: $zip)
+                    //                        .frame(height: 48)
+                    //                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                    //                        .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
+                    //                        .keyboardType(.numberPad)
+                    //                        .onReceive(Just(zip)) { newValue in
+                    //                            let filtered = newValue.filter { "0123456789".contains($0) }
+                    //                            if filtered != newValue {
+                    //                                zip = ""
+                    //                            }else{
+                    //                                vc.inputZipCode(zip:zip)
+                    //                            }
+                    //                        }
                     HStack{
                         CustomText(s: "Shipping Option", size: 14).bold()
                         Spacer()
                         Picker("Shipping Option", selection: $vc.release.shipping) {
-                            Text("Pay by Requester")
-                            Text("Pay by Sender")
-                            Text("Split by Both Parties")
+                            Text("Pay by Requester").tag("Pay by the Requester")
+                            Text("Pay by Sender").tag("Pay by the Sender")
+                            Text("Split by Both Parties").tag("Split by Both Parties")
                         }.pickerStyle(.menu)
                     }.frame(height: 48)
                         .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
@@ -73,10 +76,10 @@ struct ReleaseFormView: View {
                         CustomText(s: "Travel Distance", size: 14).bold()
                         Spacer()
                         Picker("Travel Distance", selection: $vc.release.distance) {
-                            Text("Same City")
-                            Text("Same State")
-                            Text("Same Country")
-                            Text("Worldwide")
+                            Text("Same City").tag("Same City")
+                            Text("Same State").tag("Same State")
+                            Text("Same Country").tag("Same Country")
+                            Text("Worldwide").tag("Worldwide")
                         }.pickerStyle(.menu)
                     }.frame(height: 48)
                         .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
@@ -85,9 +88,9 @@ struct ReleaseFormView: View {
                         CustomText(s: "Book Condition", size: 14).bold()
                         Spacer()
                         Picker("Book Condition", selection: $vc.release.condition) {
-                            Text("Excellent")
-                            Text("Good")
-                            Text("Fair")
+                            Text("Excellent").tag("Excellent")
+                            Text("Good").tag("Good")
+                            Text("Fair").tag("Fair")
                         }.pickerStyle(.menu)
                     }.frame(height: 48)
                         .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
@@ -96,7 +99,11 @@ struct ReleaseFormView: View {
             }.alert(isPresented: $showingAlert) {
                 Alert(title: Text("Location"), message: Text(vc.generateTitle()))
             }
+            
+            
+            
             Button(action: {
+                // vc.test()
                 vc.createRelease()
             }) {
                 Text("Release Book").font(.custom("NotoSerif", size: 15))
