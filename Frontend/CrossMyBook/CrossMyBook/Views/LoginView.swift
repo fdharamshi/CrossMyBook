@@ -27,23 +27,10 @@ struct LoginView: View {
           .foregroundColor(Color(red: 35 / 255, green: 23 / 255, blue: 9 / 255))
         
         VStack {
-          RoundedRectangle(cornerRadius: 10)
-            .fill(.white)
-            .overlay(
-              TextField("email", text: $email)
-                .padding(.leading)
-                .font(Font.custom("NotoSerif", size: 14))
-            )
-            .frame(height: 48)
           
-          RoundedRectangle(cornerRadius: 10)
-            .fill(.white)
-            .overlay(
-              TextField("password", text: $password)
-                .padding(.leading)
-                .font(Font.custom("NotoSerif", size: 14))
-            )
-            .frame(height: 48)
+          RoundedTextField(text: $email, placeholder: "email", height: 48)
+          
+          RoundedTextField(text: $password, placeholder: "password", height: 48)
           
         }.padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
         
