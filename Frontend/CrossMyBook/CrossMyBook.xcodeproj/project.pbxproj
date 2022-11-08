@@ -127,8 +127,8 @@
 		3A6B7C182919E5B6000744EB /* Release */ = {
 			isa = PBXGroup;
 			children = (
-				3A6B7C192919E5D2000744EB /* ReleaseFormView.swift */,
 				3A6B7C1B2919E603000744EB /* ReleaseSelectionView.swift */,
+				3A6B7C192919E5D2000744EB /* ReleaseFormView.swift */,
 			);
 			name = Release;
 			sourceTree = "<group>";
