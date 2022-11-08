@@ -9,6 +9,10 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct ReleaseSelectionView: View {
+  
+  @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+
+  
     @ObservedObject var vc = ReleaseController()
     @State var isbn: String = ""
     @State var jump = false
@@ -24,7 +28,7 @@ struct ReleaseSelectionView: View {
                 // MARK: top bar
                 HStack {
                     Button (action: {
-                        print("Back") // TODO: back action
+                      self.presentationMode.wrappedValue.dismiss() // TODO: back action
                     }) {
                         FAIcon(name: "chevron-left")
                     }
