@@ -15,7 +15,7 @@ struct Book : Decodable {
   let description: String
   let rating: Float
   let copies: [BDCopy]
-//  let reviews: [BDReview]
+  let reviews: [BDReview]
 
   enum CodingKeys : String, CodingKey {
     case bookId = "book_id"
@@ -25,6 +25,6 @@ struct Book : Decodable {
     case description
     case rating
     case copies
-//    case reviews
+    case reviews
   }
 }

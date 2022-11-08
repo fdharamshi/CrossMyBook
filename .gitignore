@@ -1,3 +1,6 @@
 .DS_Store
 Backend/thanos/
 Frontend/CrossMyBook/.DS_Store
+Backend/api/migrations/__pycache__/
+Backend/api/endpoints/__pycache__/
+Backend/api/migrations/__pycache__/

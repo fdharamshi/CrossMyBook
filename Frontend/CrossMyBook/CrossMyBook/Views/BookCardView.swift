@@ -17,7 +17,7 @@ struct BookCardView: View {
                 VStack(alignment: .leading) {
                     CustomText(s: bookData!.title, size: 18).bold()
                     CustomText(s: bookData!.author, size: 14)
-                    Text(String(bookData!.rating))// FIXME: add stars component
+                    RatingsView(rating: Int(floor(bookData!.rating)), requireHalf: (floor(bookData!.rating) < bookData!.rating))
                     CustomText(s: bookData!.description, size: 12)
                 }
             }.padding(18)

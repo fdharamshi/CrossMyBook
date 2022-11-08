@@ -24,6 +24,7 @@ struct CopyCardView: View {
             Spacer()
             VStack {
                 Button (action: {
+                    // TODO: jump to request
                     print("Login")
                 }) {
                     CustomText(s: "request", size: 12, color: Color.white).bold()
