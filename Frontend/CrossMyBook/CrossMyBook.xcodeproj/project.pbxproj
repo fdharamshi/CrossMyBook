@@ -19,12 +19,6 @@
 		31954DDD2917190A00C6AD1F /* CustomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31954DDC2917190A00C6AD1F /* CustomText.swift */; };
 		31954DE129171EC200C6AD1F /* CopyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31954DE029171EC200C6AD1F /* CopyCardView.swift */; };
 		31954DE329172B5600C6AD1F /* ReviewCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31954DE229172B5600C6AD1F /* ReviewCardView.swift */; };
-<<<<<<< HEAD
-		3A6B7C1A2919E5D2000744EB /* ReleaseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6B7C192919E5D2000744EB /* ReleaseFormView.swift */; };
-		3A6B7C1C2919E603000744EB /* ReleaseSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6B7C1B2919E603000744EB /* ReleaseSelectionView.swift */; };
-		B3B8824A291956F100B80B7E /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B88249291956F100B80B7E /* SignupView.swift */; };
-=======
->>>>>>> c6d8def (caifei: book detail page finished)
 		31A8794C29181C8300286ABF /* BookParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A8794B29181C8300286ABF /* BookParser.swift */; };
 		31A8794E291846B000286ABF /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A8794D291846B000286ABF /* BookViewModel.swift */; };
 		31A8795029184F8300286ABF /* BDCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A8794F29184F8300286ABF /* BDCopy.swift */; };
@@ -68,12 +62,6 @@
 		31954DDC2917190A00C6AD1F /* CustomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomText.swift; sourceTree = "<group>"; };
 		31954DE029171EC200C6AD1F /* CopyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyCardView.swift; sourceTree = "<group>"; };
 		31954DE229172B5600C6AD1F /* ReviewCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCardView.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		3A6B7C192919E5D2000744EB /* ReleaseFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseFormView.swift; sourceTree = "<group>"; };
-		3A6B7C1B2919E603000744EB /* ReleaseSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseSelectionView.swift; sourceTree = "<group>"; };
-		B3B88249291956F100B80B7E /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
-=======
->>>>>>> c6d8def (caifei: book detail page finished)
 		31A8794B29181C8300286ABF /* BookParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BookParser.swift; path = CrossMyBook/Models/BookParser.swift; sourceTree = SOURCE_ROOT; };
 		31A8794D291846B000286ABF /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BookViewModel.swift; path = CrossMyBook/Views/BookViewModel.swift; sourceTree = SOURCE_ROOT; };
 		31A8794F29184F8300286ABF /* BDCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BDCopy.swift; path = CrossMyBook/Models/BDCopy.swift; sourceTree = SOURCE_ROOT; };
