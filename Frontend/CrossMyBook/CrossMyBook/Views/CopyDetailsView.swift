@@ -11,21 +11,32 @@ import SDWebImageSwiftUI
 
 struct CopyDetailsView: View {
   
+  @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+  
   @ObservedObject var copyDetailsController: CopyDetailsController = CopyDetailsController()
   
   @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 49.9, longitude: -79.29), span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
   
-  init() {
-    copyDetailsController.fetchCopyDetails()
+  let copyID: Int
+  
+  init(_ id: Int) {
+    self.copyID = id
+    copyDetailsController.fetchCopyDetails(id)
   }
   
   var body: some View {
     NavigationView {
       VStack {
+        
         HStack {
+            Button (action: {
+              self.presentationMode.wrappedValue.dismiss() // TODO: back action
+            }) {
+                FAIcon(name: "chevron-left")
+            }
           Text("Cross My Book")
-            .font(.custom("NotoSerif", size: 25)).bold()
-        }
+            .font(.custom("NotoSerif", size: 25)).bold().frame(maxWidth: .infinity).foregroundColor(.fontBlack)
+        }.padding(10)
         ScrollView {
           
           ZStack (alignment: .bottomLeading) {
@@ -227,6 +238,6 @@ struct CopyDetailsView: View {
 
 struct CopyDetailsView_Previews: PreviewProvider {
   static var previews: some View {
-    CopyDetailsView()
+    CopyDetailsView(2)
   }
 }

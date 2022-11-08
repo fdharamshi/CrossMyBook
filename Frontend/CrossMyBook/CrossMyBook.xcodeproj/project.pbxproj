@@ -49,6 +49,8 @@
 		EE862130291ADCFC00000345 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE86212F291ADCFC00000345 /* DashboardView.swift */; };
 		EE862132291ADD0800000345 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE862131291ADD0800000345 /* CommunityView.swift */; };
 		EE862134291ADD1E00000345 /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE862133291ADD1E00000345 /* LandingView.swift */; };
+		EE862136291B0B0200000345 /* TemporaryMainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE862135291B0B0200000345 /* TemporaryMainModel.swift */; };
+		EE862138291B0B1E00000345 /* TemporaryMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE862137291B0B1E00000345 /* TemporaryMainController.swift */; };
 		EE9181FF2918D91A003CD0B0 /* RequestBookForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9181FE2918D91A003CD0B0 /* RequestBookForm.swift */; };
 		EEA0B41D29199EB10077165C /* CopyDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA0B41C29199EB10077165C /* CopyDetails.swift */; };
 		EEA0B42029199F6B0077165C /* CopyDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA0B41F29199F6B0077165C /* CopyDetailsController.swift */; };
@@ -98,6 +100,8 @@
 		EE86212F291ADCFC00000345 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		EE862131291ADD0800000345 /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
 		EE862133291ADD1E00000345 /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
+		EE862135291B0B0200000345 /* TemporaryMainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryMainModel.swift; sourceTree = "<group>"; };
+		EE862137291B0B1E00000345 /* TemporaryMainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryMainController.swift; sourceTree = "<group>"; };
 		EE9181FE2918D91A003CD0B0 /* RequestBookForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBookForm.swift; sourceTree = "<group>"; };
 		EEA0B41C29199EB10077165C /* CopyDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyDetails.swift; sourceTree = "<group>"; };
 		EEA0B41F29199F6B0077165C /* CopyDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyDetailsController.swift; sourceTree = "<group>"; };
@@ -290,6 +294,8 @@
 			isa = PBXGroup;
 			children = (
 				EE86212D291ADCE300000345 /* HomeView.swift */,
+				EE862135291B0B0200000345 /* TemporaryMainModel.swift */,
+				EE862137291B0B1E00000345 /* TemporaryMainController.swift */,
 			);
 			name = HomeView;
 			sourceTree = "<group>";
@@ -428,7 +434,9 @@
 				31954DD22917042E00C6AD1F /* BookDetailView.swift in Sources */,
 				3A9F99D0291A239200E3909E /* Release.swift in Sources */,
 				B374B131291A274E0093755D /* RoundedTextField.swift in Sources */,
+				EE862136291B0B0200000345 /* TemporaryMainModel.swift in Sources */,
 				3A9F9A22291AD5F400E3909E /* ReleaseCardView.swift in Sources */,
+				EE862138291B0B1E00000345 /* TemporaryMainController.swift in Sources */,
 				31A8794C29181C8300286ABF /* BookParser.swift in Sources */,
 				31A879582919E8A300286ABF /* RatingsView.swift in Sources */,
 				EE220BC52913978B00CEC13A /* CopyDetailsView.swift in Sources */,
@@ -439,10 +447,8 @@
 				B3B8824A291956F100B80B7E /* SignupView.swift in Sources */,
 				EE9181FF2918D91A003CD0B0 /* RequestBookForm.swift in Sources */,
 				3A9F9A20291ABBA700E3909E /* ISBNBook.swift in Sources */,
-
 				EE86212E291ADCE300000345 /* HomeView.swift in Sources */,
 				3A9F9A24291AEEE700E3909E /* Location.swift in Sources */,
-
 				EEA0B42029199F6B0077165C /* CopyDetailsController.swift in Sources */,
 				EE3609F72911B594006DB257 /* ContentView.swift in Sources */,
 				3A6B7C1C2919E603000744EB /* ReleaseSelectionView.swift in Sources */,
