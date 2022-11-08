@@ -41,8 +41,7 @@ struct NavBar: View {
             FAIcon(name: "plus-circle", size: 60)
               .background(Color.white)
               .cornerRadius(30)
-              .offset(x:0, y: -45)
-          }
+          }.offset(x:0, y: -45)
         }
   }
 }
