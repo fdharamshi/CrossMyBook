@@ -6,16 +6,13 @@
 //
 import SwiftUI
 import SDWebImageSwiftUI
+import Combine
 
 struct ReleaseFormView: View {
     @ObservedObject var vc: ReleaseController
     @ObservedObject var bookViewModel: BookViewModel = BookViewModel()
-    @State var note: String = ""
-    @State var streetAddress: String = ""
-    @State var zipCode: String = ""
-    @State var shipping: String = ""
-    @State var distance: String = ""
-    @State var condition: String = ""
+    @State var zip: String = ""
+    @State private var showingAlert = false
     var body: some View {
         
         VStack {
@@ -31,24 +28,40 @@ struct ReleaseFormView: View {
             ScrollView {
                 ReleaseCardView(book: vc.book)
                 VStack {
-                    TextField("Leave a note", text: $note, axis: .vertical)
+                    TextField("Leave a note", text: $vc.release.note, axis: .vertical)
                         .lineLimit(10...)
                         .padding(EdgeInsets(top: 20, leading: 20, bottom: 15, trailing: 20))
                         .multilineTextAlignment(.leading)
                         .background(RoundedRectangle(cornerRadius:10).fill(Color.white))
-                    TextField("Street Address", text: $streetAddress)
+                    
+                    Button(action: {
+                        self.vc.loc.getCurrentLocation()
+                        self.showingAlert = true
+                    }) {
+                        Text("here's my car")
+                    }
+                    TextField("Street Address", text: $vc.release.distance)
                         .frame(height: 48)
                         .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
                         .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
                     
-                    TextField("Zip Code", text: $zipCode)
+                    TextField("Zip Code", text: $zip)
                         .frame(height: 48)
                         .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
                         .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
+                        .keyboardType(.numberPad)
+                        .onReceive(Just(zip)) { newValue in
+                            let filtered = newValue.filter { "0123456789".contains($0) }
+                            if filtered != newValue {
+                                zip = ""
+                            }else{
+                                vc.inputZipCode(zip:zip)
+                            }
+                        }
                     HStack{
                         CustomText(s: "Shipping Option", size: 14).bold()
                         Spacer()
-                        Picker("Shipping Option", selection: $shipping) {
+                        Picker("Shipping Option", selection: $vc.release.shipping) {
                             Text("Pay by Requester")
                             Text("Pay by Sender")
                             Text("Split by Both Parties")
@@ -59,7 +72,7 @@ struct ReleaseFormView: View {
                     HStack{
                         CustomText(s: "Travel Distance", size: 14).bold()
                         Spacer()
-                        Picker("Travel Distance", selection: $shipping) {
+                        Picker("Travel Distance", selection: $vc.release.distance) {
                             Text("Same City")
                             Text("Same State")
                             Text("Same Country")
@@ -71,7 +84,7 @@ struct ReleaseFormView: View {
                     HStack{
                         CustomText(s: "Book Condition", size: 14).bold()
                         Spacer()
-                        Picker("Book Condition", selection: $condition) {
+                        Picker("Book Condition", selection: $vc.release.condition) {
                             Text("Excellent")
                             Text("Good")
                             Text("Fair")
@@ -80,9 +93,11 @@ struct ReleaseFormView: View {
                         .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
                         .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
                 }.padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
+            }.alert(isPresented: $showingAlert) {
+                Alert(title: Text(vc.generateTitle()), message: Text(vc.generateMessage()))
             }
             Button(action: {
-                print("Release Book")
+                vc.releaseNewBook()
             }) {
                 Text("Release Book").font(.custom("NotoSerif", size: 15))
                     .padding()

@@ -30,6 +30,7 @@
 		3A9F99D0291A239200E3909E /* Release.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F99CF291A239200E3909E /* Release.swift */; };
 		3A9F9A20291ABBA700E3909E /* ISBNBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F9A1F291ABBA700E3909E /* ISBNBook.swift */; };
 		3A9F9A22291AD5F400E3909E /* ReleaseCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F9A21291AD5F400E3909E /* ReleaseCardView.swift */; };
+		3A9F9A24291AEEE700E3909E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F9A23291AEEE700E3909E /* Location.swift */; };
 		B374B131291A274E0093755D /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B374B130291A274E0093755D /* RoundedTextField.swift */; };
 		B3B8824A291956F100B80B7E /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B88249291956F100B80B7E /* SignupView.swift */; };
 		EE220BBE2913840200CEC13A /* NotoSerif-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE220BBD2913840100CEC13A /* NotoSerif-Bold.ttf */; };
@@ -72,6 +73,7 @@
 		3A9F99CF291A239200E3909E /* Release.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Release.swift; sourceTree = "<group>"; };
 		3A9F9A1F291ABBA700E3909E /* ISBNBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISBNBook.swift; sourceTree = "<group>"; };
 		3A9F9A21291AD5F400E3909E /* ReleaseCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseCardView.swift; sourceTree = "<group>"; };
+		3A9F9A23291AEEE700E3909E /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		B374B130291A274E0093755D /* RoundedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
 		B3B88249291956F100B80B7E /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		EE220BBD2913840100CEC13A /* NotoSerif-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerif-Bold.ttf"; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				3A9F9A1F291ABBA700E3909E /* ISBNBook.swift */,
+				3A9F99CF291A239200E3909E /* Release.swift */,
 			);
 			path = ReleaseModels;
 			sourceTree = "<group>";
@@ -183,7 +186,7 @@
 				EEA0B41B29199E9A0077165C /* CopyDetailsModels */,
 				31954DD9291714B500C6AD1F /* Book.swift */,
 				31A8795229185E3D00286ABF /* BookDetailUse */,
-				3A9F99CF291A239200E3909E /* Release.swift */,
+				3A9F9A23291AEEE700E3909E /* Location.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				B3B8824A291956F100B80B7E /* SignupView.swift in Sources */,
 				EE9181FF2918D91A003CD0B0 /* RequestBookForm.swift in Sources */,
 				3A9F9A20291ABBA700E3909E /* ISBNBook.swift in Sources */,
+				3A9F9A24291AEEE700E3909E /* Location.swift in Sources */,
 				EEA0B42029199F6B0077165C /* CopyDetailsController.swift in Sources */,
 				EE3609F72911B594006DB257 /* ContentView.swift in Sources */,
 				3A6B7C1C2919E603000744EB /* ReleaseSelectionView.swift in Sources */,
