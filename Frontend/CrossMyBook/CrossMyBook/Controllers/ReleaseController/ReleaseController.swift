@@ -9,7 +9,9 @@ import Foundation
 
 class ReleaseController: ObservableObject {
     @Published var book: ISBNBook?
-    
+    @Published var release: Release = Release()
+    let loc: Location = Location()
+
     func fetchBookDetails(isbn: String) {
         fetchData(isbn, completion: { bookModel in
             self.book = bookModel
@@ -38,4 +40,18 @@ class ReleaseController: ObservableObject {
         }
         task.resume()
     }
+    
+    func releaseNewBook(){
+        print(release.note)
+    }
+    
+    func inputZipCode(zip:String){
+        release.zipCode = Int(zip) ?? 0
+    }
+    
+    func generateTitle() -> String {
+      let message = "Your location is at:\n(\(self.loc.latitude), \(self.loc.longitude))"
+      return message
+    }
+
 }
