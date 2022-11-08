@@ -26,12 +26,19 @@ struct BookDetailView: View {
             }.padding(10)
         // MARK: book info
             BookCardView(bookData: self.bookViewModel.bookData)
+
+            
         // MARK: copy list
             VStack(alignment: .leading) {
                 CustomText(s: "\(self.bookViewModel.availableCount()) copies available now", size: 14).bold()
                 HStack {
                     ForEach((self.bookViewModel.getCopies()), id: \.self.copyId) { copy in
-                        WebImage(url: URL(string: copy.ownerProfileUrl!.count > 0 ? copy.ownerProfileUrl! : BookParser.DefaultProfileURL)).resizable().scaledToFit().frame(width: 60, height: 60).cornerRadius(50)
+                        Button(action: {
+                            print("button pressed")
+                            self.displayCopy = copy
+                                }) {
+                                    WebImage(url: URL(string: copy.ownerProfileUrl!.count > 0 ? copy.ownerProfileUrl! : BookParser.DefaultProfileURL)).resizable().scaledToFit().frame(width: 60, height: 60).cornerRadius(50)
+                                }
                     }
                 }
                 CopyCardView(copy: self.displayCopy)
@@ -42,16 +49,13 @@ struct BookDetailView: View {
                 CustomText(s: "Reviews", size: 14).bold()
                 ScrollView(.horizontal) {
                     HStack {
-                        ForEach(0..<5) { index in
-                                        ReviewCardView()
-                                    }
-//                        ForEach(self.bookViewModel.getReviews(), id: \.self.reviewId) { review in
-//                            ReviewCardView()
-//                        }
+                        ForEach(self.bookViewModel.getReviews(), id: \.self.reviewId) { review in
+                            ReviewCardView(reviewData: review)
+                        }
                     }
                 }
             }.padding(18)
-//            Spacer()
+            Spacer()
             NavBar()
         }
         .background(Color.backgroundGrey)
@@ -66,6 +70,8 @@ struct BookDetailView: View {
         BookParser().fetchBookDetails(completionHandler: anonymous)
         print(self.bookViewModel.bookData == nil)
     }
+    
+    
 }
 
 struct BookDetailView_Previews: PreviewProvider {

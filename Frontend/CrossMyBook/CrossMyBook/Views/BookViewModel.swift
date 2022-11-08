@@ -23,18 +23,18 @@ class BookViewModel: ObservableObject {
     
     func getCopies() -> [BDCopy] {
         if (bookData != nil) {
-            print(bookData!.copies)
+//            print(bookData!.copies)
             return bookData!.copies
         }
         return []
     }
     
-//    func getReviews() -> [BDReview] {
-//        if (bookData != nil) {
-//            print(bookData!.reviews)
-//            return bookData!.reviews
-//        }
-//        return []
-//    }
+    func getReviews() -> [BDReview] {
+        if (bookData != nil) {
+            print(bookData!.reviews)
+            return bookData!.reviews
+        }
+        return []
+    }
 }
 
