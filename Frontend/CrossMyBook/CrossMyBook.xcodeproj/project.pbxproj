@@ -28,6 +28,7 @@
 		3A6B7C1C2919E603000744EB /* ReleaseSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6B7C1B2919E603000744EB /* ReleaseSelectionView.swift */; };
 		3A9F99CE291A230300E3909E /* ReleaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F99CD291A230300E3909E /* ReleaseController.swift */; };
 		3A9F99D0291A239200E3909E /* Release.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F99CF291A239200E3909E /* Release.swift */; };
+		B374B131291A274E0093755D /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B374B130291A274E0093755D /* RoundedTextField.swift */; };
 		B3B8824A291956F100B80B7E /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B88249291956F100B80B7E /* SignupView.swift */; };
 		EE220BBE2913840200CEC13A /* NotoSerif-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE220BBD2913840100CEC13A /* NotoSerif-Bold.ttf */; };
 		EE220BC32913849500CEC13A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE220BC22913849500CEC13A /* LoginView.swift */; };
@@ -67,6 +68,7 @@
 		3A6B7C1B2919E603000744EB /* ReleaseSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseSelectionView.swift; sourceTree = "<group>"; };
 		3A9F99CD291A230300E3909E /* ReleaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseController.swift; sourceTree = "<group>"; };
 		3A9F99CF291A239200E3909E /* Release.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Release.swift; sourceTree = "<group>"; };
+		B374B130291A274E0093755D /* RoundedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
 		B3B88249291956F100B80B7E /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		EE220BBD2913840100CEC13A /* NotoSerif-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerif-Bold.ttf"; sourceTree = "<group>"; };
 		EE220BC22913849500CEC13A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 		31954DDB291718DD00C6AD1F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				B374B130291A274E0093755D /* RoundedTextField.swift */,
 				31954DD3291707EC00C6AD1F /* ColorExtension.swift */,
 				31954DD5291710FF00C6AD1F /* FAIcon.swift */,
 				31954DDC2917190A00C6AD1F /* CustomText.swift */,
@@ -359,6 +362,7 @@
 				31A8795429186AF600286ABF /* BDReview.swift in Sources */,
 				31954DD22917042E00C6AD1F /* BookDetailView.swift in Sources */,
 				3A9F99D0291A239200E3909E /* Release.swift in Sources */,
+				B374B131291A274E0093755D /* RoundedTextField.swift in Sources */,
 				31A8794C29181C8300286ABF /* BookParser.swift in Sources */,
 				31A879582919E8A300286ABF /* RatingsView.swift in Sources */,
 				EE220BC52913978B00CEC13A /* CopyDetailsView.swift in Sources */,
