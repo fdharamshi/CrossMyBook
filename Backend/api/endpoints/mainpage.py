@@ -19,7 +19,7 @@ def temporary_main(request):
 
     for copy in copies:
         all_copies.append({
-            "listing_id": copy.id,
+            "copy_id": copy.id,
             "title": copy.book.title,
             "cover_url": copy.book.cover_url,
             "author": copy.book.authors
