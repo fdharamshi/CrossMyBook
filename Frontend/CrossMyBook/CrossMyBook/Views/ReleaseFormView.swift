@@ -8,20 +8,14 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-enum Shipping: String, CaseIterable, Identifiable {
-    case PayByMe, Seperate, PayByRequester
-    var id: Self { self }
-}
-
 struct ReleaseFormView: View {
     @State var note: String = ""
     @State var streetAddress: String = ""
     @State var zipCode: String = ""
-    @State var shipping: Shipping = .PayByMe
+    @State var shipping: String = ""
     @State var distance: String = ""
     @State var condition: String = ""
     var body: some View {
-        
         VStack {
             HStack {
                 Button (action: {
@@ -34,7 +28,6 @@ struct ReleaseFormView: View {
             
             ScrollView {
                 BookCardView(bookData: Book(bookId: 1, coverURL: "https://covers.openlibrary.org/b/id/10447672-L.jpg", title: "Remarkably Bright Creatures", author: "Caifei Hong", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas placerat non elit ac vulputate. Nullam a libero lectus. Quisque eu fringilla lectus. ", rating: 4))
-                
                 VStack {
                     TextField("Leave a note", text: $note, axis: .vertical)
                         .lineLimit(10...)
@@ -50,15 +43,39 @@ struct ReleaseFormView: View {
                         .frame(height: 48)
                         .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
                         .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
-                    
-                    Picker("Shipping Option", selection: $shipping) {
-                        Text("Chocolate").tag(Shipping.PayByMe)
-                        Text("Vanilla").tag(Shipping.PayByRequester)
-                        Text("Strawberry").tag(Shipping.Seperate)
-                    }.pickerStyle(.menu)
-                    .padding(.top, 20)
-           
-                    
+                    HStack{
+                        CustomText(s: "Shipping Option", size: 14).bold()
+                        Spacer()
+                        Picker("Shipping Option", selection: $shipping) {
+                            Text("Pay by Requester")
+                            Text("Pay by Owner")
+                            Text("Seperate")
+                        }.pickerStyle(.menu)
+                    }.frame(height: 48)
+                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                        .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
+                    HStack{
+                        CustomText(s: "Travel Distance", size: 14).bold()
+                        Spacer()
+                        Picker("Travel Distance", selection: $shipping) {
+                            Text("Same City")
+                            Text("Same Country")
+                            Text("Around World")
+                        }.pickerStyle(.menu)
+                    }.frame(height: 48)
+                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                        .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
+                    HStack{
+                        CustomText(s: "Book Condition", size: 14).bold()
+                        Spacer()
+                        Picker("Book Condition", selection: $condition) {
+                            Text("Excellent")
+                            Text("Good")
+                            Text("Fair")
+                        }.pickerStyle(.menu)
+                    }.frame(height: 48)
+                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                        .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
                 }.padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
             }
             Button(action: {
