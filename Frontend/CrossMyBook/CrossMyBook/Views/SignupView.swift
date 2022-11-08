@@ -30,13 +30,13 @@ struct SignupView: View {
         
         VStack {
           
-          RoundedTextField(text: $firstname, placeholder: "first name", height: 48)
+          // RoundedTextField(text: $firstname, placeholder: "first name", height: 48)
           
-          RoundedTextField(text: $lastname, placeholder: "last name", height: 48)
+          // RoundedTextField(text: $lastname, placeholder: "last name", height: 48)
           
-          RoundedTextField(text: $email, placeholder: "email", height: 48)
+          // RoundedTextField(text: $email, placeholder: "email", height: 48)
           
-          RoundedTextField(text: $password, placeholder: "password", height: 48)
+          // RoundedTextField(text: $password, placeholder: "password", height: 48)
           
         }.padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
         

@@ -49,8 +49,8 @@ struct ReleaseFormView: View {
                         Spacer()
                         Picker("Shipping Option", selection: $shipping) {
                             Text("Pay by Requester")
-                            Text("Pay by Owner")
-                            Text("Seperate")
+                            Text("Pay by Sender")
+                            Text("Split by Both Parties")
                         }.pickerStyle(.menu)
                     }.frame(height: 48)
                         .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
@@ -60,8 +60,9 @@ struct ReleaseFormView: View {
                         Spacer()
                         Picker("Travel Distance", selection: $shipping) {
                             Text("Same City")
+                            Text("Same State")
                             Text("Same Country")
-                            Text("Around World")
+                            Text("Worldwide")
                         }.pickerStyle(.menu)
                     }.frame(height: 48)
                         .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
