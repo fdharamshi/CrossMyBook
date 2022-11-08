@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct CopyCardView: View {
+    var copy: BDCopy?
     var owner: String = "Caifei Hong"
-    var status: String = "Available"
+    var status: String = "Unavailable"
     var body: some View {
         HStack {
             VStack (alignment: .leading) {
@@ -17,12 +18,13 @@ struct CopyCardView: View {
                 CustomText(s: "Status", size: 14, color: Color.theme).bold()
             }.padding(10)
             VStack(alignment: .leading)  {
-                CustomText(s: owner, size: 14)
-                CustomText(s: status, size: 14)
+                CustomText(s: copy?.ownerName ?? owner, size: 14)
+                CustomText(s: copy?.status == 0 ? "Available" : "Unavailable", size: 14)
             }
             Spacer()
             VStack {
                 Button (action: {
+                    // TODO: jump to request
                     print("Login")
                 }) {
                     CustomText(s: "request", size: 12, color: Color.white).bold()
