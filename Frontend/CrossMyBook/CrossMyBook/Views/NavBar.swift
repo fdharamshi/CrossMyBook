@@ -25,7 +25,7 @@ struct NavBar: View {
                 Spacer()
                 FAIcon(name: "user-circle").padding(.trailing, 18)
             }
-        }
+        }.ignoresSafeArea()
     }
 }
 

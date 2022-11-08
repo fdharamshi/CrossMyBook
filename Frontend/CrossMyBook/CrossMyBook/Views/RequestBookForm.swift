@@ -59,12 +59,12 @@ struct RequestBookForm: View {
         VStack {
 
           
-          // RoundedTextField(text: .constant("Femin Dharamshi"), placeholder: "name", height: 48)
+           RoundedTextField(text: .constant("Femin Dharamshi"), placeholder: "name", height: 48)
           
           Button("Fetch Current Location", action: {})
           Text("Lat: 123.123 Lon: -79.123")
           
-          // RoundedTextField(text: $note, placeholder: "leave a note", height: 250)
+           RoundedTextField(text: $note, placeholder: "leave a note", height: 250)
           
         }.padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
       }
