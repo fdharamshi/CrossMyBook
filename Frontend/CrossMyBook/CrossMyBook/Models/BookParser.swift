@@ -10,10 +10,10 @@ import Foundation
 class BookParser {
     var bookId: Int = 1
     static var DefaultProfileURL: String = "https://xsgames.co/randomusers/assets/avatars/male/44.jpg"
-    let urlString = "http://ec2-3-87-92-147.compute-1.amazonaws.com:8000/getBookDetails?book_id=1"
+    let urlString = "http://ec2-3-87-92-147.compute-1.amazonaws.com:8000/getBookDetails?book_id="
     
-    func fetchBookDetails(completionHandler: @escaping ((Book) -> ())) {
-        let task = URLSession.shared.dataTask(with: URL(string: urlString)!) {
+    func fetchBookDetails(bookId: String = "1", completionHandler: @escaping ((Book) -> ())) {
+        let task = URLSession.shared.dataTask(with: URL(string: urlString + bookId)!) {
             (data, response, error) in
             guard let data = data else {
                 print("Error! No Data!")
@@ -38,14 +38,6 @@ class BookParser {
                 }
                 
                 let bookData = try decoder.decode(Book.self, from: data)
-//                let dateFormatter = DateFormatter()
-//                dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
-//                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-//                for review in bookData.reviews {
-//                  let date = dateFormatter.date(from:review.date!)
-//                    print(date)
-//                }
-                
                 completionHandler(bookData)
             } catch {
                 print("Error! Can't decode data.")
