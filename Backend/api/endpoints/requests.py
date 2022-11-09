@@ -20,7 +20,9 @@ def get_copy_details(request):
         return JsonResponse({'msg': 'Book Copy Not Found.', 'success': False}, safe=False)
 
     # get average of all reviews
-    rating = 5
+    rating = {
+        "avg__starts": 5
+    }
     reviews = Review.objects.filter(book=copy.book)
     if reviews.count() > 0:
         rating = reviews.aggregate(Avg('stars'))
