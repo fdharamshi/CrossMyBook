@@ -7,64 +7,82 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import CodeScanner
 
 struct ReleaseSelectionView: View {
-    
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
-    
-    @ObservedObject var vc = ReleaseController()
-    @State var isbn: String = ""
-    @State var jump = false
-    var body: some View {
-        NavigationView{
-            VStack{
-                // MARK: top bar
-                HStack {
-                    Button (action: {
-                        self.presentationMode.wrappedValue.dismiss() // TODO: back action
-                    }) {
-                        FAIcon(name: "chevron-left")
-                    }
-                    Text("Create New Release").font(.custom("NotoSerif", size: 24)).bold().frame(maxWidth: .infinity).foregroundColor(.fontBlack)
-                }.padding(10)
-                ScrollView {
-                    NavigationLink(
-                        destination:ReleaseFormView(vc:vc)
-                            .navigationBarBackButtonHidden(true)
-                            .navigationBarHidden(true),
-                        isActive: $jump){EmptyView()}
-                    
-                    
-                    // MARK: input ISBN
-                    
-                    VStack(alignment: .leading) {
-                        CustomText(s: "Please choose the book you want to release", size: 14).frame(maxWidth: .infinity, alignment: .center)
-                        TextField("Title, Author, Series, ISBN", text: $isbn, onCommit: {
-                            vc.fetchBookDetails(isbn: isbn)
-                            jump = true
-                        })
-                        .frame(height: 48)
-                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-                        .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
-                        
-                    }.padding(.leading, 18).padding(.trailing, 18)
-                    // MARK: book lists
-                    VStack(alignment: .leading)  {
-                        
-                    }.padding(18)
+  
+  @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+  
+  
+  @ObservedObject var vc = ReleaseController()
+  @State var isbn: String = ""
+  @State var jump = false
+  
+  @State var scanningBarcode = true
+   
+  var body: some View {
+    NavigationView{
+      VStack{
+        // MARK: top bar
+        HStack {
+          Button (action: {
+            self.presentationMode.wrappedValue.dismiss() // TODO: back action
+          }) {
+            FAIcon(name: "chevron-left")
+          }
+          Text("Create New Release").font(.custom("NotoSerif", size: 24)).bold().frame(maxWidth: .infinity).foregroundColor(.fontBlack)
+        }.padding(10)
+          // MARK: input ISBN
+          VStack(alignment: .leading) {
+            NavigationLink(
+              destination:ReleaseFormView(vc:vc)
+                .navigationBarBackButtonHidden(true)
+                .navigationBarHidden(true),
+              isActive: $jump){EmptyView()}
+            CustomText(s: "Please choose the book you want to release", size: 14).frame(maxWidth: .infinity, alignment: .center)
+            Spacer()
+            CustomText(s: "Scan Barcode", size: 14).frame(maxWidth: .infinity, alignment: .center)
+            CodeScannerView(
+              codeTypes: [.ean13]
+            ) { response in
+              if case let .success(result) = response {
+                if(scanningBarcode) {
+                  isbn = result.string
+                  scanningBarcode = false
+                  vc.fetchBookDetails(isbn: isbn)
+                  jump = true
                 }
-                
-            }.background(Color.backgroundGrey)
+              }
+            }.frame(height: 200)
+            Spacer()
+            CustomText(s: "Or enter the ISBN manually", size: 14).frame(maxWidth: .infinity, alignment: .center)
+            TextField("ISBN", text: $isbn, onCommit: {
+              vc.fetchBookDetails(isbn: isbn)
+              jump = true
+            }).multilineTextAlignment(.center)
+            .frame(height: 48)
+            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+            .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
+            Spacer()
+          }.padding(.leading, 18).padding(.trailing, 18)
+          // MARK: book lists
+          VStack(alignment: .leading)  {
             
-            
-            
-        }.navigationBarHidden(true)
-    }
+          }.padding(18)
+        
+        
+      }.background(Color.backgroundGrey)
+    }.navigationBarHidden(true)
+      .onAppear(perform: {
+        isbn = ""
+        scanningBarcode = true
+        jump = false
+      })
+  }
 }
 
 struct ReleaseSelectionView_Previews: PreviewProvider {
-    static var previews: some View {
-        ReleaseSelectionView()
-    }
+  static var previews: some View {
+    ReleaseSelectionView()
+  }
 }

@@ -9,9 +9,12 @@ import SwiftUI
 
 struct CommunityView: View {
   
+  @State var finalCode: String = "Community Page"
+  
     var body: some View {
       VStack{
-        Text("Community Page")
+        Text(finalCode)
+        
       }.frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.brown)
     }

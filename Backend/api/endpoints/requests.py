@@ -20,7 +20,9 @@ def get_copy_details(request):
         return JsonResponse({'msg': 'Book Copy Not Found.', 'success': False}, safe=False)
 
     # get average of all reviews
-    rating = 5
+    rating = {
+        "stars__avg": 5
+    }
     reviews = Review.objects.filter(book=copy.book)
     if reviews.count() > 0:
         rating = reviews.aggregate(Avg('stars'))
@@ -101,9 +103,7 @@ def create_request(request):
 
     user_id = request.POST.get("user_id", None)
 
-    # We may not need copy, as Listing model contains a reference to the copy.
-    # If we have listing id, we can know which copy it is referring to.
-    # copy_id = request.POST.get("copy_id", None)
+    copy_id = request.POST.get("copy_id", None)
 
     listing_id = request.POST.get("listing_id", None)
 
