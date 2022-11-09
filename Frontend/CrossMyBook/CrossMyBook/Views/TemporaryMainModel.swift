@@ -9,48 +9,33 @@ import Foundation
 
 // MARK: - Welcome
 struct TemporaryMainModel: Codable {
-    let msg: String
-    let success: Bool
-    let allBooks: [AllBook]
-    let allListings: [AllListing]
+  let msg: String
+      let success: Bool
+      let allBooks, allCopies: [All]
 
-    enum CodingKeys: String, CodingKey {
-        case msg, success
-        case allBooks = "all_books"
-        case allListings = "all_listings"
-    }
-}
+      enum CodingKeys: String, CodingKey {
+          case msg, success
+          case allBooks = "all_books"
+          case allCopies = "all_copies"
+      }
+  }
 
-// MARK: - AllBook
-struct AllBook: Codable, Identifiable {
-   let id = UUID()
-    let bookID: Int
-    let title: String
-    let coverURL: String
-    let author: String
+  // MARK: - All
+  struct All: Codable, Identifiable {
+    let id = UUID()
+      let bookID: Int?
+      let title: String
+      let coverURL: String
+      let author: String
+      let copyID: Int?
 
-    enum CodingKeys: String, CodingKey {
-        case bookID = "book_id"
-        case title
-        case coverURL = "cover_url"
-        case author
-    }
-}
+      enum CodingKeys: String, CodingKey {
+          case bookID = "book_id"
+          case title
+          case coverURL = "cover_url"
+          case author
+          case copyID = "copy_id"
+      }
+  }
 
-// MARK: - AllListing
-struct AllListing: Codable, Identifiable {
-    var id = UUID()
-  
-    let listingID, status: Int
-    let title: String
-    let coverURL: String
-    let author: String
-
-    enum CodingKeys: String, CodingKey {
-        case listingID = "listing_id"
-        case status, title
-        case coverURL = "cover_url"
-        case author
-    }
-}
 

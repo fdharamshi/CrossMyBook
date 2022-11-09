@@ -26,17 +26,17 @@ struct HomeView: View {
         .padding(.leading, 20)
       ScrollView(.horizontal, showsIndicators: false) {
         HStack(spacing: 10) {
-          ForEach(temporaryMainController.observedCopy?.allListings ?? []) { listing in
-            NavigationLink(destination: CopyDetailsView(listing.listingID).navigationBarHidden(true)) {
+          ForEach(temporaryMainController.observedCopy?.allCopies ?? []) { copy in
+            NavigationLink(destination: CopyDetailsView(copy.copyID ?? 1).navigationBarHidden(true)) {
               VStack {
-                WebImage(url: URL(string: listing.coverURL))
+                WebImage(url: URL(string: copy.coverURL))
                   .resizable()
                   .placeholder(Image(uiImage: UIImage(named: "bookplaceholder")!)) // Placeholder Image
                   .scaledToFit()
                   .frame(width: 100, height: 150, alignment: .center)
                   .border(Color.black, width: 1)
                   .background(Color.brown).padding(.leading, 20)
-                Text(listing.title).frame(width:100).padding(.leading, 20).foregroundColor(Color.black)
+                Text(copy.title).frame(width:100).padding(.leading, 20).foregroundColor(Color.black)
               }
             }
           }
