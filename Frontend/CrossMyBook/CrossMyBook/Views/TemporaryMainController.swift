@@ -31,7 +31,7 @@ class TemporaryMainController: ObservableObject {
       
       // Decode the JSON here
       guard let main = try? JSONDecoder().decode(TemporaryMainModel.self, from: data) else {
-        print("Error: Couldn't decode data into a result")
+        print("Error: Couldn't decode data into a result(TemporaryMainController)")
         return
       }
       

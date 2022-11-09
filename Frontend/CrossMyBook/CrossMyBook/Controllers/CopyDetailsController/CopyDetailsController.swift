@@ -31,7 +31,7 @@ class CopyDetailsController: ObservableObject {
       
       // Decode the JSON here
       guard let copyDetails = try? JSONDecoder().decode(CopyDetailsModel.self, from: data) else {
-        print("Error: Couldn't decode data into a result")
+        print("Error: Couldn't decode data into a result(CopyDetailsController)")
         return
       }
       
