@@ -53,6 +53,7 @@
 		EE862134291ADD1E00000345 /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE862133291ADD1E00000345 /* LandingView.swift */; };
 		EE862136291B0B0200000345 /* TemporaryMainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE862135291B0B0200000345 /* TemporaryMainModel.swift */; };
 		EE862138291B0B1E00000345 /* TemporaryMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE862137291B0B1E00000345 /* TemporaryMainController.swift */; };
+		EE86213B291C0B3E00000345 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = EE86213A291C0B3E00000345 /* CodeScanner */; };
 		EE9181FF2918D91A003CD0B0 /* RequestBookForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9181FE2918D91A003CD0B0 /* RequestBookForm.swift */; };
 		EEA0B41D29199EB10077165C /* CopyDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA0B41C29199EB10077165C /* CopyDetails.swift */; };
 		EEA0B42029199F6B0077165C /* CopyDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA0B41F29199F6B0077165C /* CopyDetailsController.swift */; };
@@ -116,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE86213B291C0B3E00000345 /* CodeScanner in Frameworks */,
 				EE220BC829139B9800CEC13A /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -365,6 +367,7 @@
 			name = CrossMyBook;
 			packageProductDependencies = (
 				EE220BC729139B9800CEC13A /* SDWebImageSwiftUI */,
+				EE86213A291C0B3E00000345 /* CodeScanner */,
 			);
 			productName = CrossMyBook;
 			productReference = EE3609F12911B594006DB257 /* CrossMyBook.app */;
@@ -396,6 +399,7 @@
 			mainGroup = EE3609E82911B594006DB257;
 			packageReferences = (
 				EE220BC629139B9800CEC13A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				EE862139291C0B3E00000345 /* XCRemoteSwiftPackageReference "CodeScanner" */,
 			);
 			productRefGroup = EE3609F22911B594006DB257 /* Products */;
 			projectDirPath = "";
@@ -605,6 +609,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CrossMyBook/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Need camera to scan Barcodes of ISBN";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app would like to use your location.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -636,6 +641,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CrossMyBook/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Need camera to scan Barcodes of ISBN";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app would like to use your location.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -687,6 +693,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		EE862139291C0B3E00000345 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -694,6 +708,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EE220BC629139B9800CEC13A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
+		};
+		EE86213A291C0B3E00000345 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EE862139291C0B3E00000345 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
 		};
 /* End XCSwiftPackageProductDependency section */
 
