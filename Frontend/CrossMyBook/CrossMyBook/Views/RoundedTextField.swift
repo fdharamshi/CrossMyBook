@@ -11,7 +11,7 @@ struct RoundedTextField: View {
     @Binding var text: String
     var placeholder: String
     var height: CGFloat
-  
+
     var body: some View {
         RoundedRectangle(cornerRadius: 10)
           .fill(.white)
