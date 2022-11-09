@@ -11,6 +11,7 @@ import Foundation
 
 // MARK: - CopyDetailsModel
 struct CopyDetailsModel: Codable {
+
   let success: Bool
   let msg: String
   let copyID: String?
