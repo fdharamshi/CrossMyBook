@@ -11,35 +11,49 @@ import SDWebImageSwiftUI
 
 struct RequestBookForm: View {
   
-  @State var streetAddress: String = ""
-  @State var zipCode: String = ""
+  @ObservedObject var requestController: RequestController = RequestController()
+  
+  @State var location = Location()
   @State var note: String = ""
+  
+  let copyID: Int
+  let copyDetailsController: CopyDetailsController
+  
+  init(_ copyID: Int, _ copyDetailsController: CopyDetailsController) {
+    self.copyID = copyID
+    self.copyDetailsController = copyDetailsController
+  }
   
   var body: some View {
     
     VStack {
       HStack {
-        Text("Cross My Book")
-          .font(.custom("NotoSerif", size: 25)).bold()
-      }
+          Button (action: {
+            print("back")
+          }) {
+              FAIcon(name: "chevron-left")
+          }
+          Text("CrossMyBook").font(.custom("NotoSerif", size: 24)).bold().frame(maxWidth: .infinity).foregroundColor(.fontBlack)
+      }.padding(10)
+      
       ScrollView {
         
         HStack (alignment: .top) {
           Spacer()
           
-          WebImage(url: URL(string: "https://covers.openlibrary.org/b/id/10447670-L.jpg")).resizable().scaledToFit().frame(height: 180).cornerRadius(5)
+          WebImage(url: URL(string: copyDetailsController.observedCopy?.coverURL ?? "")).resizable().scaledToFit().frame(height: 180).cornerRadius(5)
           
           Spacer()
           
           VStack {
             VStack (alignment: .leading, spacing: 5) {
-              Text("Cracking the Coding Interview")
+              Text(copyDetailsController.observedCopy?.title ?? "Loading...")
                 .multilineTextAlignment(.leading)
                 .fixedSize(horizontal: false, vertical: true)
                 .font(.custom("NotoSerif", size: 20))
                 .bold()
               
-              Text("James Clear")
+              Text(copyDetailsController.observedCopy?.author ?? "Loading...")
                 .font(.custom("NotoSerif", size: 15))
                 .multilineTextAlignment(.leading)
                 .fixedSize(horizontal: false, vertical: true)
@@ -61,15 +75,21 @@ struct RequestBookForm: View {
           
            RoundedTextField(text: .constant("Femin Dharamshi"), placeholder: "name", height: 48)
           
-          Button("Fetch Current Location", action: {})
-          Text("Lat: 123.123 Lon: -79.123")
+          Button("Fetch Current Location", action: {location.getCurrentLocation()})
+          Text("Lat:\(location.latitude) Lon:\(location.longitude)")
           
            RoundedTextField(text: $note, placeholder: "leave a note", height: 250)
           
         }.padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
       }
       Button(action: {
-        print("Request submitted")
+        requestController.requestModel.userID = 2
+        requestController.requestModel.copyID = copyID
+        requestController.requestModel.listingID = copyDetailsController.observedCopy?.listing?.listingID ?? 0
+        requestController.requestModel.lat = location.latitude
+        requestController.requestModel.lon = location.longitude
+        requestController.requestModel.note = note
+        requestController.createRequest()
       }) {
         Text("Submit Request").font(.custom("NotoSerif", size: 15).bold())
           .padding()
@@ -80,11 +100,5 @@ struct RequestBookForm: View {
       .padding(.horizontal)
     }.background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
     
-  }
-}
-
-struct RequestBookForm_Previews: PreviewProvider {
-  static var previews: some View {
-    RequestBookForm()
   }
 }
