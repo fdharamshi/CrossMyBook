@@ -21,7 +21,7 @@ struct CopyDetailsView: View {
   
   init(_ id: Int) {
     self.copyID = id
-    copyDetailsController.fetchCopyDetails(id)
+//    copyDetailsController.fetchCopyDetails(id)
   }
   
   var body: some View {
@@ -232,7 +232,9 @@ struct CopyDetailsView: View {
           .padding(.horizontal)
         
       }.background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
-    }
+    }.onAppear(perform: {
+      copyDetailsController.fetchCopyDetails(copyID)
+    })
   }
 }
 
