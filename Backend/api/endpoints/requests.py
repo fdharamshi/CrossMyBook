@@ -21,7 +21,7 @@ def get_copy_details(request):
 
     # get average of all reviews
     rating = {
-        "avg__starts": 5
+        "avg__stars": 5
     }
     reviews = Review.objects.filter(book=copy.book)
     if reviews.count() > 0:
