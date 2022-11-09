@@ -10,6 +10,9 @@ import Foundation
 class ReleaseController: ObservableObject {
     @Published var book: ISBNBook?
     @Published var release: Release = Release()
+    @Published var copyId: Int = 0
+    @Published var releaseId: Int = 0
+    var jump = true;
     let loc: Location = Location()
     
     func fetchBookDetails(isbn: String) {
@@ -32,7 +35,7 @@ class ReleaseController: ObservableObject {
             
             // Decode the JSON here
             guard let book = try? JSONDecoder().decode(ISBNBook.self, from: data) else {
-                print("Error: Couldn't decode data into a result")
+                print("Error: Couldn't decode data into a result(ReleaseContoller2)")
                 return
             }
             print(book.title)
@@ -59,8 +62,7 @@ class ReleaseController: ObservableObject {
         print(release.note)
     }
     
-    func createRelease() {
-        // Prepare URL
+    func createRelease() -> Bool {
         let url = URL(string: "http://ec2-3-87-92-147.compute-1.amazonaws.com:8000/releaseNew")
         guard let requestUrl = url else { fatalError() }
         
@@ -78,21 +80,23 @@ class ReleaseController: ObservableObject {
         request.httpBody = postString.data(using: String.Encoding.utf8);
         // Perform HTTP Request
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            print(data)
-            print(response)
-            print(error)
-            // Check for Error
-            if let error = error {
-                print("Error took place \(error)")
+            guard let data = data else {
+                self.jump = false
+                print("Error: No data to decode")
                 return
             }
             
-            // Convert HTTP Response Data to a String
-            if let data = data, let dataString = String(data: data, encoding: .utf8) {
-                print("Response data string:\n \(dataString)")
+            // Decode the JSON here
+            guard let msg = try? JSONDecoder().decode(ReleaseMsg.self, from: data) else {
+                self.jump = false
+                print("Error: Couldn't decode data into a result(ReleaseContoller2)")
+                return
             }
+            self.copyId = msg.copy_id
+            self.releaseId = msg.release_id
         }
         task.resume()
+        return self.jump
     }
     
 }

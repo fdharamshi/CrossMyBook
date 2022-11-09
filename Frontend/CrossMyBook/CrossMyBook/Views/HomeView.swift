@@ -18,7 +18,7 @@ struct HomeView: View {
   
   var body: some View {
     VStack (alignment: .leading) {
-      Text("All Listings:")
+      Text("All Copys:")
         .font(Font.custom("NotoSerif", size: 15))
         .bold()
         .foregroundColor(Color("FontBlack"))
