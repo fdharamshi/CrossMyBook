@@ -68,7 +68,7 @@ struct BookDetailView: View {
             self.displayCopy = fetchedBook.copies[0]
         }
         BookParser().fetchBookDetails(completionHandler: anonymous)
-        print(self.bookViewModel.bookData == nil)
+//        print(self.bookViewModel.bookData == nil)
     }
     
     
