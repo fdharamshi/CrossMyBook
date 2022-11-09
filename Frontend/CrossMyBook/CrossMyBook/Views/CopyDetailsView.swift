@@ -235,7 +235,8 @@ struct CopyDetailsView: View {
               .foregroundColor(Color.white)
           }
           .padding(.horizontal)
-      }.background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
+        }.background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
+      }
     }.onAppear(perform: {
       copyDetailsController.fetchCopyDetails(copyID)
     })
