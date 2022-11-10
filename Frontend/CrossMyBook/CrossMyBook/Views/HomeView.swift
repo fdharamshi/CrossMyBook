@@ -53,18 +53,18 @@ struct HomeView: View {
       ScrollView(.horizontal, showsIndicators: false) {
         HStack(spacing: 10) {
           ForEach(temporaryMainController.observedCopy?.allBooks ?? []) { listing in
-            
-              VStack {
-                WebImage(url: URL(string: listing.coverURL))
-                  .resizable()
-                  .placeholder(Image(uiImage: UIImage(named: "bookplaceholder")!)) // Placeholder Image
-                  .scaledToFit()
-                  .frame(width: 100, height: 150, alignment: .center)
-                  .border(Color.black, width: 1)
-                  .background(Color.brown).padding(.leading, 20)
-                Text(listing.title).frame(width:100).padding(.leading, 20).foregroundColor(Color.black)
+              NavigationLink(destination: BookDetailView(bookId: String(listing.bookID ?? 1)).navigationBarHidden(true)) {
+                  VStack {
+                    WebImage(url: URL(string: listing.coverURL))
+                      .resizable()
+                      .placeholder(Image(uiImage: UIImage(named: "bookplaceholder")!)) // Placeholder Image
+                      .scaledToFit()
+                      .frame(width: 100, height: 150, alignment: .center)
+                      .border(Color.black, width: 1)
+                      .background(Color.brown).padding(.leading, 20)
+                    Text(listing.title).frame(width:100).padding(.leading, 20).foregroundColor(Color.black)
+                  }
               }
-            
           }
           
         }
