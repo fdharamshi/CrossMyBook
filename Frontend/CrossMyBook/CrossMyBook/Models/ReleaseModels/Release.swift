@@ -12,8 +12,8 @@ class Release{
     var lat: Float = 0.0
     var lon: Float = 0.0
     var zipCode: Int = 0
-    var condition: String = ""
-    var shipping: String = ""
-    var distance: String = ""
+    var condition: String = "Excellent"
+    var shipping: String = "Pay by the Requester"
+    var distance: String = "Same City"
     var note: String = ""
 }
