@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from api.endpoints import login, releases, requests, alertpage, community, book, mainpage
+from api.endpoints import login, releases, requests, alertpage, community, book, mainpage, profile
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,9 +28,11 @@ urlpatterns = [
     path('getLatestListingByCopyId', releases.getLatestListingByCopyId),
     path('getBookDetails', book.get_book_details),
     path('getCopyDetails', requests.get_copy_details),
+    path('getBookByCopyId', book.get_book_by_copy_id),
     path('createRequest', requests.create_request),
     path('getRequests', alertpage.getRequests),
     path('takeActionOnRequest', requests.takeActionOnRequest),
     path('createReview', community.create_review),
-    path('main', mainpage.temporary_main)
+    path('main', mainpage.temporary_main),
+    path('getProfile', profile.getProfile)
 ]
