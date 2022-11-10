@@ -16,6 +16,7 @@ struct RequestBookForm: View {
     @ObservedObject var copyDetailsController: CopyDetailsController = CopyDetailsController()
     @ObservedObject var requestController: RequestController = RequestController()
     
+    @State var userID: String = UserDefaults.standard.string(forKey: "user_id") ?? "1"
     @State var location = Location()
     @State var note: String = ""
     
@@ -82,11 +83,16 @@ struct RequestBookForm: View {
                     VStack {
                         
                         
-                        RoundedTextField(text: .constant("Femin Dharamshi"), placeholder: "name", height: 48)
-                        
+                        //RoundedTextField(text: $userID, placeholder: "name", height: 48)
+                      
+                        // Put user ID here for now, will display username when getUsername API created
+                        Text("User ID: \(self.userID)")
+                          .padding(.bottom)
+                      
                         Button("Fetch Current Location", action: {self.location.getCurrentLocation()})
                         Text("Lat:\(self.location.latitude) Lon:\(self.location.longitude)")
-                        
+                          .padding(.bottom)
+                      
                         RoundedTextField(text: $note, placeholder: "leave a note", height: 250)
                         
                     }.padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
@@ -110,7 +116,7 @@ struct RequestBookForm: View {
                 .padding(.horizontal)
             }.background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
         }.onAppear(perform: {
-            copyDetailsController.fetchCopyDetails(copyID)
+            copyDetailsController.fetchCopyDetails(copyID, Int(userID) ?? 1)
         })
     }
 }
