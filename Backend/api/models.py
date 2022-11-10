@@ -22,7 +22,7 @@ class Book(models.Model):
     isbn = models.CharField(max_length=50)
     title = models.CharField(max_length=50)
     cover_url = models.TextField()
-    authors = models.TextField()
+    authors = models.TextField(default="Author Not Found")
     description = models.TextField()
 
     class Meta:
