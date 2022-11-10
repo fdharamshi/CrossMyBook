@@ -13,6 +13,7 @@ struct RequestBookForm: View {
   
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   
+  @ObservedObject var copyDetailsController: CopyDetailsController = CopyDetailsController()
   @ObservedObject var requestController: RequestController = RequestController()
   
   @State var location = Location()
@@ -21,11 +22,9 @@ struct RequestBookForm: View {
   @State var hasSubmitted: Bool = false
   
   let copyID: Int
-  let copyDetailsController: CopyDetailsController
   
-  init(_ copyID: Int, _ copyDetailsController: CopyDetailsController) {
+  init(_ copyID: Int) {
     self.copyID = copyID
-    self.copyDetailsController = copyDetailsController
     self.location.getCurrentLocation()
   }
   
@@ -110,6 +109,8 @@ struct RequestBookForm: View {
         }
         .padding(.horizontal)
       }.background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
-    }
+    }.onAppear(perform: {
+      copyDetailsController.fetchCopyDetails(copyID)
+    })
   }
 }
