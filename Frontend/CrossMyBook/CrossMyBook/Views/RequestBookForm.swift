@@ -15,7 +15,8 @@ struct RequestBookForm: View {
     
     @ObservedObject var copyDetailsController: CopyDetailsController = CopyDetailsController()
     @ObservedObject var requestController: RequestController = RequestController()
-    
+    @ObservedObject var profileController: ProfileController = ProfileController()
+  
     @State var userID: String = UserDefaults.standard.string(forKey: "user_id") ?? "1"
     @State var location = Location()
     @State var note: String = ""
@@ -86,7 +87,7 @@ struct RequestBookForm: View {
                         //RoundedTextField(text: $userID, placeholder: "name", height: 48)
                       
                         // Put user ID here for now, will display username when getUsername API created
-                        Text("User ID: \(self.userID)")
+                      Text("Username: \(profileController.profile?.firstName ?? "") \(profileController.profile?.lastName ?? "")")
                           .padding(.bottom)
                       
                         Button("Fetch Current Location", action: {self.location.getCurrentLocation()})
@@ -117,6 +118,7 @@ struct RequestBookForm: View {
             }.background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
         }.onAppear(perform: {
             copyDetailsController.fetchCopyDetails(copyID, Int(userID) ?? 1)
+            profileController.fetchProfile(Int(userID) ?? 1)
         })
     }
 }
