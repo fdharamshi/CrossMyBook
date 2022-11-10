@@ -18,7 +18,7 @@ struct RoundedTextField: View {
           .overlay(
             TextField(placeholder, text: $text)
               .padding(.leading)
-              .font(Font.custom("NotoSerif", size: 14))
+              .font(Font.custom("NotoSerif", size: 15))
           )
           .frame(height: height)
     }
