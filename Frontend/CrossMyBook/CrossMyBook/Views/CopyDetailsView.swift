@@ -86,6 +86,10 @@ struct CopyDetailsView: View {
                 .frame(width: 100, height: 150, alignment: .center)
                 .border(Color.black, width: 1)
                 .background(Color.brown)
+                .onTapGesture(perform: {
+                  // TODO: Jump To Book Details Page
+                  print("Book Details")
+                })
                 .offset(x: 30, y: 75)
             }.onReceive(copyDetailsController.$observedCopy) { observedCopy in
               
