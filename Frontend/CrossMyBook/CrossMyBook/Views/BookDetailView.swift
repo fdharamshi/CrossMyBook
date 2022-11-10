@@ -9,6 +9,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct BookDetailView: View {
+    
     @ObservedObject var bookViewModel: BookViewModel = BookViewModel()
     @State var displayCopy: BDCopy? = nil
     var bookId: String = "1"
@@ -18,7 +19,7 @@ struct BookDetailView: View {
             VStack (alignment: .leading){
                 // MARK: top bar
                 HStack {
-                    NavigationLink(destination: HomeView().navigationBarBackButtonHidden(true)) {
+                    NavigationLink(destination: LandingView().navigationBarBackButtonHidden(true)) {
                         FAIcon(name: "chevron-left")
                     }
                     Text("CrossMyBook").font(.custom("NotoSerif", size: 24)).bold().frame(maxWidth: .infinity).foregroundColor(.fontBlack)
