@@ -2,7 +2,8 @@
 from django.http import JsonResponse
 import requests
 from api.models import *
-
+import datetime
+import json
 
 def getDetailsFromISBN(request):
     isbn = request.GET.get("isbn", None)
@@ -55,13 +56,13 @@ def releaseANewCopy(request):
     max_distance = request.POST.get("max_distance", None)
     note = request.POST.get("note", None)
     status = 0
-
     if user_id is None or book_id is None or lat is None or lon is None or book_condition is None or charges is None or max_distance is None:
         return JsonResponse({'msg': 'Some or all details are missing.', 'success': False}, safe=False)
 
     # CREATE A NEW COPY
     try:
-        copy = BookCopy(book_id=book_id, status=0)
+        owner = Users.objects.get(id=user_id)
+        copy = BookCopy(book_id=book_id, status=0, owner=owner)
         copy.save()
     except:
         return JsonResponse({'msg': 'Fail to create a new copy.', 'success': False}, safe=False)
@@ -107,12 +108,39 @@ def releaseACopyAlreadyCreated(request):
 
     # CREATE A NEW LISTING
     try:
+        today = datetime.date.today()
         new_listing = Listing(copy=copy, user_id=user_id, lat=lat, long=lon, book_condition=book_condition,
                               charges=charges,
-                              max_distance=max_distance, note=note, status=status)
+                              max_distance=max_distance, note=note, status=status,
+                              post_date=today)
         new_listing.save()
     except:
         return JsonResponse({'msg': 'Fail to create a new listing.', 'success': False}, safe=False)
 
     return JsonResponse({'msg': 'Success!', 'success': True, "listing_id": new_listing.id, "copy_id": copy.id},
                         safe=False)
+
+# for editing release information from book copy page
+def getLatestListingByCopyId(request):
+    copy_id = request.GET.get("copy_id", None)
+    if (copy_id is None):
+        return JsonResponse({'msg': 'copyId missing in request.', 'success': False}, safe=False)
+    relatedListings = Listing.objects.filter(copy=copy_id).order_by('-post_date')
+    if (relatedListings.count() == 0):
+        return JsonResponse({'msg': 'Listing not found', 'success': False}, safe=False)
+    
+    latestListing = relatedListings[0]
+    return JsonResponse({
+        'msg': 'Success!', 
+        'success': True,
+        "listing_id": latestListing.id,
+        "lat": latestListing.lat,
+        "lon": latestListing.lon,
+        "book_condition": latestListing.book_condition,
+        "max_distance": latestListing.max_distance,
+        "charges": latestListing.charges,
+        "note": latestListing.note,
+        "status": latestListing.status,
+        "post_date": latestListing.post_date,
+    }, safe=False)
+    

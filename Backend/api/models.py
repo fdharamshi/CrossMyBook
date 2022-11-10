@@ -52,6 +52,7 @@ class Listing(models.Model):
     max_distance = models.CharField(max_length=50)
     note = models.TextField(blank=True)
     status = models.IntegerField(default=0)
+    post_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f'#{self.id} - {self.copy.book.title} (Book ID: {self.copy.book.id}, Copy ID: {self.copy.id}) | Status: {self.status} | Listing By: {self.user.first_name}'
