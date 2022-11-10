@@ -12,7 +12,9 @@ struct ReleaseFormView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var vc: ReleaseController
     @ObservedObject var bookViewModel: BookViewModel = BookViewModel()
+    // MARK: might delete zip
     @State var zip: String = ""
+    @State var userID: String = UserDefaults.standard.string(forKey: "user_id") ?? "1"
     @State var jump = false
     @State private var showingAlert = false
     var body: some View {
@@ -110,7 +112,7 @@ struct ReleaseFormView: View {
                 
                 Button(action: {
                     // vc.test()
-                    jump = vc.createRelease()
+                    jump = vc.createRelease(userID: Int(userID) ?? 1)
                 }) {
                     Text("Release Book").font(.custom("NotoSerif", size: 15))
                         .padding()
