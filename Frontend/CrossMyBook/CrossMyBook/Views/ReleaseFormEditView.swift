@@ -57,6 +57,8 @@ struct ReleaseFormEditView: View {
 //                        }.frame(height: 48)
 //                            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
 //                            .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
+                        Text("Your location is: (\(self.releaseEditController.release.lat,  specifier: "%.2f"), \(self.releaseEditController.release.lon, specifier: "%.2f"))")
+                            .font(.custom("NotoSerif", size: 16)).bold().frame(maxWidth: .infinity).foregroundColor(.fontBlack)
 
                         HStack{
                             CustomText(s: "Shipping Option", size: 14).bold()
