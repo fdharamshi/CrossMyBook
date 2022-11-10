@@ -25,6 +25,7 @@ urlpatterns = [
     path('getBookFromISBN', releases.getDetailsFromISBN),
     path('releaseNew', releases.releaseANewCopy),
     path('release', releases.releaseACopyAlreadyCreated),
+    path('getLatestListingByCopyId', releases.getLatestListingByCopyId),
     path('getBookDetails', book.get_book_details),
     path('getCopyDetails', requests.get_copy_details),
     path('createRequest', requests.create_request),
