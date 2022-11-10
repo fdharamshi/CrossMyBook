@@ -166,7 +166,7 @@ def takeActionOnRequest(request):
             If request is accepted, change status of request to 1
             Change status of Listing to 1
             Change status of all other requests for this listing to 2 (Since they're declined)
-
+            Change the owner of the copy to user_id 
             Add the new location to Travel History
         """
 
@@ -181,6 +181,8 @@ def takeActionOnRequest(request):
         listing = request.listing
         listing.status = 1
         listing.save()
+
+        BookCopy.objects.filter(id=request.listing.copy.id).update(owner=user_id)
 
         return JsonResponse({'msg': 'Success!', 'success': True}, safe=False)
 
