@@ -88,7 +88,6 @@ class ReleaseEditController: ObservableObject {
         request.httpMethod = "POST"
         
         // HTTP Request Parameters which will be sent in HTTP Request Body
-        // MARK: UserID hard code to 4
         let postString = "user_id=\(userID)&copy_id=\(release.copyId)&lat=\(release.lat)&lon=\(release.lon)&book_condition=\(release.condition)&charges=\(release.shipping)&max_distance=\(release.distance)&note=\(release.note)";
         
         // Set HTTP Request Body

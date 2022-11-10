@@ -13,13 +13,14 @@ struct ReleaseFormEditView: View {
     @ObservedObject var releaseEditController: ReleaseEditController = ReleaseEditController()
     @State var jump = false
     @State var userID: String = UserDefaults.standard.string(forKey: "user_id") ?? "1"
-//    @State private var showingAlert = false
+    //    @State private var showingAlert = false
     let copyID: Int
     let existing: Bool
     
     init(_ copyID: Int, _ existing: Bool) {
         self.copyID = copyID
         self.existing = existing
+        releaseEditController.fetchData(copyId: copyID, existing: self.existing)
     }
     
     var body: some View {
@@ -50,17 +51,17 @@ struct ReleaseFormEditView: View {
                             .multilineTextAlignment(.leading)
                             .background(RoundedRectangle(cornerRadius:10).fill(Color.white))
                         
-//                        Button(action: {
-//                            self.vc.loc.getCurrentLocation()
-//                            self.showingAlert = true
-//                        }) {
-//                            Text("Get my location")
-//                        }.frame(height: 48)
-//                            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-//                            .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
+                        //                        Button(action: {
+                        //                            self.vc.loc.getCurrentLocation()
+                        //                            self.showingAlert = true
+                        //                        }) {
+                        //                            Text("Get my location")
+                        //                        }.frame(height: 48)
+                        //                            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                        //                            .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
                         Text("Your location is: (\(self.releaseEditController.release.lat,  specifier: "%.2f"), \(self.releaseEditController.release.lon, specifier: "%.2f"))")
                             .font(.custom("NotoSerif", size: 16)).bold().frame(maxWidth: .infinity).foregroundColor(.fontBlack)
-
+                        
                         HStack{
                             CustomText(s: "Shipping Option", size: 14).bold()
                             Spacer()
@@ -97,9 +98,9 @@ struct ReleaseFormEditView: View {
                             .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
                     }.padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
                 }
-//                .alert(isPresented: $showingAlert) {
-//                    Alert(title: Text("Location"), message: Text(releaseEditController.generateTitle()))
-//                }
+                //                .alert(isPresented: $showingAlert) {
+                //                    Alert(title: Text("Location"), message: Text(releaseEditController.generateTitle()))
+                //                }
                 
                 
                 
@@ -115,9 +116,7 @@ struct ReleaseFormEditView: View {
                 .padding(.horizontal)
             }.background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
             
-        }.onAppear(perform: {
-            releaseEditController.fetchData(copyId: copyID, existing: self.existing)
-          })
+        }
         
     }
     
