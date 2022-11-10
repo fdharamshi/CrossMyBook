@@ -15,8 +15,8 @@ class CopyDetailsController: ObservableObject {
     self.observedCopy = nil
   }
   
-  func fetchCopyDetails(_ copyID: Int) {
-    fetchData(copyID, 2, completion: { copyDetailsModel in
+  func fetchCopyDetails(_ copyID: Int, _ userID: Int) {
+    fetchData(copyID, userID, completion: { copyDetailsModel in
       self.observedCopy = copyDetailsModel
     })
   }
