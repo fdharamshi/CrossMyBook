@@ -88,7 +88,7 @@ def releaseANewCopy(request):
 
 def releaseACopyAlreadyCreated(request):
     user_id = request.POST.get("user_id", None)
-    copy_id = request.POST.get("book_id", None)
+    copy_id = request.POST.get("copy_id", None)
 
     lat = request.POST.get("lat", None)
     lon = request.POST.get("lon", None)
@@ -144,4 +144,48 @@ def getLatestListingByCopyId(request):
         "status": latestListing.status,
         "post_date": latestListing.post_date,
     }, safe=False)
-    
+
+def editExistingRelease(request):
+    user_id = request.POST.get("user_id", None)
+    copy_id = request.POST.get("copy_id", None)
+
+    lat = request.POST.get("lat", None)
+    lon = request.POST.get("lon", None)
+    book_condition = request.POST.get("book_condition", None)
+    charges = request.POST.get("charges", None)
+    max_distance = request.POST.get("max_distance", None)
+    note = request.POST.get("note", None)
+    status = 0 # available
+
+    if user_id is None or copy_id is None or lat is None or lon is None or book_condition is None or charges is None or max_distance is None:
+        return JsonResponse({'msg': 'Some or all details are missing.', 'success': False}, safe=False)
+    # check if the user_id is the owner of that copy
+    try:
+        copy = BookCopy.objects.get(id=copy_id)
+    except BookCopy.DoesNotExist:
+        return JsonResponse({'msg': 'Book copy not found.', 'success': False}, safe=False)
+
+    if copy.status == 1:
+        return JsonResponse({'msg': 'Book copy not available for editing release.', 'success': False}, safe=False)
+
+    if int(user_id) != int(copy.owner.id):
+        return JsonResponse({'msg': 'User is not the current owner of that copy.', 'success': False}, safe=False)
+
+    # EDIT THE LISTING
+    try:
+        #today = datetime.date.today()
+        print(copy_id, user_id)
+        listing = Listing.objects.get(copy_id=copy_id,user_id=user_id)
+        listing.lat=lat
+        listing.lon=lon
+        listing.book_condition=book_condition
+        listing.charges=charges
+        listing.max_distance=max_distance
+        listing.note=note
+        listing.save()
+
+    except:
+        return JsonResponse({'msg': 'Fail to update a listing.', 'success': False}, safe=False)
+
+    return JsonResponse({'msg': 'Success!', 'success': True, "listing_id": listing.id, "copy_id": copy.id},
+                        safe=False)

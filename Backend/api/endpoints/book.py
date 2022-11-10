@@ -88,7 +88,7 @@ def get_book_by_copy_id(request):
         "title": book.title,
         "cover_url": book.cover_url,
         "author": book.authors,
-        "bookID": int(book_id),
+        "book_id": int(book_id),
         "rating": rating,
     }
     return JsonResponse(response, safe=False)

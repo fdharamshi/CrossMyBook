@@ -47,10 +47,14 @@ struct ReleaseFormView: View {
                             self.showingAlert = true
                         }) {
                             Text("Get my location")
-                        }.frame(height: 48)
+                        }.frame(minWidth: 0, maxWidth: .infinity)
+                            .frame(height:48)
                             .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
                             .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
-                        Text("Your location is at:\n(\(self.vc.loc.latitude), \(self.vc.loc.longitude))")
+                        
+                        
+                        Text("Your location is: (\(self.vc.loc.latitude,  specifier: "%.2f"), \(self.vc.loc.longitude, specifier: "%.2f"))")
+                            .font(.custom("NotoSerif", size: 16)).bold().frame(maxWidth: .infinity).foregroundColor(.fontBlack)
                         
                         //                    TextField("Street Address", text: $vc.release.distance)
                         //                        .frame(height: 48)
