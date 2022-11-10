@@ -10,11 +10,12 @@ import Foundation
 class ReleaseEditController: ObservableObject {
     @Published var book: ISBNBook?
     @Published var release: Release = Release()
-    var jump = true;
+    var existing: Bool = true
+    var jump = true
 //    let loc: Location = Location()
     
     func fetchData(copyId: Int, existing: Bool){
-        // MARK: user default
+        self.existing = existing
         fetchCopyData(copyId, completion: { bookModel in
           self.book = bookModel
         })
@@ -70,7 +71,15 @@ class ReleaseEditController: ObservableObject {
       task.resume()
     }
     
-    func updateRelease(userID: Int) -> Bool {
+    func updateRelease(userID: Int) -> Bool{
+        if existing{
+            return editRelease(userID: userID)
+        }else{
+            return releaseOnCopy(userID:userID)
+        }
+    }
+    
+    func editRelease(userID: Int) -> Bool {
         let url = URL(string: "http://ec2-3-87-92-147.compute-1.amazonaws.com:8000/editRelease")
         guard let requestUrl = url else { fatalError() }
         
@@ -80,6 +89,38 @@ class ReleaseEditController: ObservableObject {
         
         // HTTP Request Parameters which will be sent in HTTP Request Body
         // MARK: UserID hard code to 4
+        let postString = "user_id=\(userID)&copy_id=\(release.copyId)&lat=\(release.lat)&lon=\(release.lon)&book_condition=\(release.condition)&charges=\(release.shipping)&max_distance=\(release.distance)&note=\(release.note)";
+        
+        // Set HTTP Request Body
+        request.httpBody = postString.data(using: String.Encoding.utf8);
+        // Perform HTTP Request
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data else {
+                self.jump = false
+                print("Error: No data to decode")
+                return
+            }
+            
+            // Decode the JSON here
+            guard let msg = try? JSONDecoder().decode(ReleaseMsg.self, from: data) else {
+                self.jump = false
+                print("Error: Couldn't decode data into a result(ReleaseContoller2)")
+                return
+            }
+        }
+        task.resume()
+        return self.jump
+    }
+    
+    func releaseOnCopy(userID: Int) -> Bool {
+        let url = URL(string: "http://ec2-3-87-92-147.compute-1.amazonaws.com:8000/release")
+        guard let requestUrl = url else { fatalError() }
+        
+        // Prepare URL Request Object
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+        
+        // HTTP Request Parameters which will be sent in HTTP Request Body
         let postString = "user_id=\(userID)&copy_id=\(release.copyId)&lat=\(release.lat)&lon=\(release.lon)&book_condition=\(release.condition)&charges=\(release.shipping)&max_distance=\(release.distance)&note=\(release.note)";
         
         // Set HTTP Request Body
