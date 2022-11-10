@@ -41,6 +41,7 @@ struct LoginView: View {
         }.padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
         
         Button(action: {
+          UserDefaults.standard.set(email, forKey: "user_id")
           jump = true
         }) {
           Text("Login").font(.custom("NotoSerif", size: 15).bold())
