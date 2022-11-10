@@ -131,8 +131,7 @@ struct RequestBookForm: View {
                     }.padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
                 }
                 Button(action: {
-                    // Hardcode userID to be 2 for now
-                    requestController.requestModel.userID = 2
+                    requestController.requestModel.userID = Int(userID) ?? 1
                     requestController.requestModel.copyID = copyID
                     requestController.requestModel.listingID = copyDetailsController.observedCopy?.listing?.listingID ?? 0
                     requestController.requestModel.lat = location.latitude
