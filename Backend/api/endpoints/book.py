@@ -31,6 +31,7 @@ def get_book_details(request):
             "copy_id": copy_detail.id,
             "status": copy_detail.status,
         })
+    # get reviews of the book
     reviewsResp = Review.objects.filter(book=book_id).order_by('-date')
     reviews = []
     for review in reviewsResp:
@@ -60,3 +61,34 @@ def get_book_details(request):
 
     return JsonResponse(response, safe=False)
 
+def get_book_by_copy_id(request):
+    copy_id = request.GET.get("copy_id", None)
+    if copy_id is None:
+        return JsonResponse({'msg': 'Invalid copy id!', 'success': False}, safe=False)  
+    try:
+        copy = BookCopy.objects.get(id=copy_id)
+    except BookCopy.DoesNotExist:
+        return JsonResponse({'msg': 'Book Copy Not Found.', 'success': False}, safe=False)
+    
+    book_id = copy.book.id
+    print(book_id)
+    try:
+        book = Book.objects.get(id=book_id)
+    except Book.DoesNotExist:
+        return JsonResponse({'msg': 'Book Not Found.', 'success': False}, safe=False)
+    
+    # calculate rating
+    rating = 5
+    reviews = Review.objects.filter(book=book)
+    if reviews.count() > 0:
+        rating = reviews.aggregate(rating=Avg('stars'))["rating"]
+    
+    response = {
+        "isbn": book.isbn,
+        "title": book.title,
+        "cover_url": book.cover_url,
+        "author": book.authors,
+        "bookID": int(book_id),
+        "rating": rating,
+    }
+    return JsonResponse(response, safe=False)
