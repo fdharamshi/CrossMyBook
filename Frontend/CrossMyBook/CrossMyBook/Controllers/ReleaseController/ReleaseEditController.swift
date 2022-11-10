@@ -8,15 +8,15 @@
 import Foundation
 
 class ReleaseEditController: ObservableObject {
-    @Published var copy: CopyDetailsModel?
+    @Published var book: ISBNBook?
     @Published var release: Release = Release()
     var jump = true;
     let loc: Location = Location()
     
     func fetchData(copyId: Int, existing: Bool){
         // MARK: user default
-        fetchCopyData(copyId, 4, completion: { copyDetailsModel in
-          self.copy = copyDetailsModel
+        fetchCopyData(copyId, completion: { bookModel in
+          self.book = bookModel
         })
         
         if existing {
@@ -51,8 +51,8 @@ class ReleaseEditController: ObservableObject {
         task.resume()
     }
     
-    private func fetchCopyData(_ copyID: Int, _ userID: Int, completion: @escaping (CopyDetailsModel) -> ()) {
-      let url: String = "http://ec2-3-87-92-147.compute-1.amazonaws.com:8000/getCopyDetails?copy_id=\(copyID)&user_id=\(userID)"
+    private func fetchCopyData(_ copyID: Int, completion: @escaping (ISBNBook) -> ()) {
+      let url: String = "http://ec2-3-87-92-147.compute-1.amazonaws.com:8000/getBookByCopyId?copy_id=\(copyID)"
       let task = URLSession.shared.dataTask(with: URL(string: url)!) { (data, response, error) in
         guard let data = data else {
           print("Error: No data to decode")
@@ -60,13 +60,12 @@ class ReleaseEditController: ObservableObject {
         }
         
         // Decode the JSON here
-        guard let copyDetails = try? JSONDecoder().decode(CopyDetailsModel.self, from: data) else {
+        guard let book = try? JSONDecoder().decode(ISBNBook.self, from: data) else {
           print("Error: Couldn't decode data into a result(CopyDetailsController) id: \(copyID)")
           return
         }
-    
         
-        completion(copyDetails)
+        completion(book)
       }
       task.resume()
     }

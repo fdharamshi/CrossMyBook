@@ -40,7 +40,7 @@ struct ReleaseFormEditView: View {
                             .navigationBarHidden(true),
                         isActive: $jump){EmptyView()}
                     
-//                    ReleaseCardView(book: releaseEditController.book)
+                    ReleaseCardView(book: releaseEditController.book)
                     
                     VStack {
                         TextField("Leave a note", text: $releaseEditController.release.note, axis: .vertical)

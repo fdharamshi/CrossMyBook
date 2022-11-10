@@ -22,7 +22,7 @@ struct ReleaseFormView: View {
             VStack {
                 HStack {
                     Button (action: {
-                        self.presentationMode.wrappedValue.dismiss() //
+                        self.presentationMode.wrappedValue.dismiss() 
                     }) {
                         FAIcon(name: "chevron-left")
                     }
@@ -31,10 +31,9 @@ struct ReleaseFormView: View {
                 
                 ScrollView {
                     NavigationLink(
-                        destination:CopyDetailsView(vc.copyId)
+                        destination: LandingView()
                             .navigationBarBackButtonHidden(true)
-                            .navigationBarHidden(true),
-                        isActive: $jump){EmptyView()}
+                            .navigationBarHidden(true), isActive: $jump){EmptyView()}
                     ReleaseCardView(book: vc.book)
                     VStack {
                         TextField("Leave a note", text: $vc.release.note, axis: .vertical)
@@ -51,6 +50,8 @@ struct ReleaseFormView: View {
                         }.frame(height: 48)
                             .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
                             .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
+                        Text("Your location is at:\n(\(self.vc.loc.latitude), \(self.vc.loc.longitude))")
+                        
                         //                    TextField("Street Address", text: $vc.release.distance)
                         //                        .frame(height: 48)
                         //                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
