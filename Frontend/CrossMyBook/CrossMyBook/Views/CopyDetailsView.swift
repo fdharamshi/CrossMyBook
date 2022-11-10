@@ -26,12 +26,34 @@ struct CopyDetailsView: View {
 //    copyDetailsController.fetchCopyDetails(id)
   }
   
+  func getButtonText(_ status: Int) -> String {
+    switch(status) {
+    case 0: return "Request Book"
+    case 1: return "Book Unavailable"
+    case 2: return "Edit Listing"
+    case 3: return "Release Book"
+    default: return "Book Unavailable"
+    }
+  }
+  
+  func getButtonStatus(_ status: Int) -> Bool {
+    switch(status) {
+    case 0: return false
+    case 1: return true
+    case 2: return false
+    case 3: return false
+    default: return true
+    }
+  }
+  
   var body: some View {
     NavigationView {
       if isRequest {
         RequestBookForm(copyID, copyDetailsController)
       } else {
         VStack {
+          
+          // MARK: Top Bar
           
           HStack {
             Button (action: {
@@ -44,6 +66,8 @@ struct CopyDetailsView: View {
           }.padding(10)
           ScrollView {
             
+            // MARK: MAP
+            
             ZStack (alignment: .bottomLeading) {
               Map(coordinateRegion: $mapRegion, annotationItems: copyDetailsController.observedCopy?.travelHistory ?? []) { tH in
                 MapMarker(coordinate: CLLocationCoordinate2D(
@@ -53,10 +77,11 @@ struct CopyDetailsView: View {
               }
               .frame(height: 450)
               
+              
+              // MARK: Book Cover
               WebImage(url: URL(string: copyDetailsController.observedCopy?.coverURL ?? ""))
                 .resizable()
                 .placeholder(Image(uiImage: UIImage(named: "bookplaceholder")!)) // Placeholder Image
-              // Supports ViewBuilder as well
                 .scaledToFit()
                 .frame(width: 100, height: 150, alignment: .center)
                 .border(Color.black, width: 1)
@@ -70,6 +95,8 @@ struct CopyDetailsView: View {
             }
             
             VStack {
+              
+              // MARK: Book Title, Author & Rating
               VStack (alignment: .leading) {
                 Text(copyDetailsController.observedCopy?.title ?? "Loading...")
                   .multilineTextAlignment(.leading)
@@ -94,6 +121,7 @@ struct CopyDetailsView: View {
                 .offset(x: 150, y:0)
             }.frame(maxWidth: .infinity, alignment: .leading)
             
+            // MARK: Travel History
             VStack {
               Text("Travel History")
                 .font(.custom("NotoSerif", size: 18))
@@ -119,21 +147,6 @@ struct CopyDetailsView: View {
                       .frame(width: 30, height: 30, alignment: .center)
                   }
                 }
-                //              ForEach(0..<(copyDetailsController.observedCopy?.travelHistory.count ?? 0)) {idx in
-                //                WebImage(url: URL(string: "https://randomuser.me/api/portraits/women/61.jpg"))
-                //                  .resizable()
-                //                  .scaledToFit()
-                //                  .frame(width: 70, height: 70, alignment: .center)
-                //                  .cornerRadius(35)
-                //
-                //                if(idx != ((copyDetailsController.observedCopy?.travelHistory.count ?? 1) - 1)) {
-                //                  WebImage(url: URL(string: "https://cdn-icons-png.flaticon.com/512/3183/3183354.png"))
-                //                    .resizable()
-                //                    .scaledToFit()
-                //                    .frame(width: 30, height: 30, alignment: .center)
-                //                }
-                
-                //              }.id(copyDetailsController.observedCopy?.travelHistory.count ?? 0)
               }
             }.padding(.leading)
             
@@ -142,6 +155,8 @@ struct CopyDetailsView: View {
               // ##################################################
               // Listing Details only if there is an active listing
               // ##################################################
+              
+              // MARK: Listing Details
               
               VStack (alignment: .leading) {
                 Text("Shipping Expense")
@@ -226,15 +241,24 @@ struct CopyDetailsView: View {
           }
           
           Button(action: {
-            self.isRequest = true
+            if(copyDetailsController.observedCopy?.status == 0) {
+              self.isRequest = true
+            } else if (copyDetailsController.observedCopy?.status == 1) {
+              // Book Unavailable. Do nothing.
+            } else if (copyDetailsController.observedCopy?.status == 2) {
+              // TODO: Edit Listing
+            } else if (copyDetailsController.observedCopy?.status == 3) {
+              // TODO: Release Book
+            }
+            
           }) {
-            Text("Request Book").font(.custom("NotoSerif", size: 15))
+            Text(getButtonText(copyDetailsController.observedCopy?.status ?? 1)).font(.custom("NotoSerif", size: 15))
               .padding()
               .frame(maxWidth: .infinity)
-              .background(RoundedRectangle(cornerRadius: 8).fill(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255)))
+              .background(RoundedRectangle(cornerRadius: 8).fill(copyDetailsController.observedCopy?.status == 1 ? Color("LightBrown") : Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255)))
               .foregroundColor(Color.white)
           }
-          .padding(.horizontal)
+          .padding(.horizontal).disabled(getButtonStatus(copyDetailsController.observedCopy?.status ?? 1))
         }.background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
       }
     }.onAppear(perform: {
