@@ -69,8 +69,9 @@ def releaseANewCopy(request):
 
     # CREATE A NEW LISTING
     try:
+        today = datetime.date.today()
         new_listing = Listing(copy=copy, user_id=user_id, lat=lat, lon=lon, book_condition=book_condition,
-                              charges=charges, max_distance=max_distance, note=note, status=status)
+                              charges=charges, max_distance=max_distance, note=note, status=status, post_date=today)
         new_listing.save()
     except:
         return JsonResponse({'msg': 'Fail to create a new listing.', 'success': False}, safe=False)
