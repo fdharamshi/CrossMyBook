@@ -12,6 +12,7 @@ struct ReleaseFormEditView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var releaseEditController: ReleaseEditController = ReleaseEditController()
     @State var jump = false
+    @State var userID: String = UserDefaults.standard.string(forKey: "user_id") ?? "1"
 //    @State private var showingAlert = false
     let copyID: Int
     let existing: Bool
@@ -35,7 +36,7 @@ struct ReleaseFormEditView: View {
                 
                 ScrollView {
                     NavigationLink(
-                        destination:CopyDetailsView(copyID)
+                        destination:LandingView()
                             .navigationBarBackButtonHidden(true)
                             .navigationBarHidden(true),
                         isActive: $jump){EmptyView()}
@@ -103,7 +104,7 @@ struct ReleaseFormEditView: View {
                 
                 
                 Button(action: {
-                    jump = releaseEditController.updateRelease()
+                    jump = releaseEditController.updateRelease(userID: Int(userID) ?? 1)
                 }) {
                     Text("Release Book").font(.custom("NotoSerif", size: 15))
                         .padding()
