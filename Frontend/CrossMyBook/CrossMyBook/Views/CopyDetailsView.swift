@@ -18,6 +18,7 @@ struct CopyDetailsView: View {
   @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 49.9, longitude: -79.29), span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
   
   @State var isRequest: Bool = false
+  @State var isEditListing: Bool = false
   
   let copyID: Int
   
@@ -67,6 +68,11 @@ struct CopyDetailsView: View {
                     destination:RequestBookForm(copyID)
                       .navigationBarBackButtonHidden(true)
                       .navigationBarHidden(true), isActive: $isRequest){EmptyView()}
+                
+                NavigationLink(
+                    destination:ReleaseFormEditView(copyID, true)
+                      .navigationBarBackButtonHidden(true)
+                      .navigationBarHidden(true), isActive: $isEditListing){EmptyView()}
                 
                 // MARK: MAP
                 
@@ -252,7 +258,7 @@ struct CopyDetailsView: View {
                 } else if (copyDetailsController.observedCopy?.status == 1) {
                   // Book Unavailable. Do nothing.
                 } else if (copyDetailsController.observedCopy?.status == 2) {
-                  // TODO: Edit Listing
+                  self.isEditListing = true
                 } else if (copyDetailsController.observedCopy?.status == 3) {
                   // TODO: Release Book
                 }
