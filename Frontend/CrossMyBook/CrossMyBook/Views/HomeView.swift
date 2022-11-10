@@ -24,6 +24,7 @@ struct HomeView: View {
         .foregroundColor(Color("FontBlack"))
         .multilineTextAlignment(.leading)
         .padding(.leading, 20)
+        .padding(.top, 20.0)
       ScrollView(.horizontal, showsIndicators: false) {
         HStack(spacing: 10) {
           ForEach(temporaryMainController.observedCopy?.allCopies ?? []) { copy in

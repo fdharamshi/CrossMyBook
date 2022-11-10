@@ -11,12 +11,12 @@ import SDWebImageSwiftUI
 struct DashboardView: View {
     var body: some View {
       VStack {
-        HStack {
-          Spacer()
-          Text("cog").font(.custom("FontAwesome5Free-Solid", size: CGFloat(28)))
-            .padding(.trailing, 20)
-            .foregroundColor(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255))
-        }
+//        HStack {
+//          Spacer()
+//          Text("cog").font(.custom("FontAwesome5Free-Solid", size: CGFloat(28)))
+//            .padding(.trailing, 20)
+//            .foregroundColor(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255))
+//        }
         HStack {
           WebImage(url: URL(string: "https://67443.cmuis.net/assets/profh_teaching-d359630aeb42e1df48858ad439592fff6049740ed8c252a949c41e07fae4709e.png"))
                             .resizable()
@@ -33,7 +33,7 @@ struct DashboardView: View {
               .font(Font.custom("NotoSerif", size: 12))
               .foregroundColor(Color("FontBlack"))
           }
-        }
+        }.padding(.top, 20.0)
         HStack {
           Spacer()
           VStack {

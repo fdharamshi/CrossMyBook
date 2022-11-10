@@ -55,14 +55,14 @@ struct CopyDetailsView: View {
           
           // MARK: Top Bar
           
-          HStack {
+          ZStack (alignment: .bottomLeading) {
+            Text("Cross My Book")
+              .font(.custom("NotoSerif", size: 25)).bold().frame(maxWidth: .infinity).foregroundColor(.fontBlack)
             Button (action: {
               self.presentationMode.wrappedValue.dismiss() // TODO: back action
             }) {
               FAIcon(name: "chevron-left")
             }
-            Text("Cross My Book")
-              .font(.custom("NotoSerif", size: 25)).bold().frame(maxWidth: .infinity).foregroundColor(.fontBlack)
           }.padding(10)
           ScrollView {
             

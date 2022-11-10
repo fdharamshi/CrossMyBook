@@ -19,7 +19,15 @@ struct LandingView: View {
     var body: some View {
       NavigationView {
         VStack {
-          
+          ZStack (alignment: .trailingFirstTextBaseline) {
+            Text("Cross My Book")
+              .font(.custom("NotoSerif", size: 25)).bold().frame(maxWidth: .infinity).foregroundColor(.fontBlack)
+            Button (action: {
+//              self.presentationMode.wrappedValue.dismiss() // TODO: back action
+            }) {
+              FAIcon(name: "bell", size: 25)
+            }
+          }.padding(10) // TODO: Can someone add a shadow here?
           switch(index) {
           case 0: homeView
           case 1: communityView
@@ -29,7 +37,7 @@ struct LandingView: View {
             homeView
           }
           NavBar(changeIndex: self.changeIndex(_:))
-        }.edgesIgnoringSafeArea(.bottom)
+        }.edgesIgnoringSafeArea([.bottom])
       }.navigationBarHidden(true)
     }
   
