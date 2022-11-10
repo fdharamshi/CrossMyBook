@@ -34,5 +34,6 @@ urlpatterns = [
     path('takeActionOnRequest', requests.takeActionOnRequest),
     path('createReview', community.create_review),
     path('main', mainpage.temporary_main),
-    path('getProfile', profile.getProfile)
+    path('getProfile', profile.getProfile),
+    path('editRelease', releases.editExistingRelease)
 ]
