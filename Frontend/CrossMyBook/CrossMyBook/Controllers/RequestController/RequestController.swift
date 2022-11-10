@@ -10,8 +10,9 @@ import Foundation
 class RequestController: ObservableObject {
   
   @Published var requestModel = RequestModel()
+  @Published var success: Bool = true
   
-  func createRequest() {
+  func createRequest() -> Bool {
     let userID = requestModel.userID
     let copyID = requestModel.copyID
     let listingID = requestModel.listingID
@@ -41,10 +42,12 @@ class RequestController: ObservableObject {
         
         // Decode the JSON here
         guard let message = try? JSONDecoder().decode(RequestMessage.self, from: data) else {
+            self.success = false
             print("Error: Couldn't decode data into a result (RequestController)")
             return
         }
     }
     task.resume()
+    return self.success
   }
 }
