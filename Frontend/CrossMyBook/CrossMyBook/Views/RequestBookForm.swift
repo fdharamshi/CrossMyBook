@@ -18,6 +18,7 @@ struct RequestBookForm: View {
     @ObservedObject var profileController: ProfileController = ProfileController()
   
     @State var userID: String = UserDefaults.standard.string(forKey: "user_id") ?? "1"
+    @State var name: String = ""
     @State var location = Location()
     @State var note: String = ""
     
@@ -64,8 +65,8 @@ struct RequestBookForm: View {
                                     .font(.custom("NotoSerif", size: 20))
                                     .bold()
                                 
-                                Text(copyDetailsController.observedCopy?.author ?? "Loading...")
-                                    .font(.custom("NotoSerif", size: 15))
+                              Text(copyDetailsController.observedCopy?.author ?? "Loading...")
+                                    .font(.custom("NotoSerif", size: 15)).bold()
                                     .multilineTextAlignment(.leading)
                                     .fixedSize(horizontal: false, vertical: true)
                                 
@@ -76,25 +77,56 @@ struct RequestBookForm: View {
                                             .foregroundColor(Color.yellow)
                                     }
                                 }
+                              
+                                Spacer()
+                              
+                                Text(copyDetailsController.observedCopy?.listing?.bookCondition ?? "Loading...")
+                                    .font(.custom("NotoSerif", size: 15))
+                                    .multilineTextAlignment(.leading)
+                                    .fixedSize(horizontal: false, vertical: true)
+                              
+                                Text("Shipping expense \(copyDetailsController.observedCopy?.listing?.shippingExpense ?? "Loading...")")
+                                    .font(.custom("NotoSerif", size: 15))
+                                    .multilineTextAlignment(.leading)
+                                    .fixedSize(horizontal: false, vertical: true)
+                                
+                                Text("Willing to ship in \(copyDetailsController.observedCopy?.listing?.willingness ?? "Loading...")")
+                                    .font(.custom("NotoSerif", size: 15))
+                                    .multilineTextAlignment(.leading)
+                                    .fixedSize(horizontal: false, vertical: true)
                                 
                             }
                         }
                         Spacer()
                     }
                     VStack {
+                      
+                      HStack {
                         
+                        WebImage(url: URL(string: profileController.profile?.profileUrl ?? ""))
+                          .resizable()
+                          .scaledToFit()
+                          .frame(width: 70, height: 70, alignment: .center)
+                          .cornerRadius(35)
+                          .padding([.top, .bottom], 8.0)
                         
-                        //RoundedTextField(text: $userID, placeholder: "name", height: 48)
+                        Text("\(profileController.profile?.firstName ?? "") \(profileController.profile?.lastName ?? "")")
+                            .font(.custom("NotoSerif", size: 20)).bold()
+                            .foregroundColor(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255))
+                        
+                      }.padding(.bottom)
                       
-                        // Put user ID here for now, will display username when getUsername API created
-                      Text("Username: \(profileController.profile?.firstName ?? "") \(profileController.profile?.lastName ?? "")")
-                          .padding(.bottom)
+                      VStack {
+                        Text("Lat: \(self.location.latitude) Lon: \(self.location.longitude)")
+                          .padding(.bottom, 1.0)
+                          .font(.custom("NotoSerif", size: 15))
+                        
+                        Button("Update Current Location", action: {self.location.getCurrentLocation()})
+                          .font(.custom("NotoSerif", size: 12))
+                        
+                      }.padding(.bottom)
                       
-                        Button("Fetch Current Location", action: {self.location.getCurrentLocation()})
-                        Text("Lat:\(self.location.latitude) Lon:\(self.location.longitude)")
-                          .padding(.bottom)
-                      
-                        RoundedTextField(text: $note, placeholder: "leave a note", height: 250)
+                      RoundedTextField(text: $note, placeholder: "leave a note", height: 200)
                         
                     }.padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
                 }
