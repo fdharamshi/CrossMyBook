@@ -10,11 +10,17 @@ import Combine
 
 struct ReleaseFormEditView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @ObservedObject var vc: ReleaseController
-    @ObservedObject var bookViewModel: BookViewModel = BookViewModel()
-    @State var zip: String = ""
+    @ObservedObject var releaseEditController: ReleaseEditController = ReleaseEditController()
     @State var jump = false
-    @State private var showingAlert = false
+//    @State private var showingAlert = false
+    let copyID: Int
+    let existing: Bool
+    
+    init(_ copyID: Int, _ existing: Bool) {
+        self.copyID = copyID
+        self.existing = existing
+    }
+    
     var body: some View {
         NavigationView{
             VStack {
@@ -29,48 +35,33 @@ struct ReleaseFormEditView: View {
                 
                 ScrollView {
                     NavigationLink(
-                        destination:CopyDetailsView(vc.copyId)
+                        destination:CopyDetailsView(copyID)
                             .navigationBarBackButtonHidden(true)
                             .navigationBarHidden(true),
                         isActive: $jump){EmptyView()}
-                    ReleaseCardView(book: vc.book)
+                    
+//                    ReleaseCardView(book: releaseEditController.book)
+                    
                     VStack {
-                        TextField("Leave a note", text: $vc.release.note, axis: .vertical)
+                        TextField("Leave a note", text: $releaseEditController.release.note, axis: .vertical)
                             .lineLimit(10...)
                             .padding(EdgeInsets(top: 20, leading: 20, bottom: 15, trailing: 20))
                             .multilineTextAlignment(.leading)
                             .background(RoundedRectangle(cornerRadius:10).fill(Color.white))
                         
-                        Button(action: {
-                            self.vc.loc.getCurrentLocation()
-                            self.showingAlert = true
-                        }) {
-                            Text("Get my location")
-                        }.frame(height: 48)
-                            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-                            .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
-                        //                    TextField("Street Address", text: $vc.release.distance)
-                        //                        .frame(height: 48)
-                        //                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-                        //                        .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
-                        
-                        //                    TextField("Zip Code", text: $zip)
-                        //                        .frame(height: 48)
-                        //                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-                        //                        .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
-                        //                        .keyboardType(.numberPad)
-                        //                        .onReceive(Just(zip)) { newValue in
-                        //                            let filtered = newValue.filter { "0123456789".contains($0) }
-                        //                            if filtered != newValue {
-                        //                                zip = ""
-                        //                            }else{
-                        //                                vc.inputZipCode(zip:zip)
-                        //                            }
-                        //                        }
+//                        Button(action: {
+//                            self.vc.loc.getCurrentLocation()
+//                            self.showingAlert = true
+//                        }) {
+//                            Text("Get my location")
+//                        }.frame(height: 48)
+//                            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+//                            .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
+
                         HStack{
                             CustomText(s: "Shipping Option", size: 14).bold()
                             Spacer()
-                            Picker("Shipping Option", selection: $vc.release.shipping) {
+                            Picker("Shipping Option", selection: $releaseEditController.release.shipping) {
                                 Text("Pay by Requester").tag("Pay by the Requester")
                                 Text("Pay by Sender").tag("Pay by the Sender")
                                 Text("Split by Both Parties").tag("Split by Both Parties")
@@ -81,7 +72,7 @@ struct ReleaseFormEditView: View {
                         HStack{
                             CustomText(s: "Travel Distance", size: 14).bold()
                             Spacer()
-                            Picker("Travel Distance", selection: $vc.release.distance) {
+                            Picker("Travel Distance", selection: $releaseEditController.release.distance) {
                                 Text("Same City").tag("Same City")
                                 Text("Same State").tag("Same State")
                                 Text("Same Country").tag("Same Country")
@@ -93,7 +84,7 @@ struct ReleaseFormEditView: View {
                         HStack{
                             CustomText(s: "Book Condition", size: 14).bold()
                             Spacer()
-                            Picker("Book Condition", selection: $vc.release.condition) {
+                            Picker("Book Condition", selection: $releaseEditController.release.condition) {
                                 Text("Excellent").tag("Excellent")
                                 Text("Good").tag("Good")
                                 Text("Fair").tag("Fair")
@@ -102,15 +93,15 @@ struct ReleaseFormEditView: View {
                             .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
                             .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
                     }.padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
-                }.alert(isPresented: $showingAlert) {
-                    Alert(title: Text("Location"), message: Text(vc.generateTitle()))
                 }
+//                .alert(isPresented: $showingAlert) {
+//                    Alert(title: Text("Location"), message: Text(releaseEditController.generateTitle()))
+//                }
                 
                 
                 
                 Button(action: {
-                    // vc.test()
-                    jump = vc.createRelease()
+                    jump = releaseEditController.updateRelease()
                 }) {
                     Text("Release Book").font(.custom("NotoSerif", size: 15))
                         .padding()
@@ -121,7 +112,9 @@ struct ReleaseFormEditView: View {
                 .padding(.horizontal)
             }.background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
             
-        }
+        }.onAppear(perform: {
+            releaseEditController.fetchData(copyId: copyID, existing: self.existing)
+          })
         
     }
     

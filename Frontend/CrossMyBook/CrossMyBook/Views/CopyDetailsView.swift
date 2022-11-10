@@ -70,7 +70,7 @@ struct CopyDetailsView: View {
                       .navigationBarHidden(true), isActive: $isRequest){EmptyView()}
                 
                 NavigationLink(
-                    destination:ReleaseFormEditView(copyID)
+                    destination:ReleaseFormEditView(copyID, true)
                       .navigationBarBackButtonHidden(true)
                       .navigationBarHidden(true), isActive: $isEditListing){EmptyView()}
                 

@@ -71,8 +71,8 @@ class ReleaseController: ObservableObject {
         request.httpMethod = "POST"
         
         // HTTP Request Parameters which will be sent in HTTP Request Body
-        // MARK: UserID hard code to 1
-        let postString = "user_id=1&book_id=\(book?.bookID ?? 0)&lat=\(loc.latitude)&lon=\(loc.longitude)&book_condition=\(release.condition)&charges=\(release.shipping)&max_distance=\(release.distance)&note=\(release.note)";
+        // MARK: UserID hard code to 4
+        let postString = "user_id=4&book_id=\(book?.bookID ?? 0)&lat=\(loc.latitude)&lon=\(loc.longitude)&book_condition=\(release.condition)&charges=\(release.shipping)&max_distance=\(release.distance)&note=\(release.note)";
         print(postString)
         //        let postString = "user_id=1&book_id=3&lat=0&lon=0&book_condition=Good&charges=Incurrent by the Requester&max_distance=Same City&note=someNotes";
         
