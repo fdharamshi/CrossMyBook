@@ -30,10 +30,10 @@ struct CopyCardView: View {
                         // available
                         NavigationLink(destination: CopyDetailsView((copy?.copyId)!).navigationBarBackButtonHidden(true)) {
                             VStack {
-                                CustomText(s: "request", size: 12, color: Color.white).bold()
+                                CustomText(s: "Request", size: 12, color: Color.white).bold()
                             }
                             .padding()
-                            .background(Color.lightBrown)
+                            .background(Color("Theme"))
                             .cornerRadius(10)
                         }
                     } else {

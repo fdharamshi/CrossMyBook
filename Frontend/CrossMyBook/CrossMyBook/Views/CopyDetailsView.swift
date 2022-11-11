@@ -147,14 +147,14 @@ struct CopyDetailsView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                   HStack(spacing: 10) {
                     
-                    ForEach(copyDetailsController.observedCopy?.travelHistory ?? []) { travelPoint in
+                    ForEach(copyDetailsController.observedCopy?.travelHistory.reversed() ?? []) { travelPoint in
                       WebImage(url: URL(string: travelPoint.userPicture))
                         .resizable()
                         .scaledToFit()
                         .frame(width: 70, height: 70, alignment: .center)
                         .cornerRadius(35)
                       
-                      if(travelPoint != copyDetailsController.observedCopy?.travelHistory.last) {
+                      if(travelPoint != copyDetailsController.observedCopy?.travelHistory.first) {
                         WebImage(url: URL(string: "https://cdn-icons-png.flaticon.com/512/3183/3183354.png"))
                           .resizable()
                           .scaledToFit()
