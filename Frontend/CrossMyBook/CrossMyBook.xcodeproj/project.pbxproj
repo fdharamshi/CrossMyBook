@@ -65,6 +65,9 @@
 		EE9181FF2918D91A003CD0B0 /* RequestBookForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9181FE2918D91A003CD0B0 /* RequestBookForm.swift */; };
 		EEA0B41D29199EB10077165C /* CopyDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA0B41C29199EB10077165C /* CopyDetails.swift */; };
 		EEA0B42029199F6B0077165C /* CopyDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA0B41F29199F6B0077165C /* CopyDetailsController.swift */; };
+		EEDC263A291DE52E009422FA /* AlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2639291DE52E009422FA /* AlertModel.swift */; };
+		EEDC263C291DE545009422FA /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC263B291DE545009422FA /* AlertController.swift */; };
+		EEDC263F291DE5C1009422FA /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC263E291DE5C1009422FA /* AlertView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -126,6 +129,9 @@
 		EE9181FE2918D91A003CD0B0 /* RequestBookForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBookForm.swift; sourceTree = "<group>"; };
 		EEA0B41C29199EB10077165C /* CopyDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyDetails.swift; sourceTree = "<group>"; };
 		EEA0B41F29199F6B0077165C /* CopyDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyDetailsController.swift; sourceTree = "<group>"; };
+		EEDC2639291DE52E009422FA /* AlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModel.swift; sourceTree = "<group>"; };
+		EEDC263B291DE545009422FA /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		EEDC263E291DE5C1009422FA /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +231,7 @@
 		EE220BBF2913847500CEC13A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EEDC2637291DE511009422FA /* AlertView */,
 				EE862128291ADC8800000345 /* CommunityView */,
 				EE862127291ADC8100000345 /* DashboardView */,
 				EE862126291ADC6F00000345 /* HomeView */,
@@ -244,6 +251,7 @@
 		EE220BC02913847F00CEC13A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EEDC2638291DE51F009422FA /* AlertModels */,
 				B3CB6853291B47FA004DC394 /* RequestModels */,
 				3A9F99CC291A22F000E3909E /* ReleaseModels */,
 				EEA0B41B29199E9A0077165C /* CopyDetailsModels */,
@@ -259,6 +267,7 @@
 		EE220BC12913848600CEC13A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EEDC263D291DE54B009422FA /* AlertControllers */,
 				B3CB6854291B480E004DC394 /* RequestController */,
 				3A9F99CB291A22E700E3909E /* ReleaseController */,
 				EEA0B41E29199F580077165C /* CopyDetailsController */,
@@ -389,6 +398,30 @@
 			path = CopyDetailsController;
 			sourceTree = "<group>";
 		};
+		EEDC2637291DE511009422FA /* AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				EEDC263E291DE5C1009422FA /* AlertView.swift */,
+			);
+			name = AlertView;
+			sourceTree = "<group>";
+		};
+		EEDC2638291DE51F009422FA /* AlertModels */ = {
+			isa = PBXGroup;
+			children = (
+				EEDC2639291DE52E009422FA /* AlertModel.swift */,
+			);
+			path = AlertModels;
+			sourceTree = "<group>";
+		};
+		EEDC263D291DE54B009422FA /* AlertControllers */ = {
+			isa = PBXGroup;
+			children = (
+				EEDC263B291DE545009422FA /* AlertController.swift */,
+			);
+			path = AlertControllers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -488,6 +521,7 @@
 				31954DD22917042E00C6AD1F /* BookDetailView.swift in Sources */,
 				3A9F99D0291A239200E3909E /* Release.swift in Sources */,
 				B3ABC8C1291C14CE006C9A01 /* RequestMessage.swift in Sources */,
+				EEDC263A291DE52E009422FA /* AlertModel.swift in Sources */,
 				B374B131291A274E0093755D /* RoundedTextField.swift in Sources */,
 				EE862136291B0B0200000345 /* TemporaryMainModel.swift in Sources */,
 				3A9F9A22291AD5F400E3909E /* ReleaseCardView.swift in Sources */,
@@ -512,6 +546,7 @@
 				B3CB6856291B484B004DC394 /* RequestModel.swift in Sources */,
 				3A6B7C1C2919E603000744EB /* ReleaseSelectionView.swift in Sources */,
 				EE862130291ADCFC00000345 /* DashboardView.swift in Sources */,
+				EEDC263C291DE545009422FA /* AlertController.swift in Sources */,
 				31A8794E291846B000286ABF /* BookViewModel.swift in Sources */,
 				3A6B7C1C2919E603000744EB /* ReleaseSelectionView.swift in Sources */,
 				31A8794E291846B000286ABF /* BookViewModel.swift in Sources */,
@@ -520,6 +555,7 @@
 				3A9F99CE291A230300E3909E /* ReleaseController.swift in Sources */,
 				31954DCA2916FB0300C6AD1F /* NavBar.swift in Sources */,
 				31954DDA291714B500C6AD1F /* Book.swift in Sources */,
+				EEDC263F291DE5C1009422FA /* AlertView.swift in Sources */,
 				EE862134291ADD1E00000345 /* LandingView.swift in Sources */,
 				EE220BC32913849500CEC13A /* LoginView.swift in Sources */,
 				EE360A012911B595006DB257 /* CrossMyBook.xcdatamodeld in Sources */,

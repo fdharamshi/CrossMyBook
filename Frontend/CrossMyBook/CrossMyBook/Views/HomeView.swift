@@ -26,7 +26,7 @@ struct HomeView: View {
         .padding(.leading, 20)
         .padding(.top, 20.0)
       ScrollView(.horizontal, showsIndicators: false) {
-        HStack(spacing: 10) {
+        HStack(alignment: .top, spacing: 10) {
           ForEach(temporaryMainController.observedCopy?.allCopies ?? []) { copy in
             NavigationLink(destination: CopyDetailsView(copy.copyID ?? 1).navigationBarHidden(true)) {
               VStack {
@@ -37,7 +37,7 @@ struct HomeView: View {
                   .frame(width: 100, height: 150, alignment: .center)
                   .border(Color.black, width: 1)
                   .background(Color.brown).padding(.leading, 20)
-                Text(copy.title).frame(width:100).padding(.leading, 20).foregroundColor(Color.black)
+                Text(copy.title).frame(width:100).padding(.leading, 20).foregroundColor(Color.black).lineLimit(4)
               }
             }
           }
@@ -51,7 +51,7 @@ struct HomeView: View {
         .multilineTextAlignment(.leading)
         .padding(.leading, 20)
       ScrollView(.horizontal, showsIndicators: false) {
-        HStack(spacing: 10) {
+        HStack(alignment: .top, spacing: 10) {
           ForEach(temporaryMainController.observedCopy?.allBooks ?? []) { listing in
               NavigationLink(destination: BookDetailView(bookId: String(listing.bookID ?? 1)).navigationBarHidden(true)) {
                   VStack {
@@ -62,7 +62,7 @@ struct HomeView: View {
                       .frame(width: 100, height: 150, alignment: .center)
                       .border(Color.black, width: 1)
                       .background(Color.brown).padding(.leading, 20)
-                    Text(listing.title).frame(width:100).padding(.leading, 20).foregroundColor(Color.black)
+                    Text(listing.title).frame(width:100).padding(.leading, 20).foregroundColor(Color.black).lineLimit(4)
                   }
               }
           }

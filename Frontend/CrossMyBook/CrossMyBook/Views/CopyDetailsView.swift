@@ -14,6 +14,7 @@ struct CopyDetailsView: View {
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   
   @ObservedObject var copyDetailsController: CopyDetailsController = CopyDetailsController()
+  
   @State var userID: String = UserDefaults.standard.string(forKey: "user_id") ?? "1"
   
   @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 49.9, longitude: -79.29), span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
