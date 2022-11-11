@@ -42,7 +42,7 @@ struct NavBar: View {
               .background(Color.white)
               .cornerRadius(30)
           }.offset(x:0, y: -45)
-        }
+        }.background(Color.white)
   }
 }
 

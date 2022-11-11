@@ -30,10 +30,6 @@ struct LandingView: View {
               FAIcon(name: "bell", size: 25)
             }.padding(.trailing, 20.0)
           }.padding(10).background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
-          NavigationLink(
-              destination:AlertView()
-                .navigationBarBackButtonHidden(true)
-                .navigationBarHidden(true), isActive: $isAlert){EmptyView()}
           switch(index) {
           case 0: homeView
           case 1: communityView
@@ -44,7 +40,9 @@ struct LandingView: View {
           }
           NavBar(changeIndex: self.changeIndex(_:))
         }.edgesIgnoringSafeArea([.bottom]).background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
-      }.navigationBarHidden(true)
+      }.navigationBarHidden(true).sheet(isPresented: $isAlert) {
+        AlertView()
+      }
     }
   
   func changeIndex(_ newIndex: Int) {
