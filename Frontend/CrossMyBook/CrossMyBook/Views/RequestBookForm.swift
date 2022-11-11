@@ -13,7 +13,6 @@ struct RequestBookForm: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @ObservedObject var copyDetailsController: CopyDetailsController = CopyDetailsController()
     @ObservedObject var requestController: RequestController = RequestController()
     @ObservedObject var profileController: ProfileController = ProfileController()
   
@@ -21,14 +20,17 @@ struct RequestBookForm: View {
     @State var name: String = ""
     @State var location = Location()
     @State var note: String = ""
-    
+    @State var showLocationAlert: Bool = false
     @State var hasSubmitted: Bool = false
     
     let copyID: Int
+    let copyDetailsController: CopyDetailsController
     
-    init(_ copyID: Int) {
+    init(_ copyID: Int, _ copyDetailsController: CopyDetailsController) {
         self.copyID = copyID
+        self.copyDetailsController = copyDetailsController
         self.location.getCurrentLocation()
+        profileController.fetchProfile(Int(userID) ?? 1)
     }
     
     var body: some View {
@@ -121,7 +123,10 @@ struct RequestBookForm: View {
                           .padding(.bottom, 1.0)
                           .font(.custom("NotoSerif", size: 15))
                         
-                        Button("Update Current Location", action: {self.location.getCurrentLocation()})
+                        Button("Update Current Location", action: {
+                          self.location.getCurrentLocation()
+                          self.showLocationAlert = true
+                        })
                           .font(.custom("NotoSerif", size: 12))
                         
                       }.padding(.bottom)
@@ -129,6 +134,8 @@ struct RequestBookForm: View {
                       RoundedTextField(text: $note, placeholder: "leave a note", height: 200)
                         
                     }.padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
+                }.alert(isPresented: $showLocationAlert) {
+                  Alert(title: Text("Location"), message: Text("Your location is at:\n(\(self.location.latitude), \(self.location.longitude))"))
                 }
                 Button(action: {
                     requestController.requestModel.userID = Int(userID) ?? 1
@@ -147,9 +154,9 @@ struct RequestBookForm: View {
                 }
                 .padding(.horizontal)
             }.background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
-        }.onAppear(perform: {
-            copyDetailsController.fetchCopyDetails(copyID, Int(userID) ?? 1)
-            profileController.fetchProfile(Int(userID) ?? 1)
-        })
+            .onAppear(perform: {
+              copyDetailsController.fetchCopyDetails(copyID, Int(userID) ?? 1)
+            })
+        }
     }
 }

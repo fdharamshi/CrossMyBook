@@ -66,7 +66,7 @@ struct CopyDetailsView: View {
               ScrollView {
                 
                 NavigationLink(
-                    destination:RequestBookForm(copyID)
+                    destination:RequestBookForm(copyID, copyDetailsController)
                       .navigationBarBackButtonHidden(true)
                       .navigationBarHidden(true), isActive: $isRequest){EmptyView()}
                 
