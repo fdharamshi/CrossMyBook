@@ -65,6 +65,7 @@
 		EE9181FF2918D91A003CD0B0 /* RequestBookForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9181FE2918D91A003CD0B0 /* RequestBookForm.swift */; };
 		EEA0B41D29199EB10077165C /* CopyDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA0B41C29199EB10077165C /* CopyDetails.swift */; };
 		EEA0B42029199F6B0077165C /* CopyDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA0B41F29199F6B0077165C /* CopyDetailsController.swift */; };
+		EED5F5FF291EDAB400388B3E /* AlertRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED5F5FE291EDAB400388B3E /* AlertRequestView.swift */; };
 		EEDC263A291DE52E009422FA /* AlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2639291DE52E009422FA /* AlertModel.swift */; };
 		EEDC263C291DE545009422FA /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC263B291DE545009422FA /* AlertController.swift */; };
 		EEDC263F291DE5C1009422FA /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC263E291DE5C1009422FA /* AlertView.swift */; };
@@ -129,6 +130,7 @@
 		EE9181FE2918D91A003CD0B0 /* RequestBookForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBookForm.swift; sourceTree = "<group>"; };
 		EEA0B41C29199EB10077165C /* CopyDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyDetails.swift; sourceTree = "<group>"; };
 		EEA0B41F29199F6B0077165C /* CopyDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyDetailsController.swift; sourceTree = "<group>"; };
+		EED5F5FE291EDAB400388B3E /* AlertRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertRequestView.swift; sourceTree = "<group>"; };
 		EEDC2639291DE52E009422FA /* AlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModel.swift; sourceTree = "<group>"; };
 		EEDC263B291DE545009422FA /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		EEDC263E291DE5C1009422FA /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
@@ -402,6 +404,7 @@
 			isa = PBXGroup;
 			children = (
 				EEDC263E291DE5C1009422FA /* AlertView.swift */,
+				EED5F5FE291EDAB400388B3E /* AlertRequestView.swift */,
 			);
 			name = AlertView;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				B374B131291A274E0093755D /* RoundedTextField.swift in Sources */,
 				EE862136291B0B0200000345 /* TemporaryMainModel.swift in Sources */,
 				3A9F9A22291AD5F400E3909E /* ReleaseCardView.swift in Sources */,
+				EED5F5FF291EDAB400388B3E /* AlertRequestView.swift in Sources */,
 				EE862138291B0B1E00000345 /* TemporaryMainController.swift in Sources */,
 				31A8794C29181C8300286ABF /* BookParser.swift in Sources */,
 				31A879582919E8A300286ABF /* RatingsView.swift in Sources */,

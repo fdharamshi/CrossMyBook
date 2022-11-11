@@ -19,6 +19,8 @@ struct AlertView: View {
   
   @State var index: Int = 0
   
+  @State var currentRequest:Request? = nil
+  
   func toggleIndex() {
     if(index == 0) {
       index = 1
@@ -30,7 +32,6 @@ struct AlertView: View {
   func getDistance(_ lat1:Double, _ lon1:Double, _ lat2: Double, _ lon2: Double) -> String {
     let userLoc:CLLocation = CLLocation(latitude: lat1, longitude: lon1)
     let listingLoc:CLLocation = CLLocation(latitude: lat2, longitude: lon2)
-    
     
     return String(format: "%.2f", (listingLoc.distance(from: userLoc) / 1609))
   }
