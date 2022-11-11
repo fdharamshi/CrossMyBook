@@ -36,12 +36,12 @@ struct NavBar: View {
             FAIcon(name: "user-circle").onTapGesture {
               changeIndex(3)
             }.padding(.trailing, 18)
-          }.padding(.bottom)
+          }.padding(.bottom, 20.0)
           NavigationLink(destination: ReleaseSelectionView()) {
             FAIcon(name: "plus-circle", size: 60)
               .background(Color.white)
               .cornerRadius(30)
-          }.offset(x:0, y: -45)
+          }.offset(x:0, y: -30)
         }.background(Color.white)
   }
 }

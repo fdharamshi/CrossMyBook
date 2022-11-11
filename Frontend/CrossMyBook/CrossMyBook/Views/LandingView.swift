@@ -28,7 +28,7 @@ struct LandingView: View {
               isAlert = true
             }) {
               FAIcon(name: "bell", size: 25)
-            }.padding(.trailing, 20.0)
+            }.padding(.trailing)
           }.padding(10).background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
           switch(index) {
           case 0: homeView
@@ -38,7 +38,7 @@ struct LandingView: View {
           default:
             homeView
           }
-          NavBar(changeIndex: self.changeIndex(_:))
+          NavBar(changeIndex: self.changeIndex(_:)).padding(.bottom, 10.0)
         }.edgesIgnoringSafeArea([.bottom]).background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
       }.navigationBarHidden(true).sheet(isPresented: $isAlert) {
         AlertView()
