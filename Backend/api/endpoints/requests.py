@@ -150,9 +150,9 @@ def create_request(request):
 
 
 def takeActionOnRequest(request):
-    user_id = request.POST.get("user_id", None)
+    user_id = int(request.POST.get("user_id", None))
     accepted = int(request.POST.get("accepted", 0))
-    request_id = request.POST.get("request_id", None)
+    request_id = int(request.POST.get("request_id", None))
     # Read about status codes: https://docs.google.com/document/d/17V0KUq2AUdlq7JpJU4ABkw4SStUGPyKXFUmi9HRgz30/edit
     request = Request.objects.get(id=request_id)
     owner_id = request.listing.user.id

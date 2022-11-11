@@ -46,6 +46,7 @@ def getRequests(request):
             "note": r.note,
             "request_id": r.id,
 
+            "cover_url": r.copy.book.cover_url,
             "title": r.copy.book.title
         })
 
@@ -61,6 +62,7 @@ def getRequests(request):
             "note": r.note,
             "request_id": r.id,
 
+            "cover_url": r.copy.book.cover_url,
             "title": r.copy.book.title
         })
 
