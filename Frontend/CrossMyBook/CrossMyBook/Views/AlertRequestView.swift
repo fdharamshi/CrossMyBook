@@ -13,6 +13,50 @@ struct AlertRequestView: View {
   
   @State var request: Request
   
+  @State var address:String = "Loading..."
+  let geoCoder = CLGeocoder()
+  
+  func reverseGeocoding(_ lat: Double, _ lon: Double) {
+    let location = CLLocation(latitude: lat, longitude: lon)
+    geoCoder.reverseGeocodeLocation(location, completionHandler:
+                                      {
+      placemarks, error -> Void in
+      
+      var tempaddress = ""
+      
+      // Place details
+      guard let placeMark = placemarks?.first else { return }
+      
+      // Location name
+      if let locationName = placeMark.location {
+        print(locationName)
+      }
+      // Street address
+      if let street = placeMark.locality {
+        tempaddress.append(" \(street)")
+      }
+      // City
+      if let city = placeMark.subAdministrativeArea {
+        print(city)
+      }
+      // Zip code
+      if let country = placeMark.isoCountryCode {
+        tempaddress.append(" \(country)")
+      }
+      
+      if let zip = placeMark.postalCode {
+        tempaddress.append(" \(zip)")
+      }
+
+      // Country
+//      if let country = placeMark.country {
+////        tempaddress.append(" \(country)")
+//      }
+      
+      address = tempaddress
+    })
+  }
+  
   var body: some View {
     VStack (alignment: .leading){
       
@@ -75,12 +119,14 @@ struct AlertRequestView: View {
               .fixedSize(horizontal: false, vertical: true)
               .font(.custom("NotoSerif", size: 15))
               .bold()
-            Text("Pittsburgh, PA 15217") // TODO: Show this
+            Text(address) // TODO: Show this
               .frame(width: .infinity)
               .multilineTextAlignment(.leading)
               .fixedSize(horizontal: false, vertical: true)
               .font(.custom("NotoSerif", size: 15))
-          }.padding(.top, 10.0)
+          }.padding(.top, 10.0).onAppear(perform: {
+            reverseGeocoding(request.lat, request.lon)
+          })
           
           Text("Note:")
             .frame(width: .infinity)
