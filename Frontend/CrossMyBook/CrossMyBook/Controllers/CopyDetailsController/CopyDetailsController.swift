@@ -6,18 +6,24 @@
 //
 
 import Foundation
+import MapKit
 
 class CopyDetailsController: ObservableObject {
   
   @Published var observedCopy: CopyDetailsModel?
+  @Published var state: ControllerState = .Idle
+  @Published var mapRegion: MKCoordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 49.9, longitude: -79.29), span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
   
   init() {
     self.observedCopy = nil
   }
   
   func fetchCopyDetails(_ copyID: Int, _ userID: Int) {
+    self.state = .Busy
     fetchData(copyID, userID, completion: { copyDetailsModel in
       self.observedCopy = copyDetailsModel
+      self.mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: copyDetailsModel.travelHistory.last?.lat ?? 49.9, longitude: copyDetailsModel.travelHistory.last?.lon ?? -79.29), span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
+      self.state = .Idle
     })
   }
   
@@ -34,14 +40,6 @@ class CopyDetailsController: ObservableObject {
         print("Error: Couldn't decode data into a result(CopyDetailsController) id: \(copyID)")
         return
       }
-      
-//      let copyDetails: CopyDetailsModel = CopyDetailsModel()
-//      do {
-//          let copyDetails = try JSONDecoder().decode(CopyDetailsModel.self, from: data)
-//      } catch {
-//          print(error)
-//          fatalError("Failed to decode from bundle.")
-//      }
       
       completion(copyDetails)
     }

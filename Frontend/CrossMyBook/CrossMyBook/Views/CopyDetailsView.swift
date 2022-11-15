@@ -17,8 +17,6 @@ struct CopyDetailsView: View {
   
   @State var userID: String = UserDefaults.standard.string(forKey: "user_id") ?? "1"
   
-  @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 49.9, longitude: -79.29), span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
-  
   @State var isRequest: Bool = false
   @State var isEditListing: Bool = false
   
@@ -79,13 +77,15 @@ struct CopyDetailsView: View {
                 // MARK: MAP
                 
                 ZStack (alignment: .bottomLeading) {
-                  Map(coordinateRegion: $mapRegion, annotationItems: copyDetailsController.observedCopy?.travelHistory ?? []) { tH in
-                    MapMarker(coordinate: CLLocationCoordinate2D(
-                      latitude: tH.lat,
-                      longitude: tH.lon
-                    ))
+                  if(copyDetailsController.state == .Idle) {
+                    Map(coordinateRegion: $copyDetailsController.mapRegion, annotationItems: copyDetailsController.observedCopy?.travelHistory ?? []) { tH in
+                      MapMarker(coordinate: CLLocationCoordinate2D(
+                        latitude: tH.lat,
+                        longitude: tH.lon
+                      ))
+                    }.frame(height: 450)
                   }
-                  .frame(height: 450)
+                  
                   
                   
                   // MARK: Book Cover
@@ -101,11 +101,6 @@ struct CopyDetailsView: View {
                       print("Book Details")
                     })
                     .offset(x: 30, y: 75)
-                }.onReceive(copyDetailsController.$observedCopy) { observedCopy in
-                  
-                  // TODO: Update center of the map to the last location
-                  
-                  mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: observedCopy?.travelHistory.last?.lat ?? 51.5, longitude: observedCopy?.travelHistory.last?.lon ?? -0.12), span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
                 }
                 
                 VStack {
