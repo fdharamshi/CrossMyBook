@@ -13,7 +13,7 @@ struct LoginView: View {
   @State var password: String = ""
   @State var jump = false
   
-  func loginCompletion(_ loginModel: LoginModel) {
+  func loginCompletion(_ loginModel: AuthModel) {
     if(loginModel.success) {
       UserDefaults.standard.set(String(loginModel.user?.userID ?? 1), forKey: "user_id")
       UserDefaults.standard.set(loginModel.user?.firstName, forKey: "first_name")

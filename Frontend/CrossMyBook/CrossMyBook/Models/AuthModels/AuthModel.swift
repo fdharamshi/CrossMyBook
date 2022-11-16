@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: LoginModel
-struct LoginModel: Codable {
+struct AuthModel: Codable {
     let msg: String
     let success: Bool
     let user: User?

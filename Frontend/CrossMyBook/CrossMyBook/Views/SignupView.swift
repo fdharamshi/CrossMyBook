@@ -18,6 +18,20 @@ struct SignupView: View {
   
   @State var jump = false
   
+  func loginCompletion(_ loginModel: AuthModel) {
+    if(loginModel.success) {
+      
+      UserDefaults.standard.set(String(loginModel.user?.userID ?? -1), forKey: "user_id")
+      UserDefaults.standard.set(loginModel.user?.firstName, forKey: "first_name")
+      UserDefaults.standard.set(loginModel.user?.lastName, forKey: "last_name")
+      UserDefaults.standard.set(loginModel.user?.profilePicture, forKey: "photo_url")
+      print("Login Success!")
+      jump = true
+    } else {
+      // TODO: Show a popup that login failed
+    }
+  }
+  
   var body: some View {
     NavigationView {
       VStack {
@@ -50,7 +64,11 @@ struct SignupView: View {
         }.padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
         
         Button(action: {
-          jump = true
+          LoginController().doSignup(email, password, firstname, lastname, completion: { loginModel in
+            
+            loginCompletion(loginModel)
+            
+          })
         }) {
           Text("Sign up").font(.custom("NotoSerif", size: 15).bold())
             .padding()
