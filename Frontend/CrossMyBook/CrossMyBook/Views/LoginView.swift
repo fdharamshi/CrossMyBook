@@ -13,6 +13,26 @@ struct LoginView: View {
   @State var password: String = ""
   @State var jump = false
   
+  func loginCompletion(_ loginModel: LoginModel) {
+    if(loginModel.success) {
+      UserDefaults.standard.set(String(loginModel.user?.userID ?? 1), forKey: "user_id")
+      UserDefaults.standard.set(loginModel.user?.firstName, forKey: "first_name")
+      UserDefaults.standard.set(loginModel.user?.lastName, forKey: "last_name")
+      UserDefaults.standard.set(loginModel.user?.profilePicture, forKey: "photo_url")
+      print("Login Success!")
+      jump = true
+    } else {
+      // TODO: Show a popup that login failed
+    }
+  }
+  
+  init(){
+    UserDefaults.standard.removeObject(forKey: "user_id")
+    UserDefaults.standard.removeObject(forKey: "first_name")
+    UserDefaults.standard.removeObject(forKey: "last_name")
+    UserDefaults.standard.removeObject(forKey: "photo_url")
+  }
+  
   var body: some View {
     NavigationView {
       VStack {
@@ -34,15 +54,22 @@ struct LoginView: View {
         
         VStack {
           
-          RoundedTextField(text: $email, placeholder: "email", height: 48)
+          RoundedTextField(text: $email, placeholder: "email", height: 48).autocorrectionDisabled(true).autocapitalization(.none)
           
-          RoundedTextField(text: $password, placeholder: "password", height: 48)
+          RoundedTextField(text: $password, placeholder: "password", height: 48).autocorrectionDisabled(true).autocapitalization(.none)
           
         }.padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
         
         Button(action: {
-          UserDefaults.standard.set(email, forKey: "user_id")
-          jump = true
+//          UserDefaults.standard.set(email, forKey: "user_id")
+//          jump = true
+          
+          LoginController().doLogin(email, password, completion: { loginModel in
+            
+            loginCompletion(loginModel)
+            
+          })
+          
         }) {
           Text("Login").font(.custom("NotoSerif", size: 15).bold())
             .padding()

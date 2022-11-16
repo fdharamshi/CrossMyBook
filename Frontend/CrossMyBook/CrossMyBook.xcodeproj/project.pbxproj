@@ -55,6 +55,8 @@
 		EE3609FE2911B595006DB257 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3609FD2911B595006DB257 /* Persistence.swift */; };
 		EE360A012911B595006DB257 /* CrossMyBook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EE3609FF2911B595006DB257 /* CrossMyBook.xcdatamodeld */; };
 		EE360A092911B7C5006DB257 /* NotoSerif-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE360A082911B7C5006DB257 /* NotoSerif-Regular.ttf */; };
+		EE3BDEFA2924812500629ACC /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BDEF92924812500629ACC /* LoginModel.swift */; };
+		EE3BDEFD292481EA00629ACC /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BDEFC292481EA00629ACC /* LoginController.swift */; };
 		EE86212C291ADCC500000345 /* MessagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE86212B291ADCC500000345 /* MessagingView.swift */; };
 		EE86212E291ADCE300000345 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE86212D291ADCE300000345 /* HomeView.swift */; };
 		EE862130291ADCFC00000345 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE86212F291ADCFC00000345 /* DashboardView.swift */; };
@@ -122,6 +124,8 @@
 		EE360A002911B595006DB257 /* CrossMyBook.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CrossMyBook.xcdatamodel; sourceTree = "<group>"; };
 		EE360A082911B7C5006DB257 /* NotoSerif-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSerif-Regular.ttf"; path = "CrossMyBook/Fonts/NotoSerif-Regular.ttf"; sourceTree = SOURCE_ROOT; };
 		EE360A0A2911B8F3006DB257 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		EE3BDEF92924812500629ACC /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		EE3BDEFC292481EA00629ACC /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		EE86212B291ADCC500000345 /* MessagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingView.swift; sourceTree = "<group>"; };
 		EE86212D291ADCE300000345 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		EE86212F291ADCFC00000345 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
@@ -256,6 +260,7 @@
 		EE220BC02913847F00CEC13A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EE3BDEF82924811A00629ACC /* LoginModels */,
 				EEDC2638291DE51F009422FA /* AlertModels */,
 				B3CB6853291B47FA004DC394 /* RequestModels */,
 				3A9F99CC291A22F000E3909E /* ReleaseModels */,
@@ -272,6 +277,7 @@
 		EE220BC12913848600CEC13A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EE3BDEFB292481D400629ACC /* LoginController */,
 				EEDC263D291DE54B009422FA /* AlertControllers */,
 				B3CB6854291B480E004DC394 /* RequestController */,
 				3A9F99CB291A22E700E3909E /* ReleaseController */,
@@ -334,6 +340,22 @@
 				EE360A082911B7C5006DB257 /* NotoSerif-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		EE3BDEF82924811A00629ACC /* LoginModels */ = {
+			isa = PBXGroup;
+			children = (
+				EE3BDEF92924812500629ACC /* LoginModel.swift */,
+			);
+			path = LoginModels;
+			sourceTree = "<group>";
+		};
+		EE3BDEFB292481D400629ACC /* LoginController */ = {
+			isa = PBXGroup;
+			children = (
+				EE3BDEFC292481EA00629ACC /* LoginController.swift */,
+			);
+			path = LoginController;
 			sourceTree = "<group>";
 		};
 		EE862124291ADC5D00000345 /* LandingView */ = {
@@ -511,6 +533,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE3BDEFA2924812500629ACC /* LoginModel.swift in Sources */,
 				3AF1D7D6291B2FF8009C778E /* ReleaseMsg.swift in Sources */,
 				3A6B7C1A2919E5D2000744EB /* ReleaseFormView.swift in Sources */,
 				31A8795029184F8300286ABF /* BDCopy.swift in Sources */,
@@ -559,6 +582,7 @@
 				3A6B7C1C2919E603000744EB /* ReleaseSelectionView.swift in Sources */,
 				31A8794E291846B000286ABF /* BookViewModel.swift in Sources */,
 				EE3609F52911B594006DB257 /* CrossMyBookApp.swift in Sources */,
+				EE3BDEFD292481EA00629ACC /* LoginController.swift in Sources */,
 				EE862132291ADD0800000345 /* CommunityView.swift in Sources */,
 				3A9F99CE291A230300E3909E /* ReleaseController.swift in Sources */,
 				31954DCA2916FB0300C6AD1F /* NavBar.swift in Sources */,

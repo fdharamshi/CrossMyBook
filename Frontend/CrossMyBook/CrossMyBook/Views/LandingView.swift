@@ -9,6 +9,8 @@ import SwiftUI
 
 struct LandingView: View {
   
+  @State var jumpToLogin: Bool = false
+  
   let homeView = HomeView()
   let communityView = CommunityView()
   let messagingView = MessagingView()
