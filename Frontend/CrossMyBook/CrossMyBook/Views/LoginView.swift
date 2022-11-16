@@ -54,9 +54,9 @@ struct LoginView: View {
         
         VStack {
           
-          RoundedTextField(text: $email, placeholder: "email", height: 48).autocorrectionDisabled(true).autocapitalization(.none)
+          RoundedTextField(text: $email, placeholder: "Email", height: 48).autocorrectionDisabled(true).autocapitalization(.none)
           
-          RoundedTextField(text: $password, placeholder: "password", height: 48).autocorrectionDisabled(true).autocapitalization(.none)
+          RoundedTextField(text: $password, placeholder: "Password", height: 48).autocorrectionDisabled(true).autocapitalization(.none)
           
         }.padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
         

@@ -237,9 +237,19 @@
 			path = RequestController;
 			sourceTree = "<group>";
 		};
+		EE17A80C2925479F00904C0F /* AuthViews */ = {
+			isa = PBXGroup;
+			children = (
+				EE220BC22913849500CEC13A /* LoginView.swift */,
+				B3B88249291956F100B80B7E /* SignupView.swift */,
+			);
+			name = AuthViews;
+			sourceTree = "<group>";
+		};
 		EE220BBF2913847500CEC13A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EE17A80C2925479F00904C0F /* AuthViews */,
 				EEDC2637291DE511009422FA /* AlertView */,
 				EE862128291ADC8800000345 /* CommunityView */,
 				EE862127291ADC8100000345 /* DashboardView */,
@@ -250,9 +260,7 @@
 				EE9181FC2918D2BF003CD0B0 /* CopyDetails */,
 				31954DE429172C2100C6AD1F /* BookDetail */,
 				31954DDB291718DD00C6AD1F /* Utils */,
-				EE220BC22913849500CEC13A /* LoginView.swift */,
 				31954DC92916FB0300C6AD1F /* NavBar.swift */,
-				B3B88249291956F100B80B7E /* SignupView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
