@@ -16,6 +16,15 @@ struct AlertRequestView: View {
   @State var address:String = "Loading..."
   let geoCoder = CLGeocoder()
   
+  var index: Int
+  
+  func getDistance(_ lat1:Double, _ lon1:Double, _ lat2: Double, _ lon2: Double) -> String {
+    let userLoc:CLLocation = CLLocation(latitude: lat1, longitude: lon1)
+    let listingLoc:CLLocation = CLLocation(latitude: lat2, longitude: lon2)
+    
+    return String(format: "%.2f", (listingLoc.distance(from: userLoc) / 1609))
+  }
+  
   func reverseGeocoding(_ lat: Double, _ lon: Double) {
     let location = CLLocation(latitude: lat, longitude: lon)
     geoCoder.reverseGeocodeLocation(location, completionHandler:
@@ -27,31 +36,33 @@ struct AlertRequestView: View {
       // Place details
       guard let placeMark = placemarks?.first else { return }
       
-      // Location name
-      if let locationName = placeMark.location {
-        print(locationName)
+      if(index == 1) {
+        
+        // Apartment Number, Eg. 5860
+        if let subThoroughfare = placeMark.subThoroughfare {
+          tempaddress.append(subThoroughfare)
+        }
+        
+        // Street Name: Eg. Beacon St.
+        if let thoroughfare = placeMark.thoroughfare {
+          tempaddress.append(" \(thoroughfare)")
+        }
       }
-      // Street address
-      if let street = placeMark.locality {
-        tempaddress.append(" \(street)")
+      
+      // City address
+      if let city = placeMark.locality {
+        tempaddress.append(" \(city)")
       }
-      // City
-      if let city = placeMark.subAdministrativeArea {
-        print(city)
-      }
-      // Zip code
+      
+      // Country code
       if let country = placeMark.isoCountryCode {
         tempaddress.append(" \(country)")
       }
       
+      // Zip code
       if let zip = placeMark.postalCode {
         tempaddress.append(" \(zip)")
       }
-
-      // Country
-//      if let country = placeMark.country {
-////        tempaddress.append(" \(country)")
-//      }
       
       address = tempaddress
     })
@@ -119,7 +130,23 @@ struct AlertRequestView: View {
               .fixedSize(horizontal: false, vertical: true)
               .font(.custom("NotoSerif", size: 15))
               .bold()
-            Text(address) // TODO: Show this
+            Text(address)
+              .frame(width: .infinity)
+              .multilineTextAlignment(.leading)
+              .fixedSize(horizontal: false, vertical: true)
+              .font(.custom("NotoSerif", size: 15))
+          }.padding(.top, 10.0).onAppear(perform: {
+            reverseGeocoding(request.lat, request.lon)
+          })
+          
+          HStack {
+            Text("Distance: ")
+              .frame(width: .infinity)
+              .multilineTextAlignment(.leading)
+              .fixedSize(horizontal: false, vertical: true)
+              .font(.custom("NotoSerif", size: 15))
+              .bold()
+            Text("\(getDistance(request.lat, request.lon, request.listingLOC.lat, request.listingLOC.lon)) mi")
               .frame(width: .infinity)
               .multilineTextAlignment(.leading)
               .fixedSize(horizontal: false, vertical: true)
@@ -177,6 +204,6 @@ struct AlertRequestView: View {
 
 struct AlertRequestView_Previews: PreviewProvider {
   static var previews: some View {
-    AlertRequestView(request: Request(userID: 1, userProfile: "https://femindharamshi.com/static/media/favicon.df59357d43584154d3d1.png", userName: "Femin Dharamshi", copyID: 5, listingID: 5, date: "11th Nov, 2022", lat: 45.0, lon: -79.92, note: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin facilisis lacus in vulputate molestie. Sed bibendum malesuada tortor vel pretium. Aliquam sollicitudin ullamcorper sodales. Mauris elit ante, auctor ut enim in, lobortis dapibus justo. Vivamus tristique sem molestie magna aliquam faucibus sodales a est. Proin elementum, sapien sit amet luctus vestibulum, tortor nisi lacinia sapien, ac semper ligula tellus eget tortor. Donec ac elit turpis. In at dolor eu est eleifend blandit. Morbi eget commodo nisi, non porta ipsum. Aenean lobortis diam a elit finibus ultrices. Nulla diam magna, dapibus vel mollis ac, eleifend at lacus. Nullam elementum dolor at auctor scelerisque. Integer posuere erat ac laoreet malesuada.", requestID: 8, coverURL: "https://covers.openlibrary.org/b/id/10290658-L.jpg", title: "Linchpin", listingLOC: ListingLOC(lat: 40.0, lon: -78)))
+    AlertRequestView(request: Request(userID: 1, userProfile: "https://femindharamshi.com/static/media/favicon.df59357d43584154d3d1.png", userName: "Femin Dharamshi", copyID: 5, listingID: 5, date: "11th Nov, 2022", lat: 45.0, lon: -79.92, note: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin facilisis lacus in vulputate molestie. Sed bibendum malesuada tortor vel pretium. Aliquam sollicitudin ullamcorper sodales. Mauris elit ante, auctor ut enim in, lobortis dapibus justo. Vivamus tristique sem molestie magna aliquam faucibus sodales a est. Proin elementum, sapien sit amet luctus vestibulum, tortor nisi lacinia sapien, ac semper ligula tellus eget tortor. Donec ac elit turpis. In at dolor eu est eleifend blandit. Morbi eget commodo nisi, non porta ipsum. Aenean lobortis diam a elit finibus ultrices. Nulla diam magna, dapibus vel mollis ac, eleifend at lacus. Nullam elementum dolor at auctor scelerisque. Integer posuere erat ac laoreet malesuada.", requestID: 8, coverURL: "https://covers.openlibrary.org/b/id/10290658-L.jpg", title: "Linchpin", listingLOC: ListingLOC(lat: 40.0, lon: -78)), index: 1)
   }
 }

@@ -131,7 +131,7 @@ struct AlertView: View {
           }
         }
       } else {
-        AlertRequestView(request: currentRequest!)
+        AlertRequestView(request: currentRequest!, index: index)
       }
       
       

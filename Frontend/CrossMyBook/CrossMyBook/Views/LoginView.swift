@@ -15,22 +15,16 @@ struct LoginView: View {
   
   func loginCompletion(_ loginModel: AuthModel) {
     if(loginModel.success) {
-      UserDefaults.standard.set(String(loginModel.user?.userID ?? 1), forKey: "user_id")
+      UserDefaults.standard.set(String(loginModel.user?.userID ?? -1), forKey: "user_id")
       UserDefaults.standard.set(loginModel.user?.firstName, forKey: "first_name")
       UserDefaults.standard.set(loginModel.user?.lastName, forKey: "last_name")
       UserDefaults.standard.set(loginModel.user?.profilePicture, forKey: "photo_url")
       print("Login Success!")
+      
       jump = true
     } else {
       // TODO: Show a popup that login failed
     }
-  }
-  
-  init(){
-    UserDefaults.standard.removeObject(forKey: "user_id")
-    UserDefaults.standard.removeObject(forKey: "first_name")
-    UserDefaults.standard.removeObject(forKey: "last_name")
-    UserDefaults.standard.removeObject(forKey: "photo_url")
   }
   
   var body: some View {

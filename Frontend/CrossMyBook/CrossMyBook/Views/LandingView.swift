@@ -36,7 +36,7 @@ struct LandingView: View {
           case 0: homeView
           case 1: communityView
           case 2: messagingView
-          case 3: dashboardView
+          case 3: DashboardView()
           default:
             homeView
           }
