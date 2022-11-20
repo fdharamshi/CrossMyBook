@@ -17,6 +17,8 @@ struct SignupView: View {
   @State var password: String = ""
   
   @State var jump = false
+  @State var showAlert = false
+  @State var alertMsg = ""
   
   func loginCompletion(_ loginModel: AuthModel) {
     if(loginModel.success) {
@@ -28,7 +30,8 @@ struct SignupView: View {
       print("Login Success!")
       jump = true
     } else {
-      // TODO: Show a popup that login failed
+      alertMsg = loginModel.msg
+      showAlert = true
     }
   }
   
@@ -98,7 +101,11 @@ struct SignupView: View {
         
         
       }.background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
-    }.navigationBarHidden(true)
+    }
+    .navigationBarHidden(true)
+    .alert(isPresented: $showAlert) {
+      Alert(title: Text("Signup Failed"), message: Text(alertMsg))
+    }
   }
 }
 

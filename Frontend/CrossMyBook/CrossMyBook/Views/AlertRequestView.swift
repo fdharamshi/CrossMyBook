@@ -171,32 +171,34 @@ struct AlertRequestView: View {
       }
       
       // MARK: Action Buttons
-      Button(action: {
-        // TODO: Decline
-      }) {
-        Text("Decline").font(.custom("NotoSerif", size: 15).bold())
-          .padding()
-          .frame(maxWidth: .infinity)
-          .background(RoundedRectangle(cornerRadius: 8).fill(Color.white))
-          .overlay(
-            RoundedRectangle(cornerRadius: 8)
-              .stroke(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255), lineWidth: 1)
-          )
-          .foregroundColor(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255))
+      if(index != 1) {
+        Button(action: {
+          // TODO: Decline
+        }) {
+          Text("Decline").font(.custom("NotoSerif", size: 15).bold())
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(RoundedRectangle(cornerRadius: 8).fill(Color.white))
+            .overlay(
+              RoundedRectangle(cornerRadius: 8)
+                .stroke(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255), lineWidth: 1)
+            )
+            .foregroundColor(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255))
+        }
+        .buttonStyle(PlainButtonStyle())
+        .padding(.horizontal, 20.0)
+        Button(action: {
+          // TODO: Accept
+        }) {
+          Text("Accept").font(.custom("NotoSerif", size: 15).bold())
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(RoundedRectangle(cornerRadius: 8).fill(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255)))
+            .foregroundColor(Color.white)
+        }
+        .buttonStyle(PlainButtonStyle())
+        .padding(.horizontal, 20.0)
       }
-      .buttonStyle(PlainButtonStyle())
-      .padding(.horizontal, 20.0)
-      Button(action: {
-        // TODO: Accept
-      }) {
-        Text("Accept").font(.custom("NotoSerif", size: 15).bold())
-          .padding()
-          .frame(maxWidth: .infinity)
-          .background(RoundedRectangle(cornerRadius: 8).fill(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255)))
-          .foregroundColor(Color.white)
-      }
-      .buttonStyle(PlainButtonStyle())
-      .padding(.horizontal, 20.0)
       
     }
   }

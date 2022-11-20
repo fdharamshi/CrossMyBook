@@ -13,6 +13,9 @@ struct LoginView: View {
   @State var password: String = ""
   @State var jump = false
   
+  @State var showAlert = false
+  @State var alertMsg = ""
+  
   func loginCompletion(_ loginModel: AuthModel) {
     if(loginModel.success) {
       UserDefaults.standard.set(String(loginModel.user?.userID ?? -1), forKey: "user_id")
@@ -23,7 +26,8 @@ struct LoginView: View {
       
       jump = true
     } else {
-      // TODO: Show a popup that login failed
+      alertMsg = loginModel.msg
+      showAlert = true
     }
   }
   
@@ -55,8 +59,8 @@ struct LoginView: View {
         }.padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
         
         Button(action: {
-//          UserDefaults.standard.set(email, forKey: "user_id")
-//          jump = true
+          //          UserDefaults.standard.set(email, forKey: "user_id")
+          //          jump = true
           
           LoginController().doLogin(email, password, completion: { loginModel in
             
@@ -89,7 +93,11 @@ struct LoginView: View {
         Spacer()
         
       }.background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
-    }.navigationBarHidden(true)
+    }
+    .navigationBarHidden(true)
+    .alert(isPresented: $showAlert) {
+      Alert(title: Text("Login Failed"), message: Text(alertMsg))
+    }
   }
 }
 
