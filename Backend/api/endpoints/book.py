@@ -71,7 +71,6 @@ def get_book_by_copy_id(request):
         return JsonResponse({'msg': 'Book Copy Not Found.', 'success': False}, safe=False)
     
     book_id = copy.book.id
-    print(book_id)
     try:
         book = Book.objects.get(id=book_id)
     except Book.DoesNotExist:
@@ -92,3 +91,14 @@ def get_book_by_copy_id(request):
         "rating": rating,
     }
     return JsonResponse(response, safe=False)
+
+# internal use, not an endpoint
+# user-related books: the books (copies) that the user currently owns, or has released
+def get_user_related_books(user_id):
+    related_book_ids = []
+    books = Listing.objects.filter(user=user_id)
+    for b in books:
+        related_book_ids.append(b.copy.book.id)
+
+    print("related_book_ids", related_book_ids)
+    return related_book_ids
