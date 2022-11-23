@@ -102,3 +102,47 @@ def get_user_related_books(user_id):
 
     print("related_book_ids", related_book_ids)
     return related_book_ids
+
+def get_books_by_user_id(request):
+    user_id = request.GET.get("user_id", None)
+    if user_id is None:
+        return JsonResponse({'msg': 'User not found.', 'success': False}, safe=False)
+
+    current_books = []
+    current_books_id = set()
+    history_books = []
+    try:
+        travelPoints = TravelHistory.objects.filter().order_by('-date')
+    except travelPoints.DoesNotExist:
+        return JsonResponse({'msg': 'Related books not found.', 'success': False}, safe=False)
+    for p in travelPoints:
+        # calculate rating
+        rating = 5
+        reviews = Review.objects.filter(book=p.copy.book)
+        if reviews.count() > 0:
+            rating = reviews.aggregate(rating=Avg('stars'))["rating"]
+        # store the currently owned copies in current_books_id set
+        if p.copy.id not in current_books_id:
+            current_books_id.add(p.copy.id)
+            if p.user.id == int(user_id):
+                current_books.append({
+                    "title": p.copy.book.title,
+                    "author": p.copy.book.authors,
+                    "rating": rating,
+                    "cover_url":p.copy.book.cover_url
+                })
+        else:
+            if p.user.id == int(user_id):
+                history_books.append({
+                    "title": p.copy.book.title,
+                    "author": p.copy.book.authors,
+                    "rating": rating,
+                    "cover_url":p.copy.book.cover_url
+                })
+
+    response = {
+        "current_books": current_books,
+        "history_books": history_books
+    }
+
+    return JsonResponse(response, safe=False)
