@@ -45,6 +45,9 @@ urlpatterns = [
     path('createReview', community.create_review),
     path('getReviews', community.get_reviews),
 
+    # user dashboard
+    path('getBookByUserId', book.get_books_by_user_id),
+
     # other
     path('main', mainpage.temporary_main),
     path('getProfile', profile.getProfile),
