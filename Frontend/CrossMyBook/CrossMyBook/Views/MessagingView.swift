@@ -23,7 +23,7 @@ struct MessagingView: View {
           VStack {
             ForEach(conversationsController.observedCopy?.conversations ?? []) { conversation in
               
-              NavigationLink(destination: ConversationView()) {
+              NavigationLink(destination: ConversationView(conversation.user.userID)) {
                 HStack (alignment: .center) {
                   WebImage(url: URL(string: conversation.user.profileURL))
                                     .resizable()

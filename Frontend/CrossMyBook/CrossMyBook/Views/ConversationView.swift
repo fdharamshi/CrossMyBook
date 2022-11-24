@@ -13,6 +13,15 @@ struct ConversationView: View {
   
     @State var message: String = ""
   
+  @ObservedObject var messagesController: MessagingController = MessagingController()
+  
+    let user2: Int
+    @AppStorage("user_id") var userID: String = "-1"
+  
+    init(_ user_2: Int) {
+      user2 = user_2
+    }
+  
     var body: some View {
       VStack {
         ZStack (alignment: .leading) {
@@ -28,37 +37,32 @@ struct ConversationView: View {
         ScrollView {
           VStack {
             
-            HStack {
-              Text("Can you tell me why do you want this book?")
-                .font(.custom("NotoSerif", size: 13))
-                .fixedSize(horizontal: false, vertical: true)
-                .padding()
-                .background(Color.lightBrown)
-                .cornerRadius(25.0)
-              Spacer()
-            }.padding(.trailing, 20.0)
-            
-            HStack {
-              Spacer()
-              Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis orci malesuada, vulputate nunc a, gravida lorem. Donec est augue, suscipit in nisi aliquam, elementum auctor ex. Nullam a lorem eu massa pellentesque mollis. Quisque dapibus nisl tincidunt eros consequat pretium. Nunc feugiat lobortis ex, vitae efficitur metus elementum ac. Sed nec tristique augue. Nulla posuere tellus quis augue placerat, non vehicula mi lobortis. Nam ac vehicula eros. Vestibulum non augue non lectus vulputate mattis. Nunc id suscipit ante, sed euismod velit. Morbi scelerisque mauris blandit erat vulputate tristique. Vestibulum bibendum molestie feugiat. Maecenas in orci eu tortor rhoncus porttitor. Pellentesque tempus, nunc eget pharetra tristique, sem tortor semper libero, ut cursus metus eros pulvinar turpis.")
-                .font(.custom("NotoSerif", size: 13))
-                .fixedSize(horizontal: false, vertical: true)
-                .padding()
-                .background(Color.theme)
-                .foregroundColor(Color.white)
-                .cornerRadius(25.0)
-            }.padding(.leading, 20.0)
-            
-            HStack {
-              Spacer()
-              Text("Send me the book.")
-                .font(.custom("NotoSerif", size: 13))
-                .fixedSize(horizontal: false, vertical: true)
-                .padding()
-                .background(Color.theme)
-                .foregroundColor(Color.white)
-                .cornerRadius(25.0)
-            }.padding(.leading, 20.0)
+            ForEach(messagesController.observedCopy?.messages ?? []) { message in
+              
+              if( message.sender == (Int(userID) ?? 1) ) {
+                HStack {
+                  Spacer()
+                  Text(message.message)
+                    .font(.custom("NotoSerif", size: 13))
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding()
+                    .background(Color.theme)
+                    .foregroundColor(Color.white)
+                    .cornerRadius(25.0)
+                }.padding(.leading, 20.0)
+              } else {
+                HStack {
+                  Text(message.message)
+                    .font(.custom("NotoSerif", size: 13))
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding()
+                    .background(Color.lightBrown)
+                    .cornerRadius(25.0)
+                  Spacer()
+                }.padding(.trailing, 20.0)
+              }
+              
+            }
           }.padding(20.0)
         }
         
@@ -74,12 +78,14 @@ struct ConversationView: View {
           
         }.background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
       
-      }.navigationBarHidden(true)
+      }.navigationBarHidden(true).onAppear(perform: {
+        messagesController.fetchMessages(Int(userID) ?? 1, user2)
+      })
     }
 }
 
 struct ConversationView_Previews: PreviewProvider {
     static var previews: some View {
-        ConversationView()
+        ConversationView(2)
     }
 }
