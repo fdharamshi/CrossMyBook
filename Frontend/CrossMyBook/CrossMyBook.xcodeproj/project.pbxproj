@@ -48,6 +48,8 @@
 		EE220BC32913849500CEC13A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE220BC22913849500CEC13A /* LoginView.swift */; };
 		EE220BC52913978B00CEC13A /* CopyDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE220BC42913978B00CEC13A /* CopyDetailsView.swift */; };
 		EE220BC829139B9800CEC13A /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = EE220BC729139B9800CEC13A /* SDWebImageSwiftUI */; };
+		EE2C7C10292FE2FD00F0A003 /* ConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2C7C0F292FE2FD00F0A003 /* ConversationModel.swift */; };
+		EE2C7C14292FE36600F0A003 /* ConversationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2C7C13292FE36600F0A003 /* ConversationController.swift */; };
 		EE3609F52911B594006DB257 /* CrossMyBookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3609F42911B594006DB257 /* CrossMyBookApp.swift */; };
 		EE3609F72911B594006DB257 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3609F62911B594006DB257 /* ContentView.swift */; };
 		EE3609F92911B595006DB257 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE3609F82911B595006DB257 /* Assets.xcassets */; };
@@ -115,6 +117,8 @@
 		EE220BBD2913840100CEC13A /* NotoSerif-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerif-Bold.ttf"; sourceTree = "<group>"; };
 		EE220BC22913849500CEC13A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		EE220BC42913978B00CEC13A /* CopyDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyDetailsView.swift; sourceTree = "<group>"; };
+		EE2C7C0F292FE2FD00F0A003 /* ConversationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationModel.swift; sourceTree = "<group>"; };
+		EE2C7C13292FE36600F0A003 /* ConversationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationController.swift; sourceTree = "<group>"; };
 		EE3609F12911B594006DB257 /* CrossMyBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrossMyBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE3609F42911B594006DB257 /* CrossMyBookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossMyBookApp.swift; sourceTree = "<group>"; };
 		EE3609F62911B594006DB257 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -268,6 +272,7 @@
 		EE220BC02913847F00CEC13A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EE2C7C11292FE33900F0A003 /* MessagingModels */,
 				EE3BDEF82924811A00629ACC /* AuthModels */,
 				EEDC2638291DE51F009422FA /* AlertModels */,
 				B3CB6853291B47FA004DC394 /* RequestModels */,
@@ -285,6 +290,7 @@
 		EE220BC12913848600CEC13A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EE2C7C12292FE34900F0A003 /* MessagingControllers */,
 				EE3BDEFB292481D400629ACC /* LoginController */,
 				EEDC263D291DE54B009422FA /* AlertControllers */,
 				B3CB6854291B480E004DC394 /* RequestController */,
@@ -294,6 +300,22 @@
 				B368FB65291D7E8B00A97C16 /* ProfileController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		EE2C7C11292FE33900F0A003 /* MessagingModels */ = {
+			isa = PBXGroup;
+			children = (
+				EE2C7C0F292FE2FD00F0A003 /* ConversationModel.swift */,
+			);
+			path = MessagingModels;
+			sourceTree = "<group>";
+		};
+		EE2C7C12292FE34900F0A003 /* MessagingControllers */ = {
+			isa = PBXGroup;
+			children = (
+				EE2C7C13292FE36600F0A003 /* ConversationController.swift */,
+			);
+			path = MessagingControllers;
 			sourceTree = "<group>";
 		};
 		EE3609E82911B594006DB257 = {
@@ -581,9 +603,11 @@
 				EE86212E291ADCE300000345 /* HomeView.swift in Sources */,
 				3A9F9A24291AEEE700E3909E /* Location.swift in Sources */,
 				EEA0B42029199F6B0077165C /* CopyDetailsController.swift in Sources */,
+				EE2C7C14292FE36600F0A003 /* ConversationController.swift in Sources */,
 				EE3609F72911B594006DB257 /* ContentView.swift in Sources */,
 				B3CB6856291B484B004DC394 /* RequestModel.swift in Sources */,
 				3A6B7C1C2919E603000744EB /* ReleaseSelectionView.swift in Sources */,
+				EE2C7C10292FE2FD00F0A003 /* ConversationModel.swift in Sources */,
 				EE862130291ADCFC00000345 /* DashboardView.swift in Sources */,
 				EEDC263C291DE545009422FA /* AlertController.swift in Sources */,
 				31A8794E291846B000286ABF /* BookViewModel.swift in Sources */,

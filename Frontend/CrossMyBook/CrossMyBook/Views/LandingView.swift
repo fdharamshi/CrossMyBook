@@ -20,11 +20,21 @@ struct LandingView: View {
   
   @State var index: Int = 0
   
+  func getPageTitle() -> String {
+    switch(index) {
+    case 0: return "Cross My Book"
+    case 1: return "Community"
+    case 2: return "Messages"
+    case 3: return "Profile"
+    default: return "Cross My Book"
+    }
+  }
+  
     var body: some View {
       NavigationView {
         VStack {
           ZStack (alignment: .trailingFirstTextBaseline) {
-            Text("Cross My Book")
+            Text(getPageTitle())
               .font(.custom("NotoSerif", size: 25)).bold().frame(maxWidth: .infinity).foregroundColor(.fontBlack)
             Button (action: {
               isAlert = true
