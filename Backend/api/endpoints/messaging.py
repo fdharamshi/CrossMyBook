@@ -78,8 +78,8 @@ def get_messages(request):
 
 
 def sendMessage(request):
-    sender = int(request.GET.get("sender", "-1"))
-    receiver = int(request.GET.get("receiver", "-1"))
+    sender = int(request.POST.get("sender", "-1"))
+    receiver = int(request.POST.get("receiver", "-1"))
     message = request.POST.get("message", "")
 
     # TODO: Check if sender and receiver are present and not -1
@@ -95,6 +95,6 @@ def sendMessage(request):
         )
         newMessage.save()
 
-        return JsonResponse({'msg': 'Success', 'success': False}, safe=False)
+        return JsonResponse({'msg': 'Success', 'success': True}, safe=False)
     except:
         return JsonResponse({'msg': 'Something went wrong.', 'success': False}, safe=False)
