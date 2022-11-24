@@ -12,7 +12,7 @@ struct MessagingView: View {
   
   @ObservedObject var conversationsController: ConversationController = ConversationController()
   
-  let timer = Timer.publish(every: 1, tolerance: 0.5, on: .main, in: .common).autoconnect()
+//  let timer = Timer.publish(every: 1, tolerance: 0.5, on: .main, in: .common).autoconnect()
   @AppStorage("user_id") var userID: String = "-1"
   
   var body: some View {
@@ -45,17 +45,18 @@ struct MessagingView: View {
               Divider()
             }
           }
-        }.onReceive(timer) {
-          timer in
-          conversationsController.fetchConversations(Int(userID) ?? 1)
         }
+//        .onReceive(timer) {
+//          timer in
+//          conversationsController.fetchConversations(Int(userID) ?? 1)
+//        }
       }
     }.frame(maxWidth: .infinity, maxHeight: .infinity)
       .background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
       .onAppear(perform: {
         conversationsController.fetchConversations(Int(userID) ?? 1)
       }).onDisappear(perform: {
-        timer.upstream.connect().cancel()
+//        timer.upstream.connect().cancel()
       })
   }
 }
