@@ -51,6 +51,8 @@
 		EE2C7C10292FE2FD00F0A003 /* ConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2C7C0F292FE2FD00F0A003 /* ConversationModel.swift */; };
 		EE2C7C14292FE36600F0A003 /* ConversationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2C7C13292FE36600F0A003 /* ConversationController.swift */; };
 		EE2C7C18292FEB6500F0A003 /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2C7C17292FEB6500F0A003 /* ConversationView.swift */; };
+		EE2C7C1A292FF36E00F0A003 /* MessagingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2C7C19292FF36E00F0A003 /* MessagingModel.swift */; };
+		EE2C7C1C292FF40F00F0A003 /* MessagingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2C7C1B292FF40F00F0A003 /* MessagingController.swift */; };
 		EE3609F52911B594006DB257 /* CrossMyBookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3609F42911B594006DB257 /* CrossMyBookApp.swift */; };
 		EE3609F72911B594006DB257 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3609F62911B594006DB257 /* ContentView.swift */; };
 		EE3609F92911B595006DB257 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE3609F82911B595006DB257 /* Assets.xcassets */; };
@@ -121,6 +123,8 @@
 		EE2C7C0F292FE2FD00F0A003 /* ConversationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationModel.swift; sourceTree = "<group>"; };
 		EE2C7C13292FE36600F0A003 /* ConversationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationController.swift; sourceTree = "<group>"; };
 		EE2C7C17292FEB6500F0A003 /* ConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
+		EE2C7C19292FF36E00F0A003 /* MessagingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingModel.swift; sourceTree = "<group>"; };
+		EE2C7C1B292FF40F00F0A003 /* MessagingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingController.swift; sourceTree = "<group>"; };
 		EE3609F12911B594006DB257 /* CrossMyBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrossMyBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE3609F42911B594006DB257 /* CrossMyBookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossMyBookApp.swift; sourceTree = "<group>"; };
 		EE3609F62911B594006DB257 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -308,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				EE2C7C0F292FE2FD00F0A003 /* ConversationModel.swift */,
+				EE2C7C19292FF36E00F0A003 /* MessagingModel.swift */,
 			);
 			path = MessagingModels;
 			sourceTree = "<group>";
@@ -316,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				EE2C7C13292FE36600F0A003 /* ConversationController.swift */,
+				EE2C7C1B292FF40F00F0A003 /* MessagingController.swift */,
 			);
 			path = MessagingControllers;
 			sourceTree = "<group>";
@@ -578,6 +584,7 @@
 				31954DDD2917190A00C6AD1F /* CustomText.swift in Sources */,
 				31954DE129171EC200C6AD1F /* CopyCardView.swift in Sources */,
 				31954DE329172B5600C6AD1F /* ReviewCardView.swift in Sources */,
+				EE2C7C1C292FF40F00F0A003 /* MessagingController.swift in Sources */,
 				EE0AE85729240FFB002F2A39 /* StateUtil.swift in Sources */,
 				3AF1D7D8291C8677009C778E /* ReleaseFormEditView.swift in Sources */,
 				31A8795429186AF600286ABF /* BDReview.swift in Sources */,
@@ -616,6 +623,7 @@
 				EEDC263C291DE545009422FA /* AlertController.swift in Sources */,
 				31A8794E291846B000286ABF /* BookViewModel.swift in Sources */,
 				3A6B7C1C2919E603000744EB /* ReleaseSelectionView.swift in Sources */,
+				EE2C7C1A292FF36E00F0A003 /* MessagingModel.swift in Sources */,
 				31A8794E291846B000286ABF /* BookViewModel.swift in Sources */,
 				EE3609F52911B594006DB257 /* CrossMyBookApp.swift in Sources */,
 				EE3BDEFD292481EA00629ACC /* LoginController.swift in Sources */,
