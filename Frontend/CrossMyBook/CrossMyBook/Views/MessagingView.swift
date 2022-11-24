@@ -22,20 +22,23 @@ struct MessagingView: View {
         ScrollView {
           VStack {
             ForEach(conversationsController.observedCopy?.conversations ?? []) { conversation in
-              HStack (alignment: .center) {
-                WebImage(url: URL(string: conversation.user.profileURL))
-                                  .resizable()
-                                  .scaledToFill()
-                                  .frame(width: 60, height: 60, alignment: .center)
-                                  .cornerRadius(30)
-                                  .padding(.trailing, 10.0)
-                Text(conversation.user.name)
-                Spacer()
-                VStack {
-                  Text("11/11/2011") // TODO: Use the timestamp in model to display this
-                  Text("11:11 PM")
-                }
-              }.padding(.horizontal, 20.0).font(Font.custom("NotoSerif", size: 16))
+              
+              NavigationLink(destination: ConversationView()) {
+                HStack (alignment: .center) {
+                  WebImage(url: URL(string: conversation.user.profileURL))
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 50, height: 50, alignment: .center)
+                                    .cornerRadius(25)
+                                    .padding(.trailing, 10.0)
+                  Text(conversation.user.name).font(Font.custom("NotoSerif", size: 15))
+                  Spacer()
+                  VStack {
+                    Text("11/11/2011") // TODO: Use the timestamp in model to display this
+                    Text("11:11 PM")
+                  }.font(Font.custom("NotoSerif", size: 13))
+                }.padding(.horizontal, 20.0)
+              }.foregroundColor(Color.fontBlack)
               Divider()
             }
           }

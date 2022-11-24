@@ -50,6 +50,7 @@
 		EE220BC829139B9800CEC13A /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = EE220BC729139B9800CEC13A /* SDWebImageSwiftUI */; };
 		EE2C7C10292FE2FD00F0A003 /* ConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2C7C0F292FE2FD00F0A003 /* ConversationModel.swift */; };
 		EE2C7C14292FE36600F0A003 /* ConversationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2C7C13292FE36600F0A003 /* ConversationController.swift */; };
+		EE2C7C18292FEB6500F0A003 /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2C7C17292FEB6500F0A003 /* ConversationView.swift */; };
 		EE3609F52911B594006DB257 /* CrossMyBookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3609F42911B594006DB257 /* CrossMyBookApp.swift */; };
 		EE3609F72911B594006DB257 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3609F62911B594006DB257 /* ContentView.swift */; };
 		EE3609F92911B595006DB257 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE3609F82911B595006DB257 /* Assets.xcassets */; };
@@ -119,6 +120,7 @@
 		EE220BC42913978B00CEC13A /* CopyDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyDetailsView.swift; sourceTree = "<group>"; };
 		EE2C7C0F292FE2FD00F0A003 /* ConversationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationModel.swift; sourceTree = "<group>"; };
 		EE2C7C13292FE36600F0A003 /* ConversationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationController.swift; sourceTree = "<group>"; };
+		EE2C7C17292FEB6500F0A003 /* ConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
 		EE3609F12911B594006DB257 /* CrossMyBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrossMyBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE3609F42911B594006DB257 /* CrossMyBookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossMyBookApp.swift; sourceTree = "<group>"; };
 		EE3609F62911B594006DB257 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 			isa = PBXGroup;
 			children = (
 				EE86212B291ADCC500000345 /* MessagingView.swift */,
+				EE2C7C17292FEB6500F0A003 /* ConversationView.swift */,
 			);
 			name = MessagingView;
 			sourceTree = "<group>";
@@ -598,6 +601,7 @@
 				B3B8824A291956F100B80B7E /* SignupView.swift in Sources */,
 				B368FB64291D7D9B00A97C16 /* Profile.swift in Sources */,
 				EE9181FF2918D91A003CD0B0 /* RequestBookForm.swift in Sources */,
+				EE2C7C18292FEB6500F0A003 /* ConversationView.swift in Sources */,
 				B368FB66291D7E8B00A97C16 /* ProfileController.swift in Sources */,
 				3A9F9A20291ABBA700E3909E /* ISBNBook.swift in Sources */,
 				EE86212E291ADCE300000345 /* HomeView.swift in Sources */,
