@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from api.endpoints import login, releases, requests, alertpage, community, book, mainpage, profile
+from api.endpoints import login, releases, requests, alertpage, community, book, mainpage, profile, messaging
 
 urlpatterns = [
     # User authentication
@@ -51,5 +51,9 @@ urlpatterns = [
     # other
     path('main', mainpage.temporary_main),
     path('getProfile', profile.getProfile),
+
+    # Messaging
+    path('getConversations', messaging.get_convo),
+    path('getMessages', messaging.get_messages),
     
 ]
