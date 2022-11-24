@@ -108,3 +108,6 @@ class Messages(models.Model):
 
     class Meta:
         db_table = 'Messages'
+
+    def __str__(self):
+        return f'#{self.id} - {self.user1.first_name}({self.user1.id}) & {self.user2.first_name}({self.user2.id}) | FROM: {self.sender.first_name}'
