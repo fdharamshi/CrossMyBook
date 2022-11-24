@@ -98,3 +98,13 @@ class Review(models.Model):
 
     class Meta:
         db_table = 'Review'
+
+class Messages(models.Model):
+    message = models.TextField()
+    user1 = models.ForeignKey(Users, on_delete=models.CASCADE, related_name="user1")
+    user2 = models.ForeignKey(Users, on_delete=models.CASCADE, related_name="user2")
+    timestamp = models.DateTimeField(auto_now_add=True)
+    sender = models.ForeignKey(Users, on_delete=models.CASCADE, related_name="sender")
+
+    class Meta:
+        db_table = 'Messages'
