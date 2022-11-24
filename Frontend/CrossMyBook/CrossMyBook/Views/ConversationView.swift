@@ -92,6 +92,8 @@ struct ConversationView: View {
       
       }.navigationBarHidden(true).onAppear(perform: {
         messagesController.fetchMessages(Int(userID) ?? 1, user2)
+      }).onDisappear(perform: {
+        timer.upstream.connect().cancel()
       })
     }
 }

@@ -16,10 +16,17 @@ struct MessagingModel: Codable {
 }
 
 // MARK: - Message
-struct Message: Codable, Identifiable {
-    var id = UUID()
+struct Message: Codable, Identifiable, Equatable {
     let sender: Int
     let message, timestamp: String
+  
+    var id: String {
+      timestamp
+    }
+  
+    static func == (lhs: Message, rhs: Message) -> Bool {
+      return lhs.id == rhs.id
+    }
   
     enum CodingKeys: String, CodingKey {
         case sender, message, timestamp
