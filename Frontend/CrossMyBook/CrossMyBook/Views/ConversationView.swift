@@ -16,16 +16,18 @@ struct ConversationView: View {
   @ObservedObject var messagesController: MessagingController = MessagingController()
   
     let user2: Int
+    let userName: String
     @AppStorage("user_id") var userID: String = "-1"
   
-    init(_ user_2: Int) {
+  init(_ user_2: Int, _ name: String) {
       user2 = user_2
+    userName = name
     }
   
     var body: some View {
       VStack {
         ZStack (alignment: .leading) {
-          Text("Caifei Hong")
+          Text(userName)
             .font(.custom("NotoSerif", size: 20)).bold().frame(maxWidth: .infinity).foregroundColor(.fontBlack)
           Button (action: {
             self.presentationMode.wrappedValue.dismiss() // TODO: back action
@@ -86,6 +88,6 @@ struct ConversationView: View {
 
 struct ConversationView_Previews: PreviewProvider {
     static var previews: some View {
-        ConversationView(2)
+        ConversationView(2, "Femin Dharamshi")
     }
 }

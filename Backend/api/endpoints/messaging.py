@@ -25,7 +25,8 @@ def get_convo(request):
             continue
         else:
             temp_list.append(other_user.id)
-            latest_message = Messages.objects.filter(user1=min(user_id, other_user.id), user2=max(user_id, other_user.id)).latest("timestamp")
+            latest_message = Messages.objects.filter(user1=min(user_id, other_user.id),
+                                                     user2=max(user_id, other_user.id)).latest("timestamp")
             results.append({
                 "user": {
                     "name": other_user.first_name + " " + other_user.last_name,
@@ -71,4 +72,29 @@ def get_messages(request):
             "timestamp": message.timestamp
         })
 
-    return JsonResponse({'messages': results, "user1": response_user1, "user2": response_user2, 'msg': "Success!", 'success': True}, safe=False)
+    return JsonResponse(
+        {'messages': results, "user1": response_user1, "user2": response_user2, 'msg': "Success!", 'success': True},
+        safe=False)
+
+
+def sendMessage(request):
+    sender = int(request.GET.get("sender", "-1"))
+    receiver = int(request.GET.get("receiver", "-1"))
+    message = request.POST.get("message", "")
+
+    # TODO: Check if sender and receiver are present and not -1
+    # TODO: Check if message is not empty
+    # TODO: -1 means the user id was not integer
+
+    try:
+        newMessage = Messages(
+            user1_id=min(sender, receiver),
+            user2_id=max(sender, receiver),
+            sender_id=sender,
+            message=message
+        )
+        newMessage.save()
+
+        return JsonResponse({'msg': 'Success', 'success': False}, safe=False)
+    except:
+        return JsonResponse({'msg': 'Something went wrong.', 'success': False}, safe=False)
