@@ -25,11 +25,13 @@ def get_convo(request):
             continue
         else:
             temp_list.append(other_user.id)
+            latest_message = Messages.objects.filter(user1=min(user_id, other_user.id), user2=max(user_id, other_user.id)).latest("timestamp")
             results.append({
                 "user": {
                     "name": other_user.first_name + " " + other_user.last_name,
                     "profile_url": other_user.profile_url,
-                    "user_id": other_user.id
+                    "user_id": other_user.id,
+                    "last_message": latest_message.timestamp
                 },
             })
 
