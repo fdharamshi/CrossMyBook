@@ -14,13 +14,15 @@ struct ConversationView: View {
   
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   
-    @State var message: String = ""
+  @State var message: String = ""
   
   @ObservedObject var messagesController: MessagingController = MessagingController()
   
     let user2: Int
     let userName: String
     @AppStorage("user_id") var userID: String = "-1"
+  
+  let timer = Timer.publish(every: 1, tolerance: 0.5, on: .main, in: .common).autoconnect()
   
   init(_ user_2: Int, _ name: String) {
       user2 = user_2
@@ -33,6 +35,7 @@ struct ConversationView: View {
           Text(userName)
             .font(.custom("NotoSerif", size: 20)).bold().frame(maxWidth: .infinity).foregroundColor(.fontBlack)
           Button (action: {
+            timer.upstream.connect().cancel()
             self.presentationMode.wrappedValue.dismiss() // TODO: back action
           }) {
             FAIcon(name: "chevron-left")
@@ -69,6 +72,9 @@ struct ConversationView: View {
               
             }
           }.padding(20.0)
+        }.onReceive(timer) {time in
+          messagesController.fetchMessages(Int(userID) ?? 1, user2)
+          print("Fetching")
         }
         
         HStack {
