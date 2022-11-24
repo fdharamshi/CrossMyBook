@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+// TODO: Auto Scroll to the latest message
+// TODO: Show the other person's display picture?
+
 struct ConversationView: View {
   
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -21,7 +24,7 @@ struct ConversationView: View {
   
   init(_ user_2: Int, _ name: String) {
       user2 = user_2
-    userName = name
+      userName = name
     }
   
     var body: some View {
@@ -72,7 +75,8 @@ struct ConversationView: View {
           RoundedTextField(text: $message, placeholder: "Message", height: 38).autocorrectionDisabled(true).autocapitalization(.none)
             .padding(10.0)
           Button (action: {
-            // TODO: Send Message Action
+            messagesController.sendMessage(sender: Int(userID) ?? 1, receiver: user2, message: message)
+            message = ""
           }) {
             FAIcon(name: "paper-plane", size: 25)
           }
