@@ -13,4 +13,5 @@ extension Color {
     static let fontBlack = Color("FontBlack")
     static let lightBrown = Color("LightBrown")
     static let theme = Color("Theme")
+    static let ultraLightBrown = Color("UltraLightBrown")
 }

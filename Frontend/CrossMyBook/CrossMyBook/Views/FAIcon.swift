@@ -11,8 +11,15 @@ struct FAIcon: View {
     var name: String = ""
     var size: Int = 28
     var color: Color = Color.theme
+    var style: String = "solid"
     var body: some View {
-        Text(name).font(.custom("FontAwesome5Free-Solid", size: CGFloat(size))).foregroundColor(color)
+        if (style == "solid") {
+            Text(name).font(.custom("FontAwesome5Free-Solid", size: CGFloat(size))).foregroundColor(color)
+        } else {
+            // regular
+            Text(name).font(.custom("FontAwesome5Free-Regular", size: CGFloat(size))).foregroundColor(color)
+        }
+        
     }
 }
 
