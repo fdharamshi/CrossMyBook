@@ -25,7 +25,7 @@ struct BookCardView: View {
         
     }
 }
-
+//
 //struct BookCardView_Previews: PreviewProvider {
 ////    var bookDataMock: Book =
 //    static var previews: some View {
