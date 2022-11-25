@@ -20,10 +20,15 @@ struct SignupView: View {
   @State var showAlert = false
   @State var alertMsg = ""
   
+  @AppStorage("user_id") var userID: Int = -1
+  
   func loginCompletion(_ loginModel: AuthModel) {
     if(loginModel.success) {
       
-      UserDefaults.standard.set(String(loginModel.user?.userID ?? -1), forKey: "user_id")
+      guard let userIDInt = loginModel.user?.userID else {
+        return
+      }
+      userID = userIDInt
       UserDefaults.standard.set(loginModel.user?.firstName, forKey: "first_name")
       UserDefaults.standard.set(loginModel.user?.lastName, forKey: "last_name")
       UserDefaults.standard.set(loginModel.user?.profilePicture, forKey: "photo_url")

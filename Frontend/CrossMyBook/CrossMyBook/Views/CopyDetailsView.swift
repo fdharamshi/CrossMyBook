@@ -15,7 +15,9 @@ struct CopyDetailsView: View {
   
   @ObservedObject var copyDetailsController: CopyDetailsController = CopyDetailsController()
   
-  @State var userID: String = UserDefaults.standard.string(forKey: "user_id") ?? "1"
+//  @State var userID: String = UserDefaults.standard.string(forKey: "user_id") ?? "1"
+  
+  @AppStorage("user_id") var userID: Int = -1
   
   @State var isRequest: Bool = false
   @State var isEditListing: Bool = false
@@ -270,7 +272,7 @@ struct CopyDetailsView: View {
               .padding(.horizontal).disabled(getButtonStatus(copyDetailsController.observedCopy?.status ?? 1))
             }.background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
     }.onAppear(perform: {
-      copyDetailsController.fetchCopyDetails(copyID, Int(userID) ?? 1)
+      copyDetailsController.fetchCopyDetails(copyID, userID)
     })
   }
 }

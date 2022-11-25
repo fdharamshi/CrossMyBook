@@ -16,16 +16,18 @@ struct ContentView: View {
         animation: .default)
     private var items: FetchedResults<Item>
     
-  var loggedIn: Int = Int(UserDefaults.standard.string(forKey: "user_id") ?? "-1") ?? -1
+//    var loggedIn: Int = Int(UserDefaults.standard.string(forKey: "user_id") ?? "-1") ?? -1
   
-  init() {
-  loggedIn = Int(UserDefaults.standard.string(forKey: "user_id") ?? "-1") ?? -1
-  }
-    
+  @AppStorage("user_id") var userID: Int = -1
+  
+//    init() {
+//    loggedIn = Int(UserDefaults.standard.string(forKey: "user_id") ?? "-1") ?? -1
+//    }
+  
     var body: some View {
         // BookDetailView()
       
-      if(loggedIn == -1) {
+      if(userID == -1) {
         LoginView()
       } else {
         LandingView()

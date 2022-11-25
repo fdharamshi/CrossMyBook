@@ -16,7 +16,8 @@ struct RequestBookForm: View {
     @ObservedObject var requestController: RequestController = RequestController()
     @ObservedObject var profileController: ProfileController = ProfileController()
   
-    @State var userID: String = UserDefaults.standard.string(forKey: "user_id") ?? "1"
+//    @State var userID: String = UserDefaults.standard.string(forKey: "user_id") ?? "1"
+    @AppStorage("user_id") var userID: Int = -1
     @State var name: String = ""
     @State var location = Location()
     @State var note: String = ""
@@ -30,7 +31,7 @@ struct RequestBookForm: View {
         self.copyID = copyID
         self.copyDetailsController = copyDetailsController
         self.location.getCurrentLocation()
-        profileController.fetchProfile(Int(userID) ?? 1)
+        profileController.fetchProfile(userID)
     }
     
     var body: some View {
@@ -138,7 +139,7 @@ struct RequestBookForm: View {
                   Alert(title: Text("Location"), message: Text("Your location is at:\n(\(self.location.latitude), \(self.location.longitude))"))
                 }
                 Button(action: {
-                    requestController.requestModel.userID = Int(userID) ?? 1
+                    requestController.requestModel.userID = userID
                     requestController.requestModel.copyID = copyID
                     requestController.requestModel.listingID = copyDetailsController.observedCopy?.listing?.listingID ?? 0
                     requestController.requestModel.lat = location.latitude
@@ -155,7 +156,7 @@ struct RequestBookForm: View {
                 .padding(.horizontal)
             }.background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
             .onAppear(perform: {
-              copyDetailsController.fetchCopyDetails(copyID, Int(userID) ?? 1)
+              copyDetailsController.fetchCopyDetails(copyID, userID)
             })
         }
     }
