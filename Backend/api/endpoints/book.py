@@ -126,6 +126,8 @@ def get_books_by_user_id(request):
             current_books_id.add(p.copy.id)
             if p.user.id == int(user_id):
                 current_books.append({
+                    "book_id": p.copy.book.id,
+                    "copy_id": p.copy.id,
                     "title": p.copy.book.title,
                     "author": p.copy.book.authors,
                     "rating": rating,
@@ -134,6 +136,8 @@ def get_books_by_user_id(request):
         else:
             if p.user.id == int(user_id):
                 history_books.append({
+                    "book_id": p.copy.book.id,
+                    "copy_id": p.copy.id,
                     "title": p.copy.book.title,
                     "author": p.copy.book.authors,
                     "rating": rating,
