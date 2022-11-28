@@ -29,6 +29,8 @@
 		31A8795029184F8300286ABF /* BDCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A8794F29184F8300286ABF /* BDCopy.swift */; };
 		31A8795429186AF600286ABF /* BDReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A8795329186AF600286ABF /* BDReview.swift */; };
 		31A879582919E8A300286ABF /* RatingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A879572919E8A300286ABF /* RatingsView.swift */; };
+		31B970D429342F4000A593B0 /* CreateReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B970D329342F4000A593B0 /* CreateReviewView.swift */; };
+		31B970D62934329900A593B0 /* RatingBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B970D52934329900A593B0 /* RatingBookView.swift */; };
 		3A6B7C1A2919E5D2000744EB /* ReleaseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6B7C192919E5D2000744EB /* ReleaseFormView.swift */; };
 		3A6B7C1C2919E603000744EB /* ReleaseSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6B7C1B2919E603000744EB /* ReleaseSelectionView.swift */; };
 		3A9F99CE291A230300E3909E /* ReleaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F99CD291A230300E3909E /* ReleaseController.swift */; };
@@ -107,6 +109,8 @@
 		31A8794F29184F8300286ABF /* BDCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BDCopy.swift; path = CrossMyBook/Models/BDCopy.swift; sourceTree = SOURCE_ROOT; };
 		31A8795329186AF600286ABF /* BDReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BDReview.swift; sourceTree = "<group>"; };
 		31A879572919E8A300286ABF /* RatingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingsView.swift; sourceTree = "<group>"; };
+		31B970D329342F4000A593B0 /* CreateReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReviewView.swift; sourceTree = "<group>"; };
+		31B970D52934329900A593B0 /* RatingBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingBookView.swift; sourceTree = "<group>"; };
 		3A6B7C192919E5D2000744EB /* ReleaseFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseFormView.swift; sourceTree = "<group>"; };
 		3A6B7C1B2919E603000744EB /* ReleaseSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseSelectionView.swift; sourceTree = "<group>"; };
 		3A9F99CD291A230300E3909E /* ReleaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseController.swift; sourceTree = "<group>"; };
@@ -466,6 +470,8 @@
 				EE862131291ADD0800000345 /* CommunityView.swift */,
 				3147D88B2930473300A8B479 /* FullReviewCardView.swift */,
 				3147D88D293049B800A8B479 /* BookPreviewView.swift */,
+				31B970D329342F4000A593B0 /* CreateReviewView.swift */,
+				31B970D52934329900A593B0 /* RatingBookView.swift */,
 			);
 			name = CommunityView;
 			sourceTree = "<group>";
@@ -629,6 +635,7 @@
 				EE862136291B0B0200000345 /* TemporaryMainModel.swift in Sources */,
 				3A9F9A22291AD5F400E3909E /* ReleaseCardView.swift in Sources */,
 				EED5F5FF291EDAB400388B3E /* AlertRequestView.swift in Sources */,
+				31B970D62934329900A593B0 /* RatingBookView.swift in Sources */,
 				EE862138291B0B1E00000345 /* TemporaryMainController.swift in Sources */,
 				31A8794C29181C8300286ABF /* BookParser.swift in Sources */,
 				31A879582919E8A300286ABF /* RatingsView.swift in Sources */,
@@ -661,6 +668,7 @@
 				EE2C7C1A292FF36E00F0A003 /* MessagingModel.swift in Sources */,
 				31A8794E291846B000286ABF /* BookViewModel.swift in Sources */,
 				EE3609F52911B594006DB257 /* CrossMyBookApp.swift in Sources */,
+				31B970D429342F4000A593B0 /* CreateReviewView.swift in Sources */,
 				EE3BDEFD292481EA00629ACC /* LoginController.swift in Sources */,
 				EE862132291ADD0800000345 /* CommunityView.swift in Sources */,
 				3A9F99CE291A230300E3909E /* ReleaseController.swift in Sources */,

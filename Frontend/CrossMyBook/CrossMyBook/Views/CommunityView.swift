@@ -26,7 +26,7 @@ struct CommunityView: View {
         ScrollView{
             VStack{
                 // MARK: buttons
-                NavigationLink(destination: HomeView().navigationBarBackButtonHidden(true)) {
+                NavigationLink(destination: CreateReviewView()) {
                     VStack {
                         CustomText(s: "Add a Review", size: 16, color: Color.white).frame(maxWidth: .infinity)
                     }
