@@ -44,9 +44,14 @@ urlpatterns = [
     # reviews
     path('createReview', community.create_review),
     path('getReviews', community.get_reviews),
+    path('likeReview', community.like_review),
+    path('unlikeReview', community.unlike_review),
 
     # user dashboard
     path('getBookByUserId', book.get_books_by_user_id),
+    path('deleteReview', profile.delete_review),
+    path('getMyReview', profile.get_my_reviews),
+    path('getFavorReview', profile.get_favor_reviews),
 
     # other
     path('main', mainpage.temporary_main),

@@ -79,5 +79,58 @@ def get_reviews(request):
     }
     return JsonResponse(response, safe=False)
 
+def like_review(request):
+    user_id = request.POST.get("user_id", None)
+    review_id = request.POST.get("review_id", None)
 
-    
+    if user_id is None:
+        return JsonResponse({'msg': 'User not logged in.', 'success': False}, safe=False)
+    if review_id is None:
+        return JsonResponse({'msg': 'Review not selected', 'success': False}, safe=False)
+
+    try:
+        user = Users.objects.get(id=user_id)
+        review = Review.objects.get(id=review_id)
+    except Users.DoesNotExist:
+        return JsonResponse({'msg': 'User not exists.', 'success': False}, safe=False)
+    except Review.DoesNotExist:
+        return JsonResponse({'msg': 'Review not exists.', 'success': False}, safe=False)
+
+    checkLike = Likes.objects.filter(user_id=user_id, review_id=review_id)
+    if checkLike.exists():
+        return JsonResponse({'msg': 'User already liked this review.', 'success': False}, safe=False)
+
+    newLike = Likes(user_id=user_id, review_id=review_id)
+    newLike.save()
+
+    return JsonResponse(
+        {'msg': 'Like Success', 'like': {'like_id': newLike.id, "review_id": newLike.review_id,
+                                         "user_id": newLike.user_id},'success': True}, safe=False)
+
+
+
+def unlike_review(request):
+    user_id = request.POST.get("user_id", None)
+    review_id = request.POST.get("review_id", None)
+
+    if user_id is None:
+        return JsonResponse({'msg': 'User not logged in.', 'success': False}, safe=False)
+    if review_id is None:
+        return JsonResponse({'msg': 'Review not selected', 'success': False}, safe=False)
+
+    try:
+        user = Users.objects.get(id=user_id)
+        review = Review.objects.get(id=review_id)
+        like = Likes.objects.get(user_id=user_id, review_id=review_id)
+    except Users.DoesNotExist:
+        return JsonResponse({'msg': 'User not exists.', 'success': False}, safe=False)
+    except Review.DoesNotExist:
+        return JsonResponse({'msg': 'Review not exists.', 'success': False}, safe=False)
+    except Likes.DoesNotExist:
+        return JsonResponse({'msg': 'Like not exists.', 'success': False}, safe=False)
+
+    like.delete()
+    return JsonResponse(
+        {'msg': 'Unlike Success', 'success': True}, safe=False)
+
+

@@ -111,3 +111,15 @@ class Messages(models.Model):
 
     def __str__(self):
         return f'#{self.id} - {self.user1.first_name}({self.user1.id}) & {self.user2.first_name}({self.user2.id}) | FROM: {self.sender.first_name}'
+
+
+class Likes(models.Model):
+    user = models.ForeignKey(Users, on_delete=models.CASCADE)
+    review = models.ForeignKey(Review, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = 'Likes'
+
+    def __str__(self):
+        return f'#{self.id} {self.user.first_name} - {self.review.review}'
