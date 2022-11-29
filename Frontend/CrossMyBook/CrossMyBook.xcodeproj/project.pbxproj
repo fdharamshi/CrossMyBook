@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3147D88C2930473300A8B479 /* FullReviewCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3147D88B2930473300A8B479 /* FullReviewCardView.swift */; };
 		3147D88E293049B800A8B479 /* BookPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3147D88D293049B800A8B479 /* BookPreviewView.swift */; };
+		3147D89129340B2200A8B479 /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3147D89029340B2200A8B479 /* Reviews.swift */; };
+		3147D89329340CD100A8B479 /* CommunityParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3147D89229340CD100A8B479 /* CommunityParser.swift */; };
+		3147D89629340FCD00A8B479 /* CommunityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3147D89529340FCD00A8B479 /* CommunityViewModel.swift */; };
 		31954DCA2916FB0300C6AD1F /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31954DC92916FB0300C6AD1F /* NavBar.swift */; };
 		31954DCE2916FD4F00C6AD1F /* Font Awesome 5 Free-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = 31954DCB2916FD4F00C6AD1F /* Font Awesome 5 Free-Regular-400.otf */; };
 		31954DCF2916FD4F00C6AD1F /* Font Awesome 5 Free-Solid-900.otf in Resources */ = {isa = PBXBuildFile; fileRef = 31954DCC2916FD4F00C6AD1F /* Font Awesome 5 Free-Solid-900.otf */; };
@@ -26,6 +29,8 @@
 		31A8795029184F8300286ABF /* BDCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A8794F29184F8300286ABF /* BDCopy.swift */; };
 		31A8795429186AF600286ABF /* BDReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A8795329186AF600286ABF /* BDReview.swift */; };
 		31A879582919E8A300286ABF /* RatingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A879572919E8A300286ABF /* RatingsView.swift */; };
+		31B970D429342F4000A593B0 /* CreateReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B970D329342F4000A593B0 /* CreateReviewView.swift */; };
+		31B970D62934329900A593B0 /* RatingBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B970D52934329900A593B0 /* RatingBookView.swift */; };
 		3A6B7C1A2919E5D2000744EB /* ReleaseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6B7C192919E5D2000744EB /* ReleaseFormView.swift */; };
 		3A6B7C1C2919E603000744EB /* ReleaseSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6B7C1B2919E603000744EB /* ReleaseSelectionView.swift */; };
 		3A9F99CE291A230300E3909E /* ReleaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F99CD291A230300E3909E /* ReleaseController.swift */; };
@@ -87,6 +92,9 @@
 /* Begin PBXFileReference section */
 		3147D88B2930473300A8B479 /* FullReviewCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullReviewCardView.swift; sourceTree = "<group>"; };
 		3147D88D293049B800A8B479 /* BookPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookPreviewView.swift; sourceTree = "<group>"; };
+		3147D89029340B2200A8B479 /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
+		3147D89229340CD100A8B479 /* CommunityParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityParser.swift; sourceTree = "<group>"; };
+		3147D89529340FCD00A8B479 /* CommunityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewModel.swift; sourceTree = "<group>"; };
 		31954DC92916FB0300C6AD1F /* NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBar.swift; sourceTree = "<group>"; };
 		31954DCB2916FD4F00C6AD1F /* Font Awesome 5 Free-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Free-Regular-400.otf"; sourceTree = "<group>"; };
 		31954DCC2916FD4F00C6AD1F /* Font Awesome 5 Free-Solid-900.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Free-Solid-900.otf"; sourceTree = "<group>"; };
@@ -104,6 +112,8 @@
 		31A8794F29184F8300286ABF /* BDCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BDCopy.swift; path = CrossMyBook/Models/BDCopy.swift; sourceTree = SOURCE_ROOT; };
 		31A8795329186AF600286ABF /* BDReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BDReview.swift; sourceTree = "<group>"; };
 		31A879572919E8A300286ABF /* RatingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingsView.swift; sourceTree = "<group>"; };
+		31B970D329342F4000A593B0 /* CreateReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReviewView.swift; sourceTree = "<group>"; };
+		31B970D52934329900A593B0 /* RatingBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingBookView.swift; sourceTree = "<group>"; };
 		3A6B7C192919E5D2000744EB /* ReleaseFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseFormView.swift; sourceTree = "<group>"; };
 		3A6B7C1B2919E603000744EB /* ReleaseSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseSelectionView.swift; sourceTree = "<group>"; };
 		3A9F99CD291A230300E3909E /* ReleaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseController.swift; sourceTree = "<group>"; };
@@ -175,6 +185,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3147D88F29340B0F00A8B479 /* CommunityModels */ = {
+			isa = PBXGroup;
+			children = (
+				3147D89029340B2200A8B479 /* Reviews.swift */,
+				3147D89229340CD100A8B479 /* CommunityParser.swift */,
+			);
+			name = CommunityModels;
+			sourceTree = "<group>";
+		};
+		3147D89429340FB700A8B479 /* CommunityControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3147D89529340FCD00A8B479 /* CommunityViewModel.swift */,
+			);
+			path = CommunityControllers;
+			sourceTree = "<group>";
+		};
 		31954DDB291718DD00C6AD1F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +229,7 @@
 		31A8795229185E3D00286ABF /* BookDetailUse */ = {
 			isa = PBXGroup;
 			children = (
+				31954DD9291714B500C6AD1F /* Book.swift */,
 				31A8794B29181C8300286ABF /* BookParser.swift */,
 				31A8794F29184F8300286ABF /* BDCopy.swift */,
 				31A8795329186AF600286ABF /* BDReview.swift */,
@@ -305,13 +333,13 @@
 			isa = PBXGroup;
 			children = (
 				B3E8F9FC293152D30083F91F /* DashboardModels */,
+				3147D88F29340B0F00A8B479 /* CommunityModels */,
 				EE2C7C11292FE33900F0A003 /* MessagingModels */,
 				EE3BDEF82924811A00629ACC /* AuthModels */,
 				EEDC2638291DE51F009422FA /* AlertModels */,
 				B3CB6853291B47FA004DC394 /* RequestModels */,
 				3A9F99CC291A22F000E3909E /* ReleaseModels */,
 				EEA0B41B29199E9A0077165C /* CopyDetailsModels */,
-				31954DD9291714B500C6AD1F /* Book.swift */,
 				31A8795229185E3D00286ABF /* BookDetailUse */,
 				3A9F9A23291AEEE700E3909E /* Location.swift */,
 				3AF1D7D3291B2F4C009C778E /* Msg.swift */,
@@ -324,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				B3E8F9FF293154F10083F91F /* DashboardControllers */,
+				3147D89429340FB700A8B479 /* CommunityControllers */,
 				EE2C7C12292FE34900F0A003 /* MessagingControllers */,
 				EE3BDEFB292481D400629ACC /* LoginController */,
 				EEDC263D291DE54B009422FA /* AlertControllers */,
@@ -465,6 +494,8 @@
 				EE862131291ADD0800000345 /* CommunityView.swift */,
 				3147D88B2930473300A8B479 /* FullReviewCardView.swift */,
 				3147D88D293049B800A8B479 /* BookPreviewView.swift */,
+				31B970D329342F4000A593B0 /* CreateReviewView.swift */,
+				31B970D52934329900A593B0 /* RatingBookView.swift */,
 			);
 			name = CommunityView;
 			sourceTree = "<group>";
@@ -615,6 +646,7 @@
 				3AF1D7DE291D50EC009C778E /* ExistingRelease.swift in Sources */,
 				31954DDD2917190A00C6AD1F /* CustomText.swift in Sources */,
 				B3E8FA01293155090083F91F /* DashboardController.swift in Sources */,
+				3147D89329340CD100A8B479 /* CommunityParser.swift in Sources */,
 				31954DE129171EC200C6AD1F /* CopyCardView.swift in Sources */,
 				31954DE329172B5600C6AD1F /* ReviewCardView.swift in Sources */,
 				EE2C7C1C292FF40F00F0A003 /* MessagingController.swift in Sources */,
@@ -622,6 +654,7 @@
 				3AF1D7D8291C8677009C778E /* ReleaseFormEditView.swift in Sources */,
 				31A8795429186AF600286ABF /* BDReview.swift in Sources */,
 				31954DD22917042E00C6AD1F /* BookDetailView.swift in Sources */,
+				3147D89629340FCD00A8B479 /* CommunityViewModel.swift in Sources */,
 				3A9F99D0291A239200E3909E /* Release.swift in Sources */,
 				B3ABC8C1291C14CE006C9A01 /* RequestMessage.swift in Sources */,
 				EEDC263A291DE52E009422FA /* AlertModel.swift in Sources */,
@@ -629,6 +662,7 @@
 				EE862136291B0B0200000345 /* TemporaryMainModel.swift in Sources */,
 				3A9F9A22291AD5F400E3909E /* ReleaseCardView.swift in Sources */,
 				EED5F5FF291EDAB400388B3E /* AlertRequestView.swift in Sources */,
+				31B970D62934329900A593B0 /* RatingBookView.swift in Sources */,
 				EE862138291B0B1E00000345 /* TemporaryMainController.swift in Sources */,
 				31A8794C29181C8300286ABF /* BookParser.swift in Sources */,
 				31A879582919E8A300286ABF /* RatingsView.swift in Sources */,
@@ -650,6 +684,7 @@
 				EEA0B42029199F6B0077165C /* CopyDetailsController.swift in Sources */,
 				EE2C7C14292FE36600F0A003 /* ConversationController.swift in Sources */,
 				EE3609F72911B594006DB257 /* ContentView.swift in Sources */,
+				3147D89129340B2200A8B479 /* Reviews.swift in Sources */,
 				B3CB6856291B484B004DC394 /* RequestModel.swift in Sources */,
 				3A6B7C1C2919E603000744EB /* ReleaseSelectionView.swift in Sources */,
 				EE2C7C10292FE2FD00F0A003 /* ConversationModel.swift in Sources */,
@@ -660,6 +695,7 @@
 				EE2C7C1A292FF36E00F0A003 /* MessagingModel.swift in Sources */,
 				31A8794E291846B000286ABF /* BookViewModel.swift in Sources */,
 				EE3609F52911B594006DB257 /* CrossMyBookApp.swift in Sources */,
+				31B970D429342F4000A593B0 /* CreateReviewView.swift in Sources */,
 				EE3BDEFD292481EA00629ACC /* LoginController.swift in Sources */,
 				B3E8F9FE293152EE0083F91F /* DashboardModel.swift in Sources */,
 				EE862132291ADD0800000345 /* CommunityView.swift in Sources */,
