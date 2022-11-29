@@ -7,23 +7,20 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import WrappingHStack
 
 struct DashboardView: View {
   
   @ObservedObject var profileController: ProfileController = ProfileController()
-  
-  //    @State var userID: String = UserDefaults.standard.string(forKey: "user_id") ?? "1"
+  @ObservedObject var dashboardController: DashboardController = DashboardController()
   
   @AppStorage("user_id") var userID: Int = -1
   
+  @State private var disableCurrentButton = true
+  @State private var disableHistoryButton = false
+  
   var body: some View {
     VStack {
-      //        HStack {
-      //          Spacer()
-      //          Text("cog").font(.custom("FontAwesome5Free-Solid", size: CGFloat(28)))
-      //            .padding(.trailing, 20)
-      //            .foregroundColor(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255))
-      //        }
       HStack {
         WebImage(url: URL(string: profileController.profile?.profileUrl ?? ""))
           .resizable()
@@ -36,9 +33,7 @@ struct DashboardView: View {
             .font(Font.custom("NotoSerif", size: 30))
             .bold()
             .foregroundColor(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255))
-          //            Text("User ID: \(userID)")
-          //              .font(Font.custom("NotoSerif", size: 12))
-          //              .foregroundColor(Color("FontBlack"))
+          
           NavigationLink(destination: LoginView()) {
             Text("Log out")
               .font(Font.custom("NotoSerif", size: 12))
@@ -46,6 +41,7 @@ struct DashboardView: View {
           }
         }
       }.padding(.top, 20.0)
+      
       HStack {
         Spacer()
         VStack {
@@ -69,14 +65,64 @@ struct DashboardView: View {
         }
         Spacer()
       }
+      
+      HStack {
+          // TODO: button actions
+          Button(action: {
+            self.dashboardController.changeDisplayBooks("current")
+            self.disableCurrentButton = true
+            self.disableHistoryButton = false
+          }) {
+            CustomText(s: "Current Books", size: 16, color: disableCurrentButton ? Color.theme : Color.fontBlack).bold()
+          }.frame(minWidth: 170, minHeight: 43)
+          .background(disableCurrentButton ? Color.ultraLightBrown : Color.white)
+          .cornerRadius(10)
+          .disabled(disableCurrentButton)
+        
+          Button(action: {
+            self.dashboardController.changeDisplayBooks("history")
+            self.disableCurrentButton = false
+            self.disableHistoryButton = true
+          }) {
+            CustomText(s: "History Books", size: 16, color: disableHistoryButton ? Color.theme : Color.fontBlack).bold()
+          }.frame(minWidth: 170, minHeight: 43)
+          .background(disableHistoryButton ? Color.ultraLightBrown : Color.white)
+          .cornerRadius(10)
+          .disabled(disableHistoryButton)
+      }.padding(.top, 10)
+      
+      WrappingHStack(dashboardController.displayBooks ?? []) { book in
+        NavigationLink(destination: CopyDetailsView(book.copyId).navigationBarHidden(true)) {
+          VStack {
+            WebImage(url: URL(string: book.coverUrl))
+              .resizable()
+              .placeholder(Image(uiImage: UIImage(named: "bookplaceholder")!)) // Placeholder Image
+              .scaledToFit()
+              .frame(width: 75, height: 110, alignment: .center).cornerRadius(5)
+            Text(book.title)
+              .font(Font.custom("NotoSerif", size: 10)).bold()
+              .frame(width:70).foregroundColor(Color.black).lineLimit(1)
+            Text(book.author)
+              .font(Font.custom("NotoSerif", size: 8))
+              .frame(width:70).foregroundColor(Color.black).lineLimit(1)
+            HStack (spacing: 1){
+              ForEach (0..<Int(book.rating), id: \.self) {_ in
+                Image(systemName: "star.fill")
+                  .font(.system(size: 5))
+                  .foregroundColor(Color.yellow)
+              }
+            }
+          }.padding(3)
+        }
+      }.padding(20.0)
+      
       Spacer()
-      Text("User Dashboard")
-      Text("This page is non-functional")
-      Spacer()
-    }.frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+    .frame(maxWidth: .infinity, maxHeight: .infinity)
       .background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
       .onAppear(perform: {
         profileController.fetchProfile(userID)
+        dashboardController.fetchUserBooks(userID)
       })
   }
 }
