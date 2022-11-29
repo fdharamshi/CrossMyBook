@@ -50,6 +50,9 @@
 		B3B8824A291956F100B80B7E /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B88249291956F100B80B7E /* SignupView.swift */; };
 		B3CB6856291B484B004DC394 /* RequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CB6855291B484B004DC394 /* RequestModel.swift */; };
 		B3CB6858291B6078004DC394 /* RequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CB6857291B6078004DC394 /* RequestController.swift */; };
+		B3E8F9FE293152EE0083F91F /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E8F9FD293152EE0083F91F /* DashboardModel.swift */; };
+		B3E8FA01293155090083F91F /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E8FA00293155090083F91F /* DashboardController.swift */; };
+		B3F119782933FA990055A2EE /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = B3F119772933FA990055A2EE /* WrappingHStack */; };
 		EE0AE85729240FFB002F2A39 /* StateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0AE85629240FFB002F2A39 /* StateUtil.swift */; };
 		EE220BBE2913840200CEC13A /* NotoSerif-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE220BBD2913840100CEC13A /* NotoSerif-Bold.ttf */; };
 		EE220BC32913849500CEC13A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE220BC22913849500CEC13A /* LoginView.swift */; };
@@ -130,6 +133,8 @@
 		B3B88249291956F100B80B7E /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		B3CB6855291B484B004DC394 /* RequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestModel.swift; sourceTree = "<group>"; };
 		B3CB6857291B6078004DC394 /* RequestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestController.swift; sourceTree = "<group>"; };
+		B3E8F9FD293152EE0083F91F /* DashboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardModel.swift; sourceTree = "<group>"; };
+		B3E8FA00293155090083F91F /* DashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
 		EE0AE85629240FFB002F2A39 /* StateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateUtil.swift; sourceTree = "<group>"; };
 		EE220BBD2913840100CEC13A /* NotoSerif-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerif-Bold.ttf"; sourceTree = "<group>"; };
 		EE220BC22913849500CEC13A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -172,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE86213B291C0B3E00000345 /* CodeScanner in Frameworks */,
+				B3F119782933FA990055A2EE /* WrappingHStack in Frameworks */,
 				EE220BC829139B9800CEC13A /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,6 +285,22 @@
 			path = RequestController;
 			sourceTree = "<group>";
 		};
+		B3E8F9FC293152D30083F91F /* DashboardModels */ = {
+			isa = PBXGroup;
+			children = (
+				B3E8F9FD293152EE0083F91F /* DashboardModel.swift */,
+			);
+			path = DashboardModels;
+			sourceTree = "<group>";
+		};
+		B3E8F9FF293154F10083F91F /* DashboardControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B3E8FA00293155090083F91F /* DashboardController.swift */,
+			);
+			path = DashboardControllers;
+			sourceTree = "<group>";
+		};
 		EE17A80C2925479F00904C0F /* AuthViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -310,6 +332,7 @@
 		EE220BC02913847F00CEC13A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B3E8F9FC293152D30083F91F /* DashboardModels */,
 				3147D88F29340B0F00A8B479 /* CommunityModels */,
 				EE2C7C11292FE33900F0A003 /* MessagingModels */,
 				EE3BDEF82924811A00629ACC /* AuthModels */,
@@ -328,6 +351,7 @@
 		EE220BC12913848600CEC13A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B3E8F9FF293154F10083F91F /* DashboardControllers */,
 				3147D89429340FB700A8B479 /* CommunityControllers */,
 				EE2C7C12292FE34900F0A003 /* MessagingControllers */,
 				EE3BDEFB292481D400629ACC /* LoginController */,
@@ -545,6 +569,7 @@
 			packageProductDependencies = (
 				EE220BC729139B9800CEC13A /* SDWebImageSwiftUI */,
 				EE86213A291C0B3E00000345 /* CodeScanner */,
+				B3F119772933FA990055A2EE /* WrappingHStack */,
 			);
 			productName = CrossMyBook;
 			productReference = EE3609F12911B594006DB257 /* CrossMyBook.app */;
@@ -577,6 +602,7 @@
 			packageReferences = (
 				EE220BC629139B9800CEC13A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				EE862139291C0B3E00000345 /* XCRemoteSwiftPackageReference "CodeScanner" */,
+				B3F119762933FA990055A2EE /* XCRemoteSwiftPackageReference "WrappingHStack" */,
 			);
 			productRefGroup = EE3609F22911B594006DB257 /* Products */;
 			projectDirPath = "";
@@ -619,6 +645,7 @@
 				31A8795029184F8300286ABF /* BDCopy.swift in Sources */,
 				3AF1D7DE291D50EC009C778E /* ExistingRelease.swift in Sources */,
 				31954DDD2917190A00C6AD1F /* CustomText.swift in Sources */,
+				B3E8FA01293155090083F91F /* DashboardController.swift in Sources */,
 				3147D89329340CD100A8B479 /* CommunityParser.swift in Sources */,
 				31954DE129171EC200C6AD1F /* CopyCardView.swift in Sources */,
 				31954DE329172B5600C6AD1F /* ReviewCardView.swift in Sources */,
@@ -670,6 +697,7 @@
 				EE3609F52911B594006DB257 /* CrossMyBookApp.swift in Sources */,
 				31B970D429342F4000A593B0 /* CreateReviewView.swift in Sources */,
 				EE3BDEFD292481EA00629ACC /* LoginController.swift in Sources */,
+				B3E8F9FE293152EE0083F91F /* DashboardModel.swift in Sources */,
 				EE862132291ADD0800000345 /* CommunityView.swift in Sources */,
 				3A9F99CE291A230300E3909E /* ReleaseController.swift in Sources */,
 				31954DCA2916FB0300C6AD1F /* NavBar.swift in Sources */,
@@ -889,6 +917,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B3F119762933FA990055A2EE /* XCRemoteSwiftPackageReference "WrappingHStack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dkk/WrappingHStack";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		EE220BC629139B9800CEC13A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
@@ -908,6 +944,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B3F119772933FA990055A2EE /* WrappingHStack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B3F119762933FA990055A2EE /* XCRemoteSwiftPackageReference "WrappingHStack" */;
+			productName = WrappingHStack;
+		};
 		EE220BC729139B9800CEC13A /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = EE220BC629139B9800CEC13A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
