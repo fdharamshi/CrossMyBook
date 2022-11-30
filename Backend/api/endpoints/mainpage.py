@@ -27,3 +27,18 @@ def temporary_main(request):
 
     return JsonResponse({'msg': 'Success!', 'success': True, "all_books": all_books, "all_copies": all_copies},
                         safe=False)
+
+def get_available_copies(request):
+    available_copies = []
+
+    copies = BookCopy.objects.all()
+    for copy in copies:
+        if copy.status == 0:
+            available_copies.append({
+                "copy_id": copy.id,
+                "title": copy.book.title,
+                "cover_url": copy.book.cover_url,
+                "author": copy.book.authors
+            })
+
+    return JsonResponse({'msg': 'Success!', 'success': True, "available_copies": available_copies}, safe=False)

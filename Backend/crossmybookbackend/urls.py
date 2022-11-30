@@ -61,5 +61,8 @@ urlpatterns = [
     path('getConversations', messaging.get_convo),
     path('getMessages', messaging.get_messages),
     path('sendMessage', messaging.sendMessage),
+
+    # Home
+    path('getAvailableCopies', mainpage.get_available_copies),
     
 ]
