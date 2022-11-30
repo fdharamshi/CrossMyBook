@@ -11,12 +11,14 @@ import SDWebImageSwiftUI
 struct HomeView: View {
   
   @ObservedObject var temporaryMainController: TemporaryMainController = TemporaryMainController()
+  @ObservedObject var availableCopiesController: AvailableCopiesController = AvailableCopiesController()
   
   @State private var index = 0
   let banners: [String] = ["https://i.ibb.co/tDxD7Wk/banner1.png", "https://i.ibb.co/jbJh5VN/banner2.png", "https://i.ibb.co/FwJFrrB/banner3.jpg"]
   
   init() {
     temporaryMainController.fetchDetails()
+    availableCopiesController.fetchAvailableCopies()
   }
   
   var body: some View {
@@ -44,10 +46,10 @@ struct HomeView: View {
         
         ScrollView(.horizontal, showsIndicators: false) {
           HStack(alignment: .top, spacing: 10) {
-            ForEach(temporaryMainController.observedCopy?.allCopies ?? []) { copy in
-              NavigationLink(destination: CopyDetailsView(copy.copyID ?? 1).navigationBarHidden(true)) {
+            ForEach(availableCopiesController.availableCopiesModel?.availableCopies ?? []) { copy in
+              NavigationLink(destination: CopyDetailsView(copy.copyId).navigationBarHidden(true)) {
                 VStack {
-                  WebImage(url: URL(string: copy.coverURL))
+                  WebImage(url: URL(string: copy.coverUrl))
                     .resizable()
                     .placeholder(Image(uiImage: UIImage(named: "bookplaceholder")!)) // Placeholder Image
                     .scaledToFit()
