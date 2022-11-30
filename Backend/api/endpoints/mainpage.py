@@ -33,7 +33,16 @@ def get_available_copies(request):
 
     copies = BookCopy.objects.all()
     for copy in copies:
-        if copy.status == 0:
+        # get status
+        # 0: available  -1: unavailable
+        cur_status = copy.status
+        # get listing information
+        try:
+            listing = Listing.objects.get(copy_id=copy.id, status=0)
+        except Listing.DoesNotExist:
+            cur_status = -1
+
+        if cur_status == 0:
             available_copies.append({
                 "copy_id": copy.id,
                 "title": copy.book.title,
