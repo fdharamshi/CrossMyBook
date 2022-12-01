@@ -9,9 +9,10 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct FullReviewCardView: View {
-    @State var like = false
     var review: Review
-    
+    @State var like: Bool
+    @ObservedObject var communityViewModel: CommunityViewModel
+    @AppStorage("user_id") var userId: Int = -1
     var body: some View {
         HStack(alignment: .firstTextBaseline) {
             // user avatar
@@ -31,17 +32,17 @@ struct FullReviewCardView: View {
                     Spacer()
                     if (!like){
                         Button(action: {
-                            print("clicked")
+                            print("like")
                             like = !like
-                            
+                            likeReview()
                         }) {
                             FAIcon(name: "heart", size: 14, style: "regular")
-                            
                         }
                     }else{
                         Button(action: {
-                            print("clicked")
+                            print("unlike")
                             like = !like
+                            unlikeReview()
                         }) {
                             FAIcon(name: "heart", size: 14, style: "solid")
                         }
@@ -65,6 +66,18 @@ struct FullReviewCardView: View {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         return formatter.string(from: date)
+    }
+    
+    func unlikeReview() {
+        self.communityViewModel.unlikeReview(userId: userId, reviewId: review.reviewId) { (resp: (Bool, String)) in
+            print(resp)
+        }
+    }
+    
+    func likeReview() {
+        self.communityViewModel.likeReview(userId: userId, reviewId: review.reviewId) { (resp: (Bool, String)) in
+            print(resp)
+        }
     }
 }
 
