@@ -26,6 +26,7 @@ struct Review: Decodable {
     let bookCover: String
     let content: String
     let date: Date
+    let isLiked: Bool
     
     enum CodingKeys: String, CodingKey {
         case reviewId = "id"
@@ -38,6 +39,7 @@ struct Review: Decodable {
         case bookCover = "book_cover"
         case content
         case date
+        case isLiked = "is_liked"
     }
 }
 
