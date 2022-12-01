@@ -9,14 +9,27 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct CreateReviewView: View {
+    @ObservedObject var communityViewModel: CommunityViewModel = CommunityViewModel()
     var defaultCoverUrl = "https://m.media-amazon.com/images/I/41H9RiOb9gL.jpg"
+    @State private var presentAlert = false
+    @State private var alertMsg = ""
     @State private var searchText = ""
     @State private var reviewInput = ""
+    @State private var rating: Int = 0
+    @State var selectedBook: crossedBook? = nil
+    @State var submitSuccess: Bool = false
+    @AppStorage("user_id") var userId: Int = -1
     
     var body: some View {
         ScrollView {
+            NavigationLink(destination: CommunityView().navigationBarBackButtonHidden(true).navigationBarHidden(true)
+            , isActive: $submitSuccess) {
+                EmptyView()
+            }
             VStack {
                 CustomText(s: "Choose a book you received", size: 20).frame(maxWidth: .infinity)
+                
+                //TODO: complete searching
                 TextField("Search a book", text: $searchText, onCommit: {
                     print("search text: \($searchText)")
                 }).multilineTextAlignment(.center)
@@ -28,14 +41,22 @@ struct CreateReviewView: View {
                 
                 ScrollView(.horizontal) {
                     HStack {
-                        ForEach(1..<6, id:\.self) { _ in
-                            WebImage(url: URL(string: defaultCoverUrl)).resizable().scaledToFit().frame(width: 64, height: 97).cornerRadius(5).padding(9)
+                        if(self.communityViewModel.getUserBooks().count > 0) {
+                            ForEach(self.communityViewModel.getUserBooks(), id: \.bookId) { book in
+                                Button(action: {
+                                    self.selectedBook = book
+                                }) {
+                                    WebImage(url: URL(string: book.bookCover)).resizable().scaledToFit().frame(width: 64, height: 97).cornerRadius(5).padding(9)
+                                }
+                            }
                         }
                     }.padding(28)
                 }
-                
+                if (self.selectedBook != nil) {
+                    BookPreviewView(review: PreviewBook(bookId: selectedBook!.bookId, bookCover: selectedBook!.bookCover, bookTitle: selectedBook!.bookTitle, bookAuthor: selectedBook!.bookAuthor)).padding(32)
+                }
                 CustomText(s: "My Rating", size: 18).bold()
-                RatingBookView()
+                RatingBookView(updateRating: self.updateRating)
                 
                 TextField("Write your thoughts here...", text: $reviewInput, axis: .vertical)
                     .lineLimit(10...)
@@ -45,20 +66,48 @@ struct CreateReviewView: View {
                     .padding(36)
                 
                 Button(action: {
-                    print("submit review")
+                    submitReview()
                 }) {
                     CustomText(s: "Submit", size: 20, color: Color.white).bold()
                 }.frame(minWidth: 284, minHeight: 60).background(Color.theme).cornerRadius(10).padding()
             }.frame(maxWidth: .infinity, maxHeight: .infinity)
                 
-        }.background(Color.backgroundGrey)
-        
+        }
+        .background(Color.backgroundGrey)
+        .onAppear(perform: getUserBooks)
+        .alert(isPresented: $presentAlert) {
+            Alert(
+                title: Text(alertMsg),
+                dismissButton: .default(Text("Got it")) {
+                    self.submitSuccess = alertMsg == "Success!" ? true : false
+                }
+            )
+        }
+    }
+    
+    func updateRating(number: Int) -> Void {
+        self.rating = number
+    }
+    
+    func getUserBooks() {
+        let anonymous = { (fetchedBooks: [crossedBook]) in
+            self.communityViewModel.userBooks = fetchedBooks
+        }
+        CommunityParser().fetchUserBooks(userId: String(userId), completionHandler: anonymous)
+    }
+    
+    func submitReview() {
+        self.communityViewModel.createReview(userId: userId, bookId: selectedBook?.bookId ?? -1, content: $reviewInput.wrappedValue, stars: rating) { (resp: (Bool, String)) in
+            print(resp)
+            presentAlert = true
+            alertMsg = resp.1
+        }
     }
 }
 
 
-struct CreateReviewView_Previews: PreviewProvider {
-    static var previews: some View {
-        CreateReviewView()
-    }
-}
+//struct CreateReviewView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CreateReviewView()
+//    }
+//}

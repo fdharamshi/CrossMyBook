@@ -9,13 +9,14 @@ import Foundation
 
 class CommunityParser {
     // TODO: change to cloud server
-    let urlString = "http://127.0.0.1:8000/getReviews"
+    let urlPrefix = "http://ec2-3-87-92-147.compute-1.amazonaws.com:8000"
+    
     /**
      reviewType = 1 fetch all reviews
      reviewType = 2 fetch related reviews
      */
-    func fetchReviews(userId: String = "2", reviewType: String = "1", completionHandler: @escaping((Reviews) -> ())) {
-        let path = urlString + "?user_id=\(userId)" + "&review_type=\(reviewType)"
+    func fetchReviews(userId: String = "1", reviewType: String = "1", completionHandler: @escaping((Reviews) -> ())) {
+        let path = urlPrefix + "/getReviews?user_id=\(userId)" + "&review_type=\(reviewType)"
         let task = URLSession.shared.dataTask(with: URL(string: path)!) {
             (data, response, error) in
             guard let data = data else {
@@ -38,6 +39,28 @@ class CommunityParser {
                 }
                 let reviewsData = try decoder.decode(Reviews.self, from: data)
                 completionHandler(reviewsData)
+            } catch {
+                print("Error! Can't decode data")
+                print(error)
+            }
+        }
+        task.resume()
+    }
+    
+    
+    func fetchUserBooks(userId: String = "1", completionHandler: @escaping(([crossedBook]) -> ())) {
+        let path = urlPrefix + "/getBookByUserId?user_id=\(userId)"
+        let task = URLSession.shared.dataTask(with: URL(string: path)!) {
+            (data, response, error) in
+            guard let data = data else {
+                print("Error! No Data!")
+                return
+            }
+            do {
+                let decoder = JSONDecoder()
+                let booksResp = try decoder.decode(UserBooks.self, from: data)
+                let booksData = booksResp.currentBooks + booksResp.historyBooks
+                completionHandler(booksData)
             } catch {
                 print("Error! Can't decode data")
                 print(error)

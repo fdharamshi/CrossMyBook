@@ -7,10 +7,22 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
-
+struct PreviewBook {
+    let bookId: Int
+    let bookCover: String
+    let bookTitle: String
+    let bookAuthor: String
+    
+    init(bookId: Int, bookCover: String, bookTitle: String, bookAuthor: String) {
+        self.bookId = bookId
+        self.bookCover = bookCover
+        self.bookTitle = bookTitle
+        self.bookAuthor = bookAuthor
+    }
+}
 struct BookPreviewView: View {
     var defaultCoverUrl = "https://m.media-amazon.com/images/I/41H9RiOb9gL.jpg"
-    var review: Review
+    var review: PreviewBook
     var body: some View {
         NavigationLink(destination: BookDetailView(bookId: String(review.bookId)).navigationBarBackButtonHidden(true)) {
             HStack (alignment: .top) {

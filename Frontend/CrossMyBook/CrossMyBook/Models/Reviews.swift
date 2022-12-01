@@ -40,3 +40,28 @@ struct Review: Decodable {
         case date
     }
 }
+
+// for create review page
+struct UserBooks: Decodable {
+    let currentBooks: [crossedBook]
+    let historyBooks: [crossedBook]
+    
+    enum CodingKeys: String, CodingKey {
+        case currentBooks = "current_books"
+        case historyBooks = "history_books"
+    }
+}
+
+struct crossedBook: Decodable {
+    let bookId: Int
+    let bookTitle: String
+    let bookAuthor: String
+    let bookCover: String
+    
+    enum CodingKeys: String, CodingKey {
+        case bookId = "book_id"
+        case bookTitle = "title"
+        case bookAuthor = "author"
+        case bookCover = "cover_url"
+    }
+}
