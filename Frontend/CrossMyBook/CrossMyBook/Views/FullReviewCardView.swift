@@ -9,7 +9,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct FullReviewCardView: View {
-    
+    @State var like = false
     var review: Review
     
     var body: some View {
@@ -29,9 +29,32 @@ struct FullReviewCardView: View {
                 BookPreviewView(review: PreviewBook(bookId: review.bookId, bookCover: review.bookCover, bookTitle: review.bookTitle, bookAuthor: review.bookAuthor))
                 HStack() {
                     Spacer()
-                    FAIcon(name: "heart", size: 14, style: "regular")
-                    FAIcon(name: "comment-dots", size: 14, style: "regular")
-                    FAIcon(name: "share-square", size: 14, style: "regular")
+                    if (!like){
+                        Button(action: {
+                            print("clicked")
+                            like = !like
+                            
+                        }) {
+                            FAIcon(name: "heart", size: 14, style: "regular")
+                            
+                        }
+                    }else{
+                        Button(action: {
+                            print("clicked")
+                            like = !like
+                        }) {
+                            FAIcon(name: "heart", size: 14, style: "solid")
+                        }
+                    }
+                    
+                    Button(action: {}) {
+                        FAIcon(name: "comment-dots", size: 14, style: "regular")
+                    }
+                    Button(action: {}) {
+                        FAIcon(name: "share-square", size: 14, style: "regular")
+                    }
+                    
+                    
                 }
             }.padding(.leading, 4)
         }.padding()
