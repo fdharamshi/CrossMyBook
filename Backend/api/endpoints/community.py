@@ -58,7 +58,11 @@ def get_reviews(request):
 
         # book info
         book = Book.objects.get(id=review.book.id)
-        
+        is_liked = True
+        try:
+            like = Likes.objects.get(user_id=user.id, review_id=review.id)
+        except Likes.DoesNotExist:
+            is_liked = False
         reviews.append({
             "id": review.id,
             "user_id": user.id,
@@ -70,6 +74,7 @@ def get_reviews(request):
             "book_cover": book.cover_url,
             "content": review.review,
             "date": review.date,
+            "is_liked":is_liked,
         })
     
     response = {
