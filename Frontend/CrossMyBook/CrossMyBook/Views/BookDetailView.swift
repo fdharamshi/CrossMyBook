@@ -68,23 +68,20 @@ struct BookDetailView: View {
     }
     
     func loadBookData() {
-        print("Book id: ", bookId)
         let anonymous = { (fetchedBook: Book) in
             self.bookViewModel.bookData = fetchedBook
-//            print(fetchedBook.copies)
             if (fetchedBook.copies.count > 0) {
                 self.displayCopy = fetchedBook.copies[0]
             }
         }
         BookParser().fetchBookDetails(bookId: bookId, completionHandler: anonymous)
-//        print(self.bookViewModel.bookData == nil)
     }
     
     
 }
 
-struct BookDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        BookDetailView()
-    }
-}
+//struct BookDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BookDetailView()
+//    }
+//}

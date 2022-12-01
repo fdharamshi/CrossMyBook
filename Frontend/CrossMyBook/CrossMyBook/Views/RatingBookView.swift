@@ -12,6 +12,7 @@ struct RatingBookView: View {
     var requireHalf: Bool = false
     static var offColor = Color.gray
     static var onColor = Color.lightBrown
+    var updateRating: ((Int) -> Void)
 
     var onImage = Image(systemName: "star.fill")
     
@@ -25,14 +26,15 @@ struct RatingBookView: View {
                     .onTapGesture {
                         print("rating: \(number)")
                         rating = number
+                        updateRating(number)
                     }
             }
         }
     }
 }
 
-struct RatingBookView_Previews: PreviewProvider {
-    static var previews: some View {
-        RatingBookView()
-    }
-}
+//struct RatingBookView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RatingBookView()
+//    }
+//}

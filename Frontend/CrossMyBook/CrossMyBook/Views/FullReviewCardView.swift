@@ -26,7 +26,7 @@ struct FullReviewCardView: View {
                 // content
                 CustomText(s: review.content, size: 16)
                 // book preview
-                BookPreviewView(review: review)
+                BookPreviewView(review: PreviewBook(bookId: review.bookId, bookCover: review.bookCover, bookTitle: review.bookTitle, bookAuthor: review.bookAuthor))
                 HStack() {
                     Spacer()
                     FAIcon(name: "heart", size: 14, style: "regular")
