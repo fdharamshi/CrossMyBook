@@ -3,10 +3,13 @@ Repo for final project for Team 23  (67-643)
 
 # CrossMyBook Backend - Django
 
+Server hosted at: http://ec2-3-87-92-147.compute-1.amazonaws.com:8000
+
 ## Django Admin:
 - Username: femindharamshi
 - Password: test
 - URL: `/admin`
+- On the server: http://ec2-3-87-92-147.compute-1.amazonaws.com:8000/admin
 
 ## Some basic information:
 
