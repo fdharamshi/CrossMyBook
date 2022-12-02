@@ -1,4 +1,6 @@
 # from symbol import except_clause
+import traceback
+
 from django.http import JsonResponse
 import requests
 from api.models import *
@@ -110,15 +112,15 @@ def releaseACopyAlreadyCreated(request):
     # CREATE A NEW LISTING
     try:
         today = datetime.date.today()
-        new_listing = Listing(copy=copy, user_id=user_id, lat=lat, long=lon, book_condition=book_condition,
-                              charges=charges,
-                              max_distance=max_distance, note=note, status=status,
-                              post_date=today)
+        new_listing = Listing(copy_id=copy_id, user_id=user_id, lat=lat, lon=lon, book_condition=book_condition,
+                              charges=charges, max_distance=max_distance, note=note, status=status,post_date=today)
         new_listing.save()
-    except:
+    except Exception as e:
+        message = traceback.format_exc()
+        print(message)
         return JsonResponse({'msg': 'Fail to create a new listing.', 'success': False}, safe=False)
 
-    return JsonResponse({'msg': 'Success!', 'success': True, "listing_id": new_listing.id, "copy_id": copy.id},
+    return JsonResponse({'msg': 'Success!', 'success': True, "listing_id": new_listing.id, "copy_id": copy_id},
                         safe=False)
 
 # for editing release information from book copy page

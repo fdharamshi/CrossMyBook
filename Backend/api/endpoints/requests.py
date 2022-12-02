@@ -182,7 +182,7 @@ def takeActionOnRequest(request):
         listing.status = 1
         listing.save()
 
-        BookCopy.objects.filter(id=request.listing.copy.id).update(owner=user_id)
+        BookCopy.objects.filter(id=request.listing.copy.id).update(owner=request.requester.id)
 
         return JsonResponse({'msg': 'Success!', 'success': True}, safe=False)
 
