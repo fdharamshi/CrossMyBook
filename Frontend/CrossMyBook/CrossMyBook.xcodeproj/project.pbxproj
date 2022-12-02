@@ -88,6 +88,7 @@
 		EEDC263A291DE52E009422FA /* AlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2639291DE52E009422FA /* AlertModel.swift */; };
 		EEDC263C291DE545009422FA /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC263B291DE545009422FA /* AlertController.swift */; };
 		EEDC263F291DE5C1009422FA /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC263E291DE5C1009422FA /* AlertView.swift */; };
+		EEF4973F2939DBD0009511A9 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF4973E2939DBD0009511A9 /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -171,6 +172,7 @@
 		EEDC2639291DE52E009422FA /* AlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModel.swift; sourceTree = "<group>"; };
 		EEDC263B291DE545009422FA /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		EEDC263E291DE5C1009422FA /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		EEF4973E2939DBD0009511A9 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,6 +317,7 @@
 		EE220BBF2913847500CEC13A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EEF4973D2939DBB7009511A9 /* MapView */,
 				EE7BEF5629369EB00050B214 /* SplashScreen */,
 				EE17A80C2925479F00904C0F /* AuthViews */,
 				EEDC2637291DE511009422FA /* AlertView */,
@@ -561,6 +564,14 @@
 			path = AlertControllers;
 			sourceTree = "<group>";
 		};
+		EEF4973D2939DBB7009511A9 /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				EEF4973E2939DBD0009511A9 /* MapView.swift */,
+			);
+			name = MapView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -699,6 +710,7 @@
 				3147D89129340B2200A8B479 /* Reviews.swift in Sources */,
 				B3CB6856291B484B004DC394 /* RequestModel.swift in Sources */,
 				3A6B7C1C2919E603000744EB /* ReleaseSelectionView.swift in Sources */,
+				EEF4973F2939DBD0009511A9 /* MapView.swift in Sources */,
 				EE2C7C10292FE2FD00F0A003 /* ConversationModel.swift in Sources */,
 				EE862130291ADCFC00000345 /* DashboardView.swift in Sources */,
 				EEDC263C291DE545009422FA /* AlertController.swift in Sources */,

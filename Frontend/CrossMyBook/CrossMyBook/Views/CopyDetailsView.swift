@@ -80,12 +80,13 @@ struct CopyDetailsView: View {
                 
                 ZStack (alignment: .bottomLeading) {
                   if(copyDetailsController.state == .Idle) {
-                    Map(coordinateRegion: $copyDetailsController.mapRegion, annotationItems: copyDetailsController.observedCopy?.travelHistory ?? []) { tH in
-                      MapMarker(coordinate: CLLocationCoordinate2D(
-                        latitude: tH.lat,
-                        longitude: tH.lon
-                      ))
-                    }.frame(height: 450)
+//                    Map(coordinateRegion: $copyDetailsController.mapRegion, annotationItems: copyDetailsController.observedCopy?.travelHistory ?? []) { tH in
+//                      MapMarker(coordinate: CLLocationCoordinate2D(
+//                        latitude: tH.lat,
+//                        longitude: tH.lon
+//                      ))
+//                    }.frame(height: 450)
+                    MapView(mapRegion: copyDetailsController.mapRegion, travelPoints: copyDetailsController.observedCopy?.travelHistory ?? []).frame(height: 450)
                   }
                   
                   
