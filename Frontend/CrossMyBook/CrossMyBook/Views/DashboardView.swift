@@ -13,6 +13,7 @@ struct DashboardView: View {
   
   @ObservedObject var profileController: ProfileController = ProfileController()
   @ObservedObject var dashboardController: DashboardController = DashboardController()
+  @ObservedObject var reviewsController: ReviewsController = ReviewsController()
   
   @AppStorage("user_id") var userID: Int = -1
   
@@ -44,14 +45,16 @@ struct DashboardView: View {
       
       HStack {
         Spacer()
-        VStack {
-          Text(String(profileController.profile?.reviewNumber ?? 0))
-            .font(Font.custom("NotoSerif", size: 30))
-            .bold()
-            .foregroundColor(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255))
-          Text("Reviews")
-            .font(Font.custom("NotoSerif", size: 15))
-            .foregroundColor(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255))
+        NavigationLink(destination: ReviewsView(reviews: reviewsController.myReviews).navigationBarHidden(true)) {
+          VStack {
+            Text(String(profileController.profile?.reviewNumber ?? 0))
+              .font(Font.custom("NotoSerif", size: 30))
+              .bold()
+              .foregroundColor(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255))
+            Text("Reviews")
+              .font(Font.custom("NotoSerif", size: 15))
+              .foregroundColor(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255))
+          }
         }
         Spacer()
         VStack {
@@ -123,6 +126,7 @@ struct DashboardView: View {
       .onAppear(perform: {
         profileController.fetchProfile(userID)
         dashboardController.fetchUserBooks(userID)
+        reviewsController.fetchReviews(userID)
       })
   }
 }
