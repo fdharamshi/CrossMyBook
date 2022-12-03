@@ -18,6 +18,12 @@ struct AlertRequestView: View {
   
   var index: Int
   
+  let resetFunction: ()->()
+  
+  @AppStorage("user_id") var userID: Int = -1
+  @State var showAlert = false
+  @State var alertMsg = ""
+  
   func getDistance(_ lat1:Double, _ lon1:Double, _ lat2: Double, _ lon2: Double) -> String {
     let userLoc:CLLocation = CLLocation(latitude: lat1, longitude: lon1)
     let listingLoc:CLLocation = CLLocation(latitude: lat2, longitude: lon2)
@@ -173,7 +179,15 @@ struct AlertRequestView: View {
       // MARK: Action Buttons
       if(index != 1) {
         Button(action: {
-          // TODO: Decline
+          // Decline
+          TakeActionOnRequestController().takeAction(userID, 0, request.requestID) { actionResponse in
+            if(actionResponse.success) {
+              resetFunction()
+            } else {
+              alertMsg = actionResponse.msg
+              showAlert = true
+            }
+          }
         }) {
           Text("Decline").font(.custom("NotoSerif", size: 15).bold())
             .padding()
@@ -188,7 +202,16 @@ struct AlertRequestView: View {
         .buttonStyle(PlainButtonStyle())
         .padding(.horizontal, 20.0)
         Button(action: {
-          // TODO: Accept
+          // Accept
+          TakeActionOnRequestController().takeAction(userID, 1, request.requestID) { actionResponse in
+            print(actionResponse.msg)
+            if(actionResponse.success) {
+              resetFunction()
+            } else {
+              alertMsg = actionResponse.msg
+              showAlert = true
+            }
+          }
         }) {
           Text("Accept").font(.custom("NotoSerif", size: 15).bold())
             .padding()
@@ -200,12 +223,14 @@ struct AlertRequestView: View {
         .padding(.horizontal, 20.0)
       }
       
+    }.alert(isPresented: $showAlert) {
+      Alert(title: Text("Login Failed"), message: Text(alertMsg))
     }
   }
 }
 
 struct AlertRequestView_Previews: PreviewProvider {
   static var previews: some View {
-    AlertRequestView(request: Request(userID: 1, userProfile: "https://femindharamshi.com/static/media/favicon.df59357d43584154d3d1.png", userName: "Femin Dharamshi", copyID: 5, listingID: 5, date: "11th Nov, 2022", lat: 45.0, lon: -79.92, note: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin facilisis lacus in vulputate molestie. Sed bibendum malesuada tortor vel pretium. Aliquam sollicitudin ullamcorper sodales. Mauris elit ante, auctor ut enim in, lobortis dapibus justo. Vivamus tristique sem molestie magna aliquam faucibus sodales a est. Proin elementum, sapien sit amet luctus vestibulum, tortor nisi lacinia sapien, ac semper ligula tellus eget tortor. Donec ac elit turpis. In at dolor eu est eleifend blandit. Morbi eget commodo nisi, non porta ipsum. Aenean lobortis diam a elit finibus ultrices. Nulla diam magna, dapibus vel mollis ac, eleifend at lacus. Nullam elementum dolor at auctor scelerisque. Integer posuere erat ac laoreet malesuada.", requestID: 8, coverURL: "https://covers.openlibrary.org/b/id/10290658-L.jpg", title: "Linchpin", listingLOC: ListingLOC(lat: 40.0, lon: -78)), index: 1)
+    AlertRequestView(request: Request(userID: 1, userProfile: "https://femindharamshi.com/static/media/favicon.df59357d43584154d3d1.png", userName: "Femin Dharamshi", copyID: 5, listingID: 5, date: "11th Nov, 2022", lat: 45.0, lon: -79.92, note: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin facilisis lacus in vulputate molestie. Sed bibendum malesuada tortor vel pretium. Aliquam sollicitudin ullamcorper sodales. Mauris elit ante, auctor ut enim in, lobortis dapibus justo. Vivamus tristique sem molestie magna aliquam faucibus sodales a est. Proin elementum, sapien sit amet luctus vestibulum, tortor nisi lacinia sapien, ac semper ligula tellus eget tortor. Donec ac elit turpis. In at dolor eu est eleifend blandit. Morbi eget commodo nisi, non porta ipsum. Aenean lobortis diam a elit finibus ultrices. Nulla diam magna, dapibus vel mollis ac, eleifend at lacus. Nullam elementum dolor at auctor scelerisque. Integer posuere erat ac laoreet malesuada.", requestID: 8, coverURL: "https://covers.openlibrary.org/b/id/10290658-L.jpg", title: "Linchpin", listingLOC: ListingLOC(lat: 40.0, lon: -78)), index: 0, resetFunction: {})
   }
 }

@@ -31,6 +31,11 @@ struct AlertView: View {
     }
   }
   
+  func resetCurrentReqeust() {
+    currentRequest = nil
+    alertController.fetchAlertDetails(userID)
+  }
+  
   func getDistance(_ lat1:Double, _ lon1:Double, _ lat2: Double, _ lon2: Double) -> String {
     let userLoc:CLLocation = CLLocation(latitude: lat1, longitude: lon1)
     let listingLoc:CLLocation = CLLocation(latitude: lat2, longitude: lon2)
@@ -133,7 +138,7 @@ struct AlertView: View {
           }
         }
       } else {
-        AlertRequestView(request: currentRequest!, index: index)
+        AlertRequestView(request: currentRequest!, index: index, resetFunction: resetCurrentReqeust)
       }
       
       

@@ -35,14 +35,6 @@ class AlertController: ObservableObject {
         return
       }
       
-//      let copyDetails: CopyDetailsModel = CopyDetailsModel()
-//      do {
-//          let copyDetails = try JSONDecoder().decode(CopyDetailsModel.self, from: data)
-//      } catch {
-//          print(error)
-//          fatalError("Failed to decode from bundle.")
-//      }
-      
       completion(alerts)
     }
     task.resume()

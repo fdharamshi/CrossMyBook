@@ -78,6 +78,7 @@
 		EE360A092911B7C5006DB257 /* NotoSerif-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE360A082911B7C5006DB257 /* NotoSerif-Regular.ttf */; };
 		EE3BDEFA2924812500629ACC /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BDEF92924812500629ACC /* AuthModel.swift */; };
 		EE3BDEFD292481EA00629ACC /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BDEFC292481EA00629ACC /* LoginController.swift */; };
+		EE45DD97293BCEA800A0A3A9 /* TakeActionOnRequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE45DD96293BCEA800A0A3A9 /* TakeActionOnRequestController.swift */; };
 		EE7BEF5829369EBF0050B214 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7BEF5729369EBF0050B214 /* SplashScreenView.swift */; };
 		EE86212C291ADCC500000345 /* MessagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE86212B291ADCC500000345 /* MessagingView.swift */; };
 		EE86212E291ADCE300000345 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE86212D291ADCE300000345 /* HomeView.swift */; };
@@ -169,6 +170,7 @@
 		EE360A0A2911B8F3006DB257 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		EE3BDEF92924812500629ACC /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
 		EE3BDEFC292481EA00629ACC /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		EE45DD96293BCEA800A0A3A9 /* TakeActionOnRequestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeActionOnRequestController.swift; sourceTree = "<group>"; };
 		EE7BEF5729369EBF0050B214 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		EE86212B291ADCC500000345 /* MessagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingView.swift; sourceTree = "<group>"; };
 		EE86212D291ADCE300000345 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -594,6 +596,7 @@
 			isa = PBXGroup;
 			children = (
 				EEDC263B291DE545009422FA /* AlertController.swift */,
+				EE45DD96293BCEA800A0A3A9 /* TakeActionOnRequestController.swift */,
 			);
 			path = AlertControllers;
 			sourceTree = "<group>";
@@ -751,6 +754,7 @@
 				EEF4973F2939DBD0009511A9 /* MapView.swift in Sources */,
 				EE2C7C10292FE2FD00F0A003 /* ConversationModel.swift in Sources */,
 				EE862130291ADCFC00000345 /* DashboardView.swift in Sources */,
+				EE45DD97293BCEA800A0A3A9 /* TakeActionOnRequestController.swift in Sources */,
 				EEDC263C291DE545009422FA /* AlertController.swift in Sources */,
 				31A8794E291846B000286ABF /* BookViewModel.swift in Sources */,
 				3A6B7C1C2919E603000744EB /* ReleaseSelectionView.swift in Sources */,
