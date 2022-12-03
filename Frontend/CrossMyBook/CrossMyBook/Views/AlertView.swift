@@ -15,8 +15,6 @@ struct AlertView: View {
   
   @ObservedObject var alertController: AlertController = AlertController()
   
-//  @State var userID: String = UserDefaults.standard.string(forKey: "user_id") ?? "1"
-  
   @AppStorage("user_id") var userID: Int = -1
   
   @State var index: Int = 0

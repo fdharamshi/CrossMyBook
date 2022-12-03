@@ -79,6 +79,7 @@
 		EE3BDEFA2924812500629ACC /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BDEF92924812500629ACC /* AuthModel.swift */; };
 		EE3BDEFD292481EA00629ACC /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BDEFC292481EA00629ACC /* LoginController.swift */; };
 		EE45DD97293BCEA800A0A3A9 /* TakeActionOnRequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE45DD96293BCEA800A0A3A9 /* TakeActionOnRequestController.swift */; };
+		EE45DD9A293BD82600A0A3A9 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE45DD99293BD82600A0A3A9 /* SettingsView.swift */; };
 		EE7BEF5829369EBF0050B214 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7BEF5729369EBF0050B214 /* SplashScreenView.swift */; };
 		EE86212C291ADCC500000345 /* MessagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE86212B291ADCC500000345 /* MessagingView.swift */; };
 		EE86212E291ADCE300000345 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE86212D291ADCE300000345 /* HomeView.swift */; };
@@ -171,6 +172,7 @@
 		EE3BDEF92924812500629ACC /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
 		EE3BDEFC292481EA00629ACC /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		EE45DD96293BCEA800A0A3A9 /* TakeActionOnRequestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeActionOnRequestController.swift; sourceTree = "<group>"; };
+		EE45DD99293BD82600A0A3A9 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		EE7BEF5729369EBF0050B214 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		EE86212B291ADCC500000345 /* MessagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingView.swift; sourceTree = "<group>"; };
 		EE86212D291ADCE300000345 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 		EE220BBF2913847500CEC13A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EE45DD98293BD81C00A0A3A9 /* SettingsView */,
 				EEF4973D2939DBB7009511A9 /* MapView */,
 				EE7BEF5629369EB00050B214 /* SplashScreen */,
 				EE17A80C2925479F00904C0F /* AuthViews */,
@@ -492,6 +495,14 @@
 				EE3BDEFC292481EA00629ACC /* LoginController.swift */,
 			);
 			path = LoginController;
+			sourceTree = "<group>";
+		};
+		EE45DD98293BD81C00A0A3A9 /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				EE45DD99293BD82600A0A3A9 /* SettingsView.swift */,
+			);
+			name = SettingsView;
 			sourceTree = "<group>";
 		};
 		EE7BEF5629369EB00050B214 /* SplashScreen */ = {
@@ -715,6 +726,7 @@
 				3AF1D7D8291C8677009C778E /* ReleaseFormEditView.swift in Sources */,
 				31A8795429186AF600286ABF /* BDReview.swift in Sources */,
 				31954DD22917042E00C6AD1F /* BookDetailView.swift in Sources */,
+				EE45DD9A293BD82600A0A3A9 /* SettingsView.swift in Sources */,
 				3147D89629340FCD00A8B479 /* CommunityViewModel.swift in Sources */,
 				3A9F99D0291A239200E3909E /* Release.swift in Sources */,
 				B3ABC8C1291C14CE006C9A01 /* RequestMessage.swift in Sources */,
