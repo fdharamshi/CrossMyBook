@@ -103,7 +103,6 @@ struct ReleaseFormEditView: View {
                 //                }
                 
                 
-                
                 Button(action: {
                     jump = releaseEditController.updateRelease(userID: Int(userID) ?? 1)
                 }) {
