@@ -14,6 +14,7 @@ struct FullReviewCardView: View {
     @ObservedObject var communityViewModel: CommunityViewModel
     @AppStorage("user_id") var userId: Int = -1
     var body: some View {
+        
         HStack(alignment: .firstTextBaseline) {
             // user avatar
             WebImage(url: URL(string: review.userAvatar )).resizable().scaledToFit().frame(width: 35, height: 35).cornerRadius(50).alignmentGuide(.firstTextBaseline) { context in
@@ -30,7 +31,9 @@ struct FullReviewCardView: View {
                 BookPreviewView(review: PreviewBook(bookId: review.bookId, bookCover: review.bookCover, bookTitle: review.bookTitle, bookAuthor: review.bookAuthor))
                 HStack() {
                     Spacer()
+                    
                     if (!like){
+                        
                         Button(action: {
                             print("like")
                             like = !like
