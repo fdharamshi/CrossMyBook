@@ -128,6 +128,8 @@ struct DashboardView: View {
         profileController.fetchProfile(userID)
         dashboardController.fetchUserBooks(userID)
         reviewsController.fetchReviews(userID)
+        self.enableCurrentButton = true
+        self.enableHistoryButton = false
       })
   }
 }
