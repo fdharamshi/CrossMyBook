@@ -50,10 +50,14 @@
 		B374B131291A274E0093755D /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B374B130291A274E0093755D /* RoundedTextField.swift */; };
 		B3ABC8C1291C14CE006C9A01 /* RequestMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABC8C0291C14CE006C9A01 /* RequestMessage.swift */; };
 		B3B8824A291956F100B80B7E /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B88249291956F100B80B7E /* SignupView.swift */; };
+		B3C5CFA1293ABAF30095A6BB /* ReviewActionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C5CFA0293ABAF30095A6BB /* ReviewActionController.swift */; };
 		B3CB6856291B484B004DC394 /* RequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CB6855291B484B004DC394 /* RequestModel.swift */; };
 		B3CB6858291B6078004DC394 /* RequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CB6857291B6078004DC394 /* RequestController.swift */; };
 		B3E8F9FE293152EE0083F91F /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E8F9FD293152EE0083F91F /* DashboardModel.swift */; };
 		B3E8FA01293155090083F91F /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E8FA00293155090083F91F /* DashboardController.swift */; };
+		B3EC2EF7293A86EB00D4EEAA /* ReviewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EC2EF6293A86EB00D4EEAA /* ReviewsModel.swift */; };
+		B3EC2EF9293A87ED00D4EEAA /* ReviewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EC2EF8293A87ED00D4EEAA /* ReviewsController.swift */; };
+		B3EC2EFB293A893100D4EEAA /* ReviewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EC2EFA293A893100D4EEAA /* ReviewsView.swift */; };
 		B3F119782933FA990055A2EE /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = B3F119772933FA990055A2EE /* WrappingHStack */; };
 		EE0AE85729240FFB002F2A39 /* StateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0AE85629240FFB002F2A39 /* StateUtil.swift */; };
 		EE220BBE2913840200CEC13A /* NotoSerif-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE220BBD2913840100CEC13A /* NotoSerif-Bold.ttf */; };
@@ -137,10 +141,14 @@
 		B374B130291A274E0093755D /* RoundedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
 		B3ABC8C0291C14CE006C9A01 /* RequestMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMessage.swift; sourceTree = "<group>"; };
 		B3B88249291956F100B80B7E /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		B3C5CFA0293ABAF30095A6BB /* ReviewActionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewActionController.swift; sourceTree = "<group>"; };
 		B3CB6855291B484B004DC394 /* RequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestModel.swift; sourceTree = "<group>"; };
 		B3CB6857291B6078004DC394 /* RequestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestController.swift; sourceTree = "<group>"; };
 		B3E8F9FD293152EE0083F91F /* DashboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardModel.swift; sourceTree = "<group>"; };
 		B3E8FA00293155090083F91F /* DashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
+		B3EC2EF6293A86EB00D4EEAA /* ReviewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsModel.swift; sourceTree = "<group>"; };
+		B3EC2EF8293A87ED00D4EEAA /* ReviewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsController.swift; sourceTree = "<group>"; };
+		B3EC2EFA293A893100D4EEAA /* ReviewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsView.swift; sourceTree = "<group>"; };
 		EE0AE85629240FFB002F2A39 /* StateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateUtil.swift; sourceTree = "<group>"; };
 		EE220BBD2913840100CEC13A /* NotoSerif-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerif-Bold.ttf"; sourceTree = "<group>"; };
 		EE220BC22913849500CEC13A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -313,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				B3E8F9FD293152EE0083F91F /* DashboardModel.swift */,
+				B3EC2EF6293A86EB00D4EEAA /* ReviewsModel.swift */,
 			);
 			path = DashboardModels;
 			sourceTree = "<group>";
@@ -321,6 +330,8 @@
 			isa = PBXGroup;
 			children = (
 				B3E8FA00293155090083F91F /* DashboardController.swift */,
+				B3EC2EF8293A87ED00D4EEAA /* ReviewsController.swift */,
+				B3C5CFA0293ABAF30095A6BB /* ReviewActionController.swift */,
 			);
 			path = DashboardControllers;
 			sourceTree = "<group>";
@@ -520,6 +531,7 @@
 			isa = PBXGroup;
 			children = (
 				EE86212F291ADCFC00000345 /* DashboardView.swift */,
+				B3EC2EFA293A893100D4EEAA /* ReviewsView.swift */,
 			);
 			name = DashboardView;
 			sourceTree = "<group>";
@@ -679,6 +691,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3EC2EF9293A87ED00D4EEAA /* ReviewsController.swift in Sources */,
 				EE3BDEFA2924812500629ACC /* AuthModel.swift in Sources */,
 				3AF1D7D6291B2FF8009C778E /* ReleaseMsg.swift in Sources */,
 				3A6B7C1A2919E5D2000744EB /* ReleaseFormView.swift in Sources */,
@@ -719,6 +732,7 @@
 				EE3609FE2911B595006DB257 /* Persistence.swift in Sources */,
 				31954DD8291713D500C6AD1F /* BookCardView.swift in Sources */,
 				31954DD4291707EC00C6AD1F /* ColorExtension.swift in Sources */,
+				B3EC2EFB293A893100D4EEAA /* ReviewsView.swift in Sources */,
 				B3B8824A291956F100B80B7E /* SignupView.swift in Sources */,
 				B368FB64291D7D9B00A97C16 /* Profile.swift in Sources */,
 				EE9181FF2918D91A003CD0B0 /* RequestBookForm.swift in Sources */,
@@ -755,6 +769,8 @@
 				3147D88E293049B800A8B479 /* BookPreviewView.swift in Sources */,
 				EE220BC32913849500CEC13A /* LoginView.swift in Sources */,
 				EE360A012911B595006DB257 /* CrossMyBook.xcdatamodeld in Sources */,
+				B3EC2EF7293A86EB00D4EEAA /* ReviewsModel.swift in Sources */,
+				B3C5CFA1293ABAF30095A6BB /* ReviewActionController.swift in Sources */,
 				31954DD6291710FF00C6AD1F /* FAIcon.swift in Sources */,
 				3AF1D7DA291C869C009C778E /* ReleaseEditController.swift in Sources */,
 			);
