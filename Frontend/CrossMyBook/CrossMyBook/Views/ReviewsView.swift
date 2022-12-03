@@ -80,6 +80,7 @@ struct ReviewsView: View {
                 .swipeActions {
                   if (myReviewFlag == true) {
                     Button("Delete") {
+                      reviewActionController.deleteReview(userID: userID, reviewID: review.id)
                     }
                     .tint(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255))
                   }
