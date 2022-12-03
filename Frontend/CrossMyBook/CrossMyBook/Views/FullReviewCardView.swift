@@ -59,7 +59,7 @@ struct FullReviewCardView: View {
                     }
                     
                     
-                }
+                }.padding(.top, 5)
             }.padding(.leading, 4)
         }.padding()
         .background(Color.white)

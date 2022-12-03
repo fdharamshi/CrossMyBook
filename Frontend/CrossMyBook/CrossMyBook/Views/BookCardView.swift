@@ -14,12 +14,14 @@ struct BookCardView: View {
         if (bookData != nil) {
             HStack {
                 WebImage(url: URL(string: bookData!.coverURL)).resizable().scaledToFit().frame(height: 180).cornerRadius(5)
+                .shadow(color: .gray, radius: 3, x: 0, y: 3)
                 VStack(alignment: .leading) {
-                    CustomText(s: bookData!.title, size: 18).bold()
-                    CustomText(s: bookData!.author, size: 14)
+                    CustomText(s: bookData!.title, size: 18).bold().padding(.bottom, 0.5)
+                  CustomText(s: bookData!.author, size: 14).padding(.bottom, 5)
                     RatingsView(rating: Int(floor(bookData!.rating)), requireHalf: (floor(bookData!.rating) < bookData!.rating))
                     CustomText(s: bookData!.description, size: 12)
-                }
+                }.frame(width: UIScreen.main.bounds.width - 200)
+                Spacer()
             }.padding(18)
         }
         
