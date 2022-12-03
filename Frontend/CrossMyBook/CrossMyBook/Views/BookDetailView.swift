@@ -9,6 +9,8 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct BookDetailView: View {
+  
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @ObservedObject var bookViewModel: BookViewModel = BookViewModel()
     @State var displayCopy: BDCopy? = nil
@@ -19,7 +21,9 @@ struct BookDetailView: View {
             VStack (alignment: .leading){
                 // MARK: top bar
                 HStack {
-                    NavigationLink(destination: LandingView().navigationBarBackButtonHidden(true)) {
+                    Button (action: {
+                        self.presentationMode.wrappedValue.dismiss() // TODO: back action
+                    }) {
                         FAIcon(name: "chevron-left")
                     }
                     Text("CrossMyBook").font(.custom("NotoSerif", size: 24)).bold().frame(maxWidth: .infinity).foregroundColor(.fontBlack)
