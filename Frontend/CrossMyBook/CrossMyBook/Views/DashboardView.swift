@@ -17,8 +17,8 @@ struct DashboardView: View {
   
   @AppStorage("user_id") var userID: Int = -1
   
-  @State private var disableCurrentButton = true
-  @State private var disableHistoryButton = false
+  @State private var enableCurrentButton = true
+  @State private var enableHistoryButton = false
   
   var body: some View {
     VStack {
@@ -74,25 +74,25 @@ struct DashboardView: View {
           // TODO: button actions
           Button(action: {
             self.dashboardController.changeDisplayBooks("current")
-            self.disableCurrentButton = true
-            self.disableHistoryButton = false
+            self.enableCurrentButton = true
+            self.enableHistoryButton = false
           }) {
-            CustomText(s: "Current Books", size: 16, color: disableCurrentButton ? Color.theme : Color.fontBlack).bold()
+            CustomText(s: "Current Books", size: 16, color: enableCurrentButton ? Color.white : Color.fontBlack).bold()
           }.frame(minWidth: 170, minHeight: 43)
-          .background(disableCurrentButton ? Color.ultraLightBrown : Color.white)
+          .background(enableCurrentButton ? Color.theme : Color.white)
           .cornerRadius(10)
-          .disabled(disableCurrentButton)
+          .disabled(enableCurrentButton)
         
           Button(action: {
             self.dashboardController.changeDisplayBooks("history")
-            self.disableCurrentButton = false
-            self.disableHistoryButton = true
+            self.enableCurrentButton = false
+            self.enableHistoryButton = true
           }) {
-            CustomText(s: "History Books", size: 16, color: disableHistoryButton ? Color.theme : Color.fontBlack).bold()
+            CustomText(s: "History Books", size: 16, color: enableHistoryButton ? Color.white : Color.fontBlack).bold()
           }.frame(minWidth: 170, minHeight: 43)
-          .background(disableHistoryButton ? Color.ultraLightBrown : Color.white)
+          .background(enableHistoryButton ? Color.theme : Color.white)
           .cornerRadius(10)
-          .disabled(disableHistoryButton)
+          .disabled(enableHistoryButton)
       }.padding(.top, 10)
       
       WrappingHStack(dashboardController.displayBooks ?? []) { book in
