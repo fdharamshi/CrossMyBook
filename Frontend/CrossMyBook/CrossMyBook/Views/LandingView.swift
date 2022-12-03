@@ -50,7 +50,7 @@ struct LandingView: View {
           default:
             homeView
           }
-          NavBar(changeIndex: self.changeIndex(_:)).padding(.bottom, 10.0)
+          NavBar(changeIndex: self.changeIndex(_:)).padding(.bottom, 10.0).padding(.top, -10)
         }.edgesIgnoringSafeArea([.bottom]).background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
       }.navigationBarHidden(true).sheet(isPresented: $isAlert) {
         AlertView()
