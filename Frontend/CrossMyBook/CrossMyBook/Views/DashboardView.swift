@@ -45,9 +45,9 @@ struct DashboardView: View {
       
       HStack {
         Spacer()
-        NavigationLink(destination: ReviewsView(reviews: reviewsController.myReviews).navigationBarHidden(true)) {
+        NavigationLink(destination: ReviewsView(reviews: reviewsController.myReviews ?? [], myReviewFlag: true).navigationBarBackButtonHidden(true)) {
           VStack {
-            Text(String(profileController.profile?.reviewNumber ?? 0))
+            Text(String(reviewsController.myReviews?.count ?? 0))
               .font(Font.custom("NotoSerif", size: 30))
               .bold()
               .foregroundColor(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255))
@@ -57,18 +57,19 @@ struct DashboardView: View {
           }
         }
         Spacer()
-        VStack {
-          Text("45")
-            .font(Font.custom("NotoSerif", size: 30))
-            .bold()
-            .foregroundColor(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255))
-          Text("Favourites")
-            .font(Font.custom("NotoSerif", size: 15))
-            .foregroundColor(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255))
+        NavigationLink(destination: ReviewsView(reviews: reviewsController.faveReviews ?? [], myReviewFlag: false).navigationBarBackButtonHidden(true)) {
+          VStack {
+            Text(String(reviewsController.faveReviews?.count ?? 0))
+              .font(Font.custom("NotoSerif", size: 30))
+              .bold()
+              .foregroundColor(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255))
+            Text("Favorites")
+              .font(Font.custom("NotoSerif", size: 15))
+              .foregroundColor(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255))
+          }
         }
         Spacer()
       }
-      
       HStack {
           // TODO: button actions
           Button(action: {

@@ -10,10 +10,10 @@ import Foundation
 struct ReviewsModel: Codable {
   let success: Bool
   let msg: String
-  let reviews: [Review]
+  let reviews: [ReviewSummary]
 }
 
-struct Review: Codable {
+struct ReviewSummary: Codable, Identifiable, Hashable {
   let id: Int
   let bookId: Int
   let bookTitle: String

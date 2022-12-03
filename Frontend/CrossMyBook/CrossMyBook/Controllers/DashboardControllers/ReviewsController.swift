@@ -9,8 +9,8 @@ import Foundation
 
 class ReviewsController: ObservableObject {
   @Published var reviewsModel: ReviewsModel?
-  @Published var myReviews: [Review]?
-  @Published var faveReviews: [Review]?
+  @Published var myReviews: [ReviewSummary]?
+  @Published var faveReviews: [ReviewSummary]?
   
   func fetchReviews(_ userID: Int) {
     fetchMyReview(userID, completion: { reviewsModel in
@@ -41,7 +41,7 @@ class ReviewsController: ObservableObject {
   }
   
   private func fetchFaveReview(_ userID: Int, completion: @escaping (ReviewsModel) -> ()) {
-    let url: String = "http://ec2-3-87-92-147.compute-1.amazonaws.com:8000/getFavor?user_id=\(userID)"
+    let url: String = "http://ec2-3-87-92-147.compute-1.amazonaws.com:8000/getFavorReview?user_id=\(userID)"
     let task = URLSession.shared.dataTask(with: URL(string: url)!) { (data, response, error) in
       guard let data = data else {
         print("Error: No data to decode")
