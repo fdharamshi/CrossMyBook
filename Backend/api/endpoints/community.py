@@ -138,4 +138,22 @@ def unlike_review(request):
     return JsonResponse(
         {'msg': 'Unlike Success', 'success': True}, safe=False)
 
+def delete_review(request):
+    user_id = request.POST.get("user_id", None)
+    review_id = request.POST.get("review_id", None)
+
+    if user_id is None:
+        return JsonResponse({'msg': 'User not logged in.', 'success': False}, safe=False)
+    if review_id is None:
+        return JsonResponse({'msg': 'Review not selected', 'success': False}, safe=False)
+
+    try:
+        review = Review.objects.get(user_id=user_id, id=review_id)
+    except Review.DoesNotExist:
+        return JsonResponse({'msg': 'Review not found or user is not the owner.', 'success': False}, safe=False)
+
+    review.delete()
+    return JsonResponse(
+        {'msg': 'Delete Success', 'success': True}, safe=False)
+
 
