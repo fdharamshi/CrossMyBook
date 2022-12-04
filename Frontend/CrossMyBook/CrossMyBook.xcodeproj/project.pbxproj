@@ -31,6 +31,7 @@
 		31A879582919E8A300286ABF /* RatingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A879572919E8A300286ABF /* RatingsView.swift */; };
 		31B970D429342F4000A593B0 /* CreateReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B970D329342F4000A593B0 /* CreateReviewView.swift */; };
 		31B970D62934329900A593B0 /* RatingBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B970D52934329900A593B0 /* RatingBookView.swift */; };
+		31B970DA293C4C8600A593B0 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B970D9293C4C8600A593B0 /* ShareView.swift */; };
 		3A6B7C1A2919E5D2000744EB /* ReleaseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6B7C192919E5D2000744EB /* ReleaseFormView.swift */; };
 		3A6B7C1C2919E603000744EB /* ReleaseSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6B7C1B2919E603000744EB /* ReleaseSelectionView.swift */; };
 		3A9F99CE291A230300E3909E /* ReleaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F99CD291A230300E3909E /* ReleaseController.swift */; };
@@ -124,6 +125,7 @@
 		31A879572919E8A300286ABF /* RatingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingsView.swift; sourceTree = "<group>"; };
 		31B970D329342F4000A593B0 /* CreateReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReviewView.swift; sourceTree = "<group>"; };
 		31B970D52934329900A593B0 /* RatingBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingBookView.swift; sourceTree = "<group>"; };
+		31B970D9293C4C8600A593B0 /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		3A6B7C192919E5D2000744EB /* ReleaseFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseFormView.swift; sourceTree = "<group>"; };
 		3A6B7C1B2919E603000744EB /* ReleaseSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseSelectionView.swift; sourceTree = "<group>"; };
 		3A9F99CD291A230300E3909E /* ReleaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseController.swift; sourceTree = "<group>"; };
@@ -557,6 +559,7 @@
 				3147D88D293049B800A8B479 /* BookPreviewView.swift */,
 				31B970D329342F4000A593B0 /* CreateReviewView.swift */,
 				31B970D52934329900A593B0 /* RatingBookView.swift */,
+				31B970D9293C4C8600A593B0 /* ShareView.swift */,
 			);
 			name = CommunityView;
 			sourceTree = "<group>";
@@ -745,6 +748,7 @@
 				3147D88C2930473300A8B479 /* FullReviewCardView.swift in Sources */,
 				3AF1D7D4291B2F4C009C778E /* Msg.swift in Sources */,
 				EE3609FE2911B595006DB257 /* Persistence.swift in Sources */,
+				31B970DA293C4C8600A593B0 /* ShareView.swift in Sources */,
 				31954DD8291713D500C6AD1F /* BookCardView.swift in Sources */,
 				31954DD4291707EC00C6AD1F /* ColorExtension.swift in Sources */,
 				B3EC2EFB293A893100D4EEAA /* ReviewsView.swift in Sources */,
@@ -923,6 +927,7 @@
 				INFOPLIST_FILE = CrossMyBook/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Need camera to scan Barcodes of ISBN";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app would like to use your location.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Needed to save review image";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -955,6 +960,7 @@
 				INFOPLIST_FILE = CrossMyBook/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Need camera to scan Barcodes of ISBN";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app would like to use your location.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Needed to save review image";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
