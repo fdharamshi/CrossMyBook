@@ -13,8 +13,12 @@ struct FullReviewCardView: View {
     @State var like: Bool
     @ObservedObject var communityViewModel: CommunityViewModel
     @AppStorage("user_id") var userId: Int = -1
+    
+    // for sharing
+//    @State private var renderedImage = Image(systemName: "photo")
+    @Environment(\.displayScale) var displayScale
+    
     var body: some View {
-        
         HStack(alignment: .firstTextBaseline) {
             // user avatar
             WebImage(url: URL(string: review.userAvatar )).resizable().scaledToFit().frame(width: 35, height: 35).cornerRadius(50).alignmentGuide(.firstTextBaseline) { context in
@@ -54,9 +58,23 @@ struct FullReviewCardView: View {
                     Button(action: {}) {
                         FAIcon(name: "comment-dots", size: 14, style: "regular")
                     }
-                    Button(action: {}) {
+                    ShareLink(item: Image(uiImage: generateSnapshot()), preview: SharePreview("Share Review - " + review.bookTitle, image: Image(uiImage: generateSnapshot()))) {
                         FAIcon(name: "share-square", size: 14, style: "regular")
                     }
+//                    ShareLink(item: Image(uiImage: generateSnapshot()), subject: Text("Check out this link"), message: Text("a message")) {
+//                        FAIcon(name: "share-square", size: 14, style: "regular")
+//                    }
+//                    Image(uiImage: generateSnapshot())
+//                    Button(action: {
+//                        let reviewRenderer = ImageRenderer(content: ShareView(review: review))
+//                        reviewRenderer.scale = displayScale
+//                        guard let image = reviewRenderer.uiImage else {
+//                            return
+//                        }
+//                        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+//                    }) {
+//                        FAIcon(name: "share-square", size: 14, style: "regular")
+//                    }
                     
                     
                 }.padding(.top, 5)
@@ -65,6 +83,19 @@ struct FullReviewCardView: View {
         .background(Color.white)
         .cornerRadius(10)
     }
+    
+
+    @MainActor
+    func generateSnapshot() -> UIImage {
+        let reviewRenderer = ImageRenderer(content: ShareView(review: review))
+        reviewRenderer.scale = UIScreen.main.scale
+        guard let image = reviewRenderer.uiImage else {
+            return UIImage()
+        }
+        return image
+    }
+    
+    
     func formatDate(date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium

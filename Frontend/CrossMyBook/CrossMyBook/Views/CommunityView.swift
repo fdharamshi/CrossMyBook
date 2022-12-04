@@ -60,7 +60,6 @@ struct CommunityView: View {
                 if (self.communityViewModel.getReviews().count > 0) {
                     ForEach(self.communityViewModel.getReviews(), id: \.reviewId) { review in
                         FullReviewCardView(review: review, like: review.isLiked, communityViewModel: communityViewModel).padding(.leading, 25).padding(.trailing, 25).padding(.bottom, 12)
-                        
                     }
                 } else {
                     CustomText(s: "No related reviews yet...", size: 16)
@@ -69,6 +68,9 @@ struct CommunityView: View {
             }.frame(maxWidth: .infinity, maxHeight: .infinity)
         }.background(Color.backgroundGrey)
             .onAppear(perform: loadCommunityData)
+            .refreshable{
+                loadCommunityData()
+            }
     }
     
     func loadCommunityData() {
