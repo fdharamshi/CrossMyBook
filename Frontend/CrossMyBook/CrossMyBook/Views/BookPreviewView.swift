@@ -26,14 +26,14 @@ struct BookPreviewView: View {
     var body: some View {
         NavigationLink(destination: BookDetailView(bookId: String(review.bookId)).navigationBarBackButtonHidden(true)) {
             HStack (alignment: .top) {
-                WebImage(url: URL(string: review.bookCover)).resizable().scaledToFit().frame(width: 60, height: 87).cornerRadius(8)
+                WebImage(url: URL(string: review.bookCover)).resizable().scaledToFit().frame(width: 60, height: 87).cornerRadius(5)
                 VStack(alignment: .leading) {
-                    CustomText(s: review.bookTitle, size: 14).bold().padding(.bottom, 7)
+                    CustomText(s: review.bookTitle, size: 14).bold().padding(.bottom, 3)
                     CustomText(s: "by \(review.bookAuthor)", size: 14, color: Color.gray).bold()
-                }.padding(.leading, 20)
+                }.padding(.leading, 5)
                 Spacer()
             }.padding(12).background(Color.backgroundGrey)
-                .frame(maxWidth: .infinity)
+            .frame(maxWidth: .infinity).cornerRadius(5)
         }
     }
 }

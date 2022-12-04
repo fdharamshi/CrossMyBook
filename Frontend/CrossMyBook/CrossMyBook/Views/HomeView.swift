@@ -130,7 +130,7 @@ struct HomeView: View {
         }
         Spacer()
       }
-      .frame(maxWidth: .infinity, maxHeight: .infinity)
+      .frame(maxWidth: .infinity, maxHeight: .infinity).padding(.bottom, 30)
       .background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
       
     }

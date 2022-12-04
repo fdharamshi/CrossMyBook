@@ -17,21 +17,21 @@ struct BookDetailView: View {
     var bookId: String = "1"
     
     var body: some View {
-        ScrollView {
-            VStack (alignment: .leading){
-                // MARK: top bar
-                HStack {
-                    Button (action: {
-                        self.presentationMode.wrappedValue.dismiss() // TODO: back action
-                    }) {
-                        FAIcon(name: "chevron-left")
-                    }
-                    Text("CrossMyBook").font(.custom("NotoSerif", size: 24)).bold().frame(maxWidth: .infinity).foregroundColor(.fontBlack)
-                }.padding(10)
+        VStack {
+            // MARK: top bar
+            HStack {
+                Button (action: {
+                    self.presentationMode.wrappedValue.dismiss() // TODO: back action
+                }) {
+                    FAIcon(name: "chevron-left")
+                }
+                Text("CrossMyBook").font(.custom("NotoSerif", size: 24)).bold().frame(maxWidth: .infinity).foregroundColor(.fontBlack)
+            }.padding(10)
+          
+            ScrollView {
                 // MARK: book info
                 BookCardView(bookData: self.bookViewModel.bookData)
-                
-                
+              
                 // MARK: copy list
                 VStack(alignment: .leading) {
                     CustomText(s: "\(self.bookViewModel.availableCount()) copies available now", size: 16).bold()
@@ -44,8 +44,8 @@ struct BookDetailView: View {
                                 WebImage(url: URL(string: copy.ownerProfileUrl!.count > 0 ? copy.ownerProfileUrl! : BookParser.DefaultProfileURL)).resizable().scaledToFit().frame(width: 60, height: 60).cornerRadius(50)
                             }
                         }
-                    }
-                    CopyCardView(copy: self.displayCopy)
+                    }.padding(.bottom, 5)
+                  CopyCardView(copy: self.displayCopy).cornerRadius(5)
                 }.padding(.leading, 18).padding(.trailing, 18)
                 
                 // MARK: reviews
@@ -53,7 +53,7 @@ struct BookDetailView: View {
                     CustomText(s: "Reviews", size: 16).bold()
                     ScrollView(.horizontal) {
                         if (self.bookViewModel.getReviews().count > 0) {
-                            HStack {
+                            HStack(alignment: .top) {
                                 ForEach(self.bookViewModel.getReviews(), id: \.self.reviewId) { review in
                                     ReviewCardView(reviewData: review)
                                 }

@@ -19,9 +19,8 @@ struct ReviewCardView: View {
                     CustomText(s: formatDate(date: (reviewData?.date)!), size: 14).bold()
                 }.padding(.leading, 8).padding(.trailing, 8)
                 CustomText(s: (reviewData?.content)!, size: 14).padding(.leading, 8).padding(.trailing, 8)
-            }.frame(width: 200)
-                .background(Color.white)
-                .padding(4)
+            }.padding(10).frame(width: 200).background(Color.white).cornerRadius(5)
+                
         }
         
     }
