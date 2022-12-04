@@ -11,6 +11,8 @@ import SDWebImageSwiftUI
 struct CreateReviewView: View {
     @ObservedObject var communityViewModel: CommunityViewModel = CommunityViewModel()
     var defaultCoverUrl = "https://m.media-amazon.com/images/I/41H9RiOb9gL.jpg"
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     @State private var presentAlert = false
     @State private var alertMsg = ""
     @State private var searchText = ""
@@ -79,7 +81,9 @@ struct CreateReviewView: View {
             Alert(
                 title: Text(alertMsg),
                 dismissButton: .default(Text("Got it")) {
-                    self.submitSuccess = alertMsg == "Success!" ? true : false
+                    if (alertMsg == "Success!") {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
                 }
             )
         }
