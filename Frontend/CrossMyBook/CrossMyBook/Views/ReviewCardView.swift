@@ -13,13 +13,24 @@ struct ReviewCardView: View {
     var body: some View {
         if (reviewData != nil) {
             VStack(alignment: .leading) {
-                HStack { // author + date
-                    CustomText(s: reviewData!.userName!, size: 14).bold()
+                CustomText(s: reviewData!.userName!, size: 14).bold()
+                CustomText(s: formatDate(date: (reviewData?.date)!), size: 14, color: Color.gray)
+
+                // content
+                if ((reviewData?.content!.count)! > 100) {
                     Spacer()
-                    CustomText(s: formatDate(date: (reviewData?.date)!), size: 14).bold()
-                }.padding(.leading, 8).padding(.trailing, 8)
-                CustomText(s: (reviewData?.content)!, size: 14).padding(.leading, 8).padding(.trailing, 8)
-            }.padding(10).frame(width: 200).background(Color.white).cornerRadius(5)
+                    CustomText(s: (reviewData?.content)!, size: 14)
+                } else {
+                    CustomText(s: " ", size: 14)
+                    CustomText(s: (reviewData?.content)!, size: 14)
+                    Spacer()
+                }
+                
+
+            }.frame(minWidth: 200, maxWidth: 220, minHeight: 160, maxHeight: 160, alignment: .leading)
+                .padding(12)
+                .background(Color.white)
+                .cornerRadius(5)
                 
         }
         
