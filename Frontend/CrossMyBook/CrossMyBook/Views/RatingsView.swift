@@ -22,9 +22,6 @@ struct RatingsView: View {
             ForEach(1..<5 + 1, id: \.self) { number in
                 image(for: number)
                     .foregroundColor((number <= rating + 1 && requireHalf) ? onColor : offColor)
-//                    .onTapGesture {
-//                        rating = number
-//                    }
             }
         }
     }
