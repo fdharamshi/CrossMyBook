@@ -33,44 +33,48 @@ struct LandingView: View {
   
   var body: some View {
     NavigationView {
-      VStack {
-        ZStack (alignment: .trailingFirstTextBaseline) {
-          Text(getPageTitle())
-            .font(.custom("NotoSerif", size: 25)).bold().frame(maxWidth: .infinity).foregroundColor(.fontBlack)
-          HStack {
-            if(index == 3) {
+      if(isSettings) {
+        SettingsView(backFnc: {
+          isSettings = false;
+        })
+      } else {
+        VStack {
+          ZStack (alignment: .trailingFirstTextBaseline) {
+            Text(getPageTitle())
+              .font(.custom("NotoSerif", size: 25)).bold().frame(maxWidth: .infinity).foregroundColor(.fontBlack)
+            HStack {
+              if(index == 3) {
+                Button (action: {
+                  isSettings = true
+                }) {
+                  FAIcon(name: "cog", size: 25)
+                }.padding(.leading)
+              }
+              Spacer()
               Button (action: {
-                isSettings = true
+                isAlert = true
               }) {
-                FAIcon(name: "cog", size: 25)
-              }.padding(.leading)
+                FAIcon(name: "bell", size: 25)
+              }.padding(.trailing)
             }
-            Spacer()
-            Button (action: {
-              isAlert = true
-            }) {
-              FAIcon(name: "bell", size: 25)
-            }.padding(.trailing)
+          }.padding(10).background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
+          switch(index) {
+          case 0: homeView
+          case 1: communityView
+          case 2: messagingView
+          case 3: DashboardView()
+          default:
+            homeView
           }
-        }.padding(10).background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
-        switch(index) {
-        case 0: homeView
-        case 1: communityView
-        case 2: messagingView
-        case 3: DashboardView()
-        default:
-          homeView
-        }
-        NavBar(changeIndex: self.changeIndex(_:)).padding(.bottom, 10.0).padding(.top, -10)
-      }.edgesIgnoringSafeArea([.bottom]).background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
-    }
-    .navigationBarHidden(true)
-    .sheet(isPresented: $isAlert) {
-      AlertView()
-    }
-    .sheet(isPresented: $isSettings) {
-      SettingsView()
-    }
+          NavBar(changeIndex: self.changeIndex(_:)).padding(.bottom, 10.0).padding(.top, -10)
+        }.edgesIgnoringSafeArea([.bottom]).background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255)).navigationBarHidden(true)
+          .sheet(isPresented: $isAlert) {
+            AlertView()
+          }
+      }
+      
+      }
+      
   }
   
   func changeIndex(_ newIndex: Int) {

@@ -10,22 +10,29 @@ import SDWebImageSwiftUI
 
 struct SettingsView: View {
   
-  @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-  
-  init() {
-    UIScrollView.appearance().bounces = false
-  }
+  let backFnc: ()->()
   
   var body: some View {
     VStack {
       
       HStack {
+        Button (action: {
+          backFnc()
+        }) {
+          FAIcon(name: "chevron-left", color: Color.white)
+        }.padding(10)
         Spacer()
         Text("CrossMyBook")
-          .font(.custom("NotoSerif", size: 25)).bold().frame(maxWidth: .infinity).foregroundColor(.white)
+          .font(.custom("NotoSerif", size: 20)).bold().frame(maxWidth: .infinity).foregroundColor(.white)
         Spacer()
+        // The below button is only to center the title text. It's hidden.
+        Button (action: {
+//          backFnc()
+        }) {
+          FAIcon(name: "chevron-left", color: Color.theme)
+        }.padding(10)
       }
-      .padding([.bottom, .top], 20)
+      .padding([.bottom], 10)
       .background(Color.theme)
       
       ScrollView() {
@@ -114,6 +121,8 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
   static var previews: some View {
-    SettingsView()
+    SettingsView {
+      
+    }
   }
 }

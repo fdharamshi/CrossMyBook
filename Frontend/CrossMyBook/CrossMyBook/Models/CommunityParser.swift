@@ -38,6 +38,7 @@ class CommunityParser {
                                                            debugDescription: "Cannot decode date string \(dateString)")
                 }
                 let reviewsData = try decoder.decode(Reviews.self, from: data)
+                print(reviewsData.reviews)
                 completionHandler(reviewsData)
             } catch {
                 print("Error! Can't decode data")

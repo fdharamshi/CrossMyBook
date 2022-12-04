@@ -23,6 +23,8 @@ class ReleaseEditController: ObservableObject {
         if existing {
             print("existing")
             fetchExistingRelease(copyId)
+        }else{
+            release.copyId = copyId
         }
         
     }
@@ -75,6 +77,7 @@ class ReleaseEditController: ObservableObject {
         if existing{
             return editRelease(userID: userID)
         }else{
+            print("release current - not editing")
             return releaseOnCopy(userID:userID)
         }
     }
@@ -121,6 +124,7 @@ class ReleaseEditController: ObservableObject {
         
         // HTTP Request Parameters which will be sent in HTTP Request Body
         let postString = "user_id=\(userID)&copy_id=\(release.copyId)&lat=\(release.lat)&lon=\(release.lon)&book_condition=\(release.condition)&charges=\(release.shipping)&max_distance=\(release.distance)&note=\(release.note)";
+        print(postString)
         
         // Set HTTP Request Body
         request.httpBody = postString.data(using: String.Encoding.utf8);
@@ -131,7 +135,6 @@ class ReleaseEditController: ObservableObject {
                 print("Error: No data to decode")
                 return
             }
-            
             // Decode the JSON here
             guard let msg = try? JSONDecoder().decode(ReleaseMsg.self, from: data) else {
                 self.jump = false

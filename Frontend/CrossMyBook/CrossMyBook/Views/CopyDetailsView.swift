@@ -21,6 +21,7 @@ struct CopyDetailsView: View {
   
   @State var isRequest: Bool = false
   @State var isEditListing: Bool = false
+    @State var releaseCurrent:Bool = false
   
   let copyID: Int
   
@@ -76,6 +77,10 @@ struct CopyDetailsView: View {
                       .navigationBarBackButtonHidden(true)
                       .navigationBarHidden(true), isActive: $isEditListing){EmptyView()}
                 
+                  NavigationLink(
+                      destination:ReleaseFormEditView(copyID, false)
+                        .navigationBarBackButtonHidden(true)
+                        .navigationBarHidden(true), isActive: $releaseCurrent){EmptyView()}
                 // MARK: MAP
                 
                 ZStack (alignment: .bottomLeading) {
@@ -261,6 +266,8 @@ struct CopyDetailsView: View {
                   self.isEditListing = true
                 } else if (copyDetailsController.observedCopy?.status == 3) {
                   // TODO: Release Book
+                    print("release current")
+                    self.releaseCurrent = true
                 }
                 
               }) {
