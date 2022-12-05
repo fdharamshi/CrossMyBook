@@ -93,6 +93,7 @@ def search(request):
         ResponseCopies.append({
             "title": copy.book.title,
             "copy_owner": copy.owner.first_name + " " + copy.owner.last_name,
+            "owner_profile": copy.owner.profile_url,
             "copy_id": copy.id,
             "cover_url": copy.book.cover_url,
             "author": copy.book.authors,
