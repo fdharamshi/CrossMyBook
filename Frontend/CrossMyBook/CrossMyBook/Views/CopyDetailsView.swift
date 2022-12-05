@@ -85,12 +85,6 @@ struct CopyDetailsView: View {
                     
                     ZStack (alignment: .bottomLeading) {
                         if(copyDetailsController.state == .Idle) {
-                            //                    Map(coordinateRegion: $copyDetailsController.mapRegion, annotationItems: copyDetailsController.observedCopy?.travelHistory ?? []) { tH in
-                            //                      MapMarker(coordinate: CLLocationCoordinate2D(
-                            //                        latitude: tH.lat,
-                            //                        longitude: tH.lon
-                            //                      ))
-                            //                    }.frame(height: 450)
                             MapView(mapRegion: copyDetailsController.mapRegion, travelPoints: copyDetailsController.observedCopy?.travelHistory ?? []).frame(height: 450)
                         }
                         
@@ -151,11 +145,14 @@ struct CopyDetailsView: View {
                         HStack(spacing: 10) {
                             
                             ForEach(copyDetailsController.observedCopy?.travelHistory.reversed() ?? []) { travelPoint in
+                              VStack (alignment: .center) {
                                 WebImage(url: URL(string: travelPoint.userPicture))
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 70, height: 70, alignment: .center)
                                     .cornerRadius(35)
+                                Text(travelPoint.user).font(.custom("NotoSerif", size: 12))
+                              }
                                 
                                 if(travelPoint != copyDetailsController.observedCopy?.travelHistory.first) {
                                     WebImage(url: URL(string: "https://cdn-icons-png.flaticon.com/512/3183/3183354.png"))
