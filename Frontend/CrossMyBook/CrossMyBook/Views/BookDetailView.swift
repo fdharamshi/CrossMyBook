@@ -18,7 +18,7 @@ struct BookDetailView: View {
     @State var blurRadius: CGFloat = 0
     @State var popupReview: BDReview?
     
-    var bookId: String = "1"
+    var bookId: String = "3"
     
     var body: some View {
         ZStack {
