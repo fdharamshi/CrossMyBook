@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct SearchPageView: View {
   
   @State var searchString: String = ""
   var receivedSearchString: String
   @State var index: Int = 0
+  @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+  
+  @ObservedObject var searchController: SearchController = SearchController()
   
   func toggleIndex() {
     if(index == 0) {
@@ -24,10 +28,21 @@ struct SearchPageView: View {
   init(searchString: String, receivedSearchString: String) {
     self.receivedSearchString = receivedSearchString
     self.searchString = receivedSearchString
+    
+    searchController.fetchSearcheditems(receivedSearchString)
   }
   
     var body: some View {
       VStack {
+        ZStack (alignment: .leading) {
+          Text("Search")
+            .font(.custom("NotoSerif", size: 25)).bold().frame(maxWidth: .infinity).foregroundColor(.fontBlack)
+          Button (action: {
+            self.presentationMode.wrappedValue.dismiss() // TODO: back action
+          }) {
+            FAIcon(name: "chevron-left")
+          }
+        }.background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
         HStack (alignment: .center) {
           RoundedRectangle(cornerRadius: 10)
             .fill(.white)
@@ -51,7 +66,7 @@ struct SearchPageView: View {
           
           if(index == 0)
           {
-            Text("Pending")
+            Text("Books")
               .frame(maxWidth: .infinity)
               .padding(10.0)
               .font(.custom("NotoSerif", size: 16))
@@ -59,7 +74,7 @@ struct SearchPageView: View {
               .foregroundColor(Color.white)
               .cornerRadius(12.0)
           } else {
-            Text("Pending")
+            Text("Books")
               .frame(maxWidth: .infinity)
               .font(.custom("NotoSerif", size: 16))
               .padding(10.0)
@@ -69,7 +84,7 @@ struct SearchPageView: View {
           
           if(index == 1)
           {
-            Text("Accepted")
+            Text("Book Copies")
               .frame(maxWidth: .infinity)
               .font(.custom("NotoSerif", size: 16))
               .padding(10.0)
@@ -77,17 +92,83 @@ struct SearchPageView: View {
               .foregroundColor(Color.white)
               .cornerRadius(12.0)
           } else {
-            Text("Accepted")
+            Text("Book Copies")
               .frame(maxWidth: .infinity)
               .font(.custom("NotoSerif", size: 16))
               .padding(10.0)
               .cornerRadius(12.0)
               .onTapGesture(perform: toggleIndex)
           }
-        }.background(Color.white).cornerRadius(12.0).padding(.top, 10.0)
+        }.background(Color.white).cornerRadius(12.0).padding(.vertical, 10.0)
         
         ScrollView {
-          VStack {
+          VStack (alignment: .center) {
+            
+            if(index == 0) {
+              if(searchController.searchModel?.books.count == 0) {
+                Text("No results for \"\(receivedSearchString)\"").font(.custom("NotoSerif", size: 16))
+              } else {
+                ForEach(searchController.searchModel!.books) {
+                  searchBook in
+                  HStack (alignment: .top) {
+                    WebImage(url: URL(string: searchBook.coverURL))
+                      .resizable()
+                      .placeholder(Image(uiImage: UIImage(named: "bookplaceholder")!)) // Placeholder Image
+                      .scaledToFit()
+                      .frame(width: 100, height: 150, alignment: .center).cornerRadius(5)
+                      .shadow(color: .gray, radius: 3, x: 0, y: 3)
+                      .padding(.bottom, 3)
+                    VStack {
+                      Text(searchBook.title)
+                        .multilineTextAlignment(.leading)
+                        .font(.custom("NotoSerif", size: 16))
+                        .bold()
+                        .lineLimit(1)
+                      Text(searchBook.author)
+                        .multilineTextAlignment(.leading)
+                        .font(.custom("NotoSerif", size: 16))
+                        .lineLimit(1)
+                      // TODO: Implement Rating
+                    }
+                  }
+                  Spacer()
+                }
+              }
+            } else {
+              if(searchController.searchModel?.availableCopies.count == 0) {
+                Text("No results for \"\(receivedSearchString)\"").font(.custom("NotoSerif", size: 16))
+              } else {
+                ForEach(searchController.searchModel!.availableCopies) {
+                  copy in
+                  HStack (alignment: .top) {
+                    WebImage(url: URL(string: copy.coverURL))
+                      .resizable()
+                      .placeholder(Image(uiImage: UIImage(named: "bookplaceholder")!)) // Placeholder Image
+                      .scaledToFit()
+                      .frame(width: 100, height: 150, alignment: .center).cornerRadius(5)
+                      .shadow(color: .gray, radius: 3, x: 0, y: 3)
+                      .padding(.bottom, 3)
+                    VStack {
+                      Text(copy.title)
+                        .multilineTextAlignment(.leading)
+                        .font(.custom("NotoSerif", size: 16))
+                        .bold()
+                        .lineLimit(1)
+                      Text(copy.author)
+                        .multilineTextAlignment(.leading)
+                        .font(.custom("NotoSerif", size: 16))
+                        .lineLimit(1)
+                      Text("Current Owner: \(copy.copyOwner)")
+                        .multilineTextAlignment(.leading)
+                        .font(.custom("NotoSerif", size: 16))
+                        .lineLimit(1)
+                      // TODO: Implement Rating
+                    }
+                    Spacer()
+                  }
+                }
+              }
+            }
             
           }
         }
@@ -98,6 +179,6 @@ struct SearchPageView: View {
 
 struct SearchPageView_Previews: PreviewProvider {
     static var previews: some View {
-      SearchPageView(searchString: "", receivedSearchString: "Femin")
+      SearchPageView(searchString: "Ver", receivedSearchString: "Ver")
     }
 }
