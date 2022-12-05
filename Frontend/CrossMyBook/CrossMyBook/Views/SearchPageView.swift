@@ -51,13 +51,16 @@ struct SearchPageView: View {
                 .font(Font.custom("NotoSerif", size: 15))
                 .padding(.leading, 10.0)
                 .autocorrectionDisabled(true)
+                .onSubmit {
+                  searchController.fetchSearcheditems(searchString)
+                }
                 .onAppear(perform: {
                   searchString = receivedSearchString
                 })
             )
             .frame(height: 38)
           Button(action: {
-            // TODO: Search Action
+            searchController.fetchSearcheditems(searchString)
           }) {
             FAIcon(name: "search", size: 20)
           }
@@ -158,14 +161,24 @@ struct SearchPageView: View {
                         .multilineTextAlignment(.leading)
                         .font(.custom("NotoSerif", size: 16))
                         .lineLimit(1)
-                      Text("Current Owner: \(copy.copyOwner)")
+                      Text("Current Owner:")
+                        .multilineTextAlignment(.leading)
+                        .font(.custom("NotoSerif", size: 16))
+                        .bold()
+                        .lineLimit(1)
+                      Text(copy.copyOwner)
                         .multilineTextAlignment(.leading)
                         .font(.custom("NotoSerif", size: 16))
                         .lineLimit(1)
+                      WebImage(url: URL(string: copy.ownerProfile))
+                          .resizable()
+                          .scaledToFit()
+                          .frame(width: 50, height: 50, alignment: .center)
+                          .cornerRadius(25)
                       // TODO: Implement Rating
                     }
                     Spacer()
-                  }
+                  }.padding(.bottom, 10.0)
                 }
               }
             }

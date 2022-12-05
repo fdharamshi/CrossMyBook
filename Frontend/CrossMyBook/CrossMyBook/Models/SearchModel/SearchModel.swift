@@ -28,6 +28,7 @@ struct SearchAvailableCopy: Codable, Identifiable {
     let coverURL: String
     let author, isbn: String
     let bookID, status: Int
+    let ownerProfile: String
     let rating: Rating
   
     var id: Int {
@@ -37,6 +38,7 @@ struct SearchAvailableCopy: Codable, Identifiable {
     enum CodingKeys: String, CodingKey {
         case title
         case copyOwner = "copy_owner"
+        case ownerProfile = "owner_profile"
         case copyID = "copy_id"
         case coverURL = "cover_url"
         case author, isbn
