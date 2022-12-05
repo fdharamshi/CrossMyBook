@@ -14,6 +14,10 @@ struct ReleaseFormEditView: View {
     @State var jump = false
     @State var userID: String = UserDefaults.standard.string(forKey: "user_id") ?? "1"
     @State private var showingAlert = false
+    @State private var resultAlert = false
+    @State private var res = false
+    @State private var alertMsg = ""
+    
     @State var location = Location()
     @State var changed = false
     let copyID: Int
@@ -115,10 +119,16 @@ struct ReleaseFormEditView: View {
                 
                 Button(action: {
                     if (!changed){
-                        jump = releaseEditController.updateRelease(userID: Int(userID) ?? 1)
+                        res = releaseEditController.updateRelease(userID: Int(userID) ?? 1)
                     }else{
-                        jump = releaseEditController.updateChangedLocationRelease(userID: Int(userID) ?? 1, loc: location)
+                        res = releaseEditController.updateChangedLocationRelease(userID: Int(userID) ?? 1, loc: location)
                     }
+                    if (res){
+                        alertMsg = "Release Sucess!"
+                    }else{
+                        alertMsg = "Release Failed!\nPlease try again."
+                    }
+                    resultAlert = true
                     
                 }) {
                     Text("Release Book").font(.custom("NotoSerif", size: 15))
@@ -130,6 +140,15 @@ struct ReleaseFormEditView: View {
                 .padding(.horizontal)
             }.background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
             
+        }.alert(isPresented: $resultAlert) {
+            Alert(
+                title: Text(alertMsg),
+                dismissButton: .default(Text("Got it")) {
+                    if (res) {
+                        jump = true
+                    }
+                }
+            )
         }
         
     }

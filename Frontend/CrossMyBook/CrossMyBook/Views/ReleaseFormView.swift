@@ -17,6 +17,10 @@ struct ReleaseFormView: View {
     @State var userID: String = UserDefaults.standard.string(forKey: "user_id") ?? "1"
     @State var jump = false
     @State private var showingAlert = false
+    @State private var resultAlert = false
+    @State private var res = false
+    @State private var alertMsg = ""
+    
     var body: some View {
         NavigationView{
             VStack {
@@ -113,11 +117,14 @@ struct ReleaseFormView: View {
                     Alert(title: Text("Location"), message: Text(vc.generateTitle()))
                 }
                 
-                
-                
                 Button(action: {
-                    // vc.test()
-                    jump = vc.createRelease(userID: Int(userID) ?? 1)
+                    res = vc.createRelease(userID: Int(userID) ?? 1)
+                    if (res){
+                        alertMsg = "Release Sucess!"
+                    }else{
+                        alertMsg = "Release Failed!\nPlease try again."
+                    }
+                    resultAlert = true
                 }) {
                     Text("Release Book").font(.custom("NotoSerif", size: 15))
                         .padding()
@@ -128,6 +135,15 @@ struct ReleaseFormView: View {
                 .padding(.horizontal)
             }.background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
             
+        }.alert(isPresented: $resultAlert) {
+            Alert(
+                title: Text(alertMsg),
+                dismissButton: .default(Text("Got it")) {
+                    if (res) {
+                        jump = true
+                    }
+                }
+            )
         }
         
     }

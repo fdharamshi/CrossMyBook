@@ -14,18 +14,19 @@ class ReleaseController: ObservableObject {
     @Published var releaseId: Int = 0
     var jump = true;
     let loc: Location = Location()
+    var getRes = false;
     
-    func fetchBookDetails(isbn: String) {
-        fetchData(isbn, completion: { bookModel in
+    func fetchBookDetails(isbn: String) -> Bool{
+        let res = fetchData(isbn, completion: { bookModel in
             self.book = bookModel
         })
         if book != nil {
             print(book!.title)
         }
-        
+        return res;
     }
     
-    func fetchData(_ isbn: String, completion: @escaping (ISBNBook) -> ()) {
+    func fetchData(_ isbn: String, completion: @escaping (ISBNBook) -> ()) ->Bool{
         let url: String = "http://ec2-3-87-92-147.compute-1.amazonaws.com:8000/getBookFromISBN?isbn=\(isbn)"
         let task = URLSession.shared.dataTask(with: URL(string: url)!) { (data, response, error) in
             guard let data = data else {
@@ -38,10 +39,12 @@ class ReleaseController: ObservableObject {
                 print("Error: Couldn't decode data into a result(ReleaseContoller2)")
                 return
             }
+            self.getRes = true
             print(book.title)
             completion(book)
         }
         task.resume()
+        return self.getRes
     }
     
     
