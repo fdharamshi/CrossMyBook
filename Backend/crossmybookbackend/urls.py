@@ -56,6 +56,7 @@ urlpatterns = [
 
     # other
     path('main', mainpage.temporary_main),
+    path('search', mainpage.search),
     path('getProfile', profile.getProfile),
 
     # Messaging
