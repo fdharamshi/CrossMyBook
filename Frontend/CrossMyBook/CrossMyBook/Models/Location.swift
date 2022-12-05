@@ -33,7 +33,6 @@ class Location: NSObject {
             self.longitude = currLocation.coordinate.longitude
         }
     }
-    
 
     
     func clearLocation () {

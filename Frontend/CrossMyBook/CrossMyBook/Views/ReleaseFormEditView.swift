@@ -13,9 +13,12 @@ struct ReleaseFormEditView: View {
     @ObservedObject var releaseEditController: ReleaseEditController = ReleaseEditController()
     @State var jump = false
     @State var userID: String = UserDefaults.standard.string(forKey: "user_id") ?? "1"
-    //    @State private var showingAlert = false
+    @State private var showingAlert = false
+    @State var location = Location()
+    @State var changed = false
     let copyID: Int
     let existing: Bool
+    
     
     init(_ copyID: Int, _ existing: Bool) {
         self.copyID = copyID
@@ -51,16 +54,23 @@ struct ReleaseFormEditView: View {
                             .multilineTextAlignment(.leading)
                             .background(RoundedRectangle(cornerRadius:10).fill(Color.white))
                         
-                        //                        Button(action: {
-                        //                            self.vc.loc.getCurrentLocation()
-                        //                            self.showingAlert = true
-                        //                        }) {
-                        //                            Text("Get my location")
-                        //                        }.frame(height: 48)
-                        //                            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-                        //                            .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
-                        Text("Your location is: (\(self.releaseEditController.release.lat,  specifier: "%.2f"), \(self.releaseEditController.release.lon, specifier: "%.2f"))")
-                            .font(.custom("NotoSerif", size: 16)).bold().frame(maxWidth: .infinity).foregroundColor(.fontBlack)
+                        Button(action: {
+                            updateLocation()
+                            self.showingAlert = true
+                        }) {
+                            Text("Get my location")
+                        }.frame(minWidth: 0, maxWidth: .infinity)
+                            .frame(height:48)
+                            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                            .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
+                        if (!changed){
+                            Text("Your location is: (\(self.releaseEditController.release.lat,  specifier: "%.2f"), \(self.releaseEditController.release.lon, specifier: "%.2f"))")
+                                .font(.custom("NotoSerif", size: 16)).bold().frame(maxWidth: .infinity).foregroundColor(.fontBlack)
+                        }else{
+                            Text("Your location is: (\(self.location.latitude,  specifier: "%.2f"), \(self.location.longitude, specifier: "%.2f"))")
+                                .font(.custom("NotoSerif", size: 16)).bold().frame(maxWidth: .infinity).foregroundColor(.fontBlack)
+                        }
+                        
                         
                         HStack{
                             CustomText(s: "Shipping Option", size: 14).bold()
@@ -98,13 +108,18 @@ struct ReleaseFormEditView: View {
                             .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
                     }.padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
                 }
-                //                .alert(isPresented: $showingAlert) {
-                //                    Alert(title: Text("Location"), message: Text(releaseEditController.generateTitle()))
-                //                }
+                .alert(isPresented: $showingAlert) {
+                    Alert(title: Text("Location"), message: Text("Your location is at:\n(\(self.location.latitude), \(self.location.longitude))"))
+                }
                 
                 
                 Button(action: {
-                    jump = releaseEditController.updateRelease(userID: Int(userID) ?? 1)
+                    if (!changed){
+                        jump = releaseEditController.updateRelease(userID: Int(userID) ?? 1)
+                    }else{
+                        jump = releaseEditController.updateChangedLocationRelease(userID: Int(userID) ?? 1, loc: location)
+                    }
+                    
                 }) {
                     Text("Release Book").font(.custom("NotoSerif", size: 15))
                         .padding()
@@ -117,6 +132,12 @@ struct ReleaseFormEditView: View {
             
         }
         
+    }
+    
+    func updateLocation(){
+        location.getCurrentLocation()
+        releaseEditController.release.setLocation(loc: location)
+        changed = true
     }
     
 }

@@ -32,14 +32,14 @@ struct CreateReviewView: View {
                 CustomText(s: "Choose a book you received", size: 20).frame(maxWidth: .infinity)
                 
                 //TODO: complete searching
-                TextField("Search a book", text: $searchText, onCommit: {
-                    print("search text: \($searchText)")
-                }).multilineTextAlignment(.center)
-                    .frame(height: 48)
-                    .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-                    .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
-                    .padding(.leading, 28)
-                    .padding(.trailing, 28)
+//                TextField("Search a book", text: $searchText, onCommit: {
+//                    print("search text: \($searchText)")
+//                }).multilineTextAlignment(.center)
+//                    .frame(height: 48)
+//                    .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+//                    .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
+//                    .padding(.leading, 28)
+//                    .padding(.trailing, 28)
                 
                 ScrollView(.horizontal) {
                     HStack {

@@ -16,4 +16,9 @@ class Release{
     var shipping: String = "Pay by the Requester"
     var distance: String = "Same City"
     var note: String = ""
+    
+    func setLocation(loc: Location){
+        lat = Float(loc.latitude)
+        lon = Float(loc.longitude)
+    }
 }

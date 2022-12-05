@@ -12,7 +12,8 @@ class ReleaseEditController: ObservableObject {
     @Published var release: Release = Release()
     var existing: Bool = true
     var jump = true
-//    let loc: Location = Location()
+    
+    
     
     func fetchData(copyId: Int, existing: Bool){
         self.existing = existing
@@ -75,14 +76,23 @@ class ReleaseEditController: ObservableObject {
     
     func updateRelease(userID: Int) -> Bool{
         if existing{
-            return editRelease(userID: userID)
+            return editRelease(userID: userID, changed: false, loc: Location())
         }else{
             print("release current - not editing")
-            return releaseOnCopy(userID:userID)
+            return releaseOnCopy(userID:userID, changed:false,loc:Location())
         }
     }
     
-    func editRelease(userID: Int) -> Bool {
+    func updateChangedLocationRelease(userID: Int, loc: Location)->Bool{
+        if existing{
+            return editRelease(userID: userID, changed:true, loc:loc)
+        }else{
+            print("release current - not editing")
+            return releaseOnCopy(userID:userID,changed:true,loc:loc)
+        }
+    }
+    
+    func editRelease(userID: Int, changed: Bool, loc: Location) -> Bool {
         let url = URL(string: "http://ec2-3-87-92-147.compute-1.amazonaws.com:8000/editRelease")
         guard let requestUrl = url else { fatalError() }
         
@@ -90,8 +100,14 @@ class ReleaseEditController: ObservableObject {
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "POST"
         
+        var postString = ""
         // HTTP Request Parameters which will be sent in HTTP Request Body
-        let postString = "user_id=\(userID)&copy_id=\(release.copyId)&lat=\(release.lat)&lon=\(release.lon)&book_condition=\(release.condition)&charges=\(release.shipping)&max_distance=\(release.distance)&note=\(release.note)";
+        if (!changed){
+            postString = "user_id=\(userID)&copy_id=\(release.copyId)&lat=\(release.lat)&lon=\(release.lon)&book_condition=\(release.condition)&charges=\(release.shipping)&max_distance=\(release.distance)&note=\(release.note)";
+        }else{
+            postString = "user_id=\(userID)&copy_id=\(release.copyId)&lat=\(loc.latitude)&lon=\(loc.longitude)&book_condition=\(release.condition)&charges=\(release.shipping)&max_distance=\(release.distance)&note=\(release.note)";
+        }
+            
         
         // Set HTTP Request Body
         request.httpBody = postString.data(using: String.Encoding.utf8);
@@ -114,7 +130,7 @@ class ReleaseEditController: ObservableObject {
         return self.jump
     }
     
-    func releaseOnCopy(userID: Int) -> Bool {
+    func releaseOnCopy(userID: Int,changed: Bool, loc: Location) -> Bool {
         let url = URL(string: "http://ec2-3-87-92-147.compute-1.amazonaws.com:8000/release")
         guard let requestUrl = url else { fatalError() }
         
@@ -122,9 +138,13 @@ class ReleaseEditController: ObservableObject {
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "POST"
         
+        var postString = ""
         // HTTP Request Parameters which will be sent in HTTP Request Body
-        let postString = "user_id=\(userID)&copy_id=\(release.copyId)&lat=\(release.lat)&lon=\(release.lon)&book_condition=\(release.condition)&charges=\(release.shipping)&max_distance=\(release.distance)&note=\(release.note)";
-        print(postString)
+        if (!changed){
+            postString = "user_id=\(userID)&copy_id=\(release.copyId)&lat=\(release.lat)&lon=\(release.lon)&book_condition=\(release.condition)&charges=\(release.shipping)&max_distance=\(release.distance)&note=\(release.note)";
+        }else{
+            postString = "user_id=\(userID)&copy_id=\(release.copyId)&lat=\(loc.latitude)&lon=\(loc.longitude)&book_condition=\(release.condition)&charges=\(release.shipping)&max_distance=\(release.distance)&note=\(release.note)";
+        }
         
         // Set HTTP Request Body
         request.httpBody = postString.data(using: String.Encoding.utf8);
