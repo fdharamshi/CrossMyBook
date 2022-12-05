@@ -97,6 +97,7 @@
 		EE9181FF2918D91A003CD0B0 /* RequestBookForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9181FE2918D91A003CD0B0 /* RequestBookForm.swift */; };
 		EEA0B41D29199EB10077165C /* CopyDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA0B41C29199EB10077165C /* CopyDetails.swift */; };
 		EEA0B42029199F6B0077165C /* CopyDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA0B41F29199F6B0077165C /* CopyDetailsController.swift */; };
+		EEB27D1E293D98D0002D91E8 /* SearchPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB27D1D293D98D0002D91E8 /* SearchPageView.swift */; };
 		EED5F5FF291EDAB400388B3E /* AlertRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED5F5FE291EDAB400388B3E /* AlertRequestView.swift */; };
 		EEDC263A291DE52E009422FA /* AlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC2639291DE52E009422FA /* AlertModel.swift */; };
 		EEDC263C291DE545009422FA /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC263B291DE545009422FA /* AlertController.swift */; };
@@ -204,6 +205,7 @@
 		EE9181FE2918D91A003CD0B0 /* RequestBookForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBookForm.swift; sourceTree = "<group>"; };
 		EEA0B41C29199EB10077165C /* CopyDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyDetails.swift; sourceTree = "<group>"; };
 		EEA0B41F29199F6B0077165C /* CopyDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyDetailsController.swift; sourceTree = "<group>"; };
+		EEB27D1D293D98D0002D91E8 /* SearchPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageView.swift; sourceTree = "<group>"; };
 		EED5F5FE291EDAB400388B3E /* AlertRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertRequestView.swift; sourceTree = "<group>"; };
 		EEDC2639291DE52E009422FA /* AlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModel.swift; sourceTree = "<group>"; };
 		EEDC263B291DE545009422FA /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
@@ -584,6 +586,7 @@
 				EE86212D291ADCE300000345 /* HomeView.swift */,
 				EE862135291B0B0200000345 /* TemporaryMainModel.swift */,
 				EE862137291B0B1E00000345 /* TemporaryMainController.swift */,
+				EEB27D1D293D98D0002D91E8 /* SearchPageView.swift */,
 			);
 			name = HomeView;
 			sourceTree = "<group>";
@@ -864,6 +867,7 @@
 				EEDC263C291DE545009422FA /* AlertController.swift in Sources */,
 				31A8794E291846B000286ABF /* BookViewModel.swift in Sources */,
 				3A6B7C1C2919E603000744EB /* ReleaseSelectionView.swift in Sources */,
+				EEB27D1E293D98D0002D91E8 /* SearchPageView.swift in Sources */,
 				EE2C7C1A292FF36E00F0A003 /* MessagingModel.swift in Sources */,
 				31A8794E291846B000286ABF /* BookViewModel.swift in Sources */,
 				EE3609F52911B594006DB257 /* CrossMyBookApp.swift in Sources */,

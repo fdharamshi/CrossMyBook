@@ -25,6 +25,9 @@ struct HomeView: View {
   // For now, hardcode picked copy for the day
   let pickedCopy = 7
   
+  @State var searchString: String = ""
+  @State var presentSeachPage: Bool = false
+  
   init() {
     temporaryMainController.fetchDetails()
     availableCopiesController.fetchAvailableCopies()
@@ -32,8 +35,15 @@ struct HomeView: View {
   }
   
   var body: some View {
+    NavigationLink(destination: SearchPageView(searchString: searchString, receivedSearchString: searchString), isActive: $presentSeachPage) {
+      EmptyView()
+    }
     ScrollView {
+      
       VStack (alignment: .leading) {
+        RoundedTextField(text: $searchString, placeholder: "Search Book Titles", height: 38).autocorrectionDisabled(true).padding([.horizontal, .bottom], 10.0).onSubmit {
+          presentSeachPage = true
+        }
         VStack {
           TabView(selection: $index) {
             ForEach((0..<3), id: \.self) { index in
@@ -132,9 +142,11 @@ struct HomeView: View {
       }
       .frame(maxWidth: .infinity, maxHeight: .infinity).padding(.bottom, 30)
       .background(Color(red: 245/255, green: 245 / 255, blue: 245 / 255))
-      
+      .onAppear(perform: {
+        searchString = ""
+      })
     }
-    }
+  }
 }
 
 struct HomeView_Previews: PreviewProvider {
