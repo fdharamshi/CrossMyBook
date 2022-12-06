@@ -25,14 +25,15 @@ def getDetailsFromISBN(request):
         try:
             response = requests.get("https://openlibrary.org/isbn/" + isbn + ".json")
             response = response.json()
-
             authors = ""
             # Iteratively fetch authors from openlibrary
-            for author in response["authors"]:
-                authorResponse = requests.get("https://openlibrary.org" + author["key"] + ".json")
-                authors = authors + authorResponse.json()["name"] + ", "
-            authors = authors[:-2]
-
+            try:
+                for author in response["authors"]:
+                    authorResponse = requests.get("https://openlibrary.org" + author["key"] + ".json")
+                    authors = authors + authorResponse.json()["name"] + ", "
+                authors = authors[:-2]
+            except KeyError:
+                authors = "Author Not Found"
             book = Book(title=response['title'], isbn=isbn,
                         cover_url="https://covers.openlibrary.org/b/id/" + str(response["covers"][0]) + "-L.jpg",
                         authors=authors)
@@ -41,7 +42,8 @@ def getDetailsFromISBN(request):
                 {"isbn": book.isbn, "title": book.title, "cover_url": book.cover_url, "author": book.authors,
                  "book_id": book.id, "rating": 5}, safe=False)
 
-        except:
+        except Exception:
+            traceback.print_exc()
             return JsonResponse({'msg': 'Book not found.', 'success': False}, safe=False)
 
 
