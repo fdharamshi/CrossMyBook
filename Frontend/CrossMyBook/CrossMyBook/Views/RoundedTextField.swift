@@ -11,15 +11,28 @@ struct RoundedTextField: View {
     @Binding var text: String
     var placeholder: String
     var height: CGFloat
+    var passwordStyle: Bool = false
 
     var body: some View {
-        RoundedRectangle(cornerRadius: 10)
-          .fill(.white)
-          .overlay(
-            TextField(placeholder, text: $text)
-              .padding(.leading)
-              .font(Font.custom("NotoSerif", size: 15))
-          )
-          .frame(height: height)
+        if (passwordStyle) {
+            RoundedRectangle(cornerRadius: 10)
+              .fill(.white)
+              .overlay(
+                SecureField(placeholder, text: $text)
+                  .padding(.leading)
+                  .font(Font.custom("NotoSerif", size: 15))
+              )
+              .frame(height: height)
+        } else {
+            RoundedRectangle(cornerRadius: 10)
+              .fill(.white)
+              .overlay(
+                TextField(placeholder, text: $text)
+                  .padding(.leading)
+                  .font(Font.custom("NotoSerif", size: 15))
+              )
+              .frame(height: height)
+        }
+        
     }
 }

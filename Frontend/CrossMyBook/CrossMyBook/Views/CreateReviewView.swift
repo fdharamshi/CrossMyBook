@@ -102,9 +102,12 @@ struct CreateReviewView: View {
     
     func submitReview() {
         self.communityViewModel.createReview(userId: userId, bookId: selectedBook?.bookId ?? -1, content: $reviewInput.wrappedValue, stars: rating) { (resp: (Bool, String)) in
-            print(resp)
             presentAlert = true
-            alertMsg = resp.1
+            if (resp.0 == true) {
+                alertMsg = "You successfully created a review!"
+            } else {
+                alertMsg = resp.1 // error info
+            }
         }
     }
 }

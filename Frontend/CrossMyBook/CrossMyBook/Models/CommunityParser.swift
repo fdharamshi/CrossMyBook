@@ -8,7 +8,6 @@
 import Foundation
 
 class CommunityParser {
-    // TODO: change to cloud server
     let urlPrefix = "http://ec2-3-87-92-147.compute-1.amazonaws.com:8000"
     
     /**
@@ -17,33 +16,37 @@ class CommunityParser {
      */
     func fetchReviews(userId: String = "1", reviewType: String = "1", completionHandler: @escaping((Reviews) -> ())) {
         let path = urlPrefix + "/getReviews?user_id=\(userId)" + "&review_type=\(reviewType)"
+        print("request to " + path)
         let task = URLSession.shared.dataTask(with: URL(string: path)!) {
             (data, response, error) in
-            guard let data = data else {
-                print("Error! No Data!")
-                return
-            }
-            do {
-                let formatter = DateFormatter()
-                let decoder = JSONDecoder()
-                decoder.dateDecodingStrategy = .custom{ decoder in
-                    let container = try decoder.singleValueContainer()
-                    let dateString = try container.decode(String.self)
-                    
-                    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-                    if let date = formatter.date(from: dateString) {
-                        return date
-                    }
-                    throw DecodingError.dataCorruptedError(in: container,
-                                                           debugDescription: "Cannot decode date string \(dateString)")
+            DispatchQueue.main.async {
+                guard let data = data else {
+                    print("Error! No Data!")
+                    return
                 }
-                let reviewsData = try decoder.decode(Reviews.self, from: data)
-                print(reviewsData.reviews)
-                completionHandler(reviewsData)
-            } catch {
-                print("Error! Can't decode data")
-                print(error)
+                do {
+                    let formatter = DateFormatter()
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .custom{ decoder in
+                        let container = try decoder.singleValueContainer()
+                        let dateString = try container.decode(String.self)
+                        
+                        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+                        if let date = formatter.date(from: dateString) {
+                            return date
+                        }
+                        throw DecodingError.dataCorruptedError(in: container,
+                                                               debugDescription: "Cannot decode date string \(dateString)")
+                    }
+                    let reviewsData = try decoder.decode(Reviews.self, from: data)
+    //                print(reviewsData.reviews)
+                    completionHandler(reviewsData)
+                } catch {
+                    print("Error! Can't decode data")
+                    print(error)
+                }
             }
+            
         }
         task.resume()
     }

@@ -35,7 +35,7 @@ class CommunityViewModel: ObservableObject {
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "POST"
         let postString = "user_id=\(userId)&book_id=\(bookId)&content=\(content)&stars=\(stars)"
-        print(postString)
+//        print(postString)
         request.httpBody = postString.data(using: String.Encoding.utf8)
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -71,7 +71,7 @@ class CommunityViewModel: ObservableObject {
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "POST"
         let postString = "user_id=\(userId)&review_id=\(reviewId)"
-        print(postString)
+//        print(postString)
         request.httpBody = postString.data(using: String.Encoding.utf8)
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -106,7 +106,7 @@ class CommunityViewModel: ObservableObject {
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "POST"
         let postString = "user_id=\(userId)&review_id=\(reviewId)"
-        print(postString)
+//        print(postString)
         request.httpBody = postString.data(using: String.Encoding.utf8)
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in

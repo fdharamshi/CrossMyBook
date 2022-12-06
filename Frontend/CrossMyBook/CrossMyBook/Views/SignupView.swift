@@ -65,7 +65,7 @@ struct SignupView: View {
           
           RoundedTextField(text: $lastname, placeholder: "Last name", height: 48)
           
-          RoundedTextField(text: $email, placeholder: "Email", height: 48)
+          RoundedTextField(text: $email, placeholder: "Email", height: 48, passwordStyle: true)
           
           RoundedTextField(text: $password, placeholder: "Password", height: 48)
           
