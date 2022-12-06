@@ -47,7 +47,7 @@ def get_reviews(request):
         
     elif review_type == '2':
         related_book_ids = bookEndpoint.get_user_related_books(user_id)
-        reviewsResp = Review.objects.filter(id__in=related_book_ids).order_by('-date')
+        reviewsResp = Review.objects.filter(book__in=related_book_ids).order_by('-date')
     else:
         return JsonResponse({'msg': 'Invalid review type', 'success': False}, safe=False)
     
