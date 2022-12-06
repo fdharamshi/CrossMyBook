@@ -54,8 +54,8 @@ struct ReviewsView: View {
                   WebImage(url: URL(string: review.bookCover))
                     .resizable()
                     .placeholder(Image(uiImage: UIImage(named: "bookplaceholder")!)) // Placeholder Image
-                    .scaledToFit()
-                    .frame(width: .infinity, height: 120, alignment: .center).cornerRadius(5)
+                    .scaledToFit().cornerRadius(5)
+                    .frame(width: 80, height: 120, alignment: .center)
                   Text(review.bookTitle)
                     .font(Font.custom("NotoSerif", size: 12)).bold()
                     .frame(width: 80).foregroundColor(Color.black).lineLimit(1)
@@ -68,10 +68,10 @@ struct ReviewsView: View {
                   Text(formatDate(date: review.date))
                     .font(Font.custom("NotoSerif", size: 12))
                     .foregroundColor(Color(.gray))
-                    .padding(.top, 5)
+                    .padding(.top, 5).padding(.bottom, 0.5)
                   
                   Text(review.content)
-                    .font(Font.custom("NotoSerif", size: 15)).lineLimit(5)
+                    .font(Font.custom("NotoSerif", size: 15)).lineLimit(6)
                   
                   Spacer()
                 }

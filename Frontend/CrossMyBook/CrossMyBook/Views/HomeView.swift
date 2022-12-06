@@ -49,6 +49,7 @@ struct HomeView: View {
             ForEach((0..<3), id: \.self) { index in
               WebImage(url: URL(string: banners[index]))
                 .resizable()
+                .placeholder(Image(uiImage: UIImage(named: "bookplaceholder")!)) // Placeholder Image
                 .scaledToFill()
                 .clipped()
             }
@@ -72,8 +73,8 @@ struct HomeView: View {
                   WebImage(url: URL(string: copy.coverUrl))
                     .resizable()
                     .placeholder(Image(uiImage: UIImage(named: "bookplaceholder")!)) // Placeholder Image
-                    .scaledToFit()
-                    .frame(width: 100, height: 150, alignment: .center).cornerRadius(5)
+                    .scaledToFit().cornerRadius(5)
+                    .frame(width: 100, height: 150, alignment: .center)
                     .shadow(color: .gray, radius: 3, x: 0, y: 3)
                     .padding(.bottom, 3)
                   
@@ -122,8 +123,8 @@ struct HomeView: View {
                   WebImage(url: URL(string: listing.coverURL))
                     .resizable()
                     .placeholder(Image(uiImage: UIImage(named: "bookplaceholder")!)) // Placeholder Image
-                    .scaledToFit()
-                    .frame(width: 100, height: 150, alignment: .center).cornerRadius(5)
+                    .scaledToFit().cornerRadius(5)
+                    .frame(width: 100, height: 150, alignment: .center)
                     .shadow(color: .gray, radius: 3, x: 0, y: 3)
                     .padding(.bottom, 3)
                   

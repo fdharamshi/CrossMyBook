@@ -95,10 +95,8 @@ struct CopyDetailsView: View {
                             WebImage(url: URL(string: copyDetailsController.observedCopy?.coverURL ?? ""))
                                 .resizable()
                                 .placeholder(Image(uiImage: UIImage(named: "bookplaceholder")!)) // Placeholder Image
-                                .scaledToFit()
+                                .scaledToFit().cornerRadius(5)
                                 .frame(width: 100, height: 150, alignment: .center)
-                                .cornerRadius(5)
-                                .background(Color.brown)
                                 .shadow(color: .gray, radius: 3, x: 0, y: 3)
                                 .offset(x: 30, y: 75)
                         }
@@ -118,7 +116,7 @@ struct CopyDetailsView: View {
                             Text(copyDetailsController.observedCopy?.author ?? "Loading...")
                                 .font(.custom("NotoSerif", size: 15))
                                 .multilineTextAlignment(.leading)
-                                .fixedSize(horizontal: false, vertical: true)
+                                .fixedSize(horizontal: false, vertical: true).padding(.bottom, 0.5)
                             
                             HStack (spacing: 1){
                                 ForEach (0..<5) {_ in
@@ -130,7 +128,7 @@ struct CopyDetailsView: View {
                             
                         }.frame(maxWidth: UIScreen.main.bounds.size.width - 160, alignment: .leading)
                             .offset(x: 150, y:0)
-                    }.frame(maxWidth: .infinity, alignment: .leading)
+                    }.frame(maxWidth: .infinity, alignment: .leading).padding(.bottom, 20)
                     
                     // MARK: Travel History
                     VStack {
@@ -139,7 +137,7 @@ struct CopyDetailsView: View {
                             .bold()
                             .multilineTextAlignment(.leading)
                     }.frame(maxWidth: .infinity, alignment: .leading)
-                        .padding()
+                    .padding(.leading, 18)
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 10) {
@@ -162,7 +160,7 @@ struct CopyDetailsView: View {
                                 }
                             }
                         }
-                    }.padding(.leading)
+                    }.padding(.leading, 20)
                     
                     if (copyDetailsController.observedCopy?.listing != nil) {
                         
@@ -250,7 +248,7 @@ struct CopyDetailsView: View {
                             maxWidth: .infinity,
                             maxHeight: .infinity,
                             alignment: .topLeading
-                        ).background(Color.white).padding([.leading, .top, .trailing])
+                        ).background(Color.white).padding()
                     }
                 }
                 

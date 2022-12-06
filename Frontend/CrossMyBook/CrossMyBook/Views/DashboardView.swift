@@ -95,28 +95,23 @@ struct DashboardView: View {
           .disabled(enableHistoryButton)
       }.padding(.top, 10)
       
-      WrappingHStack(dashboardController.displayBooks ?? []) { book in
-        NavigationLink(destination: CopyDetailsView(book.copyId).navigationBarHidden(true)) {
-          VStack {
-            WebImage(url: URL(string: book.coverUrl))
-              .resizable()
-              .placeholder(Image(uiImage: UIImage(named: "bookplaceholder")!)) // Placeholder Image
-              .scaledToFit()
-              .frame(width: 75, height: 110, alignment: .center).cornerRadius(5)
-            Text(book.title)
-              .font(Font.custom("NotoSerif", size: 10)).bold()
-              .frame(width:70).foregroundColor(Color.black).lineLimit(1)
-            Text(book.author)
-              .font(Font.custom("NotoSerif", size: 8))
-              .frame(width:70).foregroundColor(Color.black).lineLimit(1)
-            HStack (spacing: 1){
-              ForEach (0..<Int(book.rating), id: \.self) {_ in
-                Image(systemName: "star.fill")
-                  .font(.system(size: 5))
-                  .foregroundColor(Color.yellow)
-              }
-            }
-          }.padding(3)
+      ScrollView {
+        WrappingHStack(dashboardController.displayBooks ?? []) { book in
+          NavigationLink(destination: CopyDetailsView(book.copyId).navigationBarHidden(true)) {
+            VStack {
+              WebImage(url: URL(string: book.coverUrl))
+                .resizable()
+                .placeholder(Image(uiImage: UIImage(named: "bookplaceholder")!)) // Placeholder Image
+                .scaledToFit().cornerRadius(5)
+                .frame(width: 100, height: 150, alignment: .center)
+              Text(book.title)
+                .font(Font.custom("NotoSerif", size: 12)).bold()
+                .frame(width: 100).foregroundColor(Color.black).lineLimit(1)
+              Text(book.author)
+                .font(Font.custom("NotoSerif", size: 10))
+                .frame(width: 100).foregroundColor(Color.black).lineLimit(1).padding(.bottom, 15)
+            }.padding(5)
+          }
         }
       }.padding(20.0)
       

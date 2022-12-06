@@ -15,7 +15,7 @@ struct NavBar: View {
   var body: some View {
         ZStack {
           HStack(alignment: .firstTextBaseline) {
-            FAIcon(name: "home").padding(.leading, 18)
+            FAIcon(name: "home").padding(.leading, 20)
               .onTapGesture {
                 changeIndex(0)
               }
@@ -35,7 +35,7 @@ struct NavBar: View {
             Spacer()
             FAIcon(name: "user-circle").onTapGesture {
               changeIndex(3)
-            }.padding(.trailing, 18)
+            }.padding(.trailing, 20)
           }.padding([.bottom, .top], 20.0)
           NavigationLink(destination: ReleaseSelectionView()) {
             FAIcon(name: "plus-circle", size: 60)
