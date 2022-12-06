@@ -31,7 +31,7 @@ class BookViewModel: ObservableObject {
     
     func getReviews() -> [BDReview] {
         if (bookData != nil) {
-            print(bookData!.reviews)
+//            print(bookData!.reviews)
             return bookData!.reviews
         }
         return []

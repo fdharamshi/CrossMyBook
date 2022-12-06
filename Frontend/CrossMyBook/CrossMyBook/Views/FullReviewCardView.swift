@@ -54,29 +54,13 @@ struct FullReviewCardView: View {
                             FAIcon(name: "heart", size: 14, style: "solid")
                         }
                     }
-                    
-                    Button(action: {}) {
-                        FAIcon(name: "comment-dots", size: 14, style: "regular")
-                    }
+//                    
+//                    Button(action: {}) {
+//                        FAIcon(name: "comment-dots", size: 14, style: "regular")
+//                    }
                     ShareLink(item: Image(uiImage: generateSnapshot()), preview: SharePreview("Share Review - " + review.bookTitle, image: Image(uiImage: generateSnapshot()))) {
                         FAIcon(name: "share-square", size: 14, style: "regular")
                     }
-//                    ShareLink(item: Image(uiImage: generateSnapshot()), subject: Text("Check out this link"), message: Text("a message")) {
-//                        FAIcon(name: "share-square", size: 14, style: "regular")
-//                    }
-//                    Image(uiImage: generateSnapshot())
-//                    Button(action: {
-//                        let reviewRenderer = ImageRenderer(content: ShareView(review: review))
-//                        reviewRenderer.scale = displayScale
-//                        guard let image = reviewRenderer.uiImage else {
-//                            return
-//                        }
-//                        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-//                    }) {
-//                        FAIcon(name: "share-square", size: 14, style: "regular")
-//                    }
-                    
-                    
                 }.padding(.top, 5)
             }.padding(.leading, 4)
         }.padding()
