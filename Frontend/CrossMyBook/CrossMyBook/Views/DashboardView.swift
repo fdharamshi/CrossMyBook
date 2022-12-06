@@ -104,6 +104,7 @@ struct DashboardView: View {
                 .placeholder(Image(uiImage: UIImage(named: "bookplaceholder")!)) // Placeholder Image
                 .scaledToFit().cornerRadius(5)
                 .frame(width: 100, height: 150, alignment: .center)
+                .shadow(color: .gray, radius: 3, x: 0, y: 3)
               Text(book.title)
                 .font(Font.custom("NotoSerif", size: 12)).bold()
                 .frame(width: 100).foregroundColor(Color.black).lineLimit(1)

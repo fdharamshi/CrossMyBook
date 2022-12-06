@@ -56,7 +56,12 @@ struct RequestBookForm: View {
                     HStack (alignment: .top) {
                         Spacer()
                         
-                        WebImage(url: URL(string: copyDetailsController.observedCopy?.coverURL ?? "")).resizable().scaledToFit().frame(height: 180).cornerRadius(5)
+                        WebImage(url: URL(string: copyDetailsController.observedCopy?.coverURL ?? ""))
+                        .resizable()
+                        .placeholder(Image(uiImage: UIImage(named: "bookplaceholder")!)) // Placeholder Image
+                        .scaledToFit().cornerRadius(5)
+                        .frame(width: 100, height: 150)
+                        .shadow(color: .gray, radius: 3, x: 0, y: 3)
                         
                         Spacer()
                         
