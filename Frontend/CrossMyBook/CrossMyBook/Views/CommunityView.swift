@@ -37,6 +37,7 @@ struct CommunityView: View {
                 }.padding(.bottom, 10).padding(.leading, 22).padding(.trailing, 22)
                 HStack {
                     Button(action: {
+                        print(currentReviewType)
                         if (currentReviewType != "1") {
                             currentReviewType = "1"
                             loadCommunityData()
@@ -46,6 +47,8 @@ struct CommunityView: View {
                         CustomText(s: "All Reviews", size: 16, color: allBtnTextColor).bold()
                     }.frame(minWidth: 170, minHeight: 43).background(allBtnBackgroundColor).cornerRadius(10)
                     Button(action: {
+                        print("press related")
+                        print(currentReviewType)
                         if (currentReviewType != "2") {
                             currentReviewType = "2"
                             loadCommunityData()
