@@ -81,6 +81,7 @@ struct ReviewsView: View {
                   if (myReviewFlag == true) {
                     Button("Delete") {
                       reviewActionController.deleteReview(userID: userID, reviewID: review.id)
+                      self.reviews.remove(at: index)
                     }
                     .tint(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255))
                   }
