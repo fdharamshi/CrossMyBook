@@ -163,6 +163,14 @@ struct RequestBookForm: View {
             .onAppear(perform: {
               copyDetailsController.fetchCopyDetails(copyID, userID)
             })
+            .alert(isPresented: $hasSubmitted) {
+                Alert(
+                    title: Text("You successfully requested the book."),
+                    dismissButton: .default(Text("Got it")) {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                )
+            }
         }
     }
 }

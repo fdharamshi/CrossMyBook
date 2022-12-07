@@ -100,12 +100,8 @@ struct HomeView: View {
           .padding(.leading, 15)
           .padding(.top, 25)
         
-        Map(coordinateRegion: $copyDetailsController.mapRegion, annotationItems: copyDetailsController.observedCopy?.travelHistory ?? []) { tH in
-          MapMarker(coordinate: CLLocationCoordinate2D(
-            latitude: tH.lat,
-            longitude: tH.lon
-          ))
-        }.frame(height: 200).cornerRadius(5)
+        MapView(mapRegion: copyDetailsController.mapRegion, travelPoints: copyDetailsController.observedCopy?.travelHistory ?? [])
+          .frame(height: 200).cornerRadius(5)
           .padding(.init(top: 0, leading: 20, bottom: 0, trailing: 20))
         
         Text("All books")
