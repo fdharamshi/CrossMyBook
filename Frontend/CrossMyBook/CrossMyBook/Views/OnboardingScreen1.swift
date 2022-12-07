@@ -31,6 +31,7 @@ struct OnboardingScreen1: View {
           .foregroundColor(Color.theme)
           .opacity(opacity)
           .onAppear {
+            self.opacity = 0.0
             withAnimation(.easeInOut(duration: 1.2)) {
               self.opacity = 1.0
             }

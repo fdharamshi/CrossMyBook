@@ -47,22 +47,23 @@ struct OnBoadingView: View {
         }.padding(.bottom, 20.0)
         
         HStack {
-          Button(action: {
-            if(self.currentIndex > 0) {
-              self.currentIndex -= 1
-            } else {
-              // Hide previous button
+          if(currentIndex != 0) {
+            Button(action: {
+              if(self.currentIndex > 0) {
+                self.currentIndex -= 1
+              } else {
+                // Hide previous button
+              }
+            }) {
+              
+              Text("Previous").font(.custom("NotoSerif", size: 15).bold())
+                .padding()
+                .foregroundColor(Color.theme)
+                .frame(maxWidth: .infinity)
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 2).foregroundColor(.theme))
             }
-          }) {
-            
-            Text("Previous").font(.custom("NotoSerif", size: 15).bold())
-              .padding()
-              .foregroundColor(Color.theme)
-              .frame(maxWidth: .infinity)
-              .overlay(RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 2).foregroundColor(.theme))
+            .padding(.trailing, 20.0)
           }
-          .padding(.trailing, 10.0)
-          .disabled(currentIndex == 0)
           
           Button(action: {
             if(self.currentIndex < self.onBoardingScreens.count - 1) {
@@ -79,7 +80,6 @@ struct OnBoadingView: View {
               .background(RoundedRectangle(cornerRadius: 8).fill(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255)))
               .foregroundColor(Color.white)
           }
-          .padding(.leading, 10.0)
         }.padding(.horizontal, 20.0)
       }
     }

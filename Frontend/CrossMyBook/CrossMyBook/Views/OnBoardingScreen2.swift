@@ -42,17 +42,20 @@ struct OnBoardingScreen2: View {
         
         Spacer()
       }.onAppear(perform: {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        self.textOneOpacity = 0.0
+        self.textTwoOpacity = 0.0
+        self.textThreeOpacity = 0.0
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
           withAnimation(.easeInOut(duration: 0.5)) {
             self.textOneOpacity = 1.0
           }
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
           withAnimation(.easeInOut(duration: 0.5)) {
             self.textTwoOpacity = 1.0
           }
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
           withAnimation(.easeInOut(duration: 0.5)) {
             self.textThreeOpacity = 1.0
           }
