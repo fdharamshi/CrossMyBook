@@ -14,13 +14,19 @@ struct SplashScreenView: View {
     @State private var opacity = 0.5
   
     @AppStorage("user_id") var userID: Int = -1
+    @AppStorage("onboardingDone") var onBoardingDone:Bool = false
   
     var body: some View {
+      
       if(isActive) {
-        if(userID == -1) {
-          LoginView()
+        if(onBoardingDone) {
+          if(userID == -1) {
+            LoginView()
+          } else {
+            LandingView()
+          }
         } else {
-          LandingView()
+          OnBoadingView()
         }
       } else {
         ZStack {

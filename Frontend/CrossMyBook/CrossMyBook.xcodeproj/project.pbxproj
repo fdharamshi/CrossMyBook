@@ -66,9 +66,12 @@
 		B3EC2EFB293A893100D4EEAA /* ReviewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EC2EFA293A893100D4EEAA /* ReviewsView.swift */; };
 		B3F119782933FA990055A2EE /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = B3F119772933FA990055A2EE /* WrappingHStack */; };
 		EE0778C629401145009DC72F /* OnboardingScreen1.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0778C529401145009DC72F /* OnboardingScreen1.swift */; };
-		EE0778C82940138B009DC72F /* OnboardingScreen2.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0778C72940138B009DC72F /* OnboardingScreen2.swift */; };
+		EE0778C82940138B009DC72F /* OnBoardingScreen2.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0778C72940138B009DC72F /* OnBoardingScreen2.swift */; };
 		EE0778CA29401822009DC72F /* OnBoardingScreen3.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0778C929401822009DC72F /* OnBoardingScreen3.swift */; };
 		EE0778CC29401BDF009DC72F /* OnboardingScreen4.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0778CB29401BDF009DC72F /* OnboardingScreen4.swift */; };
+		EE0778CE29402601009DC72F /* OnboardingScreen5.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0778CD29402601009DC72F /* OnboardingScreen5.swift */; };
+		EE0778D029402745009DC72F /* OnboardingScreen6.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0778CF29402745009DC72F /* OnboardingScreen6.swift */; };
+		EE0778D22940279D009DC72F /* OnBoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0778D12940279D009DC72F /* OnBoadingView.swift */; };
 		EE0AE85729240FFB002F2A39 /* StateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0AE85629240FFB002F2A39 /* StateUtil.swift */; };
 		EE220BBE2913840200CEC13A /* NotoSerif-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE220BBD2913840100CEC13A /* NotoSerif-Bold.ttf */; };
 		EE220BC32913849500CEC13A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE220BC22913849500CEC13A /* LoginView.swift */; };
@@ -181,9 +184,12 @@
 		B3EC2EF8293A87ED00D4EEAA /* ReviewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsController.swift; sourceTree = "<group>"; };
 		B3EC2EFA293A893100D4EEAA /* ReviewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsView.swift; sourceTree = "<group>"; };
 		EE0778C529401145009DC72F /* OnboardingScreen1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen1.swift; sourceTree = "<group>"; };
-		EE0778C72940138B009DC72F /* OnboardingScreen2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen2.swift; sourceTree = "<group>"; };
+		EE0778C72940138B009DC72F /* OnBoardingScreen2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingScreen2.swift; sourceTree = "<group>"; };
 		EE0778C929401822009DC72F /* OnBoardingScreen3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingScreen3.swift; sourceTree = "<group>"; };
 		EE0778CB29401BDF009DC72F /* OnboardingScreen4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen4.swift; sourceTree = "<group>"; };
+		EE0778CD29402601009DC72F /* OnboardingScreen5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen5.swift; sourceTree = "<group>"; };
+		EE0778CF29402745009DC72F /* OnboardingScreen6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen6.swift; sourceTree = "<group>"; };
+		EE0778D12940279D009DC72F /* OnBoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoadingView.swift; sourceTree = "<group>"; };
 		EE0AE85629240FFB002F2A39 /* StateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateUtil.swift; sourceTree = "<group>"; };
 		EE220BBD2913840100CEC13A /* NotoSerif-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerif-Bold.ttf"; sourceTree = "<group>"; };
 		EE220BC22913849500CEC13A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -406,9 +412,12 @@
 			isa = PBXGroup;
 			children = (
 				EE0778C529401145009DC72F /* OnboardingScreen1.swift */,
-				EE0778C72940138B009DC72F /* OnboardingScreen2.swift */,
+				EE0778C72940138B009DC72F /* OnBoardingScreen2.swift */,
 				EE0778C929401822009DC72F /* OnBoardingScreen3.swift */,
 				EE0778CB29401BDF009DC72F /* OnboardingScreen4.swift */,
+				EE0778CD29402601009DC72F /* OnboardingScreen5.swift */,
+				EE0778CF29402745009DC72F /* OnboardingScreen6.swift */,
+				EE0778D12940279D009DC72F /* OnBoadingView.swift */,
 			);
 			name = OnBoardingViews;
 			sourceTree = "<group>";
@@ -862,7 +871,9 @@
 				EE45DD9A293BD82600A0A3A9 /* SettingsView.swift in Sources */,
 				3147D89629340FCD00A8B479 /* CommunityViewModel.swift in Sources */,
 				3A9F99D0291A239200E3909E /* Release.swift in Sources */,
+				EE0778CE29402601009DC72F /* OnboardingScreen5.swift in Sources */,
 				B3ABC8C1291C14CE006C9A01 /* RequestMessage.swift in Sources */,
+				EE0778D22940279D009DC72F /* OnBoadingView.swift in Sources */,
 				B302C8692936F73A00802EB0 /* AvailableCopiesModel.swift in Sources */,
 				EEDC263A291DE52E009422FA /* AlertModel.swift in Sources */,
 				B374B131291A274E0093755D /* RoundedTextField.swift in Sources */,
@@ -891,6 +902,7 @@
 				B368FB66291D7E8B00A97C16 /* ProfileController.swift in Sources */,
 				3A9F9A20291ABBA700E3909E /* ISBNBook.swift in Sources */,
 				EE7BEF5829369EBF0050B214 /* SplashScreenView.swift in Sources */,
+				EE0778D029402745009DC72F /* OnboardingScreen6.swift in Sources */,
 				EE86212E291ADCE300000345 /* HomeView.swift in Sources */,
 				3A9F9A24291AEEE700E3909E /* Location.swift in Sources */,
 				EEA0B42029199F6B0077165C /* CopyDetailsController.swift in Sources */,
@@ -905,7 +917,7 @@
 				EE862130291ADCFC00000345 /* DashboardView.swift in Sources */,
 				EE45DD97293BCEA800A0A3A9 /* TakeActionOnRequestController.swift in Sources */,
 				EEDC263C291DE545009422FA /* AlertController.swift in Sources */,
-				EE0778C82940138B009DC72F /* OnboardingScreen2.swift in Sources */,
+				EE0778C82940138B009DC72F /* OnBoardingScreen2.swift in Sources */,
 				31A8794E291846B000286ABF /* BookViewModel.swift in Sources */,
 				3A6B7C1C2919E603000744EB /* ReleaseSelectionView.swift in Sources */,
 				EEB27D1E293D98D0002D91E8 /* SearchPageView.swift in Sources */,

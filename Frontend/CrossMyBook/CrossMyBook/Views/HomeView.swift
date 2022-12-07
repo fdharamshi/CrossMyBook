@@ -44,6 +44,7 @@ struct HomeView: View {
         RoundedTextField(text: $searchString, placeholder: "Search Book Titles", height: 42).autocorrectionDisabled(true).padding([.horizontal, .bottom], 10.0).onSubmit {
           presentSeachPage = true
         }.padding(.top, 10.0)
+          .padding(.horizontal, 5.0)
         VStack {
           TabView(selection: $index) {
             ForEach((0..<3), id: \.self) { index in
