@@ -65,6 +65,10 @@
 		B3EC2EF9293A87ED00D4EEAA /* ReviewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EC2EF8293A87ED00D4EEAA /* ReviewsController.swift */; };
 		B3EC2EFB293A893100D4EEAA /* ReviewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EC2EFA293A893100D4EEAA /* ReviewsView.swift */; };
 		B3F119782933FA990055A2EE /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = B3F119772933FA990055A2EE /* WrappingHStack */; };
+		EE0778C629401145009DC72F /* OnboardingScreen1.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0778C529401145009DC72F /* OnboardingScreen1.swift */; };
+		EE0778C82940138B009DC72F /* OnboardingScreen2.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0778C72940138B009DC72F /* OnboardingScreen2.swift */; };
+		EE0778CA29401822009DC72F /* OnBoardingScreen3.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0778C929401822009DC72F /* OnBoardingScreen3.swift */; };
+		EE0778CC29401BDF009DC72F /* OnboardingScreen4.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0778CB29401BDF009DC72F /* OnboardingScreen4.swift */; };
 		EE0AE85729240FFB002F2A39 /* StateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0AE85629240FFB002F2A39 /* StateUtil.swift */; };
 		EE220BBE2913840200CEC13A /* NotoSerif-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE220BBD2913840100CEC13A /* NotoSerif-Bold.ttf */; };
 		EE220BC32913849500CEC13A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE220BC22913849500CEC13A /* LoginView.swift */; };
@@ -176,6 +180,10 @@
 		B3EC2EF6293A86EB00D4EEAA /* ReviewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsModel.swift; sourceTree = "<group>"; };
 		B3EC2EF8293A87ED00D4EEAA /* ReviewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsController.swift; sourceTree = "<group>"; };
 		B3EC2EFA293A893100D4EEAA /* ReviewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsView.swift; sourceTree = "<group>"; };
+		EE0778C529401145009DC72F /* OnboardingScreen1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen1.swift; sourceTree = "<group>"; };
+		EE0778C72940138B009DC72F /* OnboardingScreen2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen2.swift; sourceTree = "<group>"; };
+		EE0778C929401822009DC72F /* OnBoardingScreen3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingScreen3.swift; sourceTree = "<group>"; };
+		EE0778CB29401BDF009DC72F /* OnboardingScreen4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen4.swift; sourceTree = "<group>"; };
 		EE0AE85629240FFB002F2A39 /* StateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateUtil.swift; sourceTree = "<group>"; };
 		EE220BBD2913840100CEC13A /* NotoSerif-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerif-Bold.ttf"; sourceTree = "<group>"; };
 		EE220BC22913849500CEC13A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -394,6 +402,17 @@
 			path = DashboardControllers;
 			sourceTree = "<group>";
 		};
+		EE0778C429401133009DC72F /* OnBoardingViews */ = {
+			isa = PBXGroup;
+			children = (
+				EE0778C529401145009DC72F /* OnboardingScreen1.swift */,
+				EE0778C72940138B009DC72F /* OnboardingScreen2.swift */,
+				EE0778C929401822009DC72F /* OnBoardingScreen3.swift */,
+				EE0778CB29401BDF009DC72F /* OnboardingScreen4.swift */,
+			);
+			name = OnBoardingViews;
+			sourceTree = "<group>";
+		};
 		EE17A80C2925479F00904C0F /* AuthViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -406,6 +425,7 @@
 		EE220BBF2913847500CEC13A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EE0778C429401133009DC72F /* OnBoardingViews */,
 				EE45DD98293BD81C00A0A3A9 /* SettingsView */,
 				EEF4973D2939DBB7009511A9 /* MapView */,
 				EE7BEF5629369EB00050B214 /* SplashScreen */,
@@ -866,6 +886,7 @@
 				31A4D81F293D637000AD6870 /* PopupView.swift in Sources */,
 				B368FB64291D7D9B00A97C16 /* Profile.swift in Sources */,
 				EE9181FF2918D91A003CD0B0 /* RequestBookForm.swift in Sources */,
+				EE0778CA29401822009DC72F /* OnBoardingScreen3.swift in Sources */,
 				EE2C7C18292FEB6500F0A003 /* ConversationView.swift in Sources */,
 				B368FB66291D7E8B00A97C16 /* ProfileController.swift in Sources */,
 				3A9F9A20291ABBA700E3909E /* ISBNBook.swift in Sources */,
@@ -880,9 +901,11 @@
 				3A6B7C1C2919E603000744EB /* ReleaseSelectionView.swift in Sources */,
 				EEF4973F2939DBD0009511A9 /* MapView.swift in Sources */,
 				EE2C7C10292FE2FD00F0A003 /* ConversationModel.swift in Sources */,
+				EE0778CC29401BDF009DC72F /* OnboardingScreen4.swift in Sources */,
 				EE862130291ADCFC00000345 /* DashboardView.swift in Sources */,
 				EE45DD97293BCEA800A0A3A9 /* TakeActionOnRequestController.swift in Sources */,
 				EEDC263C291DE545009422FA /* AlertController.swift in Sources */,
+				EE0778C82940138B009DC72F /* OnboardingScreen2.swift in Sources */,
 				31A8794E291846B000286ABF /* BookViewModel.swift in Sources */,
 				3A6B7C1C2919E603000744EB /* ReleaseSelectionView.swift in Sources */,
 				EEB27D1E293D98D0002D91E8 /* SearchPageView.swift in Sources */,
@@ -902,6 +925,7 @@
 				3147D88E293049B800A8B479 /* BookPreviewView.swift in Sources */,
 				EE220BC32913849500CEC13A /* LoginView.swift in Sources */,
 				EE360A012911B595006DB257 /* CrossMyBook.xcdatamodeld in Sources */,
+				EE0778C629401145009DC72F /* OnboardingScreen1.swift in Sources */,
 				EEB27D21293D9DE5002D91E8 /* SearchModel.swift in Sources */,
 				B3EC2EF7293A86EB00D4EEAA /* ReviewsModel.swift in Sources */,
 				B3C5CFA1293ABAF30095A6BB /* ReviewActionController.swift in Sources */,

@@ -31,8 +31,9 @@ struct SplashScreenView: View {
               .resizable()
               .frame(width: 150, height: 150)
               .cornerRadius(25)
-            Text("Book Crossing\nApp")
-              .font(.custom("NotoSerif", size: 25).bold())
+              .shadow(radius: 5)
+            Text("CrossMyBook")
+              .font(.custom("NotoSerif", size: 30).bold())
               .foregroundColor(Color.lightBrown)
               .multilineTextAlignment(.center)
           }.scaleEffect(size)
@@ -42,7 +43,8 @@ struct SplashScreenView: View {
                 self.opacity = 1.0
               }
             }
-        }.background(Color.black).onAppear {
+        }.background(Color.black)
+          .onAppear {
           DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.isActive = true
           }
