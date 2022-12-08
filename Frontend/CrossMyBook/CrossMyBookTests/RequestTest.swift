@@ -53,7 +53,6 @@ final class RequestTest: XCTestCase {
             if let data = data {
                 do {
                     let res = try JSONDecoder().decode(Msg.self, from: data)
-                    print(res)
                     XCTAssertEqual(res.msg, "Fail to fetch pending requests.")
                     XCTAssertEqual(res.success, false)
                 } catch let error {

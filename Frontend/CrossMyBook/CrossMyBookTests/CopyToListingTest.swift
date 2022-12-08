@@ -45,7 +45,6 @@ final class CopyToListingTest: XCTestCase {
             if let data = data {
                 do {
                     let res = try JSONDecoder().decode(Msg.self, from: data)
-                    print(res)
                     XCTAssertEqual(res.msg, "Listing not found")
                     XCTAssertEqual(res.success, false)
                 } catch let error {
@@ -67,7 +66,6 @@ final class CopyToListingTest: XCTestCase {
             if let data = data {
                 do {
                     let res = try JSONDecoder().decode(Msg.self, from: data)
-                    print(res)
                     XCTAssertEqual(res.msg, "copyId missing in request.")
                     XCTAssertEqual(res.success, false)
                 } catch let error {

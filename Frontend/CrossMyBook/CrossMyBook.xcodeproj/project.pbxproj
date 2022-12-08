@@ -66,6 +66,7 @@
 		B3CB6856291B484B004DC394 /* RequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CB6855291B484B004DC394 /* RequestModel.swift */; };
 		B3CB6858291B6078004DC394 /* RequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CB6857291B6078004DC394 /* RequestController.swift */; };
 		B3CBB2D229424C6D0091CE25 /* ReviewActionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CBB2D129424C6D0091CE25 /* ReviewActionTest.swift */; };
+		B3CBB2D4294266390091CE25 /* SearchTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CBB2D3294266390091CE25 /* SearchTest.swift */; };
 		B3E8F9FE293152EE0083F91F /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E8F9FD293152EE0083F91F /* DashboardModel.swift */; };
 		B3E8FA01293155090083F91F /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E8FA00293155090083F91F /* DashboardController.swift */; };
 		B3EC2EF7293A86EB00D4EEAA /* ReviewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EC2EF6293A86EB00D4EEAA /* ReviewsModel.swift */; };
@@ -192,6 +193,7 @@
 		B3CB6855291B484B004DC394 /* RequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestModel.swift; sourceTree = "<group>"; };
 		B3CB6857291B6078004DC394 /* RequestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestController.swift; sourceTree = "<group>"; };
 		B3CBB2D129424C6D0091CE25 /* ReviewActionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewActionTest.swift; sourceTree = "<group>"; };
+		B3CBB2D3294266390091CE25 /* SearchTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTest.swift; sourceTree = "<group>"; };
 		B3E8F9FD293152EE0083F91F /* DashboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardModel.swift; sourceTree = "<group>"; };
 		B3E8FA00293155090083F91F /* DashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
 		B3EC2EF6293A86EB00D4EEAA /* ReviewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsModel.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 				B3B74B2E294183BD007CDCD3 /* CopyToListingTest.swift */,
 				31A4D8222942376B00AD6870 /* MessagingTest.swift */,
 				B3CBB2D129424C6D0091CE25 /* ReviewActionTest.swift */,
+				B3CBB2D3294266390091CE25 /* SearchTest.swift */,
 			);
 			path = CrossMyBookTests;
 			sourceTree = "<group>";
@@ -858,6 +861,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3CBB2D4294266390091CE25 /* SearchTest.swift in Sources */,
 				B3B74B2D29417E27007CDCD3 /* CopyToBookTest.swift in Sources */,
 				31A4D816293D4D0900AD6870 /* BookTest.swift in Sources */,
 				3AB90E6F294178F100E580EE /* ProfileTest.swift in Sources */,

@@ -57,7 +57,6 @@ final class CopyDetailTest: XCTestCase {
             if let data = data {
                 do {
                     let res = try JSONDecoder().decode(Msg.self, from: data)
-                    print(res)
                     XCTAssertEqual(res.msg, "Book Copy Not Found.")
                     XCTAssertEqual(res.success, false)
                 } catch let error {
