@@ -44,6 +44,7 @@
 		3A9F9A20291ABBA700E3909E /* ISBNBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F9A1F291ABBA700E3909E /* ISBNBook.swift */; };
 		3A9F9A22291AD5F400E3909E /* ReleaseCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F9A21291AD5F400E3909E /* ReleaseCardView.swift */; };
 		3A9F9A24291AEEE700E3909E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F9A23291AEEE700E3909E /* Location.swift */; };
+		3AB90E6F294178F100E580EE /* ProfileTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB90E6E294178F100E580EE /* ProfileTest.swift */; };
 		3AF1D7D4291B2F4C009C778E /* Msg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1D7D3291B2F4C009C778E /* Msg.swift */; };
 		3AF1D7D6291B2FF8009C778E /* ReleaseMsg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1D7D5291B2FF8009C778E /* ReleaseMsg.swift */; };
 		3AF1D7D8291C8677009C778E /* ReleaseFormEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1D7D7291C8677009C778E /* ReleaseFormEditView.swift */; };
@@ -163,6 +164,7 @@
 		3A9F9A1F291ABBA700E3909E /* ISBNBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISBNBook.swift; sourceTree = "<group>"; };
 		3A9F9A21291AD5F400E3909E /* ReleaseCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseCardView.swift; sourceTree = "<group>"; };
 		3A9F9A23291AEEE700E3909E /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		3AB90E6E294178F100E580EE /* ProfileTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTest.swift; sourceTree = "<group>"; };
 		3AF1D7D3291B2F4C009C778E /* Msg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Msg.swift; sourceTree = "<group>"; };
 		3AF1D7D5291B2FF8009C778E /* ReleaseMsg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseMsg.swift; sourceTree = "<group>"; };
 		3AF1D7D7291C8677009C778E /* ReleaseFormEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseFormEditView.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 				31A4D815293D4D0900AD6870 /* BookTest.swift */,
 				31A4D81C293D52D600AD6870 /* ReviewTest.swift */,
 				31A4D820293FE39E00AD6870 /* ReleaseTest.swift */,
+				3AB90E6E294178F100E580EE /* ProfileTest.swift */,
 			);
 			path = CrossMyBookTests;
 			sourceTree = "<group>";
@@ -838,6 +841,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31A4D816293D4D0900AD6870 /* BookTest.swift in Sources */,
+				3AB90E6F294178F100E580EE /* ProfileTest.swift in Sources */,
 				31A4D81D293D52D600AD6870 /* ReviewTest.swift in Sources */,
 				31A4D821293FE39E00AD6870 /* ReleaseTest.swift in Sources */,
 			);
@@ -968,7 +972,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cmb.CrossMyBookTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -986,7 +990,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cmb.CrossMyBookTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
