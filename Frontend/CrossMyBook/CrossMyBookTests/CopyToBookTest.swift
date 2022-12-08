@@ -13,17 +13,17 @@ final class CopyToBookTest: XCTestCase {
     let expired: TimeInterval = 10
     var expectation: XCTestExpectation!
     let urlString = "http://ec2-3-87-92-147.compute-1.amazonaws.com:8000/getBookByCopyId?copy_id="
-    let testCopyId = "9"
-    let invalidCopyId = "-1"
+    let testCopyId = 9
+    let invalidCopyId = -1
     
     override func setUp() {
         expectation = expectation(description: "Able to get the book of a copy")
     }
     
-    func test_ServerResponse() {
+    func test_validCopyId() {
         defer { waitForExpectations(timeout: expired) }
         
-        let url = URL(string: urlString + testCopyId)!
+        let url = URL(string: urlString + String(testCopyId))!
         URLSession.shared.dataTask(with: url) { data, response, error in
             XCTAssertNotNil(data)
             XCTAssertNotNil(response)
@@ -43,12 +43,11 @@ final class CopyToBookTest: XCTestCase {
     }
     
     
-    func test_invalidParameters() {
+    func test_invalidCopyId() {
         defer { waitForExpectations(timeout: expired) }
         
-        let url = URL(string: urlString + invalidCopyId)!
+        let url = URL(string: urlString + String(invalidCopyId))!
         URLSession.shared.dataTask(with: url) { data, response, error in
-            
             XCTAssertNotNil(data)
             XCTAssertNotNil(response)
             XCTAssertNil(error)
@@ -66,12 +65,11 @@ final class CopyToBookTest: XCTestCase {
         }.resume()
     }
   
-    func test_noParameter() {
+    func test_noCopyId() {
         defer { waitForExpectations(timeout: expired) }
         
         let url = URL(string: urlString)!
         URLSession.shared.dataTask(with: url) { data, response, error in
-            
             XCTAssertNotNil(data)
             XCTAssertNotNil(response)
             XCTAssertNil(error)

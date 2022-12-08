@@ -1,5 +1,5 @@
 //
-//  CopyTest.swift
+//  CopyDetailTest.swift
 //  CrossMyBookTests
 //
 //  Created by 魏妤庭 on 2022/12/7.
@@ -22,7 +22,7 @@ final class CopyDetailTest: XCTestCase {
         expectation = expectation(description: "Able to get the details of a copy")
     }
     
-    func test_ServerResponse() {
+    func test_validParameters() {
         defer { waitForExpectations(timeout: expired) }
         
         let url = URL(string: urlString + "user_id=" + String(testUserId) + "&copy_id=" + String(testCopyId))!
@@ -51,7 +51,6 @@ final class CopyDetailTest: XCTestCase {
         
         let url = URL(string: urlString + "user_id=" + String(invalidUserId) + "&copy_id=" + String(invalidCopyId))!
         URLSession.shared.dataTask(with: url) { data, response, error in
-            
             XCTAssertNotNil(data)
             XCTAssertNotNil(response)
             XCTAssertNil(error)
