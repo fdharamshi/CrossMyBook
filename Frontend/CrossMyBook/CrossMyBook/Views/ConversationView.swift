@@ -64,7 +64,7 @@ struct ConversationView: View {
                     .font(.custom("NotoSerif", size: 13))
                     .fixedSize(horizontal: false, vertical: true)
                     .padding()
-                    .background(Color.lightBrown)
+                    .background(Color.ultraLightBrown)
                     .cornerRadius(25.0)
                   Spacer()
                 }.padding(.trailing, 20.0)

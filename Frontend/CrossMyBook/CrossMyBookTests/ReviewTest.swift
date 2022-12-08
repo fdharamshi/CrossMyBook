@@ -14,10 +14,14 @@ final class ReviewTest: XCTestCase {
     var expectation: XCTestExpectation!
     let urlString = "http://ec2-3-87-92-147.compute-1.amazonaws.com:8000/"
     let validUserId = "1"
-    let invalidUserId = "0"
     let validReviewType = "1"
     let relatedReviewType = "2"
     let invalidReviewType = "0"
+    
+    
+    override func setUp() {
+        expectation = expectation(description: "Able to get reviews by user id and review type")
+    }
     
     func test_ServerResponse() {
         defer { waitForExpectations(timeout: expired) }
@@ -69,7 +73,7 @@ final class ReviewTest: XCTestCase {
     func test_invalidUserId() {
         defer { waitForExpectations(timeout: expired) }
         
-        let url = URL(string: urlString + "getReviews?user_id="+invalidUserId+"&review_type="+validReviewType)!
+        let url = URL(string: urlString + "getReviews?review_type="+validReviewType)!
         URLSession.shared.dataTask(with: url) { data, response, error in
             XCTAssertNotNil(data)
             XCTAssertNotNil(response)
