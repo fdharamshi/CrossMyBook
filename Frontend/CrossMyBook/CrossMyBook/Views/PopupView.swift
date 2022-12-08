@@ -12,18 +12,19 @@ struct PopupView: View {
     
     
     var body: some View {
+      ScrollView {
         VStack(alignment: .leading) {
-            CustomText(s: review?.userName ?? "", size: 18, color: Color.fontBlack).bold()
-            CustomText(s: formatDate(date: review?.date ?? Date()), size: 16, color: Color.gray).bold()
-            CustomText(s: review?.content ?? "", size: 16)
+          CustomText(s: review?.userName ?? "", size: 18, color: Color.fontBlack).bold().padding(.bottom, 0.5)
+          CustomText(s: formatDate(date: review?.date ?? Date()), size: 16, color: Color.gray).bold().padding(.bottom, 0.5)
+          CustomText(s: review?.content ?? "", size: 16)
         }
         .padding(18)
         .background(Rectangle()
-            .fill(Color.white)
+          .fill(Color.white)
         )
         .cornerRadius(10)
-        .frame(minWidth: 280, maxWidth: 280, minHeight: 280)
-        
+      }
+        .frame(minWidth: 280, maxWidth: 280, minHeight: 280).padding(18)
     }
     
     
