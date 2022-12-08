@@ -17,15 +17,17 @@ struct MessagingView: View {
   let timer = Timer.publish(every: 10, tolerance: 0.5, on: .main, in: .common).autoconnect()
   @AppStorage("user_id") var userID: String = "-1"
   
-  func formatDate(date: String) -> String {
-    let isoFormatter = ISO8601DateFormatter()
+  private func formatDate(date: String) -> String {
+    let isoFormatter = DateFormatter()
+    isoFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
     let formatter = DateFormatter()
     formatter.dateStyle = .medium
     return formatter.string(from: isoFormatter.date(from: date) ?? Date())
   }
   
-  func formatTime(date: String) -> String {
-    let isoFormatter = ISO8601DateFormatter()
+  private func formatTime(date: String) -> String {
+    let isoFormatter = DateFormatter()
+    isoFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
     let formatter = DateFormatter()
     formatter.timeStyle = .short
     return formatter.string(from: isoFormatter.date(from: date) ?? Date())

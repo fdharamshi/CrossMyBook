@@ -20,7 +20,8 @@ struct ReviewsView: View {
   let myReviewFlag: Bool
   
   func formatDate(date: String) -> String {
-    let isoFormatter = ISO8601DateFormatter()
+    let isoFormatter = DateFormatter()
+    isoFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
     let formatter = DateFormatter()
     formatter.dateStyle = .medium
     return formatter.string(from: isoFormatter.date(from: date) ?? Date())
