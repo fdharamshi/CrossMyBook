@@ -13,10 +13,10 @@ final class CopyDetailTest: XCTestCase {
     let expired: TimeInterval = 10
     var expectation: XCTestExpectation!
     let urlString = "http://ec2-3-87-92-147.compute-1.amazonaws.com:8000/getCopyDetails?"
-    let testUserId = "user_id=2"
-    let invalidUserId = "user_id=-1"
-    let testCopyId = "&copy_id=9"
-    let invalidCopyId = "&copy_id=-1"
+    let testUserId = 2
+    let invalidUserId = -1
+    let testCopyId = 9
+    let invalidCopyId = -1
     
     override func setUp() {
         expectation = expectation(description: "Able to get the details of a copy")
@@ -25,7 +25,7 @@ final class CopyDetailTest: XCTestCase {
     func test_ServerResponse() {
         defer { waitForExpectations(timeout: expired) }
         
-        let url = URL(string: urlString + testUserId + testCopyId)!
+        let url = URL(string: urlString + "user_id=" + String(testUserId) + "&copy_id=" + String(testCopyId))!
         URLSession.shared.dataTask(with: url) { data, response, error in
             XCTAssertNotNil(data)
             XCTAssertNotNil(response)
@@ -39,7 +39,7 @@ final class CopyDetailTest: XCTestCase {
     func test_invalidParameters() {
         defer { waitForExpectations(timeout: expired) }
         
-        let url = URL(string: urlString + invalidUserId + invalidCopyId)!
+        let url = URL(string: urlString + "user_id=" + String(invalidUserId) + "&copy_id=" + String(invalidCopyId))!
         URLSession.shared.dataTask(with: url) { data, response, error in
             
             XCTAssertNotNil(data)

@@ -13,8 +13,8 @@ final class RequestTest: XCTestCase {
     let expired: TimeInterval = 10
     var expectation: XCTestExpectation!
     let urlString = "http://ec2-3-87-92-147.compute-1.amazonaws.com:8000/getRequests?user_id="
-    let testUserId = "1"
-    let invalidUserId = "-1"
+    let testUserId = 1
+    let invalidUserId = -1
     
     override func setUp() {
         expectation = expectation(description: "Able to get requests of a user")
@@ -23,7 +23,7 @@ final class RequestTest: XCTestCase {
     func test_ServerResponse() {
         defer { waitForExpectations(timeout: expired) }
         
-        let url = URL(string: urlString + testUserId)!
+        let url = URL(string: urlString + String(testUserId))!
         URLSession.shared.dataTask(with: url) { data, response, error in
             XCTAssertNotNil(data)
             XCTAssertNotNil(response)
