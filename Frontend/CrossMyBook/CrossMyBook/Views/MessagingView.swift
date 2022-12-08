@@ -17,6 +17,20 @@ struct MessagingView: View {
   let timer = Timer.publish(every: 10, tolerance: 0.5, on: .main, in: .common).autoconnect()
   @AppStorage("user_id") var userID: String = "-1"
   
+  func formatDate(date: String) -> String {
+    let isoFormatter = ISO8601DateFormatter()
+    let formatter = DateFormatter()
+    formatter.dateStyle = .medium
+    return formatter.string(from: isoFormatter.date(from: date) ?? Date())
+  }
+  
+  func formatTime(date: String) -> String {
+    let isoFormatter = ISO8601DateFormatter()
+    let formatter = DateFormatter()
+    formatter.timeStyle = .short
+    return formatter.string(from: isoFormatter.date(from: date) ?? Date())
+  }
+  
   var body: some View {
   
     VStack{
@@ -39,8 +53,8 @@ struct MessagingView: View {
                   Text(conversation.user.name).font(Font.custom("NotoSerif", size: 15))
                   Spacer()
                   VStack {
-                    Text("11/11/2011") // TODO: Use the timestamp in model to display this
-                    Text("11:11 PM")
+                    Text(formatDate(date: conversation.user.lastMessage))
+                    Text(formatTime(date: conversation.user.lastMessage))
                   }.font(Font.custom("NotoSerif", size: 13))
                 }.padding(.horizontal, 20.0)
               }.foregroundColor(Color.fontBlack)
