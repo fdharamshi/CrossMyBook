@@ -19,7 +19,7 @@ You can track how far your book has travelled, where it currently is and much mo
 You can read reviews and add reviews for the books that you've read, and be part of the community.
 
 **How to run the code:**<br>
-We've build this app for iOS 16, and it works fine on the simulator as well as a physical iOS device.
+We've build this app for **iOS 16** and for **light mode**, and it works fine on the simulator as well as a physical iOS device.
 
 **Packages required:**<br>
 - SDWebImageSwiftUI: https://github.com/SDWebImage/SDWebImageSwiftUI.git
@@ -33,6 +33,7 @@ Implemented Features:
 - [C] Onboarding Screens were implemented
 - [C] Drawing lines on the map to denote the travel
 - [C] A search bar on the Home Page to search a book
+- [-] Unlike or delete reviews in User Dashboard Page
 
 Skipped Features:
 - [B] Replying to a review on the Community Page
