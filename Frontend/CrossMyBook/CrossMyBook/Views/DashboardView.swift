@@ -34,12 +34,6 @@ struct DashboardView: View {
             .font(Font.custom("NotoSerif", size: 30))
             .bold()
             .foregroundColor(Color(red: 128 / 255, green: 71 / 255, blue: 28 / 255))
-          
-          NavigationLink(destination: LoginView()) {
-            Text("Log out")
-              .font(Font.custom("NotoSerif", size: 12))
-              .foregroundColor(Color.blue)
-          }
         }
       }.padding(.top, 20.0)
       
