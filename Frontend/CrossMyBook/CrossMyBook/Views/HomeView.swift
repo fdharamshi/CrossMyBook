@@ -100,9 +100,11 @@ struct HomeView: View {
           .padding(.leading, 15)
           .padding(.top, 25)
         
-        MapView(mapRegion: copyDetailsController.mapRegion, travelPoints: copyDetailsController.observedCopy?.travelHistory ?? [])
-          .frame(height: 200).cornerRadius(5)
-          .padding(.init(top: 0, leading: 20, bottom: 0, trailing: 20))
+        NavigationLink(destination: CopyDetailsView(pickedCopy).navigationBarHidden(true)) {
+          MapView(mapRegion: copyDetailsController.mapRegion, travelPoints: copyDetailsController.observedCopy?.travelHistory ?? [])
+            .frame(height: 200).cornerRadius(5)
+            .padding(.init(top: 0, leading: 20, bottom: 0, trailing: 20))
+        }
         
         Text("All books")
           .font(Font.custom("NotoSerif", size: 15))
