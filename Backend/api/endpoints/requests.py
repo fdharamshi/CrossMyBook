@@ -184,6 +184,14 @@ def takeActionOnRequest(request):
 
         BookCopy.objects.filter(id=request.listing.copy.id).update(owner=request.requester.id)
 
+        newMessage = Messages(
+            user1_id=min(user_id, request.requester.id),
+            user2_id=max(user_id, request.requester.id),
+            sender_id=user_id,
+            message="Request accepted for the book: "+request.copy.book.title
+        )
+        newMessage.save()
+
         return JsonResponse({'msg': 'Success!', 'success': True}, safe=False)
 
     else:
