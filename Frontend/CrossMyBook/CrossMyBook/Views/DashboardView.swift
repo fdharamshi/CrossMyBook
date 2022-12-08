@@ -88,7 +88,7 @@ struct DashboardView: View {
             self.enableCurrentButton = false
             self.enableHistoryButton = true
           }) {
-            CustomText(s: "History Books", size: 16, color: enableHistoryButton ? Color.white : Color.fontBlack).bold()
+            CustomText(s: "Previous Books", size: 16, color: enableHistoryButton ? Color.white : Color.fontBlack).bold()
           }.frame(minWidth: 170, minHeight: 43)
           .background(enableHistoryButton ? Color.theme : Color.white)
           .cornerRadius(10)
