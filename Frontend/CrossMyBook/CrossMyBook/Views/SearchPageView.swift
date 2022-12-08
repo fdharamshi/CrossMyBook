@@ -121,20 +121,22 @@ struct SearchPageView: View {
                       .frame(width: 100, height: 150, alignment: .center).cornerRadius(5)
                       .shadow(color: .gray, radius: 3, x: 0, y: 3)
                       .padding(.bottom, 3)
-                    VStack {
+                    VStack (alignment: .leading){
                       Text(searchBook.title)
+                        .frame(width: .infinity)
                         .multilineTextAlignment(.leading)
                         .font(.custom("NotoSerif", size: 16))
                         .bold()
                         .lineLimit(1)
                       Text(searchBook.author)
+                        .frame(width: .infinity)
                         .multilineTextAlignment(.leading)
                         .font(.custom("NotoSerif", size: 16))
                         .lineLimit(1)
                       // TODO: Implement Rating
                     }
+                    Spacer()
                   }
-                  Spacer()
                 }
               }
             } else {
@@ -151,22 +153,26 @@ struct SearchPageView: View {
                       .frame(width: 100, height: 150, alignment: .center).cornerRadius(5)
                       .shadow(color: .gray, radius: 3, x: 0, y: 3)
                       .padding(.bottom, 3)
-                    VStack {
+                    VStack (alignment: .leading) {
                       Text(copy.title)
+                        .frame(width: .infinity)
                         .multilineTextAlignment(.leading)
                         .font(.custom("NotoSerif", size: 16))
                         .bold()
                         .lineLimit(1)
                       Text(copy.author)
+                        .frame(width: .infinity)
                         .multilineTextAlignment(.leading)
                         .font(.custom("NotoSerif", size: 16))
                         .lineLimit(1)
                       Text("Current Owner:")
+                        .frame(width: .infinity)
                         .multilineTextAlignment(.leading)
                         .font(.custom("NotoSerif", size: 16))
                         .bold()
                         .lineLimit(1)
                       Text(copy.copyOwner)
+                        .frame(width: .infinity)
                         .multilineTextAlignment(.leading)
                         .font(.custom("NotoSerif", size: 16))
                         .lineLimit(1)
