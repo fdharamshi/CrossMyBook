@@ -26,7 +26,7 @@ struct BookDetailView: View {
                 // MARK: top bar
                 HStack {
                     Button (action: {
-                        self.presentationMode.wrappedValue.dismiss() // TODO: back action
+                        self.presentationMode.wrappedValue.dismiss()
                     }) {
                         FAIcon(name: "chevron-left")
                     }
@@ -102,8 +102,10 @@ struct BookDetailView: View {
     }
     
     func loadBookData() {
+        print("book id: ", bookId)
         let anonymous = { (fetchedBook: Book) in
             self.bookViewModel.bookData = fetchedBook
+//            print(self.bookViewModel.bookData)
             if (fetchedBook.copies.count > 0) {
                 self.displayCopy = fetchedBook.copies[0]
             }
