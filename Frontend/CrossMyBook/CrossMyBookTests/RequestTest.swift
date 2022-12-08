@@ -20,7 +20,7 @@ final class RequestTest: XCTestCase {
         expectation = expectation(description: "Able to get requests of a user")
     }
     
-    func test_ServerResponse() {
+    func test_validUserId() {
         defer { waitForExpectations(timeout: expired) }
         
         let url = URL(string: urlString + String(testUserId))!
@@ -42,12 +42,11 @@ final class RequestTest: XCTestCase {
     }
     
     
-    func test_invalidParameters() {
+    func test_invalidUseId() {
         defer { waitForExpectations(timeout: expired) }
         
         let url = URL(string: urlString)!
         URLSession.shared.dataTask(with: url) { data, response, error in
-            
             XCTAssertNotNil(data)
             XCTAssertNotNil(response)
             XCTAssertNil(error)
