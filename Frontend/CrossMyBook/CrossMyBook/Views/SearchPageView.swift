@@ -113,30 +113,34 @@ struct SearchPageView: View {
               } else {
                 ForEach(searchController.searchModel!.books) {
                   searchBook in
-                  HStack (alignment: .top) {
-                    WebImage(url: URL(string: searchBook.coverURL))
-                      .resizable()
-                      .placeholder(Image(uiImage: UIImage(named: "bookplaceholder")!)) // Placeholder Image
-                      .scaledToFit()
-                      .frame(width: 100, height: 150, alignment: .center).cornerRadius(5)
-                      .shadow(color: .gray, radius: 3, x: 0, y: 3)
-                      .padding(.bottom, 3)
-                    VStack (alignment: .leading){
-                      Text(searchBook.title)
-                        .frame(width: .infinity)
-                        .multilineTextAlignment(.leading)
-                        .font(.custom("NotoSerif", size: 16))
-                        .bold()
-                        .lineLimit(1)
-                      Text(searchBook.author)
-                        .frame(width: .infinity)
-                        .multilineTextAlignment(.leading)
-                        .font(.custom("NotoSerif", size: 16))
-                        .lineLimit(1)
-                      // TODO: Implement Rating
+                    NavigationLink(destination: BookDetailView(bookId: String(searchBook.id)).navigationBarHidden(true)) {
+                        HStack (alignment: .top) {
+                            WebImage(url: URL(string: searchBook.coverURL))
+                              .resizable()
+                              .placeholder(Image(uiImage: UIImage(named: "bookplaceholder")!)) // Placeholder Image
+                              .scaledToFit()
+                              .frame(width: 100, height: 150, alignment: .center).cornerRadius(5)
+                              .shadow(color: .gray, radius: 3, x: 0, y: 3)
+                              .padding(.bottom, 3)
+                          VStack (alignment: .leading){
+                            Text(searchBook.title)
+                              .frame(width: .infinity)
+                              .multilineTextAlignment(.leading)
+                              .font(.custom("NotoSerif", size: 16))
+                              .bold()
+                              .lineLimit(1)
+                            Text(searchBook.author)
+                              .frame(width: .infinity)
+                              .multilineTextAlignment(.leading)
+                              .font(.custom("NotoSerif", size: 16))
+                              .lineLimit(1)
+                            // TODO: Implement Rating
+                          }
+                          Spacer()
+                        }
                     }
-                    Spacer()
-                  }
+                  
+                 
                 }
               }
             } else {
@@ -145,46 +149,49 @@ struct SearchPageView: View {
               } else {
                 ForEach(searchController.searchModel!.availableCopies) {
                   copy in
-                  HStack (alignment: .top) {
-                    WebImage(url: URL(string: copy.coverURL))
-                      .resizable()
-                      .placeholder(Image(uiImage: UIImage(named: "bookplaceholder")!)) // Placeholder Image
-                      .scaledToFit()
-                      .frame(width: 100, height: 150, alignment: .center).cornerRadius(5)
-                      .shadow(color: .gray, radius: 3, x: 0, y: 3)
-                      .padding(.bottom, 3)
-                    VStack (alignment: .leading) {
-                      Text(copy.title)
-                        .frame(width: .infinity)
-                        .multilineTextAlignment(.leading)
-                        .font(.custom("NotoSerif", size: 16))
-                        .bold()
-                        .lineLimit(1)
-                      Text(copy.author)
-                        .frame(width: .infinity)
-                        .multilineTextAlignment(.leading)
-                        .font(.custom("NotoSerif", size: 16))
-                        .lineLimit(1)
-                      Text("Current Owner:")
-                        .frame(width: .infinity)
-                        .multilineTextAlignment(.leading)
-                        .font(.custom("NotoSerif", size: 16))
-                        .bold()
-                        .lineLimit(1)
-                      Text(copy.copyOwner)
-                        .frame(width: .infinity)
-                        .multilineTextAlignment(.leading)
-                        .font(.custom("NotoSerif", size: 16))
-                        .lineLimit(1)
-                      WebImage(url: URL(string: copy.ownerProfile))
-                          .resizable()
-                          .scaledToFit()
-                          .frame(width: 50, height: 50, alignment: .center)
-                          .cornerRadius(25)
-                      // TODO: Implement Rating
+                NavigationLink(destination: CopyDetailsView(copy.copyID).navigationBarHidden(true)) {
+                    HStack (alignment: .top) {
+                        
+                      WebImage(url: URL(string: copy.coverURL))
+                        .resizable()
+                        .placeholder(Image(uiImage: UIImage(named: "bookplaceholder")!)) // Placeholder Image
+                        .scaledToFit()
+                        .frame(width: 100, height: 150, alignment: .center).cornerRadius(5)
+                        .shadow(color: .gray, radius: 3, x: 0, y: 3)
+                        .padding(.bottom, 3)
+                      VStack (alignment: .leading) {
+                        Text(copy.title)
+                          .frame(width: .infinity)
+                          .multilineTextAlignment(.leading)
+                          .font(.custom("NotoSerif", size: 16))
+                          .bold()
+                          .lineLimit(1)
+                        Text(copy.author)
+                          .frame(width: .infinity)
+                          .multilineTextAlignment(.leading)
+                          .font(.custom("NotoSerif", size: 16))
+                          .lineLimit(1)
+                        Text("Current Owner:")
+                          .frame(width: .infinity)
+                          .multilineTextAlignment(.leading)
+                          .font(.custom("NotoSerif", size: 16))
+                          .bold()
+                          .lineLimit(1)
+                        Text(copy.copyOwner)
+                          .frame(width: .infinity)
+                          .multilineTextAlignment(.leading)
+                          .font(.custom("NotoSerif", size: 16))
+                          .lineLimit(1)
+                        WebImage(url: URL(string: copy.ownerProfile))
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 50, height: 50, alignment: .center)
+                            .cornerRadius(25)
+                      }
+                      Spacer()
+                    }.padding(.bottom, 10.0)
                     }
-                    Spacer()
-                  }.padding(.bottom, 10.0)
+                  
                 }
               }
             }
