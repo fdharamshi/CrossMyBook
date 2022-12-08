@@ -28,6 +28,14 @@ final class RequestTest: XCTestCase {
             XCTAssertNotNil(data)
             XCTAssertNotNil(response)
             XCTAssertNil(error)
+            if let data = data {
+                do {
+                    let res = try JSONDecoder().decode(AlertModel.self, from: data)
+                    XCTAssertEqual(res.success, true)
+                } catch let error {
+                    print(error)
+                }
+            }
             self.expectation.fulfill()
         }
         .resume()

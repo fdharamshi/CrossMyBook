@@ -30,6 +30,16 @@ final class CopyDetailTest: XCTestCase {
             XCTAssertNotNil(data)
             XCTAssertNotNil(response)
             XCTAssertNil(error)
+            if let data = data {
+                do {
+                    let res = try JSONDecoder().decode(CopyDetailsModel.self, from: data)
+                    XCTAssertEqual(res.success, true)
+                    XCTAssertEqual(res.title, "It Ends With Us")
+                    XCTAssertEqual(res.author, "Colleen Hoover")
+                } catch let error {
+                    print(error)
+                }
+            }
             self.expectation.fulfill()
         }
         .resume()
