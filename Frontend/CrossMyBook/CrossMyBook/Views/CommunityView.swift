@@ -23,54 +23,55 @@ struct CommunityView: View {
     @AppStorage("user_id") var userId: Int = -1
     
     var body: some View {
-        ScrollView{
-            VStack{
-                // MARK: buttons
-                NavigationLink(destination: CreateReviewView()) {
-                    VStack {
-                        CustomText(s: "Add a Review", size: 16, color: Color.white).frame(maxWidth: .infinity)
-                    }
-                    .padding()
-                    .background(Color.theme)
-                    .cornerRadius(10)
-                    
-                }.padding(.bottom, 10).padding(.leading, 22).padding(.trailing, 22)
-                HStack {
-                    Button(action: {
-                        if (currentReviewType != "1") {
-                            currentReviewType = "1"
-                            loadCommunityData()
-                            switchButtonStyle()
-                        }
-                    }) {
-                        CustomText(s: "All Reviews", size: 16, color: allBtnTextColor).bold()
-                    }.frame(minWidth: 170, minHeight: 43).background(allBtnBackgroundColor).cornerRadius(10)
-                    Button(action: {
-                        if (currentReviewType != "2") {
-                            currentReviewType = "2"
-                            loadCommunityData()
-                            switchButtonStyle()
-                        }
-                    }) {
-                        CustomText(s: "Related To Me", size: 16, color: relatedBtnTextColor).bold()
-                    }.frame(minWidth: 170, minHeight: 43).background(relatedBtnBackgroundColor).cornerRadius(10)
-                }.padding(.bottom, 10)
-                
-                // MARK: reviews
-                if (self.communityViewModel.getReviews().count > 0) {
-                    ForEach(self.communityViewModel.getReviews(), id: \.reviewId) { review in
-                        FullReviewCardView(review: review, like: review.isLiked, communityViewModel: communityViewModel).padding(.leading, 25).padding(.trailing, 25).padding(.bottom, 12)
-                    }
-                } else {
-                    CustomText(s: "No related reviews yet...", size: 16)
+        VStack{
+            // MARK: buttons
+            NavigationLink(destination: CreateReviewView()) {
+                VStack {
+                    CustomText(s: "Add a Review", size: 16, color: Color.white).frame(maxWidth: .infinity)
                 }
-
-            }.frame(maxWidth: .infinity, maxHeight: .infinity)
-        }.background(Color.backgroundGrey)
-            .onAppear(perform: loadCommunityData)
-            .refreshable{
-                loadCommunityData()
+                .padding()
+                .background(Color.theme)
+                .cornerRadius(10)
+                
+            }.padding(.bottom, 10).padding(.leading, 22).padding(.trailing, 22)
+            HStack {
+                Button(action: {
+                    if (currentReviewType != "1") {
+                        currentReviewType = "1"
+                        loadCommunityData()
+                        switchButtonStyle()
+                    }
+                }) {
+                    CustomText(s: "All Reviews", size: 16, color: allBtnTextColor).bold()
+                }.frame(minWidth: 170, minHeight: 43).background(allBtnBackgroundColor).cornerRadius(10)
+                Button(action: {
+                    if (currentReviewType != "2") {
+                        currentReviewType = "2"
+                        loadCommunityData()
+                        switchButtonStyle()
+                    }
+                }) {
+                    CustomText(s: "Related To Me", size: 16, color: relatedBtnTextColor).bold()
+                }.frame(minWidth: 170, minHeight: 43).background(relatedBtnBackgroundColor).cornerRadius(10)
+            }.padding(.bottom, 10)
+          
+          ScrollView{
+            // MARK: reviews
+            if (self.communityViewModel.getReviews().count > 0) {
+              ForEach(self.communityViewModel.getReviews(), id: \.reviewId) { review in
+                FullReviewCardView(review: review, like: review.isLiked, communityViewModel: communityViewModel).padding(.leading, 25).padding(.trailing, 25).padding(.bottom, 12)
+              }
+            } else {
+              CustomText(s: "No related reviews yet...", size: 16)
             }
+          }
+
+        }.frame(maxWidth: .infinity, maxHeight: .infinity)
+          .background(Color.backgroundGrey)
+          .onAppear(perform: loadCommunityData)
+          .refreshable{
+              loadCommunityData()
+          }
     }
     
     func loadCommunityData() {
