@@ -27,7 +27,7 @@ struct CopyDetailsView: View {
     
     init(_ id: Int) {
         self.copyID = id
-        //    copyDetailsController.fetchCopyDetails(id)
+        copyDetailsController.fetchCopyDetails(copyID, userID)
     }
     
     func getButtonText(_ status: Int) -> String {

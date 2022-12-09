@@ -19,6 +19,11 @@ struct BookDetailView: View {
     @State var popupReview: BDReview?
     
     var bookId: String = "3"
+  
+  init(bookId: String) {
+      self.bookId = bookId
+      loadBookData()
+  }
     
     var body: some View {
         ZStack {

@@ -111,8 +111,7 @@ struct SearchPageView: View {
               if(searchController.searchModel?.books.count == 0) {
                 Text("No results for \"\(receivedSearchString)\"").font(.custom("NotoSerif", size: 16))
               } else {
-                ForEach(searchController.searchModel!.books) {
-                  searchBook in
+                ForEach(searchController.searchModel!.books) { searchBook in
                     NavigationLink(destination: BookDetailView(bookId: String(searchBook.id)).navigationBarHidden(true)) {
                         HStack (alignment: .top) {
                             WebImage(url: URL(string: searchBook.coverURL))
@@ -126,13 +125,13 @@ struct SearchPageView: View {
                             Text(searchBook.title)
                               .frame(width: .infinity)
                               .multilineTextAlignment(.leading)
-                              .font(.custom("NotoSerif", size: 16))
+                              .font(.custom("NotoSerif", size: 16)).foregroundColor(Color.black)
                               .bold()
                               .lineLimit(1)
                             Text(searchBook.author)
                               .frame(width: .infinity)
                               .multilineTextAlignment(.leading)
-                              .font(.custom("NotoSerif", size: 16))
+                              .font(.custom("NotoSerif", size: 16)).foregroundColor(Color.black)
                               .lineLimit(1)
                             // TODO: Implement Rating
                           }
@@ -147,51 +146,48 @@ struct SearchPageView: View {
               if(searchController.searchModel?.availableCopies.count == 0) {
                 Text("No results for \"\(receivedSearchString)\"").font(.custom("NotoSerif", size: 16))
               } else {
-                ForEach(searchController.searchModel!.availableCopies) {
-                  copy in
-                NavigationLink(destination: CopyDetailsView(copy.copyID).navigationBarHidden(true)) {
-                    HStack (alignment: .top) {
-                        
-                      WebImage(url: URL(string: copy.coverURL))
-                        .resizable()
-                        .placeholder(Image(uiImage: UIImage(named: "bookplaceholder")!)) // Placeholder Image
-                        .scaledToFit()
-                        .frame(width: 100, height: 150, alignment: .center).cornerRadius(5)
-                        .shadow(color: .gray, radius: 3, x: 0, y: 3)
-                        .padding(.bottom, 3)
-                      VStack (alignment: .leading) {
-                        Text(copy.title)
-                          .frame(width: .infinity)
-                          .multilineTextAlignment(.leading)
-                          .font(.custom("NotoSerif", size: 16))
-                          .bold()
-                          .lineLimit(1)
-                        Text(copy.author)
-                          .frame(width: .infinity)
-                          .multilineTextAlignment(.leading)
-                          .font(.custom("NotoSerif", size: 16))
-                          .lineLimit(1)
-                        Text("Current Owner:")
-                          .frame(width: .infinity)
-                          .multilineTextAlignment(.leading)
-                          .font(.custom("NotoSerif", size: 16))
-                          .bold()
-                          .lineLimit(1)
-                        Text(copy.copyOwner)
-                          .frame(width: .infinity)
-                          .multilineTextAlignment(.leading)
-                          .font(.custom("NotoSerif", size: 16))
-                          .lineLimit(1)
-                        WebImage(url: URL(string: copy.ownerProfile))
+                ForEach(searchController.searchModel!.availableCopies) { copy in
+                    NavigationLink(destination: CopyDetailsView(copy.copyID).navigationBarHidden(true)) {
+                        HStack (alignment: .top) {
+                          WebImage(url: URL(string: copy.coverURL))
                             .resizable()
+                            .placeholder(Image(uiImage: UIImage(named: "bookplaceholder")!)) // Placeholder Image
                             .scaledToFit()
-                            .frame(width: 50, height: 50, alignment: .center)
-                            .cornerRadius(25)
-                      }
-                      Spacer()
-                    }.padding(.bottom, 10.0)
+                            .frame(width: 100, height: 150, alignment: .center).cornerRadius(5)
+                            .shadow(color: .gray, radius: 3, x: 0, y: 3)
+                            .padding(.bottom, 3)
+                          VStack (alignment: .leading) {
+                            Text(copy.title)
+                              .frame(width: .infinity)
+                              .multilineTextAlignment(.leading)
+                              .font(.custom("NotoSerif", size: 16)).foregroundColor(Color.black)
+                              .bold()
+                              .lineLimit(1)
+                            Text(copy.author)
+                              .frame(width: .infinity)
+                              .multilineTextAlignment(.leading)
+                              .font(.custom("NotoSerif", size: 16)).foregroundColor(Color.black)
+                              .lineLimit(1)
+                            Text("Current Owner:")
+                              .frame(width: .infinity)
+                              .multilineTextAlignment(.leading)
+                              .font(.custom("NotoSerif", size: 16)).foregroundColor(Color.black)
+                              .bold()
+                              .lineLimit(1)
+                            Text(copy.copyOwner)
+                              .frame(width: .infinity)
+                              .multilineTextAlignment(.leading)
+                              .font(.custom("NotoSerif", size: 16)).foregroundColor(Color.black)
+                              .lineLimit(1)
+                            WebImage(url: URL(string: copy.ownerProfile))
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 50, height: 50, alignment: .center)
+                                .cornerRadius(25)
+                          }
+                          Spacer()
+                        }.padding(.bottom, 10.0)
                     }
-                  
                 }
               }
             }
