@@ -157,7 +157,7 @@ final class ProfileTest: XCTestCase {
                 do {
                     let res = try JSONDecoder().decode(Msg.self, from: data)
                     print(res)
-                    XCTAssertEqual(res.msg, "User not logged in.")
+                    XCTAssertEqual(res.msg, "User is not logged in.")
                     XCTAssertEqual(res.success, false)
                 } catch let error {
                     print(error)
