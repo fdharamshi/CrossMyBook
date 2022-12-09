@@ -20,7 +20,7 @@ final class ProfileTest: XCTestCase {
     var expectation: XCTestExpectation!
     let getProfileUrl = "http://ec2-3-87-92-147.compute-1.amazonaws.com:8000/getProfile?user_id="
     let getMyReviewUrl = "http://ec2-3-87-92-147.compute-1.amazonaws.com:8000/getMyReview"
-    let getFavorReviewUrl = "http://ec2-3-87-92-147.compute-1.amazonaws.com:8000/getFavorRview"
+    let getFavorReviewUrl = "http://ec2-3-87-92-147.compute-1.amazonaws.com:8000/getFavorReview"
     let getBookByUserIdUrl = "http://ec2-3-87-92-147.compute-1.amazonaws.com:8000/getBookByUserId"
 
     let userId = "1"
@@ -39,7 +39,18 @@ final class ProfileTest: XCTestCase {
             XCTAssertNotNil(data)
             XCTAssertNotNil(response)
             XCTAssertNil(error)
-            self.expectation.fulfill()
+            if let data = data{
+                do{
+                    let res = try JSONDecoder().decode(Profile.self, from:data)
+                    XCTAssertEqual(res.lastName, "Dharamshi")
+                    XCTAssertEqual(res.firstName, "Femin")
+                    XCTAssertEqual(res.success, true)
+                    XCTAssertEqual(res.email, "fkd@andrew.cmu.edu")
+                    self.expectation.fulfill()
+                }catch let error{
+                    print(error)
+                }
+            }
         }
         .resume()
     }
@@ -67,33 +78,6 @@ final class ProfileTest: XCTestCase {
         }.resume()
     }
     
-//    func test_ParseProfile() {
-//        let pc = ProfileController()
-//        pc.fetchData(testUserId) { (profile) in
-//            XCTAssertEqual(profile.lastName, "Dharamshi")
-//            XCTAssertEqual(profile.firstName, "Femin")
-//            XCTAssertEqual(profile.success, true)
-//            XCTAssertEqual(profile.email, "fkd@andrew.cmu.edu")
-//            self.expectation.fulfill()
-//        }
-//
-//        waitForExpectations(timeout: expired)
-//    }
-    
-    func test_ParseProfile() {
-        let pc = ProfileController()
-        pc.fetchProfile(testUserId)
-        sleep(10)
-        XCTAssertNotNil(pc.profile)
-        XCTAssertEqual(pc.profile?.lastName, "Dharamshi")
-        XCTAssertEqual(pc.profile?.firstName, "Femin")
-        XCTAssertEqual(pc.profile?.success, true)
-        XCTAssertEqual(pc.profile?.email, "fkd@andrew.cmu.edu")
-        self.expectation.fulfill()
-        
-        
-        waitForExpectations(timeout: expired)
-    }
     
     // MARK: getMyReview
     func test_ServerResponse_getMyReview() {
@@ -103,7 +87,16 @@ final class ProfileTest: XCTestCase {
             XCTAssertNotNil(data)
             XCTAssertNotNil(response)
             XCTAssertNil(error)
-            self.expectation.fulfill()
+            if let data = data{
+                do{
+                    let res = try JSONDecoder().decode(ReviewsModel.self, from:data)
+                    XCTAssertEqual(res.success, true)
+                    XCTAssertNotNil(res.msg,"Sucess!")
+                    self.expectation.fulfill()
+                }catch let error{
+                    print(error)
+                }
+            }
         }
         .resume()
     }
@@ -130,16 +123,6 @@ final class ProfileTest: XCTestCase {
         }.resume()
     }
 
-//    func test_ParseMyReview() {
-//        let rc = ReviewsController()
-//        rc.fetchMyReview(testUserId) { (reviews) in
-//            XCTAssertEqual(reviews.success, true)
-//            XCTAssertEqual(reviews.msg, "Success!")
-//            self.expectation.fulfill()
-//        }
-//
-//        waitForExpectations(timeout: expired)
-//    }
     
     // MARK: getFavorReview
     func test_ServerResponse_getFavorReview() {
@@ -149,7 +132,16 @@ final class ProfileTest: XCTestCase {
             XCTAssertNotNil(data)
             XCTAssertNotNil(response)
             XCTAssertNil(error)
-            self.expectation.fulfill()
+            if let data = data{
+                do{
+                    let res = try JSONDecoder().decode(ReviewsModel.self, from:data)
+                    XCTAssertEqual(res.success, true)
+                    XCTAssertNotNil(res.msg,"Sucess!")
+                    self.expectation.fulfill()
+                }catch let error{
+                    print(error)
+                }
+            }
         }
         .resume()
     }
@@ -175,27 +167,7 @@ final class ProfileTest: XCTestCase {
         }.resume()
     }
     
-    func test_ParseMyReview() {
-        let rc = ReviewsController()
-        rc.fetchReviews(testUserId)
-        sleep(10)
-        XCTAssertNotNil(rc.myReviews)
-        XCTAssertNotNil(rc.faveReviews)
-        XCTAssertNotEqual(rc.myReviews?.count, 0)
-        self.expectation.fulfill()
-        waitForExpectations(timeout: expired)
-    }
-    
-//    func test_ParseMyFavorReview() {
-//        let rc = ReviewsController()
-//        rc.fetchFaveReview(testUserId) { (reviews) in
-//            XCTAssertEqual(reviews.success, true)
-//            XCTAssertEqual(reviews.msg, "Success!")
-//            self.expectation.fulfill()
-//        }
-//
-//        waitForExpectations(timeout: expired)
-//    }
+
     
     // MARK: getBookByUserId
     
@@ -206,7 +178,16 @@ final class ProfileTest: XCTestCase {
             XCTAssertNotNil(data)
             XCTAssertNotNil(response)
             XCTAssertNil(error)
-            self.expectation.fulfill()
+            if let data = data{
+                do{
+                    let res = try JSONDecoder().decode(DashboardModel.self, from:data)
+                    XCTAssertNotNil(res.currentBooks)
+                    XCTAssertNotNil(res.historyBooks)
+                    self.expectation.fulfill()
+                }catch let error{
+                    print(error)
+                }
+            }
         }
         .resume()
     }
@@ -232,15 +213,6 @@ final class ProfileTest: XCTestCase {
         }.resume()
     }
     
-    func test_ParseBookByUserId() {
-        let dc = DashboardController()
-        dc.fetchUserBooks(testUserId)
-        sleep(5)
-        XCTAssertNotNil(dc.dashboardModel)
-        XCTAssertNotNil(dc.displayBooks)
-        self.expectation.fulfill()
-        waitForExpectations(timeout: expired)
-    }
 
     
 }
