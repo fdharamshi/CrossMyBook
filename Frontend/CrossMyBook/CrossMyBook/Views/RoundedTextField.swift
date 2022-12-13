@@ -21,6 +21,7 @@ struct RoundedTextField: View {
                 SecureField(placeholder, text: $text)
                   .padding(.leading)
                   .font(Font.custom("NotoSerif", size: 15))
+                  .autocorrectionDisabled(true).autocapitalization(.none)
               )
               .frame(height: height)
         } else {
@@ -30,6 +31,7 @@ struct RoundedTextField: View {
                 TextField(placeholder, text: $text)
                   .padding(.leading)
                   .font(Font.custom("NotoSerif", size: 15))
+                  .autocorrectionDisabled(true).autocapitalization(.none)
               )
               .frame(height: height)
         }
