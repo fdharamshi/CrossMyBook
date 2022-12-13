@@ -111,7 +111,7 @@ struct SearchPageView: View {
               if(searchController.searchModel?.books.count == 0) {
                 Text("No results for \"\(receivedSearchString)\"").font(.custom("NotoSerif", size: 16))
               } else {
-                ForEach(searchController.searchModel!.books) { searchBook in
+                ForEach(searchController.searchModel?.books ?? []) { searchBook in
                     NavigationLink(destination: BookDetailView(bookId: String(searchBook.id)).navigationBarHidden(true)) {
                         HStack (alignment: .top) {
                             WebImage(url: URL(string: searchBook.coverURL))
