@@ -107,7 +107,7 @@ struct BookDetailView: View {
     }
     
     func loadBookData() {
-        print("book id: ", bookId)
+        // print("book id: ", bookId)
         let anonymous = { (fetchedBook: Book) in
             self.bookViewModel.bookData = fetchedBook
 //            print(self.bookViewModel.bookData)
