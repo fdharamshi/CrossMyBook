@@ -89,7 +89,7 @@ struct HomeView: View {
                 }.padding(.leading, 15)
               }
             }
-          }
+          }.padding(.trailing, 15)
         }
         
         Text("Travel route pick of the day")
@@ -136,7 +136,7 @@ struct HomeView: View {
                 }.padding(.leading, 15)
               }
             }
-          }
+          }.padding(.trailing, 15)
         }
         Spacer()
       }
