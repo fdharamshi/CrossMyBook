@@ -14,37 +14,40 @@ class ReleaseController: ObservableObject {
     @Published var releaseId: Int = 0
     var jump = true;
     let loc: Location = Location()
-    var getRes = false;
     
-    func fetchBookDetails(isbn: String) -> Bool{
-        let res = fetchData(isbn, completion: { bookModel in
+  func fetchBookDetails(isbn: String, completionHandler: @escaping (Bool)->()){
+        fetchData(isbn, completion: { bookModel in
+          if(bookModel == nil) {
+            completionHandler(false)
+          } else {
             self.book = bookModel
+            completionHandler(true)
+          }
         })
         if book != nil {
             print(book!.title)
         }
-        return res;
     }
     
-    func fetchData(_ isbn: String, completion: @escaping (ISBNBook) -> ()) ->Bool{
+    func fetchData(_ isbn: String, completion: @escaping (ISBNBook?) -> ()){
         let url: String = "http://ec2-3-87-92-147.compute-1.amazonaws.com:8000/getBookFromISBN?isbn=\(isbn)"
         let task = URLSession.shared.dataTask(with: URL(string: url)!) { (data, response, error) in
             guard let data = data else {
                 print("Error: No data to decode")
-                return
+                completion(nil)
+              return
             }
             
             // Decode the JSON here
             guard let book = try? JSONDecoder().decode(ISBNBook.self, from: data) else {
                 print("Error: Couldn't decode data into a result(ReleaseContoller2)")
-                return
+                completion(nil)
+              return
             }
-            self.getRes = true
             print(book.title)
             completion(book)
         }
         task.resume()
-        return self.getRes
     }
     
     
