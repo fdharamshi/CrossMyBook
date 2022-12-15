@@ -22,6 +22,8 @@ struct ReleaseSelectionView: View {
     @State private var resultAlert = false
     @State private var res = false
     @State private var alertMsg = "Sorry, we can't find the book.\n Please use another isbn to try again."
+  
+    
     
     var body: some View {
         NavigationView{
@@ -52,12 +54,13 @@ struct ReleaseSelectionView: View {
                             if(scanningBarcode) {
                                 isbn = result.string
                                 scanningBarcode = false
-                                let result = vc.fetchBookDetails(isbn: isbn)
-                                if (result){
+                                vc.fetchBookDetails(isbn: isbn, completionHandler: { result in
+                                  if(result) {
                                     jump = true
-                                }else{
-                                    resultAlert = true
-                                }
+                                  } else {
+                                    resultAlert = true;
+                                  }
+                                })
                                 
                             }
                         }
@@ -65,12 +68,13 @@ struct ReleaseSelectionView: View {
                     Spacer()
                     CustomText(s: "Or enter the ISBN manually", size: 14).frame(maxWidth: .infinity, alignment: .center)
                     TextField("ISBN", text: $isbn, onCommit: {
-                        let result = vc.fetchBookDetails(isbn: isbn)
-                        if (result){
+                        vc.fetchBookDetails(isbn: isbn, completionHandler: { result in
+                          if(result) {
                             jump = true
-                        }else{
-                            resultAlert = true
-                        }
+                          } else {
+                            resultAlert = true;
+                          }
+                        })
                     }).multilineTextAlignment(.center)
                         .frame(height: 48)
                         .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
